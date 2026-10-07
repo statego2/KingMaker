@@ -1,0 +1,374 @@
+{
+  "schema_version": "1.0",
+  "setting": {
+    "country": "Republic of Lydria",
+    "year": 2032,
+    "capital": "Velis",
+    "population_millions": 12.0,
+    "government_type": "parliamentary_republic",
+    "assembly_seats": 240,
+    "majority_threshold": 121
+  },
+  "regions": [
+    {
+      "id": "velis",
+      "name": "Velis Metropolitan Region",
+      "tags": [
+        "government",
+        "finance",
+        "media",
+        "courts"
+      ]
+    },
+    {
+      "id": "aster_coast",
+      "name": "Aster Coast",
+      "tags": [
+        "port",
+        "shipping",
+        "energy",
+        "logistics"
+      ]
+    },
+    {
+      "id": "daran_belt",
+      "name": "Daran Industrial Belt",
+      "tags": [
+        "manufacturing",
+        "labor",
+        "defense_industry"
+      ]
+    },
+    {
+      "id": "riva_plain",
+      "name": "Riva Plain",
+      "tags": [
+        "agriculture",
+        "water",
+        "solar",
+        "small_business"
+      ]
+    },
+    {
+      "id": "sera_islands",
+      "name": "Sera Islands",
+      "tags": [
+        "tourism",
+        "maritime",
+        "naval",
+        "dispute"
+      ]
+    },
+    {
+      "id": "eastern_marches",
+      "name": "Eastern Marches",
+      "tags": [
+        "border",
+        "energy",
+        "trade",
+        "security"
+      ]
+    }
+  ],
+  "assembly": {
+    "Renewal Alliance": 68,
+    "Civic Labour": 52,
+    "Stability Union": 46,
+    "Sovereign Front": 38,
+    "Free Cities List": 22,
+    "Regional and Independents": 14
+  },
+  "world_tracks": {
+    "government_stability": 46,
+    "public_trust": 38,
+    "institutional_integrity": 61,
+    "fiscal_headroom": 44,
+    "financial_stability": 63,
+    "energy_security": 41,
+    "social_cohesion": 57,
+    "external_pressure": 48,
+    "information_quality": 56,
+    "strategic_autonomy": 43,
+    "growth_capacity": 58
+  },
+  "opening_clocks": {
+    "government_formation": {
+      "pressure": 42,
+      "trend": "worsening"
+    },
+    "aster_gate_financing_expiry": {
+      "days_estimate": 92,
+      "visibility": "known"
+    },
+    "ordan_energy_contract": {
+      "days_estimate": 128,
+      "visibility": "known"
+    },
+    "meridian_bank_confidence": {
+      "pressure": 24,
+      "visibility": "hidden"
+    },
+    "labour_automation_pact": {
+      "days_estimate": 310,
+      "visibility": "known"
+    },
+    "serrat_maritime_talks": {
+      "days_estimate": 76,
+      "visibility": "known"
+    }
+  },
+  "institutions": [
+    {
+      "id": "assembly",
+      "name": "Lydrian Assembly",
+      "formal_power": 95,
+      "informal_power": 78
+    },
+    {
+      "id": "presidency",
+      "name": "Presidency",
+      "formal_power": 54,
+      "informal_power": 72
+    },
+    {
+      "id": "cabinet",
+      "name": "Cabinet / Prime Minister",
+      "formal_power": 96,
+      "informal_power": 82
+    },
+    {
+      "id": "constitutional_court",
+      "name": "Constitutional Court",
+      "formal_power": 73,
+      "informal_power": 66
+    },
+    {
+      "id": "central_bank",
+      "name": "Central Bank of Lydria",
+      "formal_power": 71,
+      "informal_power": 74
+    },
+    {
+      "id": "integrity_commission",
+      "name": "Integrity Commission",
+      "formal_power": 48,
+      "informal_power": 67
+    },
+    {
+      "id": "nid",
+      "name": "National Intelligence Directorate",
+      "formal_power": 61,
+      "informal_power": 65
+    },
+    {
+      "id": "scs",
+      "name": "Strategic Coordination Secretariat",
+      "formal_power": 18,
+      "informal_power": 31
+    }
+  ],
+  "political_factions": {
+    "renewal_alliance": {
+      "seats": 68,
+      "public_support": 29,
+      "internal_unity": 63,
+      "resources": 67,
+      "goals": [
+        "institutional_modernization",
+        "growth",
+        "clean_government",
+        "continental_integration"
+      ],
+      "fears": [
+        "patronage_return",
+        "fiscal_instability",
+        "loss_of_credibility"
+      ]
+    },
+    "civic_labour": {
+      "seats": 52,
+      "public_support": 22,
+      "internal_unity": 68,
+      "resources": 64,
+      "goals": [
+        "wage_security",
+        "public_services",
+        "worker_voice",
+        "regional_investment"
+      ],
+      "fears": [
+        "automation_inequality",
+        "elite_technocracy",
+        "unprotected_privatisation"
+      ]
+    },
+    "stability_union": {
+      "seats": 46,
+      "public_support": 19,
+      "internal_unity": 55,
+      "resources": 78,
+      "goals": [
+        "order",
+        "investment",
+        "gradual_reform",
+        "defense"
+      ],
+      "fears": [
+        "coalition_chaos",
+        "radical_reform",
+        "fiscal_instability"
+      ]
+    },
+    "sovereign_front": {
+      "seats": 38,
+      "public_support": 16,
+      "internal_unity": 71,
+      "resources": 52,
+      "goals": [
+        "strategic_autonomy",
+        "energy_security",
+        "domestic_control",
+        "hard_security"
+      ],
+      "fears": [
+        "foreign_control",
+        "national_humiliation",
+        "elite_detachment"
+      ]
+    },
+    "free_cities_list": {
+      "seats": 22,
+      "public_support": 9,
+      "internal_unity": 49,
+      "resources": 39,
+      "goals": [
+        "transparency",
+        "digital_rights",
+        "decentralization",
+        "green_transition"
+      ],
+      "fears": [
+        "surveillance",
+        "oligarchic_capture",
+        "old_party_patronage"
+      ]
+    },
+    "regional_independents": {
+      "seats": 14,
+      "public_support": 5,
+      "internal_unity": 12,
+      "resources": 31,
+      "goals": [
+        "regional_benefits",
+        "local_autonomy",
+        "issue_specific_priorities"
+      ],
+      "fears": [
+        "central_neglect",
+        "being_absorbed_by_major_parties"
+      ]
+    }
+  },
+  "non_party_power_centers": [
+    "Aureon Consortium",
+    "Nexa Systems",
+    "Meridian Bank",
+    "Federation of Lydrian Labour",
+    "Vela Media Network",
+    "Civic Wire"
+  ],
+  "external_actors": {
+    "ordan_federation": {
+      "strategy": "fragmentation_and_dependency",
+      "tools": [
+        "energy",
+        "trade",
+        "elite_relationships",
+        "information_operations",
+        "diplomacy",
+        "cyber"
+      ]
+    },
+    "serrat_republic": {
+      "strategy": "competitive_coexistence",
+      "issues": [
+        "maritime_zone",
+        "ports",
+        "tourism",
+        "energy_exploration",
+        "regional_security"
+      ]
+    },
+    "continental_compact": {
+      "strategy": "stable_rules_based_integration",
+      "tools": [
+        "market_access",
+        "funding",
+        "regulation",
+        "security_coordination",
+        "conditionality"
+      ]
+    }
+  },
+  "strategic_asset": {
+    "id": "aster_gate",
+    "name": "Aster Gate Corridor",
+    "components": [
+      "deep_water_port_expansion",
+      "automated_freight_terminal",
+      "high_speed_freight_rail",
+      "energy_terminal",
+      "strategic_fuel_storage",
+      "subsea_data_cable",
+      "sovereign_compute_campus",
+      "defense_logistics",
+      "industrial_free_zone",
+      "regional_power_interconnector"
+    ]
+  },
+  "player_start": {
+    "role": "junior_strategic_analyst",
+    "institution": "Strategic Coordination Secretariat",
+    "formal_power": 5,
+    "public_reputation": 3,
+    "elite_reputation": 8,
+    "network_reach": 12,
+    "credibility": 18,
+    "intelligence_capacity": 20,
+    "political_capital": 4,
+    "independence": 82,
+    "staff_capacity": 2
+  },
+  "hidden_truth_flags": {
+    "harbor_scandal_mixed_truth": true,
+    "ordan_prefers_fragmentation": true,
+    "aureon_targets_chokepoints": true,
+    "nexa_sovereignty_dependency": true,
+    "meridian_bank_vulnerable_not_insolvent": true,
+    "labour_can_accept_automation": true,
+    "presidency_prioritizes_institutional_order": true,
+    "public_issue_preferences_are_fluid": true,
+    "serrat_does_not_seek_major_war": true,
+    "personalized_competence_is_long_term_systemic_risk": true
+  },
+  "campaign_eras": [
+    "The Outsider",
+    "The Operator",
+    "The Kingmaker",
+    "The Counterplayer",
+    "The System",
+    "Legacy"
+  ],
+  "ending_axes": [
+    "personal_power",
+    "institutional_strength",
+    "legitimacy",
+    "economic_resilience",
+    "strategic_autonomy",
+    "social_cohesion",
+    "truth_flow",
+    "successor_quality",
+    "coalition_ecology",
+    "integrity_legacy"
+  ]
+}
