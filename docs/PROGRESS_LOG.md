@@ -14,4 +14,5 @@ Entries document **verified project activity**, separate from the aspirational b
 - **Artifact:** `docs/IMPLEMENTATION_INVENTORY.md`, shipped/partial/spec-only table, dependency graph, key technical and UX risks.
 - **Correction:** planning references treating the current README and visual pivot as stale were inaccurate; both already identify `app-redesign.js`.
 - **State:** code review/merge outstanding; no runtime browser smoke, device QA or local Node validator execution claimed at authoring time. Repository backlog CI is expected to report independently.
-- **Follow-up:** accept KM-001 against its evidence, then KM-002 and KM-006.
+- **Verification:** `node tools/validate-production-backlog.mjs` executed by GitHub Actions on [PR #4](https://github.com/statego2/KingMaker/pull/4), [successful run](https://github.com/statego2/KingMaker/actions/runs/37692280622). Acceptance criteria met by code audit and scene ID inventory; review/merge is the delivery gate.
+- **Follow-up:** KM-002 and KM-006.

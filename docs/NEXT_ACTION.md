@@ -9,21 +9,22 @@
 - The latest creative pivot is scene-first cinematic political strategy, not dense dashboard-first UI.
 
 ## Current milestone
-**M0 / P00 — Foundation / audit (KM-001 implementation proposed for review).**
+**M0 / P00 — Foundation/testing.**
 
 ## Immediate next task
-**KM-001 — Audit canonical entrypoints and stale references** (P0, S; branch `task/KM-001-audit-entrypoints-20261008`; awaiting review/merge).
+**KM-002 — Create repeatable local build/test workflow** (P0, M; depends on KM-001, completed in PR #4 after CI acceptance).
 
-Deliver:
-1. Inspect live `index.html` imports, project structure, README and visual-pivot notes.
-2. Write accurate shipped/scaffold/spec-only inventory and fix misleading runtime references in documentation.
-3. Record gaps and likely defects without changing mechanics arbitrarily.
-4. Update backlog status with evidence, `docs/PROGRESS_LOG.md`, and this file.
-5. Run backlog validator; include exact verification commands/results.
+**Also ready:** KM-006 (v0.3 vs v1 schema audit), plus parallel P1 KM-012 and KM-089.
+
+Deliver for KM-002:
+1. Document Node 22 / static-site boot commands without a private environment.
+2. Add portable, no-dependency local scripts for syntax, import and test checks.
+3. Ensure fresh checkout setup and error codes are reproducible; follow up with KM-003 tests.
+4. Verify using Node and record exact output through CI if local execution is not available.
 
 Then seek next dependency-ready **KM-002** (local test/build workflow), followed by KM-003/004/005/006/007/008 as allowed by dependency graph.
 
-**KM-001 audit artifact:** [`docs/IMPLEMENTATION_INVENTORY.md`](IMPLEMENTATION_INVENTORY.md). Once merged and accepted, proceed to KM-002; KM-006 becomes independently eligible.
+**KM-001 audit artifact:** [`docs/IMPLEMENTATION_INVENTORY.md`](IMPLEMENTATION_INVENTORY.md), [PR #4](https://github.com/statego2/KingMaker/pull/4), backlog integrity [CI run](https://github.com/statego2/KingMaker/actions/runs/37692280622). No browser/device playtest included.
 
 ## Ready-to-start rule
 Find `todo` tasks with all `depends_on` in `done`, select priority P0 then phase progression; do not auto-select parallel cosmetic tasks over gold-loop blockers. If current task already has an open PR, review/finish it rather than duplicate.

@@ -130,7 +130,7 @@
       "stream": "production",
       "priority": "P0",
       "size": "S",
-      "status": "in_progress",
+      "status": "done",
       "depends_on": [],
       "deliverables": [
         "Versioned inventory of shipped vs obsolete files and doc corrections"
@@ -139,8 +139,12 @@
         "Live index/import graph and all 18 scene IDs recorded",
         "Obsolete design claims identified without changing canon"
       ],
-      "evidence": [],
-      "notes": "Audit branch task/KM-001-audit-entrypoints-20261008. Source inspection complete; await CI and review/merge before marking done."
+      "evidence": [
+        "https://github.com/statego2/KingMaker/pull/4",
+        "https://github.com/statego2/KingMaker/actions/runs/37692280622",
+        "docs/IMPLEMENTATION_INVENTORY.md (2026-10-08 source audit)"
+      ],
+      "notes": "Audited main and corrected stale planning hypothesis. PR #4 includes inventory, import map and 18 IDs. Acceptance by repository inspection and CI backlog integrity; no browser or user playtest implied."
     },
     {
       "id": "KM-002",
