@@ -63,9 +63,9 @@ The next milestone turns the campaign architecture into executable mechanics and
 
 ## Playable build
 
-The first playable vertical slice is now in the repository root as a self-contained `index.html`.
+The playable Act I build is in the repository root and runs directly through GitHub Pages.
 
-Current scope: **Chapters 1–3 / 9 scenes** with persistent state, delayed callbacks, relationship updates, Inbox, People and Situation views.
+Current scope: **Act I complete — Chapters 1–6 / 18 core scenes**, including state-dependent government formation, NSO institutional design, promises and delayed callbacks.nt state, delayed callbacks, relationship updates, Inbox, People and Situation views.
 
 
 ## Visual direction integrated
@@ -77,3 +77,19 @@ institutional materiality + editorial typography + provenance-first strategic in
 
 ### Live build
 GitHub Pages serves the repository root.
+
+
+### Act I complete
+
+The live campaign now runs from **Day Zero** through **Government at Dawn**.
+
+Earlier choices alter:
+- coalition-route viability,
+- procedural timing,
+- actor trust,
+- Silas observations,
+- NSO architecture,
+- active promises,
+- and which government configurations remain credible at the final formation decision.
+
+Next: **Act II — The Operator**.
