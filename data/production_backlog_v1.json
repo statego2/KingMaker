@@ -153,7 +153,7 @@
       "stream": "engineering",
       "priority": "P0",
       "size": "M",
-      "status": "todo",
+      "status": "done",
       "depends_on": [
         "KM-001"
       ],
@@ -164,8 +164,12 @@
         "Fresh checkout boots app and reports errors consistently",
         "Instructions work without special private development setup"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/pull/5",
+        "https://github.com/statego2/KingMaker/actions/runs/37692611628",
+        "docs/LOCAL_DEVELOPMENT.md"
+      ],
+      "notes": "Node no-dependency preview+CLI, static import check and HTTP server smoke; no browser/device acceptance."
     },
     {
       "id": "KM-003",
@@ -174,7 +178,7 @@
       "stream": "qa",
       "priority": "P0",
       "size": "M",
-      "status": "todo",
+      "status": "done",
       "depends_on": [
         "KM-002"
       ],
@@ -185,8 +189,12 @@
         "All 18 Act I scene definitions resolve and have unique IDs",
         "Broken imports or malformed choices fail CI/local command"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/pull/5",
+        "https://github.com/statego2/KingMaker/actions/runs/37692611628",
+        "docs/LOCAL_DEVELOPMENT.md"
+      ],
+      "notes": "18 scenes, choices, imports and presentation mapping tested. Fixed malformed C02_S03 Civic Compact choice, initially detected by CI."
     },
     {
       "id": "KM-004",
@@ -195,7 +203,7 @@
       "stream": "qa",
       "priority": "P0",
       "size": "M",
-      "status": "todo",
+      "status": "done",
       "depends_on": [
         "KM-003"
       ],
@@ -206,8 +214,12 @@
         "Choices mutate, save and reload as expected",
         "No hidden score shown prior to commitment"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/pull/5",
+        "https://github.com/statego2/KingMaker/actions/runs/37692611628",
+        "docs/LOCAL_DEVELOPMENT.md"
+      ],
+      "notes": "Deterministic first choice/save, 3 opening branches, 18-scene progression, callbacks, legacy v02, reset and corrupt-storage tests. No exhaustive routes/browser QA."
     },
     {
       "id": "KM-005",

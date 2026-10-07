@@ -79,7 +79,7 @@ c("C02_S03","02","THE 121ST VOTE","Day 4 — Three Viable Paths","COALITION ARCH
 [
 o("a","Stress-test","Reform Accord","Δοκιμάζεις distribution + one-vote fragility.",.83,"Η Mira ζητά confidential distribution table.","Η επιλογή route δεν είναι moral endorsement· είναι allocation analytical capacity.",{flags:{GOV_PATH:"reform_accord"},routes:{reform_accord:7}}),
 o("b","Stress-test","Reconstruction Coalition","Δοκιμάζεις continuity χωρίς capture.",.80,"Ο Viktor ανοίγει quiet channel. Το όνομα Silas Koren εμφανίζεται στο calendar.","Administrative memory είναι asset και liability μαζί.",{flags:{GOV_PATH:"reconstruction"},routes:{reconstruction:7},rel:{silas_koren:{familiarity:2}}}),
-o("c","Stress-test","Civic Compact","Δοκιμάζεις broad oversight coalition.","Περισσότερα veto points, αλλά real outside option.",.77,"Η Liora ζητά rules πριν ministries.","Outside option αλλάζει bargaining power ακόμη και αν δεν γίνει τελικό government.",{flags:{GOV_PATH:"civic_compact"},routes:{civic_compact:7}})
+o("c","Stress-test","Civic Compact","Δοκιμάζεις broad oversight coalition με περισσότερα veto points.",.77,"Η Liora ζητά rules πριν ministries.","Outside option αλλάζει bargaining power ακόμη και αν δεν γίνει τελικό government.",{flags:{GOV_PATH:"civic_compact"},routes:{civic_compact:7}})
 ],["mara_eltan","silas_koren"]),
 
 c("C03_S01","03","THE FILE","Day 6 — “A Page Your People Say Does Not Exist”","HARBOR CONTRACTS",

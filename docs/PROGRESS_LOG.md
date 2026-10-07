@@ -16,3 +16,10 @@ Entries document **verified project activity**, separate from the aspirational b
 - **State:** code review/merge outstanding; no runtime browser smoke, device QA or local Node validator execution claimed at authoring time. Repository backlog CI is expected to report independently.
 - **Verification:** `node tools/validate-production-backlog.mjs` executed by GitHub Actions on [PR #4](https://github.com/statego2/KingMaker/pull/4), [successful run](https://github.com/statego2/KingMaker/actions/runs/37692280622). Acceptance criteria met by code audit and scene ID inventory; review/merge is the delivery gate.
 - **Follow-up:** KM-002 and KM-006.
+
+## 2026-10-08 — KM-002 / KM-003 / KM-004 reproducible automated baseline
+- **Change:** no-dependency localhost server and CLI; static entrypoint/import checks; Node built-in tests for 18 content definitions, choices, saves, route progression and scheduled callbacks; Node 22 GitHub Actions workflow; local-dev instructions. [PR #5](https://github.com/statego2/KingMaker/pull/5).
+- **Actual CI commands:** `npm run check` — PASS (13 JS files and HTML/imports); `npm test` — **9 passed, 0 failed**; `npm run validate:backlog` — PASS. [GitHub Actions run](https://github.com/statego2/KingMaker/actions/runs/37692611628).
+- **Real defect exposed and corrected:** in `C02_S03`, the Civic Compact option had displaced argument fields (quality/result/debrief/effects), now corrected in `src/content.js`.
+- **Gaps:** browser interaction, visual screenshots and real-device review not run; branch-route coverage only one deterministic Act I route, not a combinatorial campaign audit. Save behavior unchanged.
+- **Follow-up:** KM-005 visual baseline, KM-006 state/schema audit; KM-008 delivery policy and CI hardening.

@@ -1,0 +1,21 @@
+name: KINGMAKER runtime and regression tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  game-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax, import graph and entrypoint checks
+        run: npm run check
+      - name: Node smoke, decision and save regression tests
+        run: npm test
+      - name: Production dependency graph and statuses
+        run: npm run validate:backlog
