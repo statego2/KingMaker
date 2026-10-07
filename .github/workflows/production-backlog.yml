@@ -1,0 +1,24 @@
+name: Production backlog integrity
+on:
+  push:
+    paths:
+      - 'data/production_backlog_v1.json'
+      - 'tools/validate-production-backlog.mjs'
+      - '.github/workflows/production-backlog.yml'
+  pull_request:
+    paths:
+      - 'data/production_backlog_v1.json'
+      - 'tools/validate-production-backlog.mjs'
+      - '.github/workflows/production-backlog.yml'
+jobs:
+  validate-backlog:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate task graph and evidence policy
+        run: node tools/validate-production-backlog.mjs

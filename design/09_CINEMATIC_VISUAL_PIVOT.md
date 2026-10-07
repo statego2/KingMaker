@@ -178,6 +178,6 @@ If yes, prefer that.
 
 ## 11. Current playable reference
 
-The current `src/app.js` + `styles.css` scene-first implementation is the active visual prototype.
+As of 2026-10-08, the shipped GitHub Pages entrypoint is `index.html` → `src/app-redesign.js` / `src/redesign-scenes.js` + `styles-redesign.css`. This is a **scene-first procedural prototype**, not finished film-quality assets.
 
-Future UI work should evolve from that direction rather than restoring the earlier dashboard composition.
+Future UI work should evolve from the scene-first direction, with real location and character art, consistent composition and gameplay-first usability. Do not restore the deprecated dashboard-first composition. Track implementation tasks and verified status in `data/production_backlog_v1.json` and `docs/NEXT_ACTION.md`.

@@ -1,0 +1,2588 @@
+{
+  "schema_version": "1.0",
+  "project": "KINGMAKER",
+  "as_of": "2026-10-08",
+  "scope": "Whole campaign production, progressive elaboration",
+  "statuses": [
+    "todo",
+    "in_progress",
+    "blocked",
+    "review",
+    "done"
+  ],
+  "priority_keys": {
+    "P0": "critical path",
+    "P1": "important quality/parallel",
+    "P2": "defer until validated"
+  },
+  "size_keys": {
+    "S": "small",
+    "M": "medium",
+    "L": "large",
+    "XL": "must split before active work"
+  },
+  "evidence_policy": "Do not set done without merged PR/commit and observed acceptance checks.",
+  "phases": [
+    {
+      "id": "P00",
+      "name": "Foundation / audit",
+      "gate": "M0",
+      "goal": "Verify the shipped product and establish an honest reproducible baseline.",
+      "status": "planned"
+    },
+    {
+      "id": "P01",
+      "name": "Scene system / art pipeline",
+      "gate": "M1",
+      "goal": "Create reusable premium scene grammar, world and character pipeline.",
+      "status": "planned"
+    },
+    {
+      "id": "P02",
+      "name": "Gold Chapter 1",
+      "gate": "M2",
+      "goal": "Ship three outstanding playable scenes with true agency and feedback.",
+      "status": "planned"
+    },
+    {
+      "id": "P03",
+      "name": "Gold Chapters 1–3",
+      "gate": "M3",
+      "goal": "Prove a sustained first-session experience across nine connected scenes.",
+      "status": "planned"
+    },
+    {
+      "id": "P04",
+      "name": "Persistent simulation foundation",
+      "gate": "M4",
+      "goal": "Harden state, actor, evidence and consequence systems before content scale.",
+      "status": "planned"
+    },
+    {
+      "id": "P05",
+      "name": "Polished Act I",
+      "gate": "M5",
+      "goal": "Upgrade all 18 Act I scenes, routes and ending quality.",
+      "status": "planned"
+    },
+    {
+      "id": "P06",
+      "name": "Act II — The Operator",
+      "gate": "M6",
+      "goal": "Turn political plans and institutions into execution mechanics.",
+      "status": "planned"
+    },
+    {
+      "id": "P07",
+      "name": "Act III — The Kingmaker",
+      "gate": "M7",
+      "goal": "Make agenda, coalitions, appointments and networks player agency.",
+      "status": "planned"
+    },
+    {
+      "id": "P08",
+      "name": "Act IV — The Counterplayer",
+      "gate": "M8",
+      "goal": "Deliver fair adversarial intelligence and player-model counterplay.",
+      "status": "planned"
+    },
+    {
+      "id": "P09",
+      "name": "Act V — The System",
+      "gate": "M9",
+      "goal": "Ship playable interacting national crises and triage.",
+      "status": "planned"
+    },
+    {
+      "id": "P10",
+      "name": "Act VI — Legacy",
+      "gate": "M10",
+      "goal": "Resolve succession, constitutional design and accumulated historical consequence.",
+      "status": "planned"
+    },
+    {
+      "id": "P11",
+      "name": "Curriculum / balance / modes",
+      "gate": "XP",
+      "goal": "Embed strategic mastery, calibration, fair challenge and adaptive difficulty.",
+      "status": "planned"
+    },
+    {
+      "id": "P12",
+      "name": "Art / sound / game feel / accessibility",
+      "gate": "XP",
+      "goal": "Give Lydria consistent visual/audio identity and accessible cinematic experience.",
+      "status": "planned"
+    },
+    {
+      "id": "P13",
+      "name": "Quality / delivery / release",
+      "gate": "MR",
+      "goal": "Make the full product reliable, observable and ready for release.",
+      "status": "planned"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "KM-001",
+      "phase": "P00",
+      "title": "Audit canonical entrypoints and stale references",
+      "stream": "production",
+      "priority": "P0",
+      "size": "S",
+      "status": "todo",
+      "depends_on": [],
+      "deliverables": [
+        "Versioned inventory of shipped vs obsolete files and doc corrections"
+      ],
+      "acceptance_criteria": [
+        "Live index/import graph and all 18 scene IDs recorded",
+        "Obsolete design claims identified without changing canon"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-002",
+      "phase": "P00",
+      "title": "Create repeatable local build/test workflow",
+      "stream": "engineering",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-001"
+      ],
+      "deliverables": [
+        "package scripts or equivalent reproducible commands"
+      ],
+      "acceptance_criteria": [
+        "Fresh checkout boots app and reports errors consistently",
+        "Instructions work without special private development setup"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-003",
+      "phase": "P00",
+      "title": "Add no-dependency smoke tests for imported scene data",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-002"
+      ],
+      "deliverables": [
+        "Automated data/import smoke and scene-count tests"
+      ],
+      "acceptance_criteria": [
+        "All 18 Act I scene definitions resolve and have unique IDs",
+        "Broken imports or malformed choices fail CI/local command"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-004",
+      "phase": "P00",
+      "title": "Add deterministic decision/save/restore fixtures",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-003"
+      ],
+      "deliverables": [
+        "Golden smoke fixtures for first scene, mid run and ending"
+      ],
+      "acceptance_criteria": [
+        "Choices mutate, save and reload as expected",
+        "No hidden score shown prior to commitment"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-005",
+      "phase": "P00",
+      "title": "Baseline visual snapshots at phone and desktop widths",
+      "stream": "ux",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-001",
+        "KM-002"
+      ],
+      "deliverables": [
+        "Screenshots, clipping ledger, target viewport matrix"
+      ],
+      "acceptance_criteria": [
+        "First/longest/final scenes have captured layouts",
+        "All clipped actions, illegible facts and overlap have issues"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-006",
+      "phase": "P00",
+      "title": "Audit existing v0.3 state against v1 schema",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-001"
+      ],
+      "deliverables": [
+        "Gap and migration map for schema/spec/runtime"
+      ],
+      "acceptance_criteria": [
+        "Every key system marked shipped/partial/spec only",
+        "Backward-compatible migration risks and test fixtures identified"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-007",
+      "phase": "P00",
+      "title": "Record baseline UX playtest and risk register",
+      "stream": "product",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-005"
+      ],
+      "deliverables": [
+        "Short moderated test protocol, findings and ranked risks"
+      ],
+      "acceptance_criteria": [
+        "At least three novice sessions or clearly flagged unavailable",
+        "Comprehension/engagement blockers separated from aesthetic opinions"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-008",
+      "phase": "P00",
+      "title": "CI, branch protections and issue delivery convention",
+      "stream": "devops",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-002",
+        "KM-003",
+        "KM-004"
+      ],
+      "deliverables": [
+        "Automated checks, PR template, ownership and change discipline"
+      ],
+      "acceptance_criteria": [
+        "Pull requests run import, backlog-validation and baseline tests",
+        "Human approval rules and merge/rollback ownership documented"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-009",
+      "phase": "P01",
+      "title": "Define versioned scene presentation contract",
+      "stream": "engineering",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-001",
+        "KM-006"
+      ],
+      "deliverables": [
+        "Scene mode schema with actors, source IDs, pressure and art refs"
+      ],
+      "acceptance_criteria": [
+        "18 current scenes can resolve through contract and fallbacks",
+        "Unknown mode/actor fails gracefully and validates"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-010",
+      "phase": "P01",
+      "title": "Implement adaptive scene layout shell",
+      "stream": "ux",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-009",
+        "KM-005"
+      ],
+      "deliverables": [
+        "Responsive world/context/decision composition"
+      ],
+      "acceptance_criteria": [
+        "No clipped primary action at small/large viewport and enlarged text",
+        "Touch and keyboard navigation remain usable"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-011",
+      "phase": "P01",
+      "title": "Separate scene renderer from interaction/state orchestration",
+      "stream": "engineering",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-009",
+        "KM-004"
+      ],
+      "deliverables": [
+        "Modular renderer and controller boundary"
+      ],
+      "acceptance_criteria": [
+        "Existing commit/save/back/instruments flows survive refactor",
+        "View is not allowed to mutate simulation silently"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-012",
+      "phase": "P01",
+      "title": "Create Lydria location and time-of-day visual bible",
+      "stream": "art",
+      "priority": "P1",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-001"
+      ],
+      "deliverables": [
+        "Approved art boards for Velis, Presidency, Assembly, Harbor, Sera, Aster Gate, Daran"
+      ],
+      "acceptance_criteria": [
+        "Each place has 3 recognizable motifs and palette rules",
+        "No contradiction with world/character canon"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-013",
+      "phase": "P01",
+      "title": "Build character identity/continuity sheets",
+      "stream": "art",
+      "priority": "P1",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-012"
+      ],
+      "deliverables": [
+        "Main cast reference and portrait consistency manifest"
+      ],
+      "acceptance_criteria": [
+        "Principal actors recognizable across scenes and expressions",
+        "Role, age, location and wardrobe continuity tracked"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-014",
+      "phase": "P01",
+      "title": "Build asset specification and attribution manifest",
+      "stream": "art",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-012",
+        "KM-013"
+      ],
+      "deliverables": [
+        "Asset manifest naming, dimensions, provenance, licenses"
+      ],
+      "acceptance_criteria": [
+        "Each used asset has source/license and target crop metadata",
+        "Placeholder-to-final asset replacement requires no code fork"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-015",
+      "phase": "P01",
+      "title": "Implement evidence/document prop components",
+      "stream": "ux",
+      "priority": "P1",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-009",
+        "KM-010"
+      ],
+      "deliverables": [
+        "Paper, classified memo, news and source provenance templates"
+      ],
+      "acceptance_criteria": [
+        "Facts/suspicions have explicit non-color-only labels",
+        "Greek and English text fit without truncating meaning"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-016",
+      "phase": "P01",
+      "title": "Implement cinematic template accessibility and reduced motion",
+      "stream": "ux",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-010",
+        "KM-011"
+      ],
+      "deliverables": [
+        "Focusable inspect sheets and motion-safe transitions"
+      ],
+      "acceptance_criteria": [
+        "Modal traps/restores focus, escape/back works",
+        "Reduced motion disables nonessential transitions without hiding content"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-017",
+      "phase": "P01",
+      "title": "Approve first visual direction with real art samples",
+      "stream": "product",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-012",
+        "KM-013",
+        "KM-014",
+        "KM-015"
+      ],
+      "deliverables": [
+        "Sign-off board with 3 gameplay mock screenshots"
+      ],
+      "acceptance_criteria": [
+        "Actual portrait and room samples reviewed at phone size",
+        "Owner explicitly approves quality before mass asset production"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-018",
+      "phase": "P02",
+      "title": "Write Chapter 1 scene experience specification",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-001",
+        "KM-007"
+      ],
+      "deliverables": [
+        "Three-scene beats, stakes, actors, inquiry and callback map"
+      ],
+      "acceptance_criteria": [
+        "Each scene has one question, three levers and an information gap",
+        "Characters and chronology conform to original Day Zero canon"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-019",
+      "phase": "P02",
+      "title": "Build Chapter 1 opening with production art",
+      "stream": "art",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-014",
+        "KM-017",
+        "KM-018"
+      ],
+      "deliverables": [
+        "Finished playable 07:12 presentation, source sheets and atmosphere"
+      ],
+      "acceptance_criteria": [
+        "Scene visually distinct and information legible on target phone",
+        "No generic placeholder silhouettes presented as final portrait"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-020",
+      "phase": "P02",
+      "title": "Design investigation action contract and time/attention cost",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-006",
+        "KM-018"
+      ],
+      "deliverables": [
+        "Investigation action schema and resolution rules"
+      ],
+      "acceptance_criteria": [
+        "Action changes knowledge/options at stated cost",
+        "At least one choose-to-investigate vs commit trade-off exists"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-021",
+      "phase": "P02",
+      "title": "Implement investigative interaction in 07:12 briefing",
+      "stream": "engineering",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-020",
+        "KM-019",
+        "KM-011"
+      ],
+      "deliverables": [
+        "Call/verify/source interaction and UI feedback"
+      ],
+      "acceptance_criteria": [
+        "Verified/unverified signals update before commit",
+        "Test proves attention/time budget and consequences persist"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-022",
+      "phase": "P02",
+      "title": "Redesign Chapter 1 Nela procedural scene",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-018",
+        "KM-020"
+      ],
+      "deliverables": [
+        "Playable procedural investigation scene with distinctive voice"
+      ],
+      "acceptance_criteria": [
+        "Procedural clause is discoverable and meaningful",
+        "Timed trade-off not solved by a trivial correct-choice highlight"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-023",
+      "phase": "P02",
+      "title": "Redesign Chapter 1 one-page Presidency scene",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-018",
+        "KM-020"
+      ],
+      "deliverables": [
+        "Meaningful brief compression/communication interaction"
+      ],
+      "acceptance_criteria": [
+        "Player distinguishes facts/inference/recommendation",
+        "Different information hierarchy leads to observable reactions"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-024",
+      "phase": "P02",
+      "title": "Implement Chapter 1 reactions and delayed hook",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-021",
+        "KM-022",
+        "KM-023"
+      ],
+      "deliverables": [
+        "Observable character responses and future callback"
+      ],
+      "acceptance_criteria": [
+        "At least one earlier act changes a later reachable scene",
+        "Archive records who acted and why without exposing hidden variables"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-025",
+      "phase": "P02",
+      "title": "Run Chapter 1 save/resume and multi-choice playthrough regression",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-021",
+        "KM-022",
+        "KM-023",
+        "KM-024"
+      ],
+      "deliverables": [
+        "Repeatable test paths incl action/skip/restoration"
+      ],
+      "acceptance_criteria": [
+        "Every available choice advances without crash or soft lock",
+        "Reload preserves earned information and pending callback"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-026",
+      "phase": "P02",
+      "title": "Gold Chapter 1 blind playtest and polish gate",
+      "stream": "product",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-019",
+        "KM-024",
+        "KM-025"
+      ],
+      "deliverables": [
+        "Evidence log of sessions, issues and accepted fixes"
+      ],
+      "acceptance_criteria": [
+        "Novices can explain the stakes and information confidence",
+        "Owner reviews compelling visuals, agency and desire to continue"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-027",
+      "phase": "P03",
+      "title": "Rewrite Chapter 2 actor conflict and consented dialogue structure",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-026"
+      ],
+      "deliverables": [
+        "Three linked 121st Vote scene production cards"
+      ],
+      "acceptance_criteria": [
+        "Actor incentives differentiated in dialogue",
+        "Scenes preserve earlier count and procedural flags"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-028",
+      "phase": "P03",
+      "title": "Build Chapter 2 character portrait/phone/mapping assets",
+      "stream": "art",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-017",
+        "KM-027"
+      ],
+      "deliverables": [
+        "Production art and motion for character/phone/coalition scenes"
+      ],
+      "acceptance_criteria": [
+        "Location/actor continuity consistent with Chapter 1",
+        "Source visuals readable without metadata clutter"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-029",
+      "phase": "P03",
+      "title": "Implement Chapter 2 conversation and rumor-verification loop",
+      "stream": "engineering",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-020",
+        "KM-027"
+      ],
+      "deliverables": [
+        "Two-way dialogue and verification actions"
+      ],
+      "acceptance_criteria": [
+        "Rumor source dependencies constrain what is actually known",
+        "Skipped inquiry remains viable with risk and time opportunity cost"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-030",
+      "phase": "P03",
+      "title": "Rewrite Chapter 3 evidence chain and media conflict",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-026",
+        "KM-027"
+      ],
+      "deliverables": [
+        "Three scene cards for The File"
+      ],
+      "acceptance_criteria": [
+        "Chain of custody and privacy/legal constraints credible",
+        "Past rumor choices alter interpretation or access"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-031",
+      "phase": "P03",
+      "title": "Build Chapter 3 paper/newsroom and Harbor art",
+      "stream": "art",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-017",
+        "KM-030"
+      ],
+      "deliverables": [
+        "High-readability classified file and press visuals"
+      ],
+      "acceptance_criteria": [
+        "Newspaper represents only events available to press",
+        "No claims unsupported by game state appear as confirmed"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-032",
+      "phase": "P03",
+      "title": "Implement branching call-backs across Chapters 1–3",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-024",
+        "KM-029",
+        "KM-030"
+      ],
+      "deliverables": [
+        "Persistent flag, promise and sourced reveal callbacks"
+      ],
+      "acceptance_criteria": [
+        "At least two decisions return in later scenes in materially distinct ways",
+        "Replay fixtures prove continuity through all nine scenes"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-033",
+      "phase": "P03",
+      "title": "Add information provenance inspect experience",
+      "stream": "ux",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-015",
+        "KM-029",
+        "KM-030"
+      ],
+      "deliverables": [
+        "Expandable claims with source, confidence and chronology"
+      ],
+      "acceptance_criteria": [
+        "Player can distinguish reported claims from independent verification",
+        "No developer truth or hidden quality revealed"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-034",
+      "phase": "P03",
+      "title": "First-session pacing, art and response instrumentation",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-028",
+        "KM-029",
+        "KM-031",
+        "KM-032"
+      ],
+      "deliverables": [
+        "Time-in-scene, inquiry use and voluntary exit instrumentation or study sheet"
+      ],
+      "acceptance_criteria": [
+        "Can identify skipped/overlong scenes without personal tracking",
+        "Instrumentation opt-in/local and privacy review documented"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-035",
+      "phase": "P03",
+      "title": "Gold Chapters 1–3 gate with external playtest",
+      "stream": "product",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-033",
+        "KM-034"
+      ],
+      "deliverables": [
+        "Playtest findings, decision journal and M3 approval"
+      ],
+      "acceptance_criteria": [
+        "Nine scenes tested end-to-end on real phone(s)",
+        "No mass campaign expansion until owner accepts proof loop"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-036",
+      "phase": "P04",
+      "title": "Choose runtime schema evolution and migration strategy",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-006",
+        "KM-035"
+      ],
+      "deliverables": [
+        "Architecture decision record for v0.3 ↔ v1 state alignment"
+      ],
+      "acceptance_criteria": [
+        "Upgrade can load existing v0.3 saves without wiping gameplay",
+        "Migration test covers missing fields and invalid saves"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-037",
+      "phase": "P04",
+      "title": "Separate pure simulation from storage/UI",
+      "stream": "engineering",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-036",
+        "KM-011"
+      ],
+      "deliverables": [
+        "Pure state transition APIs and persistence adapter"
+      ],
+      "acceptance_criteria": [
+        "Deterministic same input yields same output",
+        "Existing UI and local save remain functional"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-038",
+      "phase": "P04",
+      "title": "Add content/event IDs and replayable event log",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-037"
+      ],
+      "deliverables": [
+        "Immutable event and content provenance contracts"
+      ],
+      "acceptance_criteria": [
+        "All commit/investigation events have stable IDs and order",
+        "Replaying a recorded session recreates equivalent state"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-039",
+      "phase": "P04",
+      "title": "Implement beliefs and source independence model",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-037",
+        "KM-038",
+        "KM-033"
+      ],
+      "deliverables": [
+        "Player-known facts, claims, independence and confidence"
+      ],
+      "acceptance_criteria": [
+        "Two correlated claims not treated as independent proof",
+        "Hidden truth never accidentally enters UI projection"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-040",
+      "phase": "P04",
+      "title": "Implement character motivation, access and memory ledger",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-037",
+        "KM-038"
+      ],
+      "deliverables": [
+        "Actor memory/access/incentive transforms and recall"
+      ],
+      "acceptance_criteria": [
+        "Lea/Elena/Silas react to prior behavior contextually",
+        "Scene ownership visibility constraints tested"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-041",
+      "phase": "P04",
+      "title": "Implement promise/obligation lifecycle and callbacks",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-037",
+        "KM-038"
+      ],
+      "deliverables": [
+        "Formal offer, accepted promise, due, kept, broken, callback"
+      ],
+      "acceptance_criteria": [
+        "Mutually exclusive promise statuses protected",
+        "Consequences and archive stay consistent after reload"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-042",
+      "phase": "P04",
+      "title": "Implement scoped time/attention/action economy",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-037",
+        "KM-020"
+      ],
+      "deliverables": [
+        "Investigate/contact/delegate decisions as costed actions"
+      ],
+      "acceptance_criteria": [
+        "Time window closes when clock budget exhausted",
+        "Always-investigate exploit cannot dominate freely"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-043",
+      "phase": "P04",
+      "title": "Implement fairness-preserving branching and scene triggers",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-039",
+        "KM-040",
+        "KM-041",
+        "KM-042"
+      ],
+      "deliverables": [
+        "Branch-and-recombine scene scheduler"
+      ],
+      "acceptance_criteria": [
+        "Alternative paths respect access and known facts",
+        "No missing scene or dead-end from valid routes"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-044",
+      "phase": "P04",
+      "title": "Implement decision-quality vs outcome scoring and optional debrief",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-037",
+        "KM-039",
+        "KM-043"
+      ],
+      "deliverables": [
+        "Separate ex-ante decision rubric and stochastic outcome ledger"
+      ],
+      "acceptance_criteria": [
+        "No hidden score visible before choice",
+        "Reasoning references available evidence rather than realized luck"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-045",
+      "phase": "P04",
+      "title": "Golden replay + property/fuzz invariants for simulation",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-038",
+        "KM-039",
+        "KM-040",
+        "KM-041",
+        "KM-042",
+        "KM-043",
+        "KM-044"
+      ],
+      "deliverables": [
+        "Automated cases for all critical state transitions"
+      ],
+      "acceptance_criteria": [
+        "No negative resources or invalid promise loops under random inputs",
+        "Same seed/replay restores same trace and outcomes"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-046",
+      "phase": "P04",
+      "title": "M4 architecture review and schema/content migration signoff",
+      "stream": "product",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-045",
+        "KM-036"
+      ],
+      "deliverables": [
+        "Owner-reviewed engine contract and migration documentation"
+      ],
+      "acceptance_criteria": [
+        "All nine Gold scenes still playable after migration",
+        "Blocking design drift recorded before Phase P05"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-047",
+      "phase": "P05",
+      "title": "Upgrade Act I Chapters 4–6 into scene cards and encounters",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-046"
+      ],
+      "deliverables": [
+        "Production cards and key actors for Chapters 4–6"
+      ],
+      "acceptance_criteria": [
+        "Choice branches informed by Chapters 1–3 choices",
+        "Every scene preserves canonical 2032 political chronology"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-048",
+      "phase": "P05",
+      "title": "Act I institutional coalition and ministry simulation",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-046",
+        "KM-047"
+      ],
+      "deliverables": [
+        "Coalition bargaining, ministry and NSO route transitions"
+      ],
+      "acceptance_criteria": [
+        "Government configurations arise only from viable paths",
+        "Trade-offs affect institutions and relationships over multiple chapters"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-049",
+      "phase": "P05",
+      "title": "Produce Act I remaining art/location templates",
+      "stream": "art",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-017",
+        "KM-047"
+      ],
+      "deliverables": [
+        "Presidential warroom, ministry, coalition, market dawn art"
+      ],
+      "acceptance_criteria": [
+        "Visual identity consistent across 18 scenes",
+        "Finished assets documented with license and crop reference"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-050",
+      "phase": "P05",
+      "title": "Build Act I multi-ending and aftermath sequences",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-048",
+        "KM-049"
+      ],
+      "deliverables": [
+        "Government formation variants and consequence epilogue"
+      ],
+      "acceptance_criteria": [
+        "Government/NSO/payoffs correspond to state, not canned outcome",
+        "Endings acknowledge promises and institutional design"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-051",
+      "phase": "P05",
+      "title": "QA all Act I paths, promises, relationships and replay",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-048",
+        "KM-049",
+        "KM-050"
+      ],
+      "deliverables": [
+        "Route matrix and deterministic playthrough fixtures"
+      ],
+      "acceptance_criteria": [
+        "All 18 scenes and legal branches reachable without corruption",
+        "Reset/save/callback and reveal restrictions pass"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-052",
+      "phase": "P05",
+      "title": "Full Act I audience test and balance revision",
+      "stream": "product",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-049",
+        "KM-050",
+        "KM-051"
+      ],
+      "deliverables": [
+        "Act I feedback, pacing and choice-balance report"
+      ],
+      "acceptance_criteria": [
+        "Players can recall meaningful prior relationships/actions",
+        "Rewrites justified by evidence; owner accepts M5 gate"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-053",
+      "phase": "P05",
+      "title": "Ship Act I versioned standalone build and release notes",
+      "stream": "devops",
+      "priority": "P1",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-052",
+        "KM-008"
+      ],
+      "deliverables": [
+        "Tagged and reversible playable Act I release"
+      ],
+      "acceptance_criteria": [
+        "Known issues and unsupported systems listed",
+        "Rollback, cache invalidation and save compatibility verified"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-054",
+      "phase": "P06",
+      "title": "Plan Act II Ch 7–12 scene-by-scene beats/competencies",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-053",
+        "KM-046"
+      ],
+      "deliverables": [
+        "Six chapter implementation production packets"
+      ],
+      "acceptance_criteria": [
+        "Every scene maps to an implementation constraint",
+        "All chapter transitions checked against Act I outcomes"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-055",
+      "phase": "P06",
+      "title": "Implement ministry/staff delegation and authority limits",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-042",
+        "KM-054"
+      ],
+      "deliverables": [
+        "Appointments, delegated work, reporting and incentives"
+      ],
+      "acceptance_criteria": [
+        "Delegation changes capacity and accountability",
+        "Staff does not provide omniscient info or free actions"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-056",
+      "phase": "P06",
+      "title": "Implement Aster Gate projects, milestones and bottlenecks",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-055",
+        "KM-054"
+      ],
+      "deliverables": [
+        "Project simulation and resource dependency graph"
+      ],
+      "acceptance_criteria": [
+        "Trade-offs include implementation, politics and time",
+        "Late projects create consequences beyond a single number"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-057",
+      "phase": "P06",
+      "title": "Implement industry/automation and energy policy trade-offs",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-056"
+      ],
+      "deliverables": [
+        "Labour, costs, public trust and energy interaction model"
+      ],
+      "acceptance_criteria": [
+        "No universally dominant policy in playtests",
+        "Project outcomes influenced by real constraints"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-058",
+      "phase": "P06",
+      "title": "Build Act II location art/interactive brief surfaces",
+      "stream": "art",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-012",
+        "KM-055"
+      ],
+      "deliverables": [
+        "Aster Gate, Daran, parliament workroom and energy art"
+      ],
+      "acceptance_criteria": [
+        "Strategic geography legible without full war map",
+        "Scene and institution visual grammar consistent"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-059",
+      "phase": "P06",
+      "title": "Ship Chapters 7–12 with conditional scene variants",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-054",
+        "KM-055",
+        "KM-056",
+        "KM-057",
+        "KM-058"
+      ],
+      "deliverables": [
+        "Six chapters live with execution mechanics"
+      ],
+      "acceptance_criteria": [
+        "All canonical chapters have distinct player dilemmas",
+        "Earlier government route meaningfully shapes implementation"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-060",
+      "phase": "P06",
+      "title": "Act II regression, balance and M6 acceptance",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-059"
+      ],
+      "deliverables": [
+        "Replay/route matrix and audience feedback"
+      ],
+      "acceptance_criteria": [
+        "Act I states transition validly into Act II",
+        "No blocking implementation exploit or missing callback"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-061",
+      "phase": "P07",
+      "title": "Plan Act III Ch 13–18 agenda/power narratives",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-060"
+      ],
+      "deliverables": [
+        "Six chapter packets including rival strategies"
+      ],
+      "acceptance_criteria": [
+        "Personal and institutional power tensions visible",
+        "Branch structure bounded and recombinable"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-062",
+      "phase": "P07",
+      "title": "Implement agenda-sequencing and bargaining actions",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-042",
+        "KM-061"
+      ],
+      "deliverables": [
+        "Priority agenda, negotiation offers and sequencing"
+      ],
+      "acceptance_criteria": [
+        "Order of moves changes available coalition paths",
+        "Negotiation requires incentives rather than good/evil answers"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-063",
+      "phase": "P07",
+      "title": "Implement coalition graph and multiple analytical lenses",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-040",
+        "KM-062"
+      ],
+      "deliverables": [
+        "Actor/faction power projection, access/dependency lenses"
+      ],
+      "acceptance_criteria": [
+        "Lenses show different valid partial perspectives",
+        "Relationships not equated with simplistic power score"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-064",
+      "phase": "P07",
+      "title": "Implement appointment and political reputation repercussions",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-056",
+        "KM-063"
+      ],
+      "deliverables": [
+        "Appointments and credibility/reputation feedback loops"
+      ],
+      "acceptance_criteria": [
+        "Short-term ally rewards can harm legitimacy",
+        "People remember obligations and personnel changes"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-065",
+      "phase": "P07",
+      "title": "Build Act III cinematic council/press/network experience",
+      "stream": "ux",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-017",
+        "KM-064"
+      ],
+      "deliverables": [
+        "Council, negotiation and network artifacts"
+      ],
+      "acceptance_criteria": [
+        "Complexity emerges with earned access",
+        "Scene remains primary for political encounters"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-066",
+      "phase": "P07",
+      "title": "Ship Chapters 13–18 and Kingmaker payoff",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-061",
+        "KM-062",
+        "KM-063",
+        "KM-064",
+        "KM-065"
+      ],
+      "deliverables": [
+        "Six Act III chapters and power-route progression"
+      ],
+      "acceptance_criteria": [
+        "Multiple viable power styles supported",
+        "At least one visible long consequence from Act I/II"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-067",
+      "phase": "P07",
+      "title": "Act III M7 balance and exploit review",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-066"
+      ],
+      "deliverables": [
+        "Replay and behavior-dominance test pack"
+      ],
+      "acceptance_criteria": [
+        "No negotiation or centralization exploit dominates",
+        "Owner validates earned, ethically ambiguous Kingmaker power"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-068",
+      "phase": "P08",
+      "title": "Plan Act IV Ch 19–24 adversarial clues and pacing",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-067"
+      ],
+      "deliverables": [
+        "Counterplayer production packets and evidence trail"
+      ],
+      "acceptance_criteria": [
+        "Silas motivations and earlier observations matter",
+        "At least one fair tell before major adversarial reversal"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-069",
+      "phase": "P08",
+      "title": "Implement Silas player-model observation and response",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-040",
+        "KM-068"
+      ],
+      "deliverables": [
+        "Versioned behavior observations and opponent policy"
+      ],
+      "acceptance_criteria": [
+        "Observations are generated only by player-visible behavior",
+        "Adaptation does not read unearned hidden player intentions"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-070",
+      "phase": "P08",
+      "title": "Implement contested-source and disinformation investigation",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-039",
+        "KM-069"
+      ],
+      "deliverables": [
+        "Source conflict, source-chain and contradiction mechanics"
+      ],
+      "acceptance_criteria": [
+        "Sources can be right about facts and wrong about motives",
+        "Verification actions make uncertainty narrower when appropriate"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-071",
+      "phase": "P08",
+      "title": "Build intelligence UI with verification provenance",
+      "stream": "ux",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-015",
+        "KM-070"
+      ],
+      "deliverables": [
+        "Intelligence overlays and dual-source comparisons"
+      ],
+      "acceptance_criteria": [
+        "Visuals avoid fabricated certainty and color-only meaning",
+        "Players can trace source credibility and contradictions"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-072",
+      "phase": "P08",
+      "title": "Ship Chapters 19–24 with adversarial branching",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-068",
+        "KM-069",
+        "KM-070",
+        "KM-071"
+      ],
+      "deliverables": [
+        "Six Act IV chapters and counterplay arcs"
+      ],
+      "acceptance_criteria": [
+        "At least two player styles produce different opponent tactics",
+        "No unavoidable unfair gotchas"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-073",
+      "phase": "P08",
+      "title": "Adversarial fairness blind playtest and rebalance",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-072"
+      ],
+      "deliverables": [
+        "Evidence/fairness and counter-strategy audit"
+      ],
+      "acceptance_criteria": [
+        "Players can describe available warning signals afterward",
+        "No deterministic unwinnable trap for valid strategies"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-074",
+      "phase": "P08",
+      "title": "M8 narrative-system consistency release gate",
+      "stream": "product",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-073"
+      ],
+      "deliverables": [
+        "Accepted Act IV release report"
+      ],
+      "acceptance_criteria": [
+        "Past character decisions and source records remain consistent",
+        "Owner approves adversarial tone and perceived fairness"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-075",
+      "phase": "P09",
+      "title": "Design Act V Ch 25–30 connected crisis scenario graph",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-074"
+      ],
+      "deliverables": [
+        "Stateful crisis timeline and cross-sector dependencies"
+      ],
+      "acceptance_criteria": [
+        "All six chapters change at least two connected systems",
+        "Crisis narrative not arbitrary time pressure"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-076",
+      "phase": "P09",
+      "title": "Implement crisis composer with bounded simultaneous lanes",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-057",
+        "KM-075"
+      ],
+      "deliverables": [
+        "Crisis state machines, thresholds and emergent combinations"
+      ],
+      "acceptance_criteria": [
+        "At most five major lanes visible at once",
+        "Resource moves propagate through valid dependencies"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-077",
+      "phase": "P09",
+      "title": "Implement liquidity / market / energy / maritime interactions",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-076"
+      ],
+      "deliverables": [
+        "Cross-sector risk and intervention simulation"
+      ],
+      "acceptance_criteria": [
+        "At least one delayed second-order trade-off per crisis",
+        "No rescue action solves all crises at zero cost"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-078",
+      "phase": "P09",
+      "title": "Create crisis board and situation map (earned instrument)",
+      "stream": "ux",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-010",
+        "KM-077"
+      ],
+      "deliverables": [
+        "Accessible crisis triage screen and map layers"
+      ],
+      "acceptance_criteria": [
+        "Players can prioritize in one glance",
+        "Sources and consequence timelines accessible on inspection"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-079",
+      "phase": "P09",
+      "title": "Build emergency sound / motion / crisis visual package",
+      "stream": "audio",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-078"
+      ],
+      "deliverables": [
+        "Crisis atmosphere, alert and silence language"
+      ],
+      "acceptance_criteria": [
+        "Urgency legible with audio off and reduced motion",
+        "No artificial casino-like alerts"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-080",
+      "phase": "P09",
+      "title": "Ship Chapters 25–30 with response branches",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-075",
+        "KM-076",
+        "KM-077",
+        "KM-078",
+        "KM-079"
+      ],
+      "deliverables": [
+        "All six chapters and crisis resolution outcomes"
+      ],
+      "acceptance_criteria": [
+        "Crisis policies respond to prior institutions and credibility",
+        "No impossible-to-handle state caused by a valid earlier choice"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-081",
+      "phase": "P09",
+      "title": "Act V stress, route and crisis fairness gate",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-080"
+      ],
+      "deliverables": [
+        "Stress/replay and crisis prioritization evidence"
+      ],
+      "acceptance_criteria": [
+        "Multiple simultaneous states run without deadlock",
+        "At least one owner-approved no-win-but-fair tradeoff documented"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-082",
+      "phase": "P10",
+      "title": "Design Act VI Ch 31–36 long-horizon arc and ending matrix",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-081"
+      ],
+      "deliverables": [
+        "Six chapter packets and ending condition matrix"
+      ],
+      "acceptance_criteria": [
+        "Choices reconcile personal and institutional routes",
+        "All ending families consistent with archive evidence"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-083",
+      "phase": "P10",
+      "title": "Implement succession and institutional durability model",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-041",
+        "KM-048",
+        "KM-082"
+      ],
+      "deliverables": [
+        "Successor pool, dependency, rules and resilience metrics"
+      ],
+      "acceptance_criteria": [
+        "Highly personalized power carries transition cost",
+        "Durable institutions can persist without protagonist"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-084",
+      "phase": "P10",
+      "title": "Implement legacy analytics and historical causal tracing",
+      "stream": "systems",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-038",
+        "KM-083"
+      ],
+      "deliverables": [
+        "Player-readable links from outcomes to accumulated decisions"
+      ],
+      "acceptance_criteria": [
+        "Every displayed causal claim references real recorded events",
+        "Uncertainty in historical inference remains explicit"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-085",
+      "phase": "P10",
+      "title": "Produce Act VI sunrise/archive/succession visuals",
+      "stream": "art",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-017",
+        "KM-083"
+      ],
+      "deliverables": [
+        "Legacy art and restrained visual language"
+      ],
+      "acceptance_criteria": [
+        "Visual noise lower than Act V",
+        "Legacy screen conveys irreversible passage of time"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-086",
+      "phase": "P10",
+      "title": "Ship Chapters 31–36 and ending families",
+      "stream": "narrative",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-082",
+        "KM-083",
+        "KM-084",
+        "KM-085"
+      ],
+      "deliverables": [
+        "Full canon campaign conclusion with variants"
+      ],
+      "acceptance_criteria": [
+        "At least three materially distinct ending families accessible",
+        "Endings reflect relevant political, moral and system tradeoffs"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-087",
+      "phase": "P10",
+      "title": "Full-campaign route reachability and character continuity audit",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-086"
+      ],
+      "deliverables": [
+        "Recorded automated and manual full-run variants"
+      ],
+      "acceptance_criteria": [
+        "No broken joins across 36 chapters",
+        "Critical promises and flags recognized across acts"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-088",
+      "phase": "P10",
+      "title": "Owner review of Legacy meaning and campaign closure",
+      "stream": "product",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-087"
+      ],
+      "deliverables": [
+        "Approved M10 creative signoff"
+      ],
+      "acceptance_criteria": [
+        "Player ending explains what was built, not only personal rank",
+        "Legacy lesson arises through play rather than compulsory moralization"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-089",
+      "phase": "P11",
+      "title": "Map 1,000 mechanisms to taxonomy with stable IDs",
+      "stream": "curriculum",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-001"
+      ],
+      "deliverables": [
+        "Master competence index and source provenance map"
+      ],
+      "acceptance_criteria": [
+        "10 domains / 60 competencies trace to source corpus",
+        "No invented pedagogical coverage for unimplemented scenarios"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-090",
+      "phase": "P11",
+      "title": "Tag live scenes with competence and evidence links",
+      "stream": "curriculum",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-026",
+        "KM-089"
+      ],
+      "deliverables": [
+        "Scene→mechanism coverage table"
+      ],
+      "acceptance_criteria": [
+        "Each tagged principle corresponds to an actual decision dilemma",
+        "Tags absent from ordinary gameplay by default"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-091",
+      "phase": "P11",
+      "title": "Develop optional debrief and reflection contracts",
+      "stream": "curriculum",
+      "priority": "P1",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-044",
+        "KM-090"
+      ],
+      "deliverables": [
+        "Decision-specific reflection and counterfactual records"
+      ],
+      "acceptance_criteria": [
+        "Debrief separates known evidence, uncertainty and luck",
+        "No grading leak before commitment"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-092",
+      "phase": "P11",
+      "title": "Implement skill mastery measurement with uncertainty",
+      "stream": "systems",
+      "priority": "P2",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-091"
+      ],
+      "deliverables": [
+        "Calibrated and bounded learner progress model"
+      ],
+      "acceptance_criteria": [
+        "Measures choices across multiple observations, not a single label",
+        "Visible feedback remains optional"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-093",
+      "phase": "P11",
+      "title": "Implement Apprentice/Strategist/Master/Grandmaster modes",
+      "stream": "systems",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-092"
+      ],
+      "deliverables": [
+        "Difficulty presets primarily via information presentation"
+      ],
+      "acceptance_criteria": [
+        "Harder modes still provide fair inference paths",
+        "Save migration and replay across settings tested"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-094",
+      "phase": "P11",
+      "title": "Validate case quality and political nuance with reviewers",
+      "stream": "curriculum",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-090",
+        "KM-091",
+        "KM-092",
+        "KM-093"
+      ],
+      "deliverables": [
+        "Pedagogical and adversarial review notes"
+      ],
+      "acceptance_criteria": [
+        "At least two viable reasoned approaches in pivotal cases",
+        "No cynical manipulation framed as universally superior"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-095",
+      "phase": "P11",
+      "title": "Instrument balance experiments and adaptive calibration policy",
+      "stream": "qa",
+      "priority": "P2",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-093",
+        "KM-094"
+      ],
+      "deliverables": [
+        "Consent-aware aggregated study protocol and balance report"
+      ],
+      "acceptance_criteria": [
+        "Improvement measurable without profiling private users",
+        "Adaptive difficulty opt-out and fairness reviewed"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-096",
+      "phase": "P12",
+      "title": "Approve art direction and asset-generation rights policy",
+      "stream": "art",
+      "priority": "P1",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-014",
+        "KM-017"
+      ],
+      "deliverables": [
+        "Final art standards, provenance and consistency QA"
+      ],
+      "acceptance_criteria": [
+        "Rights, crop, sizes and prohibited inconsistencies documented",
+        "No third-party likeness or unlicensed art silently shipped"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-097",
+      "phase": "P12",
+      "title": "Produce principal cast visual identities and expressions",
+      "stream": "art",
+      "priority": "P1",
+      "size": "XL",
+      "status": "todo",
+      "depends_on": [
+        "KM-013",
+        "KM-096"
+      ],
+      "deliverables": [
+        "Actor portraits, variants, animation-ready asset set"
+      ],
+      "acceptance_criteria": [
+        "Canonical principal characters consistent across scenes",
+        "Art approved in real gameplay viewport before full roll-out"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-098",
+      "phase": "P12",
+      "title": "Produce Lydria major place and atmosphere library",
+      "stream": "art",
+      "priority": "P1",
+      "size": "XL",
+      "status": "todo",
+      "depends_on": [
+        "KM-012",
+        "KM-096"
+      ],
+      "deliverables": [
+        "Location key art, weather/day variants, visual kit"
+      ],
+      "acceptance_criteria": [
+        "Velis/Sera/Aster Gate/Daran distinctly recognizable",
+        "Asset memory/performance budgets tracked"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-099",
+      "phase": "P12",
+      "title": "Build audio style guide and dynamic ambience state machine",
+      "stream": "audio",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-017"
+      ],
+      "deliverables": [
+        "Location ambience, music layering and reactive cues"
+      ],
+      "acceptance_criteria": [
+        "Silence/music transitions do not distract from dialogue",
+        "Mute, autoplay policy and browser fallback implemented"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-100",
+      "phase": "P12",
+      "title": "Implement environmental motion system and perf guardrails",
+      "stream": "engineering",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-010",
+        "KM-098"
+      ],
+      "deliverables": [
+        "Reduced-motion-aware cinematic effects"
+      ],
+      "acceptance_criteria": [
+        "No obstructed decisions or major frame stalls",
+        "Low-end device fallback available"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-101",
+      "phase": "P12",
+      "title": "Implement scalable typography, contrast and touch accessibility",
+      "stream": "ux",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-016",
+        "KM-010"
+      ],
+      "deliverables": [
+        "Accessible text sizing, focus, hit target and contrast system"
+      ],
+      "acceptance_criteria": [
+        "Small phone and 200% text UX inspected",
+        "Non-color semantic states and keyboard/back tested"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-102",
+      "phase": "P12",
+      "title": "Finish scene-specific audio, haptics and mix mastering",
+      "stream": "audio",
+      "priority": "P2",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-099",
+        "KM-101"
+      ],
+      "deliverables": [
+        "Mix-ready cue matrix and implemented audio pipeline"
+      ],
+      "acceptance_criteria": [
+        "Dialog/critical choices remain clear against soundtrack",
+        "No required audio-only information"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-103",
+      "phase": "P12",
+      "title": "Cinematic full-game consistency and asset completeness gate",
+      "stream": "art",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-097",
+        "KM-098",
+        "KM-099",
+        "KM-100",
+        "KM-101",
+        "KM-102"
+      ],
+      "deliverables": [
+        "Art/audio/UX acceptance catalog"
+      ],
+      "acceptance_criteria": [
+        "Every chapter references approved or explicitly accepted fallback assets",
+        "No placeholder silhouettes accidentally presented as finished art"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-104",
+      "phase": "P13",
+      "title": "Automate content validation/CI for 36-chapter scale",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-008",
+        "KM-038"
+      ],
+      "deliverables": [
+        "Structured validator for cross-ref, assets, IDs, callbacks"
+      ],
+      "acceptance_criteria": [
+        "Broken references or invalid scenes fail PR checks",
+        "Random branches and missing texts covered"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-105",
+      "phase": "P13",
+      "title": "Harden save versioning, export, recovery and migrations",
+      "stream": "engineering",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-036",
+        "KM-046"
+      ],
+      "deliverables": [
+        "Robust import/export/migration and corruption handling"
+      ],
+      "acceptance_criteria": [
+        "Old states load or recover safely with clear notice",
+        "No personal data silently transmitted"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-106",
+      "phase": "P13",
+      "title": "Create cross-device/browser QA and performance budgets",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-101",
+        "KM-105"
+      ],
+      "deliverables": [
+        "Manual and automated mobile test matrix"
+      ],
+      "acceptance_criteria": [
+        "Major phone widths and browsers tested under throttling",
+        "Measured budgets and exceptions signed off"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-107",
+      "phase": "P13",
+      "title": "Implement privacy-first telemetry/error diagnostics",
+      "stream": "devops",
+      "priority": "P1",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-034",
+        "KM-104"
+      ],
+      "deliverables": [
+        "Consent and data-retention aware event policy"
+      ],
+      "acceptance_criteria": [
+        "Telemetry off by default if consent not obtained",
+        "No actor/player choice history harvested without disclosure"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-108",
+      "phase": "P13",
+      "title": "Build release pipeline, previews, caching and rollback",
+      "stream": "devops",
+      "priority": "P0",
+      "size": "M",
+      "status": "todo",
+      "depends_on": [
+        "KM-008",
+        "KM-107"
+      ],
+      "deliverables": [
+        "Preview deploy, build stamping, cache strategy and rollback"
+      ],
+      "acceptance_criteria": [
+        "Versioned release can be deployed and reverted safely",
+        "Pre-release save migration and smoke checks automated"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-109",
+      "phase": "P13",
+      "title": "Legal, credits, localization and accessibility QA",
+      "stream": "production",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-104",
+        "KM-108"
+      ],
+      "deliverables": [
+        "Credits, asset rights inventory, localization and access review"
+      ],
+      "acceptance_criteria": [
+        "All shipped assets have provenance, required notices present",
+        "Text and UI operate in supported language configurations"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-110",
+      "phase": "P13",
+      "title": "Closed beta, bug triage and release candidate approval",
+      "stream": "qa",
+      "priority": "P0",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-088",
+        "KM-095",
+        "KM-103",
+        "KM-104",
+        "KM-105",
+        "KM-106",
+        "KM-107",
+        "KM-108",
+        "KM-109"
+      ],
+      "deliverables": [
+        "Accepted release candidate and reproducible bug ledger"
+      ],
+      "acceptance_criteria": [
+        "No outstanding release-blocking regressions",
+        "Owner reviews actual player test evidence and release risks"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "KM-111",
+      "phase": "P13",
+      "title": "Public release, incident procedure and post-launch backlog",
+      "stream": "devops",
+      "priority": "P1",
+      "size": "L",
+      "status": "todo",
+      "depends_on": [
+        "KM-110"
+      ],
+      "deliverables": [
+        "Tagged release notes, recovery policy and future iteration queue"
+      ],
+      "acceptance_criteria": [
+        "Working public build and version tag verified",
+        "Post-launch feedback prioritized without unbounded features"
+      ],
+      "evidence": [],
+      "notes": ""
+    }
+  ]
+}
