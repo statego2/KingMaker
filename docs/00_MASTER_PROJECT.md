@@ -865,3 +865,36 @@ The playable vertical slice now uses:
 - Statecraft Noir tokens
 
 The original design branch remains historical reference; the canonical source is now main:/design.
+
+
+---
+
+# 25. Act I — Chapters 4–6 PLAYABLE
+
+The complete Government Formation arc is now implemented on main.
+
+## Runtime
+- **6 playable chapters**
+- **18 core decision scenes**
+- browser save migration v0.2 → v0.3
+- coalition-route viability state
+- NSO capability / legitimacy / personalization
+- explicit promises
+- state-dependent final government options
+
+## Chapters added
+- Chapter 4 — **The President's Hour**
+- Chapter 5 — **The Price of a Ministry**
+- Chapter 6 — **Government at Dawn**
+
+## Act I endpoint
+The player ends Act I with:
+- a formed government,
+- a defined NSO architecture,
+- accumulated relationship history,
+- active commitments,
+- an initial Silas behavioral model,
+- and a distinct starting state for Act II.
+
+## Next
+**Act II — Chapter 7: The Office With No Army**
