@@ -1,4 +1,4 @@
-# KINGMAKER — High-Level Design Preproduction
+> **Cinematic visual pivot:** The latest authoritative presentation direction is [09_CINEMATIC_VISUAL_PIVOT.md](./09_CINEMATIC_VISUAL_PIVOT.md). It supersedes the earlier dashboard-first interpretation of Statecraft Noir.\n\n# KINGMAKER — High-Level Design Preproduction
 
 This directory is intentionally isolated from implementation.
 
