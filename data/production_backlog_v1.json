@@ -1264,8 +1264,9 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-051",
-        "KM-052"
+        "KM-049",
+        "KM-050",
+        "KM-051"
       ],
       "deliverables": [
         "Act I feedback, pacing and choice-balance report"
@@ -1286,7 +1287,7 @@
       "size": "M",
       "status": "todo",
       "depends_on": [
-        "KM-053",
+        "KM-052",
         "KM-008"
       ],
       "deliverables": [
@@ -1331,7 +1332,7 @@
       "status": "todo",
       "depends_on": [
         "KM-042",
-        "KM-055"
+        "KM-054"
       ],
       "deliverables": [
         "Appointments, delegated work, reporting and incentives"
@@ -1352,8 +1353,8 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-056",
-        "KM-055"
+        "KM-055",
+        "KM-054"
       ],
       "deliverables": [
         "Project simulation and resource dependency graph"
@@ -1374,7 +1375,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-057"
+        "KM-056"
       ],
       "deliverables": [
         "Labour, costs, public trust and energy interaction model"
@@ -1417,11 +1418,11 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
+        "KM-054",
         "KM-055",
         "KM-056",
         "KM-057",
-        "KM-058",
-        "KM-059"
+        "KM-058"
       ],
       "deliverables": [
         "Six chapters live with execution mechanics"
@@ -1442,7 +1443,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-060"
+        "KM-059"
       ],
       "deliverables": [
         "Replay/route matrix and audience feedback"
@@ -1463,7 +1464,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-061"
+        "KM-060"
       ],
       "deliverables": [
         "Six chapter packets including rival strategies"
@@ -1507,7 +1508,7 @@
       "status": "todo",
       "depends_on": [
         "KM-040",
-        "KM-063"
+        "KM-062"
       ],
       "deliverables": [
         "Actor/faction power projection, access/dependency lenses"
@@ -1572,11 +1573,11 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
+        "KM-061",
         "KM-062",
         "KM-063",
         "KM-064",
-        "KM-065",
-        "KM-066"
+        "KM-065"
       ],
       "deliverables": [
         "Six Act III chapters and power-route progression"
@@ -1597,7 +1598,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-067"
+        "KM-066"
       ],
       "deliverables": [
         "Replay and behavior-dominance test pack"
@@ -1618,7 +1619,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-068"
+        "KM-067"
       ],
       "deliverables": [
         "Counterplayer production packets and evidence trail"
@@ -1640,7 +1641,7 @@
       "status": "todo",
       "depends_on": [
         "KM-040",
-        "KM-069"
+        "KM-068"
       ],
       "deliverables": [
         "Versioned behavior observations and opponent policy"
@@ -1662,7 +1663,7 @@
       "status": "todo",
       "depends_on": [
         "KM-039",
-        "KM-070"
+        "KM-069"
       ],
       "deliverables": [
         "Source conflict, source-chain and contradiction mechanics"
@@ -1684,7 +1685,7 @@
       "status": "todo",
       "depends_on": [
         "KM-015",
-        "KM-071"
+        "KM-070"
       ],
       "deliverables": [
         "Intelligence overlays and dual-source comparisons"
@@ -1705,10 +1706,10 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
+        "KM-068",
         "KM-069",
         "KM-070",
-        "KM-071",
-        "KM-072"
+        "KM-071"
       ],
       "deliverables": [
         "Six Act IV chapters and counterplay arcs"
@@ -1729,7 +1730,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-073"
+        "KM-072"
       ],
       "deliverables": [
         "Evidence/fairness and counter-strategy audit"
@@ -1750,7 +1751,7 @@
       "size": "M",
       "status": "todo",
       "depends_on": [
-        "KM-074"
+        "KM-073"
       ],
       "deliverables": [
         "Accepted Act IV release report"
@@ -1771,7 +1772,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-075"
+        "KM-074"
       ],
       "deliverables": [
         "Stateful crisis timeline and cross-sector dependencies"
@@ -1793,7 +1794,7 @@
       "status": "todo",
       "depends_on": [
         "KM-057",
-        "KM-076"
+        "KM-075"
       ],
       "deliverables": [
         "Crisis state machines, thresholds and emergent combinations"
@@ -1814,7 +1815,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-077"
+        "KM-076"
       ],
       "deliverables": [
         "Cross-sector risk and intervention simulation"
@@ -1836,7 +1837,7 @@
       "status": "todo",
       "depends_on": [
         "KM-010",
-        "KM-078"
+        "KM-077"
       ],
       "deliverables": [
         "Accessible crisis triage screen and map layers"
@@ -1857,7 +1858,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-079"
+        "KM-078"
       ],
       "deliverables": [
         "Crisis atmosphere, alert and silence language"
@@ -1878,11 +1879,11 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
+        "KM-075",
         "KM-076",
         "KM-077",
         "KM-078",
-        "KM-079",
-        "KM-080"
+        "KM-079"
       ],
       "deliverables": [
         "All six chapters and crisis resolution outcomes"
@@ -1903,7 +1904,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-081"
+        "KM-080"
       ],
       "deliverables": [
         "Stress/replay and crisis prioritization evidence"
@@ -1924,7 +1925,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-082"
+        "KM-081"
       ],
       "deliverables": [
         "Six chapter packets and ending condition matrix"
@@ -1947,7 +1948,7 @@
       "depends_on": [
         "KM-041",
         "KM-048",
-        "KM-083"
+        "KM-082"
       ],
       "deliverables": [
         "Successor pool, dependency, rules and resilience metrics"
@@ -1969,7 +1970,7 @@
       "status": "todo",
       "depends_on": [
         "KM-038",
-        "KM-084"
+        "KM-083"
       ],
       "deliverables": [
         "Player-readable links from outcomes to accumulated decisions"
@@ -2012,10 +2013,10 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
+        "KM-082",
         "KM-083",
         "KM-084",
-        "KM-085",
-        "KM-086"
+        "KM-085"
       ],
       "deliverables": [
         "Full canon campaign conclusion with variants"
@@ -2036,7 +2037,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-087"
+        "KM-086"
       ],
       "deliverables": [
         "Recorded automated and manual full-run variants"
@@ -2057,7 +2058,7 @@
       "size": "M",
       "status": "todo",
       "depends_on": [
-        "KM-088"
+        "KM-087"
       ],
       "deliverables": [
         "Approved M10 creative signoff"
@@ -2100,7 +2101,7 @@
       "status": "todo",
       "depends_on": [
         "KM-026",
-        "KM-090"
+        "KM-089"
       ],
       "deliverables": [
         "Scene→mechanism coverage table"
@@ -2122,7 +2123,7 @@
       "status": "todo",
       "depends_on": [
         "KM-044",
-        "KM-091"
+        "KM-090"
       ],
       "deliverables": [
         "Decision-specific reflection and counterfactual records"
@@ -2143,7 +2144,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-092"
+        "KM-091"
       ],
       "deliverables": [
         "Calibrated and bounded learner progress model"
@@ -2164,8 +2165,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-092",
-        "KM-093"
+        "KM-092"
       ],
       "deliverables": [
         "Difficulty presets primarily via information presentation"
@@ -2186,9 +2186,10 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
+        "KM-090",
         "KM-091",
         "KM-092",
-        "KM-094"
+        "KM-093"
       ],
       "deliverables": [
         "Pedagogical and adversarial review notes"
@@ -2209,8 +2210,8 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-095",
-        "KM-096"
+        "KM-093",
+        "KM-094"
       ],
       "deliverables": [
         "Consent-aware aggregated study protocol and balance report"
@@ -2254,7 +2255,7 @@
       "status": "todo",
       "depends_on": [
         "KM-013",
-        "KM-098"
+        "KM-096"
       ],
       "deliverables": [
         "Actor portraits, variants, animation-ready asset set"
@@ -2276,7 +2277,7 @@
       "status": "todo",
       "depends_on": [
         "KM-012",
-        "KM-098"
+        "KM-096"
       ],
       "deliverables": [
         "Location key art, weather/day variants, visual kit"
@@ -2319,7 +2320,7 @@
       "status": "todo",
       "depends_on": [
         "KM-010",
-        "KM-100"
+        "KM-098"
       ],
       "deliverables": [
         "Reduced-motion-aware cinematic effects"
@@ -2362,8 +2363,8 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-101",
-        "KM-102"
+        "KM-099",
+        "KM-101"
       ],
       "deliverables": [
         "Mix-ready cue matrix and implemented audio pipeline"
@@ -2384,10 +2385,12 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
+        "KM-097",
+        "KM-098",
         "KM-099",
         "KM-100",
-        "KM-103",
-        "KM-104"
+        "KM-101",
+        "KM-102"
       ],
       "deliverables": [
         "Art/audio/UX acceptance catalog"
@@ -2452,8 +2455,8 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-105",
-        "KM-106"
+        "KM-101",
+        "KM-105"
       ],
       "deliverables": [
         "Manual and automated mobile test matrix"
@@ -2475,7 +2478,7 @@
       "status": "todo",
       "depends_on": [
         "KM-034",
-        "KM-107"
+        "KM-104"
       ],
       "deliverables": [
         "Consent and data-retention aware event policy"
@@ -2541,13 +2544,14 @@
       "status": "todo",
       "depends_on": [
         "KM-088",
-        "KM-089",
+        "KM-095",
+        "KM-103",
+        "KM-104",
         "KM-105",
         "KM-106",
         "KM-107",
         "KM-108",
-        "KM-109",
-        "KM-110"
+        "KM-109"
       ],
       "deliverables": [
         "Accepted release candidate and reproducible bug ledger"
@@ -2568,7 +2572,7 @@
       "size": "L",
       "status": "todo",
       "depends_on": [
-        "KM-111"
+        "KM-110"
       ],
       "deliverables": [
         "Tagged release notes, recovery policy and future iteration queue"
