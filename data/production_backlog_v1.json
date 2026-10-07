@@ -302,7 +302,7 @@
       "stream": "devops",
       "priority": "P0",
       "size": "M",
-      "status": "todo",
+      "status": "review",
       "depends_on": [
         "KM-002",
         "KM-003",
@@ -315,8 +315,14 @@
         "Pull requests run import, backlog-validation and baseline tests",
         "Human approval rules and merge/rollback ownership documented"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/pull/9",
+        "https://github.com/statego2/KingMaker/actions/runs/37693938057",
+        "https://github.com/statego2/KingMaker/actions/runs/37693938068",
+        "https://github.com/statego2/KingMaker/issues/10",
+        "docs/CI_AND_RELEASE_POLICY.md"
+      ],
+      "notes": "Both required CI jobs now run across all PRs. CODEOWNERS and documented rollback/issue conventions added. Owner must enable/verify main branch protection; manual gate issue #10 remains open."
     },
     {
       "id": "KM-009",

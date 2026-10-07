@@ -21,6 +21,7 @@ An AI must read current code and backlog, implement one cohesive task, verify it
 | [Executable implementation inventory](docs/IMPLEMENTATION_INVENTORY.md) | Active import graph, 18 scene IDs, shipped-vs-scaffold audit |
 | [Local development and tests](docs/LOCAL_DEVELOPMENT.md) | No-dependency preview, `npm run verify`, test scope and limitations |
 | [State-schema audit](docs/STATE_SCHEMA_AUDIT.md) | v0.3 runtime ↔ proposed v1 migration gaps and preservation policy |
+| [CI/owner/rollback conventions](docs/CI_AND_RELEASE_POLICY.md) | All-PR checks, branch-ruleset human setup and rollback |
 | [AI delivery protocol](docs/AI_DELIVERY_PROTOCOL.md) | Branches, PRs, tests and truthful status handoff |
 | [Campaign matrix](docs/CAMPAIGN_PRODUCTION_MATRIX.md) | 36-chapter production map |
 | [Quality/testing strategy](docs/QUALITY_AND_TEST_STRATEGY.md) | UX, simulation, accessibility, playtest and release gates |

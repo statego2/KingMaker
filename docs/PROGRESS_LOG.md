@@ -35,3 +35,9 @@ Entries document **verified project activity**, separate from the aspirational b
 - **Actual run:** [CI #37692937460](https://github.com/statego2/KingMaker/actions/runs/37692937460) passed; **15 screenshots, 0 automated geometry warnings, 0 page errors**. Chapter 6 scene 2 was longest by text under initial state.
 - **Unverified:** PNGs need human visual/legibility inspection; true iPhone Safari/safe-area/device touch and accessibility acceptance are not claimed. Existing static + Node CI also passed.
 - **Status:** `review`, not `done`. Consequently KM-007 remains dependency-blocked. KM-008 / KM-009 are dependency-ready.
+
+## 2026-10-08 — KM-008 all-PR checks / human protection gate
+- [PR #9](https://github.com/statego2/KingMaker/pull/9) adds continuous backlog validation on all PRs, CODEOWNERS, developer ownership/rollback policy and exact manual protected-main ruleset steps.
+- **Verified CI:** [backlog run](https://github.com/statego2/KingMaker/actions/runs/37693938057) and [game-tests run](https://github.com/statego2/KingMaker/actions/runs/37693938068) succeeded.
+- **Not configured by AI:** GitHub main branch ruleset; the connector does not provide the required administration mutation. [Owner issue #10](https://github.com/statego2/KingMaker/issues/10) documents the setup and verification gate.
+- **Status:** `review` pending owner confirmation of actual branch protections, not `done`.
