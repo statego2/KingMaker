@@ -1,5 +1,7 @@
 name: KM-005 browser visual baseline
 on:
+  push:
+    branches: ['task/**']
   pull_request:
     paths:
       - "tools/capture-visual-baseline.mjs"
