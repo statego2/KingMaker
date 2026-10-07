@@ -9,22 +9,24 @@
 - The latest creative pivot is scene-first cinematic political strategy, not dense dashboard-first UI.
 
 ## Current milestone
-**M0 / P00 — Foundation/testing.**
+**M0 / P00 — Foundation/testing (automated baseline available).**
 
 ## Immediate next task
-**KM-002 — Create repeatable local build/test workflow** (P0, M; depends on KM-001, completed in PR #4 after CI acceptance).
+**KM-005 — Baseline visual snapshots at phone and desktop widths** (P0, M; dependencies KM-001 and KM-002 now satisfied).
 
-**Also ready:** KM-006 (v0.3 vs v1 schema audit), plus parallel P1 KM-012 and KM-089.
+**Also ready:** KM-006 (v0.3 vs v1 schema audit), KM-008 (CI/branch-protection delivery convention; partial CI now exists), plus P1 KM-012 / KM-089.
 
-Deliver for KM-002:
-1. Document Node 22 / static-site boot commands without a private environment.
-2. Add portable, no-dependency local scripts for syntax, import and test checks.
-3. Ensure fresh checkout setup and error codes are reproducible; follow up with KM-003 tests.
-4. Verify using Node and record exact output through CI if local execution is not available.
+Deliver for KM-005:
+1. Capture 320×568, 375×667, 390×844, 430×932 and desktop screenshots of first/longest/final scenes.
+2. Record clipped/obscured actions and visibility defects in a viewport ledger, with links to evidence.
+3. Mark browser/device distinctions honestly; no visual quality signoff inferred from CI.
+4. Run `npm run verify`, update backlog and the progress log with evidence.
 
 Then seek next dependency-ready **KM-002** (local test/build workflow), followed by KM-003/004/005/006/007/008 as allowed by dependency graph.
 
 **KM-001 audit artifact:** [`docs/IMPLEMENTATION_INVENTORY.md`](IMPLEMENTATION_INVENTORY.md), [PR #4](https://github.com/statego2/KingMaker/pull/4), backlog integrity [CI run](https://github.com/statego2/KingMaker/actions/runs/37692280622). No browser/device playtest included.
+
+**Recent verified M0 delivery:** [PR #5](https://github.com/statego2/KingMaker/pull/5), [CI](https://github.com/statego2/KingMaker/actions/runs/37692611628): `npm run check` passed, Node test runner **9/9**, backlog integrity passed. Bug fixed: malformed Civic Compact choice in `C02_S03`.
 
 ## Ready-to-start rule
 Find `todo` tasks with all `depends_on` in `done`, select priority P0 then phase progression; do not auto-select parallel cosmetic tasks over gold-loop blockers. If current task already has an open PR, review/finish it rather than duplicate.
@@ -35,7 +37,7 @@ Find `todo` tasks with all `depends_on` in `done`, select priority P0 then phase
 3. `src/app-redesign.js` is still a tightly coupled DOM controller; modularity needs work.
 4. Current scenes use procedural visual mockups; no finalized portrait/location pipeline.
 5. Investigation/negotiation gameplay is partial or absent; most scenes offer direct A/B/C outcomes.
-6. No evidenced test matrix/CI/reproducible simulator replay suite in repository snapshot.
+6. Initial Node smoke/save test suite and CI are now present; browser, device and complete replay coverage are not yet evidenced.
 7. Existing scene assets and content require font, small-screen, localization, source and callback audit.
 
 ## Human decision checkpoints

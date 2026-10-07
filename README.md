@@ -19,6 +19,7 @@ An AI must read current code and backlog, implement one cohesive task, verify it
 | [Task register](docs/TASK_REGISTER.md) | Human-readable WBS and detailed acceptance |
 | [Current next action](docs/NEXT_ACTION.md) | Where the next AI starts |
 | [Executable implementation inventory](docs/IMPLEMENTATION_INVENTORY.md) | Active import graph, 18 scene IDs, shipped-vs-scaffold audit |
+| [Local development and tests](docs/LOCAL_DEVELOPMENT.md) | No-dependency preview, `npm run verify`, test scope and limitations |
 | [AI delivery protocol](docs/AI_DELIVERY_PROTOCOL.md) | Branches, PRs, tests and truthful status handoff |
 | [Campaign matrix](docs/CAMPAIGN_PRODUCTION_MATRIX.md) | 36-chapter production map |
 | [Quality/testing strategy](docs/QUALITY_AND_TEST_STRATEGY.md) | UX, simulation, accessibility, playtest and release gates |
@@ -33,6 +34,8 @@ An AI must read current code and backlog, implement one cohesive task, verify it
 - **Lightweight simulation v0.3:** `src/engine.js` supports player/world state, relationships, promises, choice effects, delayed messages, history and local saves.
 - **Design/documentation:** canonical world, character, 36-chapter campaign architecture, system specification and 10-domain / 60-competency / 1,000-question strategic source corpus.
 - **Current visuals:** procedural scene mockups and presentation templates, *not* a complete final portrait/location-art library.
+
+**M0 developer checks:** `npm run dev` serves a local preview; `npm run verify` checks imports, scene/engine regressions and backlog integrity with no external dependencies. These automated checks are not a browser/device playtest.
 
 **Not yet production complete:** Gold Chapter 1, tested first 60–90 minutes, full investigation/actions and simulation contracts, real art package, test automation, Acts II–VI content and final release. The specifications describe intentions, not shipped functionality.
 
