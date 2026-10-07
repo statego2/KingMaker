@@ -250,7 +250,7 @@
       "stream": "systems",
       "priority": "P0",
       "size": "M",
-      "status": "todo",
+      "status": "done",
       "depends_on": [
         "KM-001"
       ],
@@ -261,8 +261,13 @@
         "Every key system marked shipped/partial/spec only",
         "Backward-compatible migration risks and test fixtures identified"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/pull/7",
+        "https://github.com/statego2/KingMaker/actions/runs/37693129288",
+        "docs/STATE_SCHEMA_AUDIT.md",
+        "data/state_migration_map_v0_3_to_v1.json"
+      ],
+      "notes": "Schema audit documentation and 14-field/8-domain machine coverage map, with 2 regression tests; no runtime save migration was implemented."
     },
     {
       "id": "KM-007",

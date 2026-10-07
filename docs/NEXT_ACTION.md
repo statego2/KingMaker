@@ -14,7 +14,7 @@
 ## Immediate next task
 **KM-005 — Baseline visual snapshots at phone and desktop widths** (P0, M; dependencies KM-001 and KM-002 now satisfied).
 
-**Also ready:** KM-006 (v0.3 vs v1 schema audit), KM-008 (CI/branch-protection delivery convention; partial CI now exists), plus P1 KM-012 / KM-089.
+**In concurrent review:** KM-005 screenshot baseline [PR #6](https://github.com/statego2/KingMaker/pull/6). **Completed:** KM-006 schema audit [PR #7](https://github.com/statego2/KingMaker/pull/7). **Dependency-ready after KM-006:** KM-008 and KM-009; additionally P1 KM-012 / KM-089.
 
 Deliver for KM-005:
 1. Capture 320×568, 375×667, 390×844, 430×932 and desktop screenshots of first/longest/final scenes.
@@ -22,7 +22,7 @@ Deliver for KM-005:
 3. Mark browser/device distinctions honestly; no visual quality signoff inferred from CI.
 4. Run `npm run verify`, update backlog and the progress log with evidence.
 
-Then seek next dependency-ready **KM-002** (local test/build workflow), followed by KM-003/004/005/006/007/008 as allowed by dependency graph.
+After KM-005 review, continue KM-007 (baseline UX playtest) and KM-008 (CI/ownership convention), then KM-009 (scene contract) as dependency-gated.
 
 **KM-001 audit artifact:** [`docs/IMPLEMENTATION_INVENTORY.md`](IMPLEMENTATION_INVENTORY.md), [PR #4](https://github.com/statego2/KingMaker/pull/4), backlog integrity [CI run](https://github.com/statego2/KingMaker/actions/runs/37692280622). No browser/device playtest included.
 

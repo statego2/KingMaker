@@ -1,0 +1,150 @@
+{
+  "schema_version": "audit-1.0",
+  "legacy_save_version": "0.3",
+  "legacy_storage_key": "kingmaker_statecraft_v03",
+  "prior_storage_key": "kingmaker_statecraft_v02",
+  "target_schema": "kingmaker.game_state.schema.v1",
+  "legacy_keys": {
+    "version": {
+      "target": "meta.game_version",
+      "state": "partial",
+      "rule": "Retain original version, assign schema_version separately; never overwrite newer unknown saves"
+    },
+    "i": {
+      "target": "story.active_scenes / time.turn",
+      "state": "partial",
+      "rule": "Current scene index is authoritative for legacy; map through stable scene IDs, not current ordering alone"
+    },
+    "flags": {
+      "target": "story.chapter_flags / world.flags",
+      "state": "partial",
+      "rule": "Classify plot and world flags individually; do not merge blind"
+    },
+    "player": {
+      "target": "player.resources",
+      "state": "partial",
+      "rule": "Preserve all five numeric counters, document units and bound semantics"
+    },
+    "world": {
+      "target": "world.tracks / world.pressures",
+      "state": "partial",
+      "rule": "Split track and pressure keys; seed unmapped tracks without simulating new outcomes"
+    },
+    "routes": {
+      "target": "world.coalition_routes (proposed schema extension)",
+      "state": "partial",
+      "rule": "Preserve route-specific influence separately from faction capability"
+    },
+    "institutions": {
+      "target": "world.institutions",
+      "state": "partial",
+      "rule": "Preserve three NSO measures and their existing scale"
+    },
+    "rel": {
+      "target": "actors[*].player_relationship",
+      "state": "partial",
+      "rule": "Copy all eight v0.3 relation dimensions exactly; fill only missing new fields from documented defaults"
+    },
+    "promises": {
+      "target": "player.promises",
+      "state": "partial",
+      "rule": "Preserve IDs, status, createdAt, and text; define expiry/fulfilment semantics before migration"
+    },
+    "silas": {
+      "target": "actors.silas_koren.state (proposed observation profile)",
+      "state": "partial",
+      "rule": "Keep four observation counters and opponent history separate from player-visible beliefs"
+    },
+    "inbox": {
+      "target": "content_runtime.inbox (proposed schema extension)",
+      "state": "partial",
+      "rule": "Preserve message IDs, unread flags, content and order; target v1 lacks inbox field"
+    },
+    "scheduled": {
+      "target": "story.scheduled_consequences",
+      "state": "partial",
+      "rule": "Preserve due-as-scene-index semantics during migration, with unique callback IDs on upgrade"
+    },
+    "history": {
+      "target": "story.completed_scenes + content_runtime.event_log (proposed schema extension)",
+      "state": "partial",
+      "rule": "Preserve ordered choice/result/quality/debrief snapshots; no replay from choice ID alone yet"
+    },
+    "finished": {
+      "target": "story.campaign_status (proposed schema extension)",
+      "state": "partial",
+      "rule": "Recompute from scene progress only after fixture checks, preserve old ending state"
+    }
+  },
+  "v1_domains": {
+    "meta": {
+      "state": "partial",
+      "evidence": "v0.3 version only, no save_id/rng_seed/created_at; fixed local storage key"
+    },
+    "time": {
+      "state": "spec_only",
+      "evidence": "v0.3 scene index i, no day, block, act, chapter clock domain"
+    },
+    "world": {
+      "state": "partial",
+      "evidence": "6 scalar world measures, 3 coalition routes and 3 NSO metrics, lacking 11-track/10-pressure structured namespaces"
+    },
+    "player": {
+      "state": "partial",
+      "evidence": "5 counters and global promises, lacking knowledge, staff and behavior profile"
+    },
+    "actors": {
+      "state": "partial",
+      "evidence": "14 initialized player relationships plus Silas observation counters, no beliefs/memories/state agents"
+    },
+    "network": {
+      "state": "spec_only",
+      "evidence": "UI power nodes and lines are presentation-only; no persistent network nodes/edges in engine state"
+    },
+    "story": {
+      "state": "partial",
+      "evidence": "ordered 18 scenes, flags, scheduled messages/history; no conditional active-scene array or event IDs"
+    },
+    "content_runtime": {
+      "state": "spec_only",
+      "evidence": "no content version, seen-content IDs or RNG log; inbox requires target extension"
+    }
+  },
+  "fixtures_to_build": [
+    {
+      "id": "legacy-v02-opening",
+      "purpose": "v02 save without routes/institutions normalizes without data loss",
+      "covered": "partial: tests/engine.test.mjs"
+    },
+    {
+      "id": "v03-chapter1-three-options",
+      "purpose": "same input replay; three different choice histories/effects",
+      "covered": "yes: tests/engine.test.mjs"
+    },
+    {
+      "id": "v03-midrun-delayed-message",
+      "purpose": "inbox and scheduled message ID/order survive roundtrip",
+      "covered": "partial: tests/engine.test.mjs"
+    },
+    {
+      "id": "v03-finale-three-governments",
+      "purpose": "all final routes and promise ledger survive upgrade",
+      "covered": "not yet"
+    },
+    {
+      "id": "v03-corrupt-json",
+      "purpose": "non-destructive recovery/export path, not a silent reset",
+      "covered": "current behavior only: tests/engine.test.mjs"
+    },
+    {
+      "id": "future-version-save",
+      "purpose": "a future save must not be down-converted by v0.3 normalization",
+      "covered": "not yet"
+    },
+    {
+      "id": "actor-source-independence",
+      "purpose": "actor belief and source groups preserve evidence chronology",
+      "covered": "not yet"
+    }
+  ]
+}
