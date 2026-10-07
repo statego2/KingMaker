@@ -1,0 +1,1738 @@
+{
+  "schema_version": "1.0",
+  "visibility_rule": "Exact latent values are hidden; the player sees observations and inferences with uncertainty.",
+  "characters": {
+    "elena_varin": {
+      "name": "Elena Varin",
+      "tier": "A",
+      "age": 63,
+      "role": "President of Lydria",
+      "affiliation": "Presidency",
+      "formal_power": 54,
+      "informal_power": 79,
+      "resources": 72,
+      "risk_tolerance": 28,
+      "status_sensitivity": 35,
+      "time_horizon": 82,
+      "player_relationship": {
+        "familiarity": 18,
+        "affection": 40,
+        "trust": 12,
+        "respect": 26,
+        "fear": 3,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 35,
+        "national_interest": 25,
+        "personal_power": 5,
+        "faction_success": 0,
+        "reputation": 15,
+        "relationships": 10,
+        "wealth": 0,
+        "ideology": 10
+      },
+      "core_objective": "Να περάσει η Lydria από την κυβερνητική κρίση χωρίς η εξαίρεση να γίνει το νέο κανονικό σύστημα.",
+      "fears": [
+        "θεσμική κατάρρευση μέσω διαδοχικών «προσωρινών» εξαιρέσεων",
+        "χαρισματικός σωτήρας που γίνεται αναντικατάστατος",
+        "σύγκρουση θεσμών χωρίς νομιμοποιημένο διαιτητή"
+      ],
+      "values": [
+        "νομιμότητα",
+        "μέτρο",
+        "συνέχεια του κράτους",
+        "αξιοπρέπεια",
+        "λογοδοσία"
+      ],
+      "public_identity": "Ήρεμη, αυστηρή, σχεδόν τελετουργικά θεσμική. Δεν εμφανίζεται ως κομματικός actor και αποφεύγει προσωπικές επιθέσεις.",
+      "private_contradiction": "Για να προστατεύσει τους θεσμούς χρησιμοποιεί συχνά άτυπη επιρροή που δεν περιγράφεται καθαρά στο Σύνταγμα.",
+      "blind_spot": "Υποτιμά μερικές φορές πόσο γρήγορα η υπερβολική διαδικαστική προσοχή αφήνει το πεδίο σε πιο επιθετικούς actors.",
+      "developer_truth": "Δεν επιδιώκει να κυβερνήσει από την Προεδρία. Θα αντιταχθεί ακόμη και σε αποτελεσματικό παίκτη αν θεωρήσει ότι το NSO μετατρέπεται σε προσωπικό shadow government.",
+      "competency_hooks": [
+        "PN1",
+        "PN6",
+        "RP2",
+        "CA3",
+        "DG6"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "mara_eltan": {
+      "name": "Dr. Mara Eltan",
+      "tier": "A",
+      "age": 48,
+      "role": "Director of the Strategic Coordination Secretariat; potential founding director of the NSO",
+      "affiliation": "SCS / Presidency",
+      "formal_power": 32,
+      "informal_power": 68,
+      "resources": 64,
+      "risk_tolerance": 34,
+      "status_sensitivity": 18,
+      "time_horizon": 88,
+      "player_relationship": {
+        "familiarity": 70,
+        "affection": 48,
+        "trust": 58,
+        "respect": 55,
+        "fear": 4,
+        "envy": 2,
+        "grievance": 0,
+        "dependency": 15,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 30,
+        "national_interest": 25,
+        "personal_power": 5,
+        "faction_success": 0,
+        "reputation": 10,
+        "relationships": 10,
+        "wealth": 0,
+        "ideology": 20
+      },
+      "core_objective": "Να αποδείξει ότι το κράτος μπορεί να σκέφτεται στρατηγικά χωρίς να δημιουργήσει μη εκλεγμένο παράλληλο κέντρο εξουσίας.",
+      "fears": [
+        "το NSO να γίνει εργαλείο πρωθυπουργού ή παίκτη",
+        "η ανάλυση να γίνει πολιτική αυτοδικαίωση",
+        "η υπηρεσία να εξαρτηθεί από ένα πρόσωπο"
+      ],
+      "values": [
+        "ακρίβεια",
+        "institutional memory",
+        "service",
+        "restraint",
+        "competence"
+      ],
+      "public_identity": "Χαμηλού προφίλ, ακριβής και σχεδόν άγνωστη στο κοινό. Στο κράτος θεωρείται από τους καλύτερους ανθρώπους στο cross-ministry coordination.",
+      "private_contradiction": "Πιστεύει στη θεσμική ουδετερότητα αλλά επιλέγει προσεκτικά ποιος πρέπει να δει ποια ανάλυση και πότε.",
+      "blind_spot": "Μερικές φορές πιστεύει ότι αν η ανάλυση είναι αρκετά καλή, τα incentives θα υποχωρήσουν μπροστά της.",
+      "developer_truth": "Είναι ο πρώτος άνθρωπος που είδε πραγματικά την ικανότητα του παίκτη. Δεν είναι unconditional mentor: αν ο παίκτης μετατρέψει το γραφείο σε προσωπική μηχανή, θα γίνει αντίπαλος.",
+      "competency_hooks": [
+        "PE2",
+        "PE6",
+        "PN2",
+        "TE3",
+        "DG6"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "lea_marin": {
+      "name": "Lea Marin",
+      "tier": "A",
+      "age": 31,
+      "role": "Senior data analyst in the SCS; closest early colleague of the player",
+      "affiliation": "SCS / potential NSO",
+      "formal_power": 8,
+      "informal_power": 34,
+      "resources": 22,
+      "risk_tolerance": 42,
+      "status_sensitivity": 12,
+      "time_horizon": 70,
+      "player_relationship": {
+        "familiarity": 85,
+        "affection": 60,
+        "trust": 68,
+        "respect": 55,
+        "fear": 0,
+        "envy": 4,
+        "grievance": 0,
+        "dependency": 14,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 20,
+        "national_interest": 20,
+        "personal_power": 5,
+        "faction_success": 0,
+        "reputation": 5,
+        "relationships": 20,
+        "wealth": 5,
+        "ideology": 25
+      },
+      "core_objective": "Να κάνει την ανάλυση αρκετά καλή ώστε να αλλάζει πραγματικές αποφάσεις, όχι να διακοσμεί ήδη ειλημμένες θέσεις.",
+      "fears": [
+        "να γίνει cynical operator",
+        "να χρησιμοποιηθεί το έργο της ως selective justification",
+        "να χάσει το δικαίωμα να διαφωνεί ανοιχτά με τον παίκτη"
+      ],
+      "values": [
+        "truth",
+        "intellectual honesty",
+        "loyalty",
+        "curiosity",
+        "fairness"
+      ],
+      "public_identity": "Χωρίς δημόσια εικόνα. Στο γραφείο είναι γρήγορη, ειρωνική, πολύ δυνατή στα data και ελάχιστα εντυπωσιασμένη από status.",
+      "private_contradiction": "Είναι instinctively υπέρ της διαφάνειας, αλλά όσο ανεβαίνει αντιλαμβάνεται ότι ατελής πληροφορία μπορεί να γίνει όπλο αν δημοσιοποιηθεί πρόωρα.",
+      "blind_spot": "Υποτιμά αρχικά prestige, ritual και face-saving σαν «μη ορθολογικά» παρότι είναι causal variables.",
+      "developer_truth": "Δεν είναι sidekick. Αν ο παίκτης γίνει προσωπικά συγκεντρωτικός, μπορεί να φύγει και αργότερα να γίνει μία από τις πιο αξιόπιστες εξωτερικές κριτικές φωνές.",
+      "competency_hooks": [
+        "PE2",
+        "PE4",
+        "SC6",
+        "CI5",
+        "DG2"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "adrian_kessar": {
+      "name": "Adrian Kessar",
+      "tier": "A",
+      "age": 45,
+      "role": "Leader of the Renewal Alliance; leading prime-ministerial contender",
+      "affiliation": "Renewal Alliance",
+      "formal_power": 86,
+      "informal_power": 82,
+      "resources": 77,
+      "risk_tolerance": 66,
+      "status_sensitivity": 54,
+      "time_horizon": 68,
+      "player_relationship": {
+        "familiarity": 12,
+        "affection": 40,
+        "trust": 8,
+        "respect": 15,
+        "fear": 0,
+        "envy": 1,
+        "grievance": 0,
+        "dependency": 2,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 20,
+        "national_interest": 20,
+        "personal_power": 15,
+        "faction_success": 15,
+        "reputation": 10,
+        "relationships": 5,
+        "wealth": 0,
+        "ideology": 15
+      },
+      "core_objective": "Να σχηματίσει κυβέρνηση και να χρησιμοποιήσει το παράθυρο κρίσης για βαθιές μεταρρυθμίσεις πριν επιστρέψει το παλιό σύστημα.",
+      "fears": [
+        "να γίνει PM κυβέρνησης που απλώς διαχειρίζεται συμβιβασμούς",
+        "να τον καταπιούν τα patronage networks",
+        "να χαθεί οικονομική credibility"
+      ],
+      "values": [
+        "competence",
+        "modernization",
+        "growth",
+        "rules",
+        "merit"
+      ],
+      "public_identity": "Έξυπνος, πειθαρχημένος, σύγχρονος. Συμβολίζει το κράτος υψηλής ικανότητας που υπόσχεται η νέα γενιά reformers.",
+      "private_contradiction": "Μιλά για θεσμούς, αλλά πιστεύει βαθιά ότι οι θεσμοί δεν επιβιώνουν αν οι reformers δεν αποκτήσουν αρκετή δύναμη πρώτα.",
+      "blind_spot": "Μπορεί να μετατρέπει temporary coordination σε μόνιμη centralization επειδή κάθε resistance του αποδεικνύει ότι «χρειάζεται περισσότερη ισχύ».",
+      "developer_truth": "Δεν είναι κρυφός autocrat. Η centralizing τάση του μεγαλώνει μόνο αν οι κρίσεις την ανταμείβουν.",
+      "competency_hooks": [
+        "JD1",
+        "TE2",
+        "PN4",
+        "PN5",
+        "DG5"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "mira_solen": {
+      "name": "Mira Solen",
+      "tier": "A",
+      "age": 52,
+      "role": "Leader of Civic Labour",
+      "affiliation": "Civic Labour",
+      "formal_power": 78,
+      "informal_power": 80,
+      "resources": 69,
+      "risk_tolerance": 52,
+      "status_sensitivity": 47,
+      "time_horizon": 72,
+      "player_relationship": {
+        "familiarity": 10,
+        "affection": 40,
+        "trust": 7,
+        "respect": 12,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 2,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 15,
+        "national_interest": 20,
+        "personal_power": 10,
+        "faction_success": 15,
+        "reputation": 10,
+        "relationships": 10,
+        "wealth": 0,
+        "ideology": 20
+      },
+      "core_objective": "Να προστατεύσει τους εργαζομένους από το να πληρώσουν μόνοι τους το κόστος της τεχνολογικής μετάβασης χωρίς να καθηλώσει την οικονομία.",
+      "fears": [
+        "automation displacement χωρίς προστασία",
+        "να γίνει junior partner των technocrats",
+        "να χάσει το κόμμα σε old machine networks"
+      ],
+      "values": [
+        "dignity",
+        "reciprocity",
+        "social peace",
+        "practical fairness",
+        "representation"
+      ],
+      "public_identity": "Ζεστή αλλά σκληρή διαπραγματεύτρια. Μιλά περισσότερο για dignity of work παρά για αφηρημένη ιδεολογία.",
+      "private_contradiction": "Ξέρει ότι productivity reforms είναι αναγκαία, αλλά πολιτικά πρέπει συχνά να ξεκινά από πιο σκληρή θέση από αυτή που θεωρεί τελικά σωστή.",
+      "blind_spot": "Υπερτιμά καμιά φορά το πόσο εύκολα financial compensation λύνει status/identity loss.",
+      "developer_truth": "Η πραγματική red line της στο automation δεν είναι η τεχνολογία· είναι surprise, unilateralism και no voice.",
+      "competency_hooks": [
+        "PI1",
+        "CI3",
+        "PN5",
+        "CA5",
+        "RP5"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "viktor_sarin": {
+      "name": "Viktor Sarin",
+      "tier": "A",
+      "age": 60,
+      "role": "Leader of the Stability Union",
+      "affiliation": "Stability Union",
+      "formal_power": 74,
+      "informal_power": 85,
+      "resources": 73,
+      "risk_tolerance": 46,
+      "status_sensitivity": 61,
+      "time_horizon": 74,
+      "player_relationship": {
+        "familiarity": 9,
+        "affection": 40,
+        "trust": 5,
+        "respect": 12,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 1,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 15,
+        "national_interest": 20,
+        "personal_power": 10,
+        "faction_success": 20,
+        "reputation": 10,
+        "relationships": 15,
+        "wealth": 0,
+        "ideology": 10
+      },
+      "core_objective": "Να αποκαταστήσει την αξιοπιστία της Stability Union και να αποτρέψει πείραμα που θα καταστρέψει κρατική συνέχεια.",
+      "fears": [
+        "πολιτική εκκαθάριση",
+        "κρατική αστάθεια",
+        "δημόσια ταπείνωση του old establishment"
+      ],
+      "values": [
+        "continuity",
+        "loyalty",
+        "order",
+        "competence",
+        "national responsibility"
+      ],
+      "public_identity": "Ήρεμος, paternal, έμπειρος. Ο άνθρωπος του «το κράτος πρέπει να ανοίξει αύριο το πρωί».",
+      "private_contradiction": "Πιστεύει στους θεσμούς αλλά δίνει μεγαλύτερο βάρος σε προσωπική loyalty από όσο παραδέχεται.",
+      "blind_spot": "Μπορεί να θεωρεί capture μια φυσιολογική μορφή «να ξέρεις ποιον εμπιστεύεσαι».",
+      "developer_truth": "Δεν ενορχήστρωσε το Harbor scandal. Θα προστατεύσει όμως παλιούς συνεργάτες περισσότερο απ' όσο είναι θεσμικά σοφό.",
+      "competency_hooks": [
+        "PI2",
+        "PN2",
+        "PN6",
+        "RP1",
+        "DG2"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "tomas_veyr": {
+      "name": "Tomas Veyr",
+      "tier": "A",
+      "age": 48,
+      "role": "Leader of the Sovereign Front",
+      "affiliation": "Sovereign Front",
+      "formal_power": 70,
+      "informal_power": 67,
+      "resources": 62,
+      "risk_tolerance": 58,
+      "status_sensitivity": 58,
+      "time_horizon": 70,
+      "player_relationship": {
+        "familiarity": 8,
+        "affection": 40,
+        "trust": 5,
+        "respect": 10,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 1,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 10,
+        "national_interest": 30,
+        "personal_power": 10,
+        "faction_success": 15,
+        "reputation": 10,
+        "relationships": 10,
+        "wealth": 0,
+        "ideology": 15
+      },
+      "core_objective": "Να μειώσει στρατηγικές dependencies της Lydria και να αυξήσει credible deterrence.",
+      "fears": [
+        "national humiliation",
+        "supply dependence",
+        "να φανεί weak στη σκληρή πτέρυγα"
+      ],
+      "values": [
+        "service",
+        "sovereignty",
+        "deterrence",
+        "discipline",
+        "loyalty"
+      ],
+      "public_identity": "Πειθαρχημένος, σαφής, εθνικά αυστηρός, λιγότερο showman από τη βάση του.",
+      "private_contradiction": "Δημόσια hawkish με Serrat, ιδιωτικά ξέρει πόσο εύκολα status contest γίνεται πραγματική σύγκρουση.",
+      "blind_spot": "Βλέπει οικονομική interdependence κυρίως ως vulnerability και όχι πάντα ως stabilizing leverage.",
+      "developer_truth": "Θέλει σοβαρή αποτροπή, όχι πόλεμο. Μπορεί να δεχτεί reciprocal maritime compromise αν είναι enforceable και dignified.",
+      "competency_hooks": [
+        "CA1",
+        "CA3",
+        "TE3",
+        "PN3",
+        "DG5"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "liora_venn": {
+      "name": "Liora Venn",
+      "tier": "A",
+      "age": 39,
+      "role": "Leader of the Free Cities List",
+      "affiliation": "Free Cities List",
+      "formal_power": 60,
+      "informal_power": 64,
+      "resources": 57,
+      "risk_tolerance": 54,
+      "status_sensitivity": 41,
+      "time_horizon": 67,
+      "player_relationship": {
+        "familiarity": 8,
+        "affection": 40,
+        "trust": 4,
+        "respect": 9,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 1,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 25,
+        "national_interest": 15,
+        "personal_power": 5,
+        "faction_success": 10,
+        "reputation": 10,
+        "relationships": 5,
+        "wealth": 0,
+        "ideology": 30
+      },
+      "core_objective": "Να εμποδίσει AI, data και crisis governance να δημιουργήσουν πιο κομψές μορφές capture από τις παλιές.",
+      "fears": [
+        "shadow institutions",
+        "opaque algorithmic government",
+        "corporate/media capture",
+        "transparency theater"
+      ],
+      "values": [
+        "liberty",
+        "transparency",
+        "pluralism",
+        "procedural fairness",
+        "skepticism of concentrated power"
+      ],
+      "public_identity": "Γρήγορη, articulate, anti-establishment χωρίς να είναι anti-institution.",
+      "private_contradiction": "Όσο πλησιάζει τη διακυβέρνηση, τόσο περισσότερο βλέπει ότι κάποια secrecy είναι αναγκαία.",
+      "blind_spot": "Υποτιμά πόσο destructive μπορεί να είναι η δημοσιοποίηση unfinished internal deliberation.",
+      "developer_truth": "Δεν είναι anti-NSO by default. Μπορεί να γίνει ισχυρότερη ally ενός bounded NSO και σκληρότερη opponent ενός personalized one.",
+      "competency_hooks": [
+        "SC6",
+        "CI4",
+        "PN4",
+        "RP2",
+        "DG6"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "niko_arven": {
+      "name": "Niko Arven",
+      "tier": "B",
+      "age": 44,
+      "role": "Independent MP from the Sera Islands; informal coordinator of several regional independents",
+      "affiliation": "Regional / Independents",
+      "formal_power": 28,
+      "informal_power": 55,
+      "resources": 38,
+      "risk_tolerance": 49,
+      "status_sensitivity": 43,
+      "time_horizon": 61,
+      "player_relationship": {
+        "familiarity": 7,
+        "affection": 40,
+        "trust": 5,
+        "respect": 8,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 1,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 10,
+        "national_interest": 15,
+        "personal_power": 10,
+        "faction_success": 10,
+        "reputation": 15,
+        "relationships": 20,
+        "wealth": 5,
+        "ideology": 15
+      },
+      "core_objective": "Να εξασφαλίσει ότι οι περιφέρειες δεν πληρώνουν national strategies που σχεδιάστηκαν χωρίς αυτές.",
+      "fears": [
+        "να χρησιμοποιηθεί σαν ψήφος και μετά να αγνοηθεί",
+        "centralization",
+        "status games που πληρώνουν τα νησιά"
+      ],
+      "values": [
+        "reciprocity",
+        "local accountability",
+        "practical outcomes"
+      ],
+      "public_identity": "Πρακτικός, δύσπιστος απέναντι στη Velis, όχι national ideologue.",
+      "private_contradiction": "Καταγγέλλει transactional politics αλλά πρέπει να μεταφράζει national coalitions σε concrete regional gains.",
+      "blind_spot": "Μπορεί να υποτιμά nationwide institutional effects όταν local trade είναι καλό.",
+      "developer_truth": "Δεν είναι for sale. Είναι πολύ ευαίσθητος σε respect, sequencing και observable local benefit.",
+      "competency_hooks": [
+        "PI1",
+        "PI5",
+        "PN3",
+        "PN5",
+        "RP1"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "anton_beran": {
+      "name": "Anton Beran",
+      "tier": "B",
+      "age": 62,
+      "role": "Caretaker Prime Minister; former Stability Union premier",
+      "affiliation": "Caretaker Government / Stability Union legacy",
+      "formal_power": 72,
+      "informal_power": 70,
+      "resources": 61,
+      "risk_tolerance": 35,
+      "status_sensitivity": 49,
+      "time_horizon": 77,
+      "player_relationship": {
+        "familiarity": 12,
+        "affection": 40,
+        "trust": 9,
+        "respect": 13,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 1,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 20,
+        "national_interest": 25,
+        "personal_power": 5,
+        "faction_success": 10,
+        "reputation": 20,
+        "relationships": 10,
+        "wealth": 0,
+        "ideology": 10
+      },
+      "core_objective": "Να παραδώσει λειτουργικό κράτος και να μην οριστεί όλη η καριέρα του από το Harbor scandal.",
+      "fears": [
+        "να θεωρηθεί συνένοχος σε governance failure που δεν θεωρεί corruption",
+        "να καταρρεύσει Aster Gate από πολιτική εκδίκηση"
+      ],
+      "values": [
+        "continuity",
+        "duty",
+        "practical statecraft"
+      ],
+      "public_identity": "Κουρασμένος, σοβαρός administrator, πλέον σύμβολο ενός συστήματος που ξέφυγε.",
+      "private_contradiction": "Θέλει full investigation αλλά φοβάται ότι πλήρης δημοσιοποίηση άτυπων crisis meetings θα καταστρέψει αθώους.",
+      "blind_spot": "Μπερδεύει συχνά discretion με benign opacity.",
+      "developer_truth": "Ενέκρινε μη καταγεγραμμένα informal meetings με Aureon για να μη χαθεί financing window. Δεν πήρε αντάλλαγμα, αλλά άνοιξε χώρο για tender manipulation από άλλους.",
+      "competency_hooks": [
+        "PE5",
+        "CI4",
+        "DG2",
+        "RP1",
+        "SC6"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "silas_koren": {
+      "name": "Silas Koren",
+      "tier": "A",
+      "age": 43,
+      "role": "Chief strategist and parliamentary director of the Stability Union",
+      "affiliation": "Stability Union",
+      "formal_power": 24,
+      "informal_power": 91,
+      "resources": 68,
+      "risk_tolerance": 61,
+      "status_sensitivity": 73,
+      "time_horizon": 80,
+      "player_relationship": {
+        "familiarity": 5,
+        "affection": 40,
+        "trust": 3,
+        "respect": 8,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 10,
+        "national_interest": 15,
+        "personal_power": 20,
+        "faction_success": 25,
+        "reputation": 5,
+        "relationships": 10,
+        "wealth": 0,
+        "ideology": 15
+      },
+      "core_objective": "Να ξανακάνει τη Stability Union απαραίτητη και να αποδείξει ότι ideals χωρίς organized power δεν επιβιώνουν.",
+      "fears": [
+        "να αποκτήσει αντίπαλος power architecture που δεν αντιστρέφεται",
+        "να μείνει loyal σε ηγέτες που δεν προσαρμόζονται",
+        "να γίνει public personality και να χάσει maneuver"
+      ],
+      "values": [
+        "competence",
+        "reciprocity",
+        "predictive accuracy",
+        "loyalty until disproven",
+        "power realism"
+      ],
+      "public_identity": "Σχεδόν άγνωστος. Στους insiders θεωρείται άνθρωπος που καταλαβαίνει πού θα βρίσκεται η ψήφος πριν το καταλάβει ο ίδιος ο βουλευτής.",
+      "private_contradiction": "Περιφρονεί τον cheap cynicism, αλλά χρησιμοποιεί tactics που outsiders θα αποκαλούσαν cynical.",
+      "blind_spot": "Υπερτιμά incentives και υποτιμά πράξεις πραγματικής αρχής που αντέχουν μεγάλο προσωπικό κόστος.",
+      "developer_truth": "Είναι ο canonical adaptive rival. Δεν θέλει να καταστρέψει τον παίκτη· θέλει να μην αφήσει κανέναν strategist να έχει uncontested control.",
+      "competency_hooks": [
+        "CA1",
+        "CA6",
+        "PN2",
+        "PN4",
+        "PI1",
+        "DG4"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "damir_cael": {
+      "name": "Damir Cael",
+      "tier": "A",
+      "age": 68,
+      "role": "Founder and Executive Chair of Aureon Consortium",
+      "affiliation": "Aureon Consortium",
+      "formal_power": 45,
+      "informal_power": 93,
+      "resources": 96,
+      "risk_tolerance": 62,
+      "status_sensitivity": 72,
+      "time_horizon": 86,
+      "player_relationship": {
+        "familiarity": 6,
+        "affection": 40,
+        "trust": 3,
+        "respect": 8,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 5,
+        "national_interest": 15,
+        "personal_power": 15,
+        "faction_success": 0,
+        "reputation": 15,
+        "relationships": 15,
+        "wealth": 20,
+        "ideology": 15
+      },
+      "core_objective": "Να διατηρήσει Aureon σε στρατηγικά chokepoints της επόμενης γενιάς.",
+      "fears": [
+        "διάλυση του ομίλου μετά από εκείνον",
+        "να θεωρείται κάθε σχέση με κράτος corruption",
+        "foreign control of strategic assets"
+      ],
+      "values": [
+        "building",
+        "loyalty",
+        "national industry",
+        "legacy",
+        "reciprocity"
+      ],
+      "public_identity": "Βιομηχανικός πατριάρχης, donor και σύμβολο του «χτίσαμε πράγματα όταν το κράτος δεν μπορούσε».",
+      "private_contradiction": "Θεωρεί τις άτυπες σχέσεις πιο έντιμες από bureaucracy, παρότι ακριβώς αυτές δημιουργούν capture risk.",
+      "blind_spot": "Βλέπει τις δικές του dependencies ως partnerships και των άλλων ως leverage.",
+      "developer_truth": "Δεν είναι mastermind του Harbor scandal. Senior Aureon people πίεσαν για tailored tender terms και ο Damir επέλεξε να μην ψάξει πολύ επειδή θεωρούσε το project εθνικά επείγον.",
+      "competency_hooks": [
+        "PN3",
+        "PN5",
+        "PI4",
+        "RP1",
+        "DG5"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "alina_cael": {
+      "name": "Alina Cael",
+      "tier": "B",
+      "age": 40,
+      "role": "COO of Aureon; daughter of Damir Cael",
+      "affiliation": "Aureon Consortium",
+      "formal_power": 58,
+      "informal_power": 72,
+      "resources": 78,
+      "risk_tolerance": 55,
+      "status_sensitivity": 49,
+      "time_horizon": 82,
+      "player_relationship": {
+        "familiarity": 5,
+        "affection": 40,
+        "trust": 3,
+        "respect": 7,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 10,
+        "national_interest": 10,
+        "personal_power": 10,
+        "faction_success": 0,
+        "reputation": 15,
+        "relationships": 15,
+        "wealth": 20,
+        "ideology": 20
+      },
+      "core_objective": "Να διατηρήσει Aureon ισχυρή χωρίς να παραμένει εξαρτημένη από old patronage.",
+      "fears": [
+        "να κληρονομήσει liabilities χωρίς authority",
+        "ο Damir να μην αφήσει control",
+        "να θεωρείται απλώς heiress"
+      ],
+      "values": [
+        "execution",
+        "merit",
+        "family legacy",
+        "professionalization"
+      ],
+      "public_identity": "Modern operator, λιγότερο πολιτική και περισσότερο execution-focused από τον πατέρα της.",
+      "private_contradiction": "Μιλά για governance, αλλά όταν απειλείται η οικογένεια μπορεί να επιστρέψει σε insider tactics.",
+      "blind_spot": "Υποτιμά πόσο βαθιά το informal network στηρίζει πραγματική execution capacity.",
+      "developer_truth": "Μπορεί να γίνει καθαρός corporate reform ally ή να σκληρύνει αν θεωρήσει ότι οι reformers θέλουν να διαλύσουν την Aureon.",
+      "competency_hooks": [
+        "DG4",
+        "DG5",
+        "PN6",
+        "RP6",
+        "SC4"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "ilyan_rhos": {
+      "name": "Ilyan Rhos",
+      "tier": "A",
+      "age": 42,
+      "role": "Founder-CEO of Nexa Systems",
+      "affiliation": "Nexa Systems",
+      "formal_power": 76,
+      "informal_power": 80,
+      "resources": 88,
+      "risk_tolerance": 79,
+      "status_sensitivity": 66,
+      "time_horizon": 65,
+      "player_relationship": {
+        "familiarity": 5,
+        "affection": 40,
+        "trust": 3,
+        "respect": 7,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 5,
+        "national_interest": 20,
+        "personal_power": 15,
+        "faction_success": 0,
+        "reputation": 15,
+        "relationships": 5,
+        "wealth": 20,
+        "ideology": 20
+      },
+      "core_objective": "Να κάνει Nexa operating layer του ψηφιακού κράτους και πυρήνα του Aster data ecosystem.",
+      "fears": [
+        "να μείνει subcontractor ξένων cloud firms",
+        "να χάσει technology cycle",
+        "να ρυθμιστεί πριν αποκτήσει scale"
+      ],
+      "values": [
+        "speed",
+        "innovation",
+        "technical excellence",
+        "national capability"
+      ],
+      "public_identity": "Χαρισματικός technologist και national champion της AI εποχής. Μιλά για digital sovereignty.",
+      "private_contradiction": "Πιστεύει ειλικρινά στην autonomy ενώ χτίζει εταιρεία που ακόμη εξαρτάται από ξένη υποδομή.",
+      "blind_spot": "Βλέπει governance friction σαν legacy problem και υποτιμά legitimacy/privacy.",
+      "developer_truth": "Δεν ψεύδεται για τον στόχο sovereignty, αλλά παρουσιάζει το roadmap σαν present capability πιο συχνά απ' όσο πρέπει.",
+      "competency_hooks": [
+        "TE2",
+        "DG1",
+        "DG4",
+        "RP6",
+        "PI4"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "rina_torvek": {
+      "name": "Rina Torvek",
+      "tier": "A",
+      "age": 50,
+      "role": "President of the Federation of Lydrian Labour",
+      "affiliation": "Federation of Lydrian Labour",
+      "formal_power": 58,
+      "informal_power": 76,
+      "resources": 63,
+      "risk_tolerance": 55,
+      "status_sensitivity": 51,
+      "time_horizon": 75,
+      "player_relationship": {
+        "familiarity": 6,
+        "affection": 40,
+        "trust": 3,
+        "respect": 7,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 10,
+        "national_interest": 15,
+        "personal_power": 5,
+        "faction_success": 10,
+        "reputation": 10,
+        "relationships": 20,
+        "wealth": 0,
+        "ideology": 30
+      },
+      "core_objective": "Να εξασφαλίσει ότι productivity gains αγοράζουν ασφάλεια, skill και voice για workers, όχι μόνο layoffs.",
+      "fears": [
+        "announcement-first governance",
+        "union irrelevance",
+        "ολόκληρες πόλεις χωρίς status/μέλλον"
+      ],
+      "values": [
+        "dignity",
+        "solidarity",
+        "reciprocity",
+        "honesty",
+        "voice"
+      ],
+      "public_identity": "Direct, credible με workers, συχνά παρουσιάζεται ως anti-automation.",
+      "private_contradiction": "Δημόσια σκληρή, ιδιωτικά πρόθυμη για βαθιά automation αν υπάρχει credible bargain.",
+      "blind_spot": "Μπορεί να προστατεύει incumbent workers εις βάρος νέων outsiders.",
+      "developer_truth": "Η βασική της γραμμή είναι voice-before-change, όχι no-change.",
+      "competency_hooks": [
+        "PI1",
+        "CI5",
+        "PN5",
+        "CA5",
+        "RP1"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "sofia_deren": {
+      "name": "Sofia Deren",
+      "tier": "A",
+      "age": 56,
+      "role": "Governor of the Central Bank of Lydria",
+      "affiliation": "Central Bank",
+      "formal_power": 81,
+      "informal_power": 74,
+      "resources": 70,
+      "risk_tolerance": 31,
+      "status_sensitivity": 27,
+      "time_horizon": 91,
+      "player_relationship": {
+        "familiarity": 8,
+        "affection": 40,
+        "trust": 5,
+        "respect": 12,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 25,
+        "national_interest": 30,
+        "personal_power": 5,
+        "faction_success": 0,
+        "reputation": 20,
+        "relationships": 5,
+        "wealth": 0,
+        "ideology": 15
+      },
+      "core_objective": "Να κρατήσει financial stability χωρίς να μετατρέψει την Central Bank σε πολιτικό εργαλείο ή μόνιμη διάσωση κακής συμπεριφοράς.",
+      "fears": [
+        "bank run",
+        "fiscal dominance",
+        "political leaks of supervisory data"
+      ],
+      "values": [
+        "credibility",
+        "calibration",
+        "independence",
+        "systemic resilience"
+      ],
+      "public_identity": "Ψύχραιμη και ακριβής. Οι αγορές προσέχουν κάθε λέξη της.",
+      "private_contradiction": "Πρέπει να καθησυχάζει χωρίς guarantees που δημιουργούν moral hazard.",
+      "blind_spot": "Μπορεί να μιλά σαν supervisor σε πολίτες που ακούνε σαν καταθέτες.",
+      "developer_truth": "Ξέρει ότι Meridian είναι vulnerable αλλά όχι insolvent. Φοβάται self-fulfilling run περισσότερο από κρυφό hole.",
+      "competency_hooks": [
+        "PE6",
+        "JD4",
+        "RP2",
+        "CI2",
+        "TE5"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "kalen_ors": {
+      "name": "Kalen Ors",
+      "tier": "A",
+      "age": 59,
+      "role": "CEO of Meridian Bank",
+      "affiliation": "Meridian Bank",
+      "formal_power": 65,
+      "informal_power": 78,
+      "resources": 89,
+      "risk_tolerance": 44,
+      "status_sensitivity": 55,
+      "time_horizon": 68,
+      "player_relationship": {
+        "familiarity": 4,
+        "affection": 40,
+        "trust": 2,
+        "respect": 5,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 10,
+        "national_interest": 10,
+        "personal_power": 10,
+        "faction_success": 0,
+        "reputation": 20,
+        "relationships": 15,
+        "wealth": 25,
+        "ideology": 10
+      },
+      "core_objective": "Να κρατήσει Meridian independent και solvent μέσα από την πολιτική/market κρίση.",
+      "fears": [
+        "run από partial truth",
+        "forced recapitalization",
+        "να μείνει στην ιστορία ως banker που έχασε εθνικό institution"
+      ],
+      "values": [
+        "stability",
+        "relationship banking",
+        "prudence",
+        "institutional pride"
+      ],
+      "public_identity": "Polished, conservative, intentionally boring banker.",
+      "private_contradiction": "Η προσπάθεια να αποτρέψει panic μπορεί να γίνει πραγματικό under-disclosure.",
+      "blind_spot": "Δυσκολεύεται να παραδεχτεί ότι η ίδια η concentration της Meridian είναι governance problem.",
+      "developer_truth": "Δεν κρύβει insolvency. Κρύβει πόσο μικρό είναι το margin for confidence shock.",
+      "competency_hooks": [
+        "PE2",
+        "RP2",
+        "TE5",
+        "PI3",
+        "JD4"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "selma_aric": {
+      "name": "Selma Aric",
+      "tier": "A",
+      "age": 51,
+      "role": "Chief Commissioner of the Integrity Commission",
+      "affiliation": "Integrity Commission",
+      "formal_power": 62,
+      "informal_power": 71,
+      "resources": 55,
+      "risk_tolerance": 33,
+      "status_sensitivity": 29,
+      "time_horizon": 84,
+      "player_relationship": {
+        "familiarity": 5,
+        "affection": 40,
+        "trust": 2,
+        "respect": 6,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 40,
+        "national_interest": 15,
+        "personal_power": 5,
+        "faction_success": 0,
+        "reputation": 15,
+        "relationships": 5,
+        "wealth": 0,
+        "ideology": 20
+      },
+      "core_objective": "Να ολοκληρώσει Harbor investigation με τρόπο που αντέχει σε court και history, όχι μόνο στο news cycle.",
+      "fears": [
+        "selective leaks",
+        "political pressure για premature names",
+        "ένα major error που καταστρέφει legitimacy"
+      ],
+      "values": [
+        "evidence",
+        "process",
+        "equal standards",
+        "independence"
+      ],
+      "public_identity": "Αυστηρή, ανεξάρτητη, δεν σχολιάζει ongoing investigations.",
+      "private_contradiction": "Πιστεύει στη process fairness, αλλά aggressive investigative tools μοιάζουν με punishment before verdict.",
+      "blind_spot": "Μπορεί να over-weight opacity σαν suspicious όταν προέρχεται από crisis governance ή incompetence.",
+      "developer_truth": "Ξέρει ότι Harbor έχει genuine improper influence αλλά όχι one conspiracy. Αντιστέκεται στη ζήτηση για simple villain.",
+      "competency_hooks": [
+        "PE2",
+        "SC6",
+        "PN1",
+        "RP2",
+        "DG6"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "eren_kasar": {
+      "name": "Eren Kasar",
+      "tier": "A",
+      "age": 57,
+      "role": "Director of the National Intelligence Directorate",
+      "affiliation": "NID",
+      "formal_power": 68,
+      "informal_power": 79,
+      "resources": 64,
+      "risk_tolerance": 49,
+      "status_sensitivity": 31,
+      "time_horizon": 78,
+      "player_relationship": {
+        "familiarity": 6,
+        "affection": 40,
+        "trust": 3,
+        "respect": 8,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 25,
+        "national_interest": 35,
+        "personal_power": 5,
+        "faction_success": 0,
+        "reputation": 10,
+        "relationships": 5,
+        "wealth": 0,
+        "ideology": 20
+      },
+      "core_objective": "Να περιορίσει foreign influence χωρίς domestic disagreement να μετατραπεί σε counterintelligence problem.",
+      "fears": [
+        "Ordan influence μέσω lawful-looking networks",
+        "πολιτική ζήτηση για certainty",
+        "use of intelligence against domestic opponents"
+      ],
+      "values": [
+        "security",
+        "source protection",
+        "calibration",
+        "institutional restraint"
+      ],
+      "public_identity": "Σπάνια εμφανίζεται. Reputation disciplined professional.",
+      "private_contradiction": "Προσπαθεί να μην over-securitize politics, αλλά όλη η καριέρα του τον έχει μάθει να ψάχνει hidden coordination.",
+      "blind_spot": "Μπορεί να βλέπει pattern όπου υπάρχει shared incentive ή imitation.",
+      "developer_truth": "Ξέρει ότι Ordan-linked money χρηματοδοτεί contradictory narratives, όχι ότι οι περισσότεροι domestic beneficiaries παίρνουν orders.",
+      "competency_hooks": [
+        "PE2",
+        "PE3",
+        "CA1",
+        "CI4",
+        "SC6"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "nadia_serrin": {
+      "name": "Nadia Serrin",
+      "tier": "A",
+      "age": 35,
+      "role": "Investigative journalist and co-founder of Civic Wire",
+      "affiliation": "Civic Wire",
+      "formal_power": 10,
+      "informal_power": 58,
+      "resources": 37,
+      "risk_tolerance": 64,
+      "status_sensitivity": 35,
+      "time_horizon": 66,
+      "player_relationship": {
+        "familiarity": 5,
+        "affection": 40,
+        "trust": 2,
+        "respect": 5,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 20,
+        "national_interest": 10,
+        "personal_power": 5,
+        "faction_success": 0,
+        "reputation": 20,
+        "relationships": 10,
+        "wealth": 5,
+        "ideology": 30
+      },
+      "core_objective": "Να αποδείξει τι πραγματικά συνέβη στο Harbor scandal και να διατηρήσει journalism ανεξάρτητο από elite access.",
+      "fears": [
+        "dependency on one source/patron",
+        "να χάσει true scandal από φόβο partisan appearance",
+        "major false accusation"
+      ],
+      "values": [
+        "truth",
+        "accountability",
+        "source protection",
+        "independence"
+      ],
+      "public_identity": "Persistent, respected από professionals και δυσάρεστη για σχεδόν κάθε power center κάποια στιγμή.",
+      "private_contradiction": "Μισεί gatekeeping αλλά πρέπει καθημερινά να gatekeep incomplete claims.",
+      "blind_spot": "Μπορεί να overfit ambiguous evidence σε corruption narrative επειδή εκεί έχει συχνά δικαιωθεί.",
+      "developer_truth": "Ένας early Harbor source έχει partisan motive που η ίδια δεν καταλαβαίνει πλήρως, αν και τα περισσότερα documents είναι authentic.",
+      "competency_hooks": [
+        "PE2",
+        "PE3",
+        "CI5",
+        "RP2",
+        "SC6"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "lucan_vela": {
+      "name": "Lucan Vela",
+      "tier": "B",
+      "age": 63,
+      "role": "Chair of Vela Media Network",
+      "affiliation": "Vela Media Network",
+      "formal_power": 33,
+      "informal_power": 86,
+      "resources": 90,
+      "risk_tolerance": 57,
+      "status_sensitivity": 63,
+      "time_horizon": 67,
+      "player_relationship": {
+        "familiarity": 4,
+        "affection": 40,
+        "trust": 2,
+        "respect": 4,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 5,
+        "national_interest": 10,
+        "personal_power": 20,
+        "faction_success": 0,
+        "reputation": 20,
+        "relationships": 15,
+        "wealth": 20,
+        "ideology": 10
+      },
+      "core_objective": "Να κρατήσει Vela commercially dominant και politically relevant χωρίς να χάσει journalistic credibility.",
+      "fears": [
+        "irrelevance to younger audiences",
+        "regulatory retaliation",
+        "να θεωρηθεί Aureon mouthpiece"
+      ],
+      "values": [
+        "influence",
+        "quality journalism",
+        "commercial survival",
+        "access"
+      ],
+      "public_identity": "Κοσμοπολίτης proprietor, philanthropist, επιμένει ότι δεν διατάζει editorial lines.",
+      "private_contradiction": "Πιστεύει σε editorial independence ενώ shapeάρει incentives, appointments και resource allocation.",
+      "blind_spot": "Θεωρεί indirect agenda influence ουσιαστικά διαφορετικό από editorial control ακόμη όταν τα effects μοιάζουν.",
+      "developer_truth": "Δεν δίνει καθημερινές propaganda orders για Aureon. Προστατεύει όμως relationships μέσω subtle allocation decisions.",
+      "competency_hooks": [
+        "RP3",
+        "RP4",
+        "PN2",
+        "CI2",
+        "PI1"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "ivo_marek": {
+      "name": "Ivo Marek",
+      "tier": "B",
+      "age": 47,
+      "role": "Chief of Staff to President Varin",
+      "affiliation": "Presidency",
+      "formal_power": 22,
+      "informal_power": 82,
+      "resources": 48,
+      "risk_tolerance": 27,
+      "status_sensitivity": 38,
+      "time_horizon": 81,
+      "player_relationship": {
+        "familiarity": 34,
+        "affection": 40,
+        "trust": 27,
+        "respect": 31,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 3,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 35,
+        "national_interest": 20,
+        "personal_power": 5,
+        "faction_success": 0,
+        "reputation": 10,
+        "relationships": 15,
+        "wealth": 0,
+        "ideology": 15
+      },
+      "core_objective": "Να προστατεύει χρόνο, ουδετερότητα και decision bandwidth της Προέδρου.",
+      "fears": [
+        "access capture",
+        "decision overload",
+        "unrecorded commitments"
+      ],
+      "values": [
+        "discretion",
+        "procedure",
+        "reliability",
+        "institutional loyalty"
+      ],
+      "public_identity": "Σχεδόν αόρατος. Δεν δίνει interviews.",
+      "private_contradiction": "Για να αποτρέψει access capture γίνεται ο ίδιος chokepoint.",
+      "blind_spot": "Μπορεί να μπερδεύει unfamiliarity με unreliability και να ευνοεί established actors.",
+      "developer_truth": "Δεν είναι anti-player. Απλώς ένας fast-rising analyst είναι ακριβώς το informal node που έχει μάθει να παρακολουθεί.",
+      "competency_hooks": [
+        "PN4",
+        "PN6",
+        "CI1",
+        "TE4",
+        "RP1"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "nela_orr": {
+      "name": "Nela Orr",
+      "tier": "B",
+      "age": 54,
+      "role": "Senior Clerk of Assembly Rules and Proceedings",
+      "affiliation": "Lydrian Assembly",
+      "formal_power": 18,
+      "informal_power": 73,
+      "resources": 29,
+      "risk_tolerance": 21,
+      "status_sensitivity": 15,
+      "time_horizon": 90,
+      "player_relationship": {
+        "familiarity": 5,
+        "affection": 40,
+        "trust": 2,
+        "respect": 4,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 50,
+        "national_interest": 15,
+        "personal_power": 0,
+        "faction_success": 0,
+        "reputation": 10,
+        "relationships": 10,
+        "wealth": 0,
+        "ideology": 15
+      },
+      "core_objective": "Να κρατήσει parliamentary procedure προβλέψιμη και ουδέτερη.",
+      "fears": [
+        "clerks ως political weapons",
+        "rules rewritten mid-contest",
+        "ambiguity που γίνεται constitutional crisis"
+      ],
+      "values": [
+        "procedure",
+        "clarity",
+        "neutrality",
+        "institutional memory"
+      ],
+      "public_identity": "Άγνωστη. Οι βουλευτές μαθαίνουν το όνομά της όταν χρειάζονται κάτι δύσκολο.",
+      "private_contradiction": "Λέει ότι οι rules είναι neutral ενώ ξέρει ότι sequencing έχει distributive effects.",
+      "blind_spot": "Μπορεί να overvalue precedent όταν νέα κατάσταση απαιτεί νέο rule.",
+      "developer_truth": "Συχνά ξέρει ότι μια political impossibility είναι απλώς procedural assumption.",
+      "competency_hooks": [
+        "PN1",
+        "PN4",
+        "TE1",
+        "JD2",
+        "DG2"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "petra_lys": {
+      "name": "Petra Lys",
+      "tier": "B",
+      "age": 43,
+      "role": "Director of Strategic Partnerships at Aureon",
+      "affiliation": "Aureon Consortium",
+      "formal_power": 18,
+      "informal_power": 88,
+      "resources": 71,
+      "risk_tolerance": 50,
+      "status_sensitivity": 47,
+      "time_horizon": 76,
+      "player_relationship": {
+        "familiarity": 4,
+        "affection": 40,
+        "trust": 2,
+        "respect": 5,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 5,
+        "national_interest": 10,
+        "personal_power": 15,
+        "faction_success": 0,
+        "reputation": 10,
+        "relationships": 25,
+        "wealth": 20,
+        "ideology": 15
+      },
+      "core_objective": "Να κρατά σχέσεις λειτουργικές πριν τα προβλήματα γίνουν formal confrontation.",
+      "fears": [
+        "formal rules που κάνουν coordination αδύνατο",
+        "να γίνει scapegoat fixer",
+        "η Alina να διαλύσει relationship architecture πολύ γρήγορα"
+      ],
+      "values": [
+        "reciprocity",
+        "discretion",
+        "relationship maintenance",
+        "practicality"
+      ],
+      "public_identity": "Low-profile corporate executive. Σπάνια δίπλα στον Damir.",
+      "private_contradiction": "Πιστεύει ότι αντικαθιστά corruption με relationship management, αλλά perpetuates access asymmetry.",
+      "blind_spot": "Θεωρεί access inequality φυσικό και υποτιμά legitimacy damage.",
+      "developer_truth": "Ξέρει περισσότερα για Harbor contacts από τον Damir, χωρίς να έχει γράψει η ίδια τα problematic tender clauses.",
+      "competency_hooks": [
+        "PN2",
+        "PN3",
+        "PI3",
+        "CI4",
+        "RP4"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "avera_dren": {
+      "name": "Ambassador Avera Dren",
+      "tier": "A",
+      "age": 50,
+      "role": "Ordan Ambassador to Lydria",
+      "affiliation": "Ordan Federation",
+      "formal_power": 77,
+      "informal_power": 87,
+      "resources": 73,
+      "risk_tolerance": 54,
+      "status_sensitivity": 65,
+      "time_horizon": 82,
+      "player_relationship": {
+        "familiarity": 4,
+        "affection": 40,
+        "trust": 1,
+        "respect": 4,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 5,
+        "national_interest": 40,
+        "personal_power": 10,
+        "faction_success": 20,
+        "reputation": 10,
+        "relationships": 10,
+        "wealth": 0,
+        "ideology": 5
+      },
+      "core_objective": "Να κρατήσει τη Lydria αρκετά κοντά στην Ordan ώστε να μη γίνει πλήρως στρατηγικό προγεφύρωμα του Continental Compact.",
+      "fears": [
+        "hard anti-Ordan realignment",
+        "loss of Eastern Marches ties",
+        "scandal που κάνει κάθε Ordan contact radioactive"
+      ],
+      "values": [
+        "state interest",
+        "professional diplomacy",
+        "reciprocity",
+        "long memory",
+        "status"
+      ],
+      "public_identity": "Κομψή, ήρεμη, μιλά για strategic pluralism και sovereignty.",
+      "private_contradiction": "Μπορεί να προσφέρει αληθινά mutually beneficial deals ενώ ταυτόχρονα προτιμά Lydrian fragmentation σε μεγάλα strategic questions.",
+      "blind_spot": "Ερμηνεύει μικρό-state autonomy κυρίως ως balance-of-power maneuver και όχι πάντα ως πραγματικό attachment to rules.",
+      "developer_truth": "Ξέρει μερική Ordan-linked narrative funding, όχι κάθε operation. Το Ordan system έχει competing agencies.",
+      "competency_hooks": [
+        "CA1",
+        "CI3",
+        "PN3",
+        "PE3",
+        "RP2"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "talia_rhen": {
+      "name": "Talia Rhen",
+      "tier": "A",
+      "age": 46,
+      "role": "Foreign Minister of Serrat and lead maritime negotiator",
+      "affiliation": "Republic of Serrat",
+      "formal_power": 82,
+      "informal_power": 75,
+      "resources": 66,
+      "risk_tolerance": 46,
+      "status_sensitivity": 52,
+      "time_horizon": 79,
+      "player_relationship": {
+        "familiarity": 4,
+        "affection": 40,
+        "trust": 1,
+        "respect": 4,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 10,
+        "national_interest": 40,
+        "personal_power": 5,
+        "faction_success": 15,
+        "reputation": 10,
+        "relationships": 10,
+        "wealth": 0,
+        "ideology": 10
+      },
+      "core_objective": "Να προστατεύσει Serrat maritime/economic claims χωρίς να επιτρέψει rivalry να γίνει war.",
+      "fears": [
+        "hardliners να την outflank",
+        "Lydrian move που κάνει compromise να μοιάζει surrender",
+        "accidental escalation at sea"
+      ],
+      "values": [
+        "national interest",
+        "legal argument",
+        "reciprocity",
+        "face-saving",
+        "regional stability"
+      ],
+      "public_identity": "Firm but measured. Serrat media άλλοτε τη λένε soft κι άλλοτε provocatively ambitious.",
+      "private_contradiction": "Θέλει stable deal αλλά χρησιμοποιεί πίεση για domestic bargaining, που μπορεί να ενισχύσει Lydrian hawks.",
+      "blind_spot": "Υποτιμά το πόσο Sera Islands local politics περιορίζει Velis.",
+      "developer_truth": "Δεν θέλει major war. Θα πάρει πραγματικό political risk για reciprocal settlement αν έχει face-saving path.",
+      "competency_hooks": [
+        "CA3",
+        "CI4",
+        "TE1",
+        "PN5",
+        "RP5"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    },
+    "emil_varos": {
+      "name": "Emil Varos",
+      "tier": "B",
+      "age": 58,
+      "role": "Continental Compact Commissioner for Infrastructure and Strategic Connectivity",
+      "affiliation": "Continental Compact",
+      "formal_power": 71,
+      "informal_power": 69,
+      "resources": 84,
+      "risk_tolerance": 38,
+      "status_sensitivity": 33,
+      "time_horizon": 86,
+      "player_relationship": {
+        "familiarity": 3,
+        "affection": 40,
+        "trust": 1,
+        "respect": 3,
+        "fear": 0,
+        "envy": 0,
+        "grievance": 0,
+        "dependency": 0,
+        "ideological_alignment": 50,
+        "material_alignment": 50
+      },
+      "utility_weights": {
+        "institutional_legitimacy": 25,
+        "national_interest": 20,
+        "personal_power": 5,
+        "faction_success": 15,
+        "reputation": 15,
+        "relationships": 5,
+        "wealth": 0,
+        "ideology": 15
+      },
+      "core_objective": "Να διασφαλίσει ότι Aster Gate ενισχύει regional resilience χωρίς captured monopoly ή fiscal sink.",
+      "fears": [
+        "Lydrian instability",
+        "Aureon capture",
+        "Ordan strategic entry into critical nodes"
+      ],
+      "values": [
+        "rules",
+        "interoperability",
+        "fiscal discipline",
+        "regional integration"
+      ],
+      "public_identity": "Technocratic, rules-heavy, speaks in milestones and financing conditions.",
+      "private_contradiction": "Παρουσιάζει conditions σαν neutral technical rules ενώ member-state politics τα επηρεάζουν.",
+      "blind_spot": "Υποτιμά sovereignty/status cost του να φαίνεται ότι υπαγορεύει.",
+      "developer_truth": "Δεν θέλει να 'κατέχει' Aster Gate, αλλά κάποιες Compact states θέλουν contract advantage για δικές τους firms.",
+      "competency_hooks": [
+        "RP2",
+        "TE3",
+        "SC6",
+        "PN3",
+        "DG5"
+      ],
+      "memories": [],
+      "obligations": [],
+      "current_plan": null,
+      "fallback_plan": null
+    }
+  },
+  "adaptive_rival": {
+    "character_id": "silas_koren",
+    "pattern_beliefs": {
+      "player_response_speed": {
+        "confidence": 0,
+        "estimate": null
+      },
+      "player_verification_depth": {
+        "confidence": 0,
+        "estimate": null
+      },
+      "player_conflict_aversion": {
+        "confidence": 0,
+        "estimate": null
+      },
+      "player_status_sensitivity": {
+        "confidence": 0,
+        "estimate": null
+      },
+      "player_loyalty_bias": {
+        "confidence": 0,
+        "estimate": null
+      },
+      "player_disclosure_style": {
+        "confidence": 0,
+        "estimate": null
+      },
+      "player_reserve_preference": {
+        "confidence": 0,
+        "estimate": null
+      },
+      "player_reversibility_preference": {
+        "confidence": 0,
+        "estimate": null
+      },
+      "player_public_response_threshold": {
+        "confidence": 0,
+        "estimate": null
+      },
+      "player_process_preference": {
+        "confidence": 0,
+        "estimate": null
+      }
+    },
+    "learning_rule": "Update only from plausibly observed player actions and require repeated evidence before high-confidence exploitation."
+  }
+}
