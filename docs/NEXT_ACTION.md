@@ -12,9 +12,9 @@
 **M0 / P00 — Foundation/testing (automated baseline available).**
 
 ## Immediate next task
-**KM-008 — CI, branch protections and issue delivery convention** (P0; dependencies KM-002/003/004 done). KM-005 stays in review until human screenshot/device assessment.
+**KM-011 — Separate scene renderer from interaction/state orchestration** (P0; KM-009 and KM-004 now done). Keep its scope modular, test all existing scene/save/instrument flows.
 
-**Next scene architecture task:** KM-011 (renderer/controller separation) is unlocked by KM-009 and KM-004. KM-010 still waits for KM-005 acceptance.
+**Human gates:** KM-005 visual screenshots remain review; KM-008 branch protection remains review until [owner issue #10](https://github.com/statego2/KingMaker/issues/10) is verified. KM-007 and KM-010 remain dependency-blocked.
 
 **In review:** KM-005 screenshot baseline [PR #6](https://github.com/statego2/KingMaker/pull/6), [15 screenshots](https://github.com/statego2/KingMaker/actions/runs/37692937460), 0 automated overflow warnings or page errors. **Completed:** KM-006 schema audit [PR #7](https://github.com/statego2/KingMaker/pull/7), KM-009 scene contract [PR #8](https://github.com/statego2/KingMaker/pull/8). **Dependency-ready after KM-006:** KM-008 and KM-009; additionally P1 KM-012 / KM-089.
 

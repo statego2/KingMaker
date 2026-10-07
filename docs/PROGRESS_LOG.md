@@ -41,3 +41,9 @@ Entries document **verified project activity**, separate from the aspirational b
 - **Verification:** original/current scene catalog of 18 maps identically, unknown modes fail softly, legacy evidence is not silently treated as independently sourced. [GitHub Actions game-tests run](https://github.com/statego2/KingMaker/actions/runs/37693589420) PASS; full follow-up CI on the final integrated commit required.
 - **Runtime/save risk:** no state/save key change; missing real art/source provenance remains explicitly unimplemented. Human browser validation is not inferred from Node tests.
 - **Next:** KM-008 M0 CI delivery convention; KM-011 scene renderer/controller boundary. KM-010 remains blocked by KM-005 review.
+
+## 2026-10-08 — KM-008 all-PR CI and branch policy in review
+- **Scope:** [PR #9](https://github.com/statego2/KingMaker/pull/9) makes backlog validation a general PR check and introduces CODEOWNERS and `docs/CI_AND_RELEASE_POLICY.md` with ownership, issue requirements and rollback.
+- **Actual final branch CI:** [backlog](https://github.com/statego2/KingMaker/actions/runs/37694129392) PASS and [game-tests](https://github.com/statego2/KingMaker/actions/runs/37694129354) PASS.
+- **Remaining approval:** GitHub main branch ruleset not changed by connector; [issue #10](https://github.com/statego2/KingMaker/issues/10) captures required owner-only manual activation and blocked-merge verification. Task remains `review` pending that evidence.
+- **Next dependency-ready P0:** KM-011 scene renderer/controller separation; KM-007/KM-010 await KM-005 human visual acceptance.
