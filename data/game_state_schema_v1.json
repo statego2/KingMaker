@@ -1,0 +1,470 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kingmaker.game_state.schema.v1",
+  "title": "KINGMAKER Game State v1",
+  "type": "object",
+  "required": [
+    "meta",
+    "time",
+    "world",
+    "player",
+    "actors",
+    "network",
+    "story",
+    "content_runtime"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "game_version",
+        "save_id",
+        "rng_seed"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string"
+        },
+        "game_version": {
+          "type": "string"
+        },
+        "save_id": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "updated_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rng_seed": {
+          "type": "integer"
+        }
+      }
+    },
+    "time": {
+      "type": "object",
+      "required": [
+        "campaign_day",
+        "time_block",
+        "act",
+        "chapter",
+        "turn"
+      ],
+      "properties": {
+        "campaign_day": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "time_block": {
+          "enum": [
+            "morning",
+            "midday",
+            "afternoon",
+            "evening",
+            "night",
+            "compressed"
+          ]
+        },
+        "act": {
+          "type": "string"
+        },
+        "chapter": {
+          "type": "string"
+        },
+        "turn": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "world": {
+      "type": "object",
+      "required": [
+        "tracks",
+        "pressures",
+        "institutions",
+        "factions",
+        "narratives",
+        "flags"
+      ],
+      "properties": {
+        "tracks": {
+          "$ref": "#/$defs/scoreMap"
+        },
+        "pressures": {
+          "$ref": "#/$defs/scoreMap"
+        },
+        "institutions": {
+          "type": "object"
+        },
+        "factions": {
+          "type": "object"
+        },
+        "narratives": {
+          "type": "object"
+        },
+        "flags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "boolean",
+              "string",
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "player": {
+      "type": "object",
+      "required": [
+        "resources",
+        "knowledge",
+        "behavior_profile",
+        "staff",
+        "promises"
+      ],
+      "properties": {
+        "resources": {
+          "$ref": "#/$defs/scoreMap"
+        },
+        "knowledge": {
+          "type": "object"
+        },
+        "behavior_profile": {
+          "type": "object"
+        },
+        "staff": {
+          "type": "object"
+        },
+        "promises": {
+          "type": "object"
+        }
+      }
+    },
+    "actors": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/actor"
+      }
+    },
+    "network": {
+      "type": "object",
+      "required": [
+        "nodes",
+        "edges"
+      ],
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/networkEdge"
+          }
+        }
+      }
+    },
+    "story": {
+      "type": "object",
+      "required": [
+        "active_scenes",
+        "completed_scenes",
+        "scheduled_consequences",
+        "chapter_flags"
+      ],
+      "properties": {
+        "active_scenes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "completed_scenes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scheduled_consequences": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "chapter_flags": {
+          "type": "object"
+        }
+      }
+    },
+    "content_runtime": {
+      "type": "object",
+      "required": [
+        "content_version",
+        "seen_content"
+      ],
+      "properties": {
+        "content_version": {
+          "type": "string"
+        },
+        "seen_content": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rng_log": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "scoreMap": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "properties": {
+        "familiarity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "affection": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "trust": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "respect": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "fear": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "envy": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "grievance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "dependency": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "ideological_alignment": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "material_alignment": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "belief": {
+      "type": "object",
+      "required": [
+        "proposition",
+        "probability",
+        "confidence"
+      ],
+      "properties": {
+        "proposition": {
+          "type": "string"
+        },
+        "probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "last_updated": {
+          "type": "integer"
+        }
+      }
+    },
+    "memory": {
+      "type": "object",
+      "required": [
+        "memory_id",
+        "summary",
+        "salience",
+        "tags"
+      ],
+      "properties": {
+        "memory_id": {
+          "type": "string"
+        },
+        "event_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "interpretation": {
+          "type": "string"
+        },
+        "believed_intent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "benefit": {
+          "type": "number"
+        },
+        "cost": {
+          "type": "number"
+        },
+        "salience": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "decay": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "required": [
+        "state",
+        "player_relationship",
+        "beliefs",
+        "memories"
+      ],
+      "properties": {
+        "state": {
+          "type": "object"
+        },
+        "player_relationship": {
+          "$ref": "#/$defs/relationship"
+        },
+        "beliefs": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/belief"
+          }
+        },
+        "memories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/memory"
+          }
+        },
+        "current_plan": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fallback_plan": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "networkEdge": {
+      "type": "object",
+      "required": [
+        "from",
+        "to",
+        "type",
+        "strength"
+      ],
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "strength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "direction": {
+          "type": "string"
+        },
+        "visibility": {
+          "enum": [
+            "hidden",
+            "suspected",
+            "known"
+          ]
+        },
+        "stability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}
