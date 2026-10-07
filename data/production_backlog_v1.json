@@ -228,7 +228,7 @@
       "stream": "ux",
       "priority": "P0",
       "size": "M",
-      "status": "todo",
+      "status": "review",
       "depends_on": [
         "KM-001",
         "KM-002"
@@ -240,8 +240,13 @@
         "First/longest/final scenes have captured layouts",
         "All clipped actions, illegible facts and overlap have issues"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/pull/6",
+        "https://github.com/statego2/KingMaker/actions/runs/37692937460",
+        "https://github.com/statego2/KingMaker/actions/runs/37692937460/artifacts/11513913462",
+        "docs/VISUAL_BASELINE.md"
+      ],
+      "notes": "Chromium captured 15 screenshots across five emulated widths with 0 geometry warnings and 0 page errors. Automated visual baseline complete; human PNG inspection and actual-device interaction not verified, so acceptance criteria are not fully signed off."
     },
     {
       "id": "KM-006",
@@ -250,7 +255,7 @@
       "stream": "systems",
       "priority": "P0",
       "size": "M",
-      "status": "todo",
+      "status": "done",
       "depends_on": [
         "KM-001"
       ],
@@ -261,8 +266,13 @@
         "Every key system marked shipped/partial/spec only",
         "Backward-compatible migration risks and test fixtures identified"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/pull/7",
+        "https://github.com/statego2/KingMaker/actions/runs/37693129288",
+        "docs/STATE_SCHEMA_AUDIT.md",
+        "data/state_migration_map_v0_3_to_v1.json"
+      ],
+      "notes": "Schema audit documentation and 14-field/8-domain machine coverage map, with 2 regression tests; no runtime save migration was implemented."
     },
     {
       "id": "KM-007",

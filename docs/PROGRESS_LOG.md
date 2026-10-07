@@ -23,3 +23,15 @@ Entries document **verified project activity**, separate from the aspirational b
 - **Real defect exposed and corrected:** in `C02_S03`, the Civic Compact option had displaced argument fields (quality/result/debrief/effects), now corrected in `src/content.js`.
 - **Gaps:** browser interaction, visual screenshots and real-device review not run; branch-route coverage only one deterministic Act I route, not a combinatorial campaign audit. Save behavior unchanged.
 - **Follow-up:** KM-005 visual baseline, KM-006 state/schema audit; KM-008 delivery policy and CI hardening.
+
+## 2026-10-08 — KM-006 schema audit (v0.3 vs v1)
+- **Deliverables:** [PR #7](https://github.com/statego2/KingMaker/pull/7): `docs/STATE_SCHEMA_AUDIT.md`, `data/state_migration_map_v0_3_to_v1.json`, two tests freezing complete mapping of all 14 live root fields and 8 required v1 domains.
+- **Actual CI:** `npm run check` — PASS; `npm test` — **11/11 passed**; `npm run validate:backlog` — PASS ([run](https://github.com/statego2/KingMaker/actions/runs/37693129288)).
+- **Risks mapped:** corrupt-save fallback, forward-version overwrite, 14 vs 25 actor seed drift, callback ID collisions, event-log/inbox preservation and timeline semantics.
+- **Boundary:** No v1 migration or canonical schema mutation performed; migration decision belongs to KM-036 after earlier gold gates.
+
+## 2026-10-08 — KM-005 Chromium visual baseline, awaiting human acceptance
+- **Implementation:** [PR #6](https://github.com/statego2/KingMaker/pull/6), headless Playwright Chromium on five viewports × three selected Act I states; full-page PNGs and machine-readable viewport geometry uploaded as a [GitHub Actions artifact](https://github.com/statego2/KingMaker/actions/runs/37692937460).
+- **Actual run:** [CI #37692937460](https://github.com/statego2/KingMaker/actions/runs/37692937460) passed; **15 screenshots, 0 automated geometry warnings, 0 page errors**. Chapter 6 scene 2 was longest by text under initial state.
+- **Unverified:** PNGs need human visual/legibility inspection; true iPhone Safari/safe-area/device touch and accessibility acceptance are not claimed. Existing static + Node CI also passed.
+- **Status:** `review`, not `done`. Consequently KM-007 remains dependency-blocked. KM-008 / KM-009 are dependency-ready.
