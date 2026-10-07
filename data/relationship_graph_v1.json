@@ -1,0 +1,286 @@
+{
+  "schema_version": "1.0",
+  "note": "Typed edges. There is deliberately no single relationship score.",
+  "edges": [
+    {
+      "from": "elena_varin",
+      "to": "ivo_marek",
+      "type": "TRUST",
+      "strength": 88,
+      "direction": "mutual",
+      "note": "Ivo controls access because Elena trusts his neutrality."
+    },
+    {
+      "from": "elena_varin",
+      "to": "mara_eltan",
+      "type": "TRUST",
+      "strength": 78,
+      "direction": "mutual",
+      "note": "Institutional alliance built on competence and restraint."
+    },
+    {
+      "from": "elena_varin",
+      "to": "anton_beran",
+      "type": "RESPECT",
+      "strength": 62,
+      "direction": "mutual",
+      "note": "Strained respect after the Harbor scandal."
+    },
+    {
+      "from": "mara_eltan",
+      "to": "lea_marin",
+      "type": "MENTORSHIP",
+      "strength": 72,
+      "direction": "mara_to_lea",
+      "note": "Mara values Lea's analytical independence."
+    },
+    {
+      "from": "adrian_kessar",
+      "to": "liora_venn",
+      "type": "COALITION_POTENTIAL",
+      "strength": 66,
+      "direction": "mutual",
+      "note": "Modernization alliance with secrecy/centralization tension."
+    },
+    {
+      "from": "adrian_kessar",
+      "to": "ilyan_rhos",
+      "type": "ACCESS",
+      "strength": 63,
+      "direction": "mutual",
+      "note": "Policy-tech relationship; neither controls the other."
+    },
+    {
+      "from": "adrian_kessar",
+      "to": "mira_solen",
+      "type": "COALITION_POTENTIAL",
+      "strength": 58,
+      "direction": "mutual",
+      "note": "Plausible reform coalition with distributional conflict."
+    },
+    {
+      "from": "mira_solen",
+      "to": "rina_torvek",
+      "type": "ALLIANCE",
+      "strength": 79,
+      "direction": "mutual",
+      "note": "Shared labour constituency; compromise can strain it."
+    },
+    {
+      "from": "viktor_sarin",
+      "to": "silas_koren",
+      "type": "TRUST",
+      "strength": 82,
+      "direction": "mutual",
+      "note": "Viktor provides shelter; Silas strategic architecture."
+    },
+    {
+      "from": "viktor_sarin",
+      "to": "damir_cael",
+      "type": "OLD_NETWORK",
+      "strength": 65,
+      "direction": "mutual",
+      "note": "Long establishment relationship, not command/control."
+    },
+    {
+      "from": "tomas_veyr",
+      "to": "eren_kasar",
+      "type": "RESPECT",
+      "strength": 61,
+      "direction": "mutual",
+      "note": "Security seriousness; tension over intelligence politicization."
+    },
+    {
+      "from": "tomas_veyr",
+      "to": "talia_rhen",
+      "type": "RIVALRY_RESPECT",
+      "strength": 58,
+      "direction": "mutual",
+      "note": "Adversarial maritime relationship with professional respect."
+    },
+    {
+      "from": "liora_venn",
+      "to": "nadia_serrin",
+      "type": "INFORMATIONAL_AFFINITY",
+      "strength": 54,
+      "direction": "mutual",
+      "note": "Shared anti-opacity instincts; journalism and party remain separate."
+    },
+    {
+      "from": "damir_cael",
+      "to": "alina_cael",
+      "type": "KINSHIP",
+      "strength": 90,
+      "direction": "mutual",
+      "note": "Family bond with succession/control conflict."
+    },
+    {
+      "from": "damir_cael",
+      "to": "petra_lys",
+      "type": "TRUST",
+      "strength": 84,
+      "direction": "mutual",
+      "note": "Petra manages the relationship network Damir relies on."
+    },
+    {
+      "from": "damir_cael",
+      "to": "lucan_vela",
+      "type": "MONEY_ACCESS",
+      "strength": 57,
+      "direction": "mutual",
+      "note": "Aureon minority media stake and elite-business relationship."
+    },
+    {
+      "from": "damir_cael",
+      "to": "kalen_ors",
+      "type": "CREDIT_DEPENDENCY",
+      "strength": 52,
+      "direction": "mutual",
+      "note": "Aureon and Meridian are financially linked."
+    },
+    {
+      "from": "sofia_deren",
+      "to": "kalen_ors",
+      "type": "REGULATORY_RELATION",
+      "strength": 71,
+      "direction": "sofia_to_kalen",
+      "note": "Professional respect plus supervisory tension."
+    },
+    {
+      "from": "selma_aric",
+      "to": "nadia_serrin",
+      "type": "TRUTH_DIFFERENT_CLOCKS",
+      "strength": 56,
+      "direction": "mutual",
+      "note": "Same facts, different evidence/publication clocks."
+    },
+    {
+      "from": "eren_kasar",
+      "to": "avera_dren",
+      "type": "ADVERSARIAL_PROFESSIONAL",
+      "strength": 64,
+      "direction": "mutual",
+      "note": "Counterintelligence-diplomatic relationship; ambiguity matters."
+    },
+    {
+      "from": "niko_arven",
+      "to": "tomas_veyr",
+      "type": "ISSUE_ALIGNMENT",
+      "strength": 51,
+      "direction": "mutual",
+      "note": "Overlap on Sera security, divergence on escalation."
+    },
+    {
+      "from": "niko_arven",
+      "to": "talia_rhen",
+      "type": "LOCAL_TENSION",
+      "strength": 42,
+      "direction": "mutual",
+      "note": "Island politics make maritime bargaining personally salient."
+    },
+    {
+      "from": "emil_varos",
+      "to": "adrian_kessar",
+      "type": "POLICY_AFFINITY",
+      "strength": 59,
+      "direction": "mutual",
+      "note": "Reform/financing affinity constrained by Compact conditions."
+    },
+    {
+      "from": "emil_varos",
+      "to": "damir_cael",
+      "type": "REGULATORY_TENSION",
+      "strength": 48,
+      "direction": "mutual",
+      "note": "Aster financing versus anti-capture safeguards."
+    },
+    {
+      "from": "lucan_vela",
+      "to": "nadia_serrin",
+      "type": "MEDIA_RIVALRY",
+      "strength": 36,
+      "direction": "mutual",
+      "note": "Mainstream scale versus investigative independence."
+    },
+    {
+      "from": "ivo_marek",
+      "to": "mara_eltan",
+      "type": "PROFESSIONAL_TRUST",
+      "strength": 67,
+      "direction": "mutual",
+      "note": "Both protect Presidency from information/access failure."
+    },
+    {
+      "from": "nela_orr",
+      "to": "silas_koren",
+      "type": "PROCEDURAL_RESPECT",
+      "strength": 55,
+      "direction": "mutual",
+      "note": "Silas knows her importance; she distrusts rule manipulation."
+    },
+    {
+      "from": "petra_lys",
+      "to": "silas_koren",
+      "type": "NETWORK_CONTACT",
+      "strength": 49,
+      "direction": "mutual",
+      "note": "Occasional establishment channel, no full trust."
+    },
+    {
+      "from": "avera_dren",
+      "to": "damir_cael",
+      "type": "COMMERCIAL_ACCESS",
+      "strength": 46,
+      "direction": "mutual",
+      "note": "Energy/infrastructure dialogue, not an agent relationship."
+    },
+    {
+      "from": "mira_solen",
+      "to": "adrian_kessar",
+      "type": "MUTUAL_DEPENDENCY",
+      "strength": 58,
+      "direction": "mutual",
+      "note": "Each may need the other for government."
+    },
+    {
+      "from": "liora_venn",
+      "to": "selma_aric",
+      "type": "INSTITUTIONAL_AFFINITY",
+      "strength": 61,
+      "direction": "mutual",
+      "note": "Transparency/integrity alignment, tension over secrecy."
+    },
+    {
+      "from": "sofia_deren",
+      "to": "elena_varin",
+      "type": "INSTITUTIONAL_TRUST",
+      "strength": 74,
+      "direction": "mutual",
+      "note": "Stability, legitimacy, confidentiality."
+    },
+    {
+      "from": "talia_rhen",
+      "to": "avera_dren",
+      "type": "REGIONAL_COMPETITION",
+      "strength": 37,
+      "direction": "mutual",
+      "note": "Different external interests intersect around Lydria."
+    },
+    {
+      "from": "ilyan_rhos",
+      "to": "alina_cael",
+      "type": "BUSINESS_COOPETITION",
+      "strength": 45,
+      "direction": "mutual",
+      "note": "Aster digital/logistics integration creates both."
+    },
+    {
+      "from": "rina_torvek",
+      "to": "ilyan_rhos",
+      "type": "NEGOTIATION_TENSION",
+      "strength": 41,
+      "direction": "mutual",
+      "note": "Automation conflict with potential productive bargain."
+    }
+  ]
+}
