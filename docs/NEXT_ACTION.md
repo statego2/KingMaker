@@ -8,7 +8,8 @@
 
 ## Active P0 review blocker — issue #12
 - **KM-005 / [issue #12](https://github.com/statego2/KingMaker/issues/12):** A responsive title/dossier safe-zone fix, content-sized short-screen choice cards and selected-option visibility change are committed on [task branch](https://github.com/statego2/KingMaker/tree/task/KM-005-mobile-safe-zones-issue-12) ([code commit](https://github.com/statego2/KingMaker/commit/1edf3d8807e00960f9c4483726bc07312c2c56d0)).
-- **Next:** open a [comparison PR](https://github.com/statego2/KingMaker/compare/main...task/KM-005-mobile-safe-zones-issue-12?expand=1), verify all Actions (game-tests, validate-backlog, Chromium capture/mobile regression), inspect 320px screenshots and test real iOS Safari/system text sizing. The connector refused PR creation in this session; no PR, CI success, device acceptance or main merge is claimed.
+- **Verified task-branch Actions:** [game-tests](https://github.com/statego2/KingMaker/actions/runs/37701190552) PASS (`npm run check`, `npm test` 16/16, `npm run validate:backlog`); [backlog](https://github.com/statego2/KingMaker/actions/runs/37701190596) PASS; [Chromium](https://github.com/statego2/KingMaker/actions/runs/37701190558) PASS (15 standard screenshots + 320px zoom stress, 0 baseline warnings/page errors, 4 mobile widths and interaction smoke). [Screenshot artifact](https://github.com/statego2/KingMaker/actions/runs/37701190558/artifacts/11517876187).
+- **Next:** open the [comparison PR](https://github.com/statego2/KingMaker/compare/main...task/KM-005-mobile-safe-zones-issue-12?expand=1) and request owner review; inspect 320/375/390/430 screenshots and test real iOS Safari, text sizing, touch and safe areas. Connector PR creation was blocked; **no PR, device approval or main merge** is claimed.
 - Keep KM-005 at **review** until human/device approval. This is not a new dependency-ready P0 task.
 
 ## Current dependency gates
