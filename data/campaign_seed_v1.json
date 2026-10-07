@@ -1,0 +1,1000 @@
+{
+  "schema_version": "1.0",
+  "campaign_id": "lydria_main_campaign",
+  "title": "KINGMAKER: The Game of Judgment",
+  "structure": {
+    "acts": 6,
+    "core_chapters": 36,
+    "branching_model": "spine_plus_stateful_recombination",
+    "crisis_composer_act": "ACT_V"
+  },
+  "government_configurations": {
+    "GOV_REFORM_ACCORD": {
+      "name": "Reform Accord",
+      "seat_logic": "Renewal Alliance 68 + Civic Labour 52 + at least one Independent = 121+",
+      "likely_pm": "Adrian Kessar",
+      "strengths": [
+        "clear modernization mandate",
+        "labor included inside government",
+        "strong Aster reform capacity"
+      ],
+      "risks": [
+        "one-vote fragility",
+        "Mira must prove Labour is not junior partner",
+        "regional kingmaker dependency"
+      ]
+    },
+    "GOV_RECONSTRUCTION": {
+      "name": "Reconstruction Coalition",
+      "seat_logic": "Renewal Alliance 68 + Stability Union 46 + at least seven Independents = 121+",
+      "likely_pm": "Adrian Kessar or negotiated rotation",
+      "strengths": [
+        "administrative depth",
+        "business confidence",
+        "broad establishment capability"
+      ],
+      "risks": [
+        "anti-corruption legitimacy problem",
+        "old/new network tension",
+        "Mira and labour outside government"
+      ]
+    },
+    "GOV_CIVIC_COMPACT": {
+      "name": "Civic Compact",
+      "seat_logic": "Civic Labour 52 + Stability Union 46 + Free Cities 22 + at least one Independent = 121+",
+      "likely_pm": "Mira Solen",
+      "strengths": [
+        "broad anti-dominance coalition",
+        "strong oversight legitimacy",
+        "regional bargaining room"
+      ],
+      "risks": [
+        "ideological breadth",
+        "Adrian becomes strong opposition focal point",
+        "economic strategy disputes"
+      ]
+    }
+  },
+  "player_power_routes": {
+    "institutional": {
+      "primary_currency": [
+        "credibility",
+        "information",
+        "institutional_authority"
+      ],
+      "primary_risk": "shadow_government"
+    },
+    "political": {
+      "primary_currency": [
+        "formal_authority",
+        "political_capital",
+        "agenda_control"
+      ],
+      "primary_risk": "faction_capture"
+    },
+    "network": {
+      "primary_currency": [
+        "access",
+        "network_centrality",
+        "goodwill"
+      ],
+      "primary_risk": "low_accountability_and_patron_dependency"
+    }
+  },
+  "acts": [
+    {
+      "id": "ACT_I",
+      "title": "THE OUTSIDER",
+      "time": "Days 1–32 after the snap election",
+      "mastery": "Recognition → Diagnosis",
+      "player_state": "Junior analyst, SCS. Information access without command authority.",
+      "world_state": "Hung parliament, Harbor Contracts scandal unresolved, Aster financing clock running.",
+      "central_question": "Who actually has power, what is true, and which relationships are real?",
+      "chapters": [
+        {
+          "id": "C01",
+          "title": "DAY ZERO",
+          "premise": "The morning after the election, the SCS receives three incompatible coalition maps before markets open.",
+          "actors": [
+            "Elena Varin",
+            "Mara Eltan",
+            "Lea Marin",
+            "Ivo Marek",
+            "Nela Orr"
+          ],
+          "engines": [
+            "Government Formation",
+            "Information Ecology"
+          ],
+          "core_tension": "Reality vs Appearance ↔ Source Evaluation",
+          "required_beats": [
+            "Player discovers that formal seat arithmetic is not enough: attendance, independents, internal party factions and procedure matter.",
+            "Mara gives the player a raw briefing task rather than a recommendation task.",
+            "Nela Orr quietly corrects a procedural assumption everyone in the political press is repeating."
+          ],
+          "decision_gate": "Whether the player reports uncertainty honestly or turns a fragile inference into a confident recommendation.",
+          "delayed_consequences": [
+            "Establishes the player's first credibility profile with Mara and the Presidency.",
+            "Silas receives his first weak signal that an unknown SCS analyst influenced the morning brief."
+          ]
+        },
+        {
+          "id": "C02",
+          "title": "THE 121ST VOTE",
+          "premise": "Every plausible government is one or more votes short once real commitments are separated from public statements.",
+          "actors": [
+            "Niko Arven",
+            "Adrian Kessar",
+            "Mira Solen",
+            "Viktor Sarin",
+            "Silas Koren"
+          ],
+          "engines": [
+            "Government Formation",
+            "Coalition Engine"
+          ],
+          "core_tension": "Coalition Building ↔ Dependency",
+          "required_beats": [
+            "Niko Arven is treated by parties as a number; he pushes back.",
+            "The player must distinguish stated ideological objections from concrete regional demands.",
+            "Silas uses a harmless rumor to see which coalition channel reacts."
+          ],
+          "decision_gate": "Which missing vote is actually obtainable without creating a future hostage relationship.",
+          "delayed_consequences": [
+            "Creates early obligations to regional actors.",
+            "Can give Silas data about the player's verification and response speed."
+          ]
+        },
+        {
+          "id": "C03",
+          "title": "THE FILE",
+          "premise": "Civic Wire receives another Harbor document. Most of it is authentic; one annotation has uncertain provenance.",
+          "actors": [
+            "Nadia Serrin",
+            "Selma Aric",
+            "Anton Beran",
+            "Petra Lys",
+            "Mara Eltan"
+          ],
+          "engines": [
+            "Harbor Investigation",
+            "Media"
+          ],
+          "core_tension": "Transparency ↔ Secrecy",
+          "required_beats": [
+            "Nadia asks the SCS to confirm a technical timeline.",
+            "Selma warns that public comment could compromise chain of custody.",
+            "Anton offers context that makes one suspicious meeting less simple than it looks."
+          ],
+          "decision_gate": "How much the player confirms, to whom, and with what confidence language.",
+          "delayed_consequences": [
+            "Nadia may come to see the player as a reliable reality-check or as another gatekeeper.",
+            "Selma's later willingness to share process information changes."
+          ]
+        },
+        {
+          "id": "C04",
+          "title": "THE PRESIDENT'S HOUR",
+          "premise": "Party leaders arrive separately at the Presidency. Everyone believes someone else has a secret deal.",
+          "actors": [
+            "Elena Varin",
+            "Ivo Marek",
+            "Adrian Kessar",
+            "Mira Solen",
+            "Viktor Sarin",
+            "Liora Venn"
+          ],
+          "engines": [
+            "Government Formation",
+            "Presidency"
+          ],
+          "core_tension": "Access ↔ Agenda Control",
+          "required_beats": [
+            "Ivo makes the player compress four pages into one decision brief.",
+            "Elena asks which statements are facts, which are beliefs, and which are bargaining positions.",
+            "Liora insists any coalition bargain involving emergency authorities must include sunset clauses."
+          ],
+          "decision_gate": "What goes into the President's one-page synthesis—and what is deliberately left as uncertain.",
+          "delayed_consequences": [
+            "Determines which actors believe the Presidency is neutral.",
+            "Teaches that controlling the brief can be power even without voting."
+          ]
+        },
+        {
+          "id": "C05",
+          "title": "THE PRICE OF A MINISTRY",
+          "premise": "Coalition talks move from principles to portfolios, budgets and veto rights.",
+          "actors": [
+            "Adrian Kessar",
+            "Mira Solen",
+            "Viktor Sarin",
+            "Liora Venn",
+            "Niko Arven",
+            "Silas Koren"
+          ],
+          "engines": [
+            "Government Formation",
+            "Power & Networks"
+          ],
+          "core_tension": "Principle ↔ Pragmatism",
+          "required_beats": [
+            "Three coalition architectures become viable.",
+            "Each ministry allocation changes not only prestige but implementation power over Aster Gate, labor, finance and security.",
+            "Silas proposes a deal that looks generous because he values a hidden procedural veto more."
+          ],
+          "decision_gate": "Whether the player recognizes the difference between visible ministries and actual implementation chokepoints.",
+          "delayed_consequences": [
+            "Locks coalition promises that return in Acts II–III.",
+            "Determines which faction feels under-credited even if materially satisfied."
+          ]
+        },
+        {
+          "id": "C06",
+          "title": "GOVERNMENT AT DAWN",
+          "premise": "A government must be presented before financial markets reopen after a long weekend.",
+          "actors": [
+            "Elena Varin",
+            "Mara Eltan",
+            "Adrian Kessar",
+            "Mira Solen",
+            "Viktor Sarin",
+            "Liora Venn",
+            "Niko Arven"
+          ],
+          "engines": [
+            "Government Formation",
+            "Financial Confidence",
+            "NSO"
+          ],
+          "core_tension": "Speed ↔ Deliberation",
+          "required_beats": [
+            "The player delivers the final coalition risk map.",
+            "Aster Gate financing and market confidence make indefinite delay costly.",
+            "The parties demand control over the strategic-coordination function."
+          ],
+          "decision_gate": "Which governing configuration forms and under what constraints; whether the SCS becomes a protected cross-government office or a partisan unit.",
+          "delayed_consequences": [
+            "Sets GOVERNMENT_CONFIGURATION.",
+            "Sets the founding legitimacy and autonomy of the future NSO.",
+            "The player's name becomes known to top political strategists."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ACT_II",
+      "title": "THE OPERATOR",
+      "time": "Months 2–12",
+      "mastery": "Application",
+      "player_state": "The player receives an operational portfolio; title varies by government branch.",
+      "world_state": "Government exists, but coalition promises now collide with implementation, financing and labor.",
+      "central_question": "Seeing the right move is not the same as making a system execute it.",
+      "chapters": [
+        {
+          "id": "C07",
+          "title": "THE OFFICE WITH NO ARMY",
+          "premise": "The new National Strategy Office is authorized with impressive remit but almost no direct command power.",
+          "actors": [
+            "Mara Eltan",
+            "Lea Marin",
+            "Adrian Kessar",
+            "Mira Solen",
+            "Liora Venn",
+            "Ivo Marek"
+          ],
+          "engines": [
+            "NSO",
+            "Institutional Design"
+          ],
+          "core_tension": "Formal ↔ Informal Power",
+          "required_beats": [
+            "Mara designs reporting lanes.",
+            "Ministries resist giving data to a new coordinating body.",
+            "The player must obtain cooperation without pretending to have authority they do not possess."
+          ],
+          "decision_gate": "Build NSO through mandates, relationships, or personal escalation.",
+          "delayed_consequences": [
+            "Determines whether NSO grows as institution, patronage node, or player-centered network.",
+            "Lea's autonomy trajectory begins."
+          ]
+        },
+        {
+          "id": "C08",
+          "title": "NINETY-TWO DAYS",
+          "premise": "Continental Compact financing for Aster Gate expires unless governance and procurement architecture is agreed.",
+          "actors": [
+            "Emil Varos",
+            "Damir Cael",
+            "Alina Cael",
+            "Adrian Kessar",
+            "Liora Venn",
+            "Selma Aric"
+          ],
+          "engines": [
+            "Aster Gate",
+            "Financing",
+            "Integrity"
+          ],
+          "core_tension": "Speed ↔ Integrity",
+          "required_beats": [
+            "Emil wants milestone certainty.",
+            "Damir argues only Aureon can mobilize fast enough.",
+            "Liora and Selma warn against tailored procurement.",
+            "Alina proposes modular lots rather than one concession."
+          ],
+          "decision_gate": "Choose procurement architecture that balances delivery speed, competition, coordination and capture risk.",
+          "delayed_consequences": [
+            "Aureon's future leverage changes.",
+            "Construction speed and Continental financing conditions change.",
+            "Creates latent corruption/capture exposure for Act III."
+          ]
+        },
+        {
+          "id": "C09",
+          "title": "THE MACHINE FLOOR",
+          "premise": "Nexa and manufacturers announce automation plans before the labor transition framework is ready.",
+          "actors": [
+            "Rina Torvek",
+            "Mira Solen",
+            "Ilyan Rhos",
+            "Lea Marin"
+          ],
+          "engines": [
+            "Labour",
+            "Automation",
+            "Growth"
+          ],
+          "core_tension": "Growth ↔ Social Legitimacy",
+          "required_beats": [
+            "Rina threatens coordinated action but privately asks for early bargaining.",
+            "Ilyan claims delay will lose a technology cycle.",
+            "Lea shows displacement is geographically concentrated rather than nationwide."
+          ],
+          "decision_gate": "Design a transition package: sequencing, retraining, worker voice, productivity sharing and rollout speed.",
+          "delayed_consequences": [
+            "Sets LABOUR_PACT_QUALITY.",
+            "Affects Daran stability, growth capacity and Rina/Mira trust.",
+            "Changes whether a later strike is structural or avoidable."
+          ]
+        },
+        {
+          "id": "C10",
+          "title": "CHEAP ENERGY",
+          "premise": "Ordan offers a five-year energy contract significantly below alternatives just as fiscal pressure rises.",
+          "actors": [
+            "Avera Dren",
+            "Tomas Veyr",
+            "Sofia Deren",
+            "Emil Varos"
+          ],
+          "engines": [
+            "Energy",
+            "Foreign Affairs",
+            "Fiscal"
+          ],
+          "core_tension": "Independence ↔ Commitment",
+          "required_beats": [
+            "Avera frames the offer as ordinary commerce.",
+            "Tomas calls long lock-in strategic vulnerability.",
+            "Sofia warns expensive diversification can itself weaken the state.",
+            "Compact financing for alternatives is slower than the contract deadline."
+          ],
+          "decision_gate": "Choose contract duration, diversification spend and exit/volume options.",
+          "delayed_consequences": [
+            "Sets ORDAN_ENERGY_DEPENDENCY and FISCAL_HEADROOM.",
+            "Avera updates her model of what the player values.",
+            "Act V energy crisis severity becomes state-dependent."
+          ]
+        },
+        {
+          "id": "C11",
+          "title": "SOVEREIGN CLOUD",
+          "premise": "Nexa proposes the digital layer for Aster Gate while depending on foreign compute providers.",
+          "actors": [
+            "Ilyan Rhos",
+            "Liora Venn",
+            "Eren Kasar",
+            "Alina Cael",
+            "Lea Marin"
+          ],
+          "engines": [
+            "Aster Gate",
+            "Technology",
+            "Security"
+          ],
+          "core_tension": "Capability ↔ Narrative",
+          "required_beats": [
+            "Ilyan's sovereignty pitch is directionally true but ahead of present capability.",
+            "Liora wants auditability and privacy.",
+            "Eren worries about supply-chain access.",
+            "Aureon wants integration clarity."
+          ],
+          "decision_gate": "Define architecture and procurement so Lydria gains capability without pretending current independence.",
+          "delayed_consequences": [
+            "Sets DIGITAL_DEPENDENCY and NEXA_LEVERAGE.",
+            "Determines whether later cyber/compute shocks create single-point failure."
+          ]
+        },
+        {
+          "id": "C12",
+          "title": "THE FIRST REVIEW",
+          "premise": "Six months in, the government wants a public scorecard. Several reforms look better on paper than in execution.",
+          "actors": [
+            "Mara Eltan",
+            "Lea Marin",
+            "Adrian Kessar",
+            "Mira Solen",
+            "Lucan Vela"
+          ],
+          "engines": [
+            "NSO",
+            "Media",
+            "Implementation"
+          ],
+          "core_tension": "Reputation ↔ Substance",
+          "required_beats": [
+            "Ministries lobby the player to choose flattering metrics.",
+            "Vela offers prime-time interview.",
+            "Lea finds one headline KPI that is being gamed."
+          ],
+          "decision_gate": "Publish a scorecard architecture and decide how much personal visibility to accept.",
+          "delayed_consequences": [
+            "Sets PLAYER_VISIBILITY and INFORMATION_QUALITY.",
+            "Can make the player a public strategic figure earlier than is safe.",
+            "Silas gains more observable data if visibility is high."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ACT_III",
+      "title": "THE KINGMAKER",
+      "time": "Year 2",
+      "mastery": "Trade-off",
+      "player_state": "The player's network now crosses cabinet, opposition, business, media and institutions.",
+      "world_state": "The first coalition's internal costs mature; Aster Gate and the Harbor investigation create redistribution fights.",
+      "central_question": "Every gain now costs something else that also matters.",
+      "chapters": [
+        {
+          "id": "C13",
+          "title": "WHO OWNS THE GATE?",
+          "premise": "Aster Gate moves from architecture to concessions. Fast execution and anti-capture design now collide directly.",
+          "actors": [
+            "Damir Cael",
+            "Alina Cael",
+            "Emil Varos",
+            "Selma Aric",
+            "Ilyan Rhos"
+          ],
+          "engines": [
+            "Aster Gate",
+            "Corporate Power",
+            "Procurement"
+          ],
+          "core_tension": "Concentration ↔ Redundancy",
+          "required_beats": [
+            "Aureon can integrate physical infrastructure fastest.",
+            "Modular contracting reduces capture but creates coordination risk.",
+            "Foreign consortium bids threaten domestic control narratives."
+          ],
+          "decision_gate": "How much infrastructure control can one operator hold, and what interoperability/exit rights are mandatory?",
+          "delayed_consequences": [
+            "Sets ASTER_CHOKEPOINT_CONCENTRATION.",
+            "Determines Damir vs Alina succession leverage.",
+            "Future infrastructure crisis may be faster to solve but more dependent on Aureon."
+          ]
+        },
+        {
+          "id": "C14",
+          "title": "THE STORY THAT WON'T DIE",
+          "premise": "Selma's Harbor investigation reaches prosecutable findings while Nadia prepares a broader story about the culture that allowed them.",
+          "actors": [
+            "Selma Aric",
+            "Nadia Serrin",
+            "Anton Beran",
+            "Petra Lys",
+            "Viktor Sarin"
+          ],
+          "engines": [
+            "Harbor Investigation",
+            "Media",
+            "Reputation"
+          ],
+          "core_tension": "Legal Truth ↔ Public Truth",
+          "required_beats": [
+            "The criminal case is narrower than the systemic story.",
+            "Anton can explain how crisis urgency normalized undocumented access.",
+            "Petra knows more but fears becoming the convenient villain."
+          ],
+          "decision_gate": "Whether government treats the scandal as individuals, system design, or both.",
+          "delayed_consequences": [
+            "Old-order legitimacy, Stability Union recovery, Selma/Nadia relationship and procurement reform all change.",
+            "Harbor ceases to be a mystery and becomes an institutional lesson—or a permanent partisan myth."
+          ]
+        },
+        {
+          "id": "C15",
+          "title": "THE SECOND COALITION INSIDE THE FIRST",
+          "premise": "Cabinet partners cooperate publicly while building rival issue coalitions around labor, data, security and regional spending.",
+          "actors": [
+            "Adrian Kessar",
+            "Mira Solen",
+            "Liora Venn",
+            "Tomas Veyr",
+            "Niko Arven",
+            "Silas Koren"
+          ],
+          "engines": [
+            "Coalition",
+            "Agenda",
+            "Networks"
+          ],
+          "core_tension": "Consistency ↔ Adaptability",
+          "required_beats": [
+            "A nominal coalition vote no longer predicts policy votes.",
+            "The player can broker issue coalitions, but each success increases personal centrality.",
+            "Silas starts mapping which actor the player contacts first under pressure."
+          ],
+          "decision_gate": "Build a cross-party solution or force discipline through the governing coalition.",
+          "delayed_consequences": [
+            "Sets COALITION_ECOLOGY and PLAYER_CENTRALITY.",
+            "Determines whether the player becomes bridge or bottleneck."
+          ]
+        },
+        {
+          "id": "C16",
+          "title": "THE HEIR",
+          "premise": "Damir's health scare brings Aureon succession forward. Creditors, politicians and executives choose sides before he has.",
+          "actors": [
+            "Damir Cael",
+            "Alina Cael",
+            "Petra Lys",
+            "Kalen Ors",
+            "Lucan Vela"
+          ],
+          "engines": [
+            "Succession",
+            "Corporate Network",
+            "Finance"
+          ],
+          "core_tension": "Loyalty ↔ Capability",
+          "required_beats": [
+            "Alina wants governance reform.",
+            "Petra fears rapid dismantling of relationship capital.",
+            "Meridian cares about continuity more than family symbolism.",
+            "Damir interprets preparation for succession as doubt in his authority."
+          ],
+          "decision_gate": "Whether the player helps broker transition, stays out, or uses the moment to restructure Aureon's public leverage.",
+          "delayed_consequences": [
+            "Corporate network redistributes rather than disappears.",
+            "Alina/Damir/Petra trajectories diverge.",
+            "Aster Gate execution capacity changes."
+          ]
+        },
+        {
+          "id": "C17",
+          "title": "ONE VOTE TOO MANY",
+          "premise": "A budget/confidence package fails unless one bloc receives a concession that violates another partner's red line.",
+          "actors": [
+            "Adrian Kessar",
+            "Mira Solen",
+            "Viktor Sarin",
+            "Liora Venn",
+            "Niko Arven",
+            "Nela Orr"
+          ],
+          "engines": [
+            "Government Stability",
+            "Budget",
+            "Coalition"
+          ],
+          "core_tension": "Commitment ↔ Optionality",
+          "required_beats": [
+            "Nela identifies a lawful sequencing option nobody considered.",
+            "Niko can supply a vote at regional cost.",
+            "Liora can abstain if transparency provision changes.",
+            "Mira must show visible distributional gain."
+          ],
+          "decision_gate": "Save the existing government, redesign the package, or allow a controlled political reset.",
+          "delayed_consequences": [
+            "Creates KINGMAKER_EVENT_1.",
+            "Actors begin attributing government survival/fall personally to the player."
+          ]
+        },
+        {
+          "id": "C18",
+          "title": "THE KINGMAKER",
+          "premise": "After the confidence crisis, at least two viable governing arrangements exist. Leaders privately ask the player what they should do.",
+          "actors": [
+            "Elena Varin",
+            "Adrian Kessar",
+            "Mira Solen",
+            "Viktor Sarin",
+            "Silas Koren",
+            "Mara Eltan",
+            "Lea Marin"
+          ],
+          "engines": [
+            "Government Formation",
+            "NSO",
+            "Player Power"
+          ],
+          "core_tension": "Power ↔ Legitimacy",
+          "required_beats": [
+            "The player now has enough network information to make one coalition possible and another impossible.",
+            "Mara warns that an analyst who starts choosing governments has changed roles whether or not the title changed.",
+            "Silas offers cooperation on a government architecture that limits both players' factions."
+          ],
+          "decision_gate": "Use influence to preserve, replace or reconfigure government—and decide whether to remain inside the NSO, take political appointment, or preserve institutional distance.",
+          "delayed_consequences": [
+            "Locks PLAYER_POWER_ROUTE: institutional / political / network.",
+            "Sets second government configuration.",
+            "Changes Mara, Lea, Elena and Silas relationships for the rest of campaign."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ACT_IV",
+      "title": "THE COUNTERPLAYER",
+      "time": "Year 3",
+      "mastery": "Adversarial",
+      "player_state": "The player is now a known strategic actor. Opponents and allies model their behavior.",
+      "world_state": "The country's institutions are functioning, but every major actor has learned from the first two years.",
+      "central_question": "What happens when everyone else learns how you think?",
+      "chapters": [
+        {
+          "id": "C19",
+          "title": "THE PROBE",
+          "premise": "A minor parliamentary leak seems too small to matter. Its real purpose is to observe how the player verifies and responds.",
+          "actors": [
+            "Silas Koren",
+            "Nadia Serrin",
+            "Lea Marin"
+          ],
+          "engines": [
+            "Adaptive Rival",
+            "Media"
+          ],
+          "core_tension": "Predictability ↔ Trust",
+          "required_beats": [
+            "The leak contains one harmless error and one useful truth.",
+            "Silas can plausibly observe who the player calls and how quickly.",
+            "Lea notices the pattern only if the NSO retained provenance discipline."
+          ],
+          "decision_gate": "Respond normally, vary process intentionally, or investigate whether this is a probe.",
+          "delayed_consequences": [
+            "Updates SILAS_MODEL confidences.",
+            "Begins explicit counterplayer phase without giving Silas omniscience."
+          ]
+        },
+        {
+          "id": "C20",
+          "title": "TWO SOURCES",
+          "premise": "Two apparently independent reports point to the same Ordan-linked financing network. Their provenance partially converges.",
+          "actors": [
+            "Eren Kasar",
+            "Avera Dren",
+            "Nadia Serrin",
+            "Silas Koren"
+          ],
+          "engines": [
+            "Information",
+            "Foreign Influence"
+          ],
+          "core_tension": "Verification ↔ Adversarial Correlation",
+          "required_beats": [
+            "Eren refuses to call domestic recipients agents.",
+            "Nadia has documents but one source chain overlaps.",
+            "Avera offers verifiable commercial explanation for part of the network."
+          ],
+          "decision_gate": "How to attribute influence without overstating control.",
+          "delayed_consequences": [
+            "Can preserve or damage NID legitimacy.",
+            "Affects Ordan diplomatic channel and domestic faction polarization."
+          ]
+        },
+        {
+          "id": "C21",
+          "title": "THE RED LINE",
+          "premise": "A Serrat patrol and Lydrian coast-guard vessel collide near disputed waters. No one is killed; both sides publish incompatible maps.",
+          "actors": [
+            "Tomas Veyr",
+            "Talia Rhen",
+            "Elena Varin",
+            "Eren Kasar",
+            "Niko Arven"
+          ],
+          "engines": [
+            "Serrat",
+            "Security",
+            "Media"
+          ],
+          "core_tension": "Deterrence ↔ Restraint",
+          "required_beats": [
+            "Tomas needs a visible boundary.",
+            "Talia needs a face-saving path.",
+            "Niko's island constituents demand firmness.",
+            "The incident facts are less clear than the public narrative."
+          ],
+          "decision_gate": "Set immediate operational posture, investigation mechanism and public message.",
+          "delayed_consequences": [
+            "Sets MARITIME_HEAT.",
+            "If handled well, Talia becomes crisis counterpart later; if badly, domestic hardliners on both sides gain power."
+          ]
+        },
+        {
+          "id": "C22",
+          "title": "THE WEDGE",
+          "premise": "A foreign-backed commercial proposal gives one coalition faction a major regional benefit but undermines the government's shared strategic-autonomy plan.",
+          "actors": [
+            "Avera Dren",
+            "Mira Solen",
+            "Niko Arven",
+            "Adrian Kessar",
+            "Silas Koren"
+          ],
+          "engines": [
+            "Coalition",
+            "Ordan",
+            "Regional Politics"
+          ],
+          "core_tension": "Local Gain ↔ System Coherence",
+          "required_beats": [
+            "The offer is economically real, not a fake bribe.",
+            "Rejecting it imposes local cost.",
+            "Accepting it creates a dependency node and coalition status asymmetry."
+          ],
+          "decision_gate": "Design compensation, conditions, or acceptance/rejection in a way that does not turn one member into a permanent wedge.",
+          "delayed_consequences": [
+            "Updates ORDAN_LEVERAGE and coalition grievances.",
+            "Silas learns whether player prioritizes systemic consistency over local bargains."
+          ]
+        },
+        {
+          "id": "C23",
+          "title": "WHO WATCHES THE OFFICE?",
+          "premise": "Free Cities and Integrity Commission demand oversight after evidence that NSO briefings increasingly determine cabinet agendas.",
+          "actors": [
+            "Liora Venn",
+            "Selma Aric",
+            "Mara Eltan",
+            "Elena Varin",
+            "Lea Marin"
+          ],
+          "engines": [
+            "NSO",
+            "Oversight",
+            "Reputation"
+          ],
+          "core_tension": "Effectiveness ↔ Accountability",
+          "required_beats": [
+            "No proven abuse exists.",
+            "The concern is structural: agenda selection and information filtering now have political consequences.",
+            "A strong oversight design may reduce speed and player discretion."
+          ],
+          "decision_gate": "Accept meaningful oversight, design cosmetic oversight, fight inquiry, or shrink NSO remit.",
+          "delayed_consequences": [
+            "Sets NSO_LEGITIMACY and PLAYER_DISCRETION.",
+            "Lea/Mara relationship becomes a major legacy predictor.",
+            "Future emergency authority is easier or harder to justify."
+          ]
+        },
+        {
+          "id": "C24",
+          "title": "THE MIRROR",
+          "premise": "Silas predicts the player's likely response to a coalition maneuver and builds a second move around that adaptation.",
+          "actors": [
+            "Silas Koren",
+            "Viktor Sarin",
+            "Adrian Kessar",
+            "Mira Solen",
+            "Lea Marin"
+          ],
+          "engines": [
+            "Adaptive Rival",
+            "Coalition",
+            "Reputation"
+          ],
+          "core_tension": "Adaptability ↔ Coherence",
+          "required_beats": [
+            "The first maneuver is deliberately legible.",
+            "Lea can identify one inconsistency suggesting a trap.",
+            "Silas's true objective is not necessarily to defeat the player; it may be to force a public commitment that narrows future options."
+          ],
+          "decision_gate": "Use probe/mixed response, commit to the obvious counter, or refuse the frame entirely.",
+          "delayed_consequences": [
+            "If player counters well, Silas respect rises and model confidence drops.",
+            "If player is exploited, the loss may be political rather than game-ending.",
+            "Act ends with recognition that strategy itself is now observable behavior."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ACT_V",
+      "title": "THE SYSTEM",
+      "time": "Year 4; 10–20 compressed crisis days",
+      "mastery": "Integrated / Multi-System",
+      "player_state": "The player's influence is large enough that every intervention creates second- and third-order consequences.",
+      "world_state": "Latent vulnerabilities accumulated by earlier choices converge. The exact crisis stack is state-dependent.",
+      "central_question": "Can the system function when no single decision can be isolated?",
+      "chapters": [
+        {
+          "id": "C25",
+          "title": "MONDAY, 06:10",
+          "premise": "The Situation Room opens with more serious problems than the player has attention to manage.",
+          "actors": [
+            "Mara Eltan",
+            "Lea Marin",
+            "Sofia Deren",
+            "Eren Kasar",
+            "Elena Varin"
+          ],
+          "engines": [
+            "Crisis Stack",
+            "NSO",
+            "Attention"
+          ],
+          "core_tension": "Concentration ↔ Redundancy",
+          "required_beats": [
+            "Engine selects the three highest-pressure crisis modules from finance, energy, maritime, labor, Aster infrastructure and government stability.",
+            "Some reports conflict and some are simply late.",
+            "Player must delegate."
+          ],
+          "decision_gate": "Which crises receive direct attention, who receives delegated authority, and what decision cadence is established.",
+          "delayed_consequences": [
+            "Tests staff/successor investment made earlier.",
+            "A player who hoarded competence now has dramatically lower throughput."
+          ]
+        },
+        {
+          "id": "C26",
+          "title": "LIQUIDITY",
+          "premise": "If financial pressure is high, Meridian outflows accelerate; otherwise the same chapter becomes a credit-market freeze affecting Aster contractors.",
+          "actors": [
+            "Sofia Deren",
+            "Kalen Ors",
+            "Adrian Kessar",
+            "Lucan Vela"
+          ],
+          "engines": [
+            "Financial Engine",
+            "Media",
+            "Government"
+          ],
+          "core_tension": "Transparency ↔ Stability",
+          "required_beats": [
+            "Central Bank knows more than government can safely publish.",
+            "Meridian's weakness is real but may be survivable.",
+            "One careless statement can become causal."
+          ],
+          "decision_gate": "Design liquidity/backstop, disclosure and accountability sequence.",
+          "delayed_consequences": [
+            "Financial stability can recover, require recapitalization, or become systemic crisis.",
+            "Kalen may survive, resign or lose control depending branch."
+          ]
+        },
+        {
+          "id": "C27",
+          "title": "THE CONTRACT",
+          "premise": "If energy dependency is high, Ordan uses renewal/volume terms during the crisis; otherwise the pressure takes the form of price shock or infrastructure bottleneck.",
+          "actors": [
+            "Avera Dren",
+            "Tomas Veyr",
+            "Sofia Deren",
+            "Emil Varos"
+          ],
+          "engines": [
+            "Energy",
+            "Foreign Affairs",
+            "Fiscal"
+          ],
+          "core_tension": "Resilience ↔ Immediate Cost",
+          "required_beats": [
+            "Cheap supply can relieve households immediately.",
+            "Long lock-in increases future leverage.",
+            "Diversification capacity depends on Act II choices."
+          ],
+          "decision_gate": "Use reserves, accept emergency terms, diversify at fiscal cost, or combine them.",
+          "delayed_consequences": [
+            "Earlier optionality investments pay off—or their absence becomes visible.",
+            "Avera relationship determines how adversarial negotiation becomes."
+          ]
+        },
+        {
+          "id": "C28",
+          "title": "THE LINE",
+          "premise": "If labour trust is low, port/industrial action threatens Aster logistics; if high, labour becomes a stabilizing partner but demands a costly concession.",
+          "actors": [
+            "Rina Torvek",
+            "Mira Solen",
+            "Alina Cael",
+            "Niko Arven"
+          ],
+          "engines": [
+            "Labour",
+            "Aster Gate",
+            "Social Cohesion"
+          ],
+          "core_tension": "Deterrence ↔ Reciprocity",
+          "required_beats": [
+            "The government can use emergency powers, bargain, or re-sequence operations.",
+            "Actors remember whether earlier promises were kept.",
+            "The material issue and status/dignity issue may differ."
+          ],
+          "decision_gate": "Resolve the bottleneck without teaching either side that crisis hostage-taking always pays.",
+          "delayed_consequences": [
+            "Can strengthen institutional bargaining or radicalize labor/political response."
+          ]
+        },
+        {
+          "id": "C29",
+          "title": "THE SEA",
+          "premise": "If maritime heat is high, a second incident places forces on alert; if low, Serrat offers joint de-escalation but domestic actors call it weakness.",
+          "actors": [
+            "Talia Rhen",
+            "Tomas Veyr",
+            "Elena Varin",
+            "Eren Kasar"
+          ],
+          "engines": [
+            "Serrat",
+            "Security",
+            "Public Narrative"
+          ],
+          "core_tension": "Confidence ↔ Doubt",
+          "required_beats": [
+            "Intelligence cannot guarantee intent.",
+            "Both governments face domestic audience costs.",
+            "Private channel quality depends on Act IV."
+          ],
+          "decision_gate": "Choose force posture, private contact, investigation and public red line.",
+          "delayed_consequences": [
+            "Can create durable maritime mechanism, prolonged cold confrontation, or hard-failure escalation."
+          ]
+        },
+        {
+          "id": "C30",
+          "title": "SEVENTY-TWO HOURS",
+          "premise": "Government, markets and security systems all need decisions faster than normal process can comfortably provide.",
+          "actors": [
+            "Elena Varin",
+            "Mara Eltan",
+            "Liora Venn",
+            "Silas Koren",
+            "Lea Marin",
+            "Sofia Deren"
+          ],
+          "engines": [
+            "Emergency Governance",
+            "All Engines"
+          ],
+          "core_tension": "Power ↔ Legitimacy",
+          "required_beats": [
+            "The player can request concentrated emergency authority, use distributed crisis cells, or rely on normal cabinet process.",
+            "Silas may offer operational cooperation while insisting on reciprocal oversight.",
+            "Elena evaluates not only whether the plan works but the precedent it creates."
+          ],
+          "decision_gate": "Choose the architecture of crisis power.",
+          "delayed_consequences": [
+            "This is the central test of institutional capacity.",
+            "If prior institutions are strong, distributed coordination can work.",
+            "If weak, concentration may save the immediate crisis but deepen personalized dependence.",
+            "Creates LEGACY_POWER_PRECEDENT."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ACT_VI",
+      "title": "LEGACY",
+      "time": "Year 5 onward; recovery followed by a later transition window",
+      "mastery": "Adaptive Mastery / Legacy",
+      "player_state": "Potentially the most influential strategist in Lydria—or a damaged/outsider version of the same person.",
+      "world_state": "The crisis has revealed what the country actually built.",
+      "central_question": "What remains when your own power is no longer the answer?",
+      "chapters": [
+        {
+          "id": "C31",
+          "title": "AFTER THE STORM",
