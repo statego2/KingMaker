@@ -130,7 +130,7 @@
       "stream": "production",
       "priority": "P0",
       "size": "S",
-      "status": "todo",
+      "status": "in_progress",
       "depends_on": [],
       "deliverables": [
         "Versioned inventory of shipped vs obsolete files and doc corrections"
@@ -140,7 +140,7 @@
         "Obsolete design claims identified without changing canon"
       ],
       "evidence": [],
-      "notes": ""
+      "notes": "Audit branch task/KM-001-audit-entrypoints-20261008. Source inspection complete; await CI and review/merge before marking done."
     },
     {
       "id": "KM-002",

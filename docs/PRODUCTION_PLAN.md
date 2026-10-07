@@ -25,7 +25,7 @@ Verified from the repository, NOT from a full device playtest:
 - Canonical **game-state schema v1** and system spec exist in `data/` and `docs/04_GAME_SYSTEMS_SPEC_V1.md`, but are **not identical to the shipped v0.3 runtime state**.
 - Scene art is CSS/vector/procedural prototype, not a finished portrait/environment art pipeline. Current decisions are primarily A/B/C commits; full inquiry/negotiation/agent decision systems are not complete.
 - There is no documented automated runtime test pipeline/package manifest or validated performance/accessibility baseline in the tree inspected on 2026-10-08.
-- `README.md` and parts of `design/09_CINEMATIC_VISUAL_PIVOT.md` describe older app entry points; fix document drift early.
+- The current `README.md` and `design/09_CINEMATIC_VISUAL_PIVOT.md` point to `src/app-redesign.js`; older application files still remain. Keep entrypoint references accurate; see `docs/IMPLEMENTATION_INVENTORY.md`.
 
 **Do not represent a scene template as a finished piece of cinematic artwork, a game-system specification as executed code, or a code commit as a user-tested milestone.**
 

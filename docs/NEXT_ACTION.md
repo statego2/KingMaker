@@ -9,10 +9,10 @@
 - The latest creative pivot is scene-first cinematic political strategy, not dense dashboard-first UI.
 
 ## Current milestone
-**M0 / P00 — Foundation / audit.**
+**M0 / P00 — Foundation / audit (KM-001 implementation proposed for review).**
 
 ## Immediate next task
-**KM-001 — Audit canonical entrypoints and stale references** (P0, S; no dependencies).
+**KM-001 — Audit canonical entrypoints and stale references** (P0, S; branch `task/KM-001-audit-entrypoints-20261008`; awaiting review/merge).
 
 Deliver:
 1. Inspect live `index.html` imports, project structure, README and visual-pivot notes.
@@ -23,11 +23,13 @@ Deliver:
 
 Then seek next dependency-ready **KM-002** (local test/build workflow), followed by KM-003/004/005/006/007/008 as allowed by dependency graph.
 
+**KM-001 audit artifact:** [`docs/IMPLEMENTATION_INVENTORY.md`](IMPLEMENTATION_INVENTORY.md). Once merged and accepted, proceed to KM-002; KM-006 becomes independently eligible.
+
 ## Ready-to-start rule
 Find `todo` tasks with all `depends_on` in `done`, select priority P0 then phase progression; do not auto-select parallel cosmetic tasks over gold-loop blockers. If current task already has an open PR, review/finish it rather than duplicate.
 
 ## Known initial tech and product gaps (claims to verify in M0)
-1. Documentation drift: README “Next phase” and some visual-pivot runtime pointer are obsolete.
+1. Resolved hypothesis: current README and visual-pivot document correctly reference `app-redesign.js`; historical app files remain in-tree.
 2. Engine state and versioned schema differ substantially.
 3. `src/app-redesign.js` is still a tightly coupled DOM controller; modularity needs work.
 4. Current scenes use procedural visual mockups; no finalized portrait/location pipeline.
