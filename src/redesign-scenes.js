@@ -1,3 +1,4 @@
+import {resolveScenePresentation} from "./scene-contract.js";
 import {people} from "./content.js";
 
 export const presentation={
@@ -23,7 +24,7 @@ export const presentation={
 
 const esc=x=>String(x??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
 export const cleanTitle=t=>String(t||"").replace(/^(Day\s*\d+\s*—\s*|\d{2}:\d{2}\s*—\s*)/i,"");
-export const meta=s=>{const x=presentation[s?.id]||["briefing","VELIS","DECISION BRIEF"];return{mode:x[0],place:x[1],label:x[2]}};
+export const meta=s=>{const c=resolveScenePresentation(s,{presentation,people});return{mode:c.mode,place:c.place,label:c.label}};
 
 function actor(s){return people[(s?.actors||[])[0]]||{name:"Unknown",role:"",initials:"?"}}
 function factRows(facts,max=3){

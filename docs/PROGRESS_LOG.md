@@ -36,8 +36,14 @@ Entries document **verified project activity**, separate from the aspirational b
 - **Unverified:** PNGs need human visual/legibility inspection; true iPhone Safari/safe-area/device touch and accessibility acceptance are not claimed. Existing static + Node CI also passed.
 - **Status:** `review`, not `done`. Consequently KM-007 remains dependency-blocked. KM-008 / KM-009 are dependency-ready.
 
-## 2026-10-08 — KM-008 all-PR checks / human protection gate
-- [PR #9](https://github.com/statego2/KingMaker/pull/9) adds continuous backlog validation on all PRs, CODEOWNERS, developer ownership/rollback policy and exact manual protected-main ruleset steps.
-- **Verified CI:** [backlog run](https://github.com/statego2/KingMaker/actions/runs/37693938057) and [game-tests run](https://github.com/statego2/KingMaker/actions/runs/37693938068) succeeded.
-- **Not configured by AI:** GitHub main branch ruleset; the connector does not provide the required administration mutation. [Owner issue #10](https://github.com/statego2/KingMaker/issues/10) documents the setup and verification gate.
-- **Status:** `review` pending owner confirmation of actual branch protections, not `done`.
+## 2026-10-08 — KM-009 versioned scene presentation contract
+- **Code:** [PR #8](https://github.com/statego2/KingMaker/pull/8): `src/scene-contract.js` v1 pure adapter, active metadata resolver wired to it, fallback diagnostics for unknown mode/actor, declared source IDs and optional art/pressure references.
+- **Verification:** original/current scene catalog of 18 maps identically, unknown modes fail softly, legacy evidence is not silently treated as independently sourced. [GitHub Actions game-tests run](https://github.com/statego2/KingMaker/actions/runs/37693589420) PASS; full follow-up CI on the final integrated commit required.
+- **Runtime/save risk:** no state/save key change; missing real art/source provenance remains explicitly unimplemented. Human browser validation is not inferred from Node tests.
+- **Next:** KM-008 M0 CI delivery convention; KM-011 scene renderer/controller boundary. KM-010 remains blocked by KM-005 review.
+
+## 2026-10-08 — KM-008 all-PR CI and branch policy in review
+- **Scope:** [PR #9](https://github.com/statego2/KingMaker/pull/9) makes backlog validation a general PR check and introduces CODEOWNERS and `docs/CI_AND_RELEASE_POLICY.md` with ownership, issue requirements and rollback.
+- **Actual final branch CI:** [backlog](https://github.com/statego2/KingMaker/actions/runs/37694129392) PASS and [game-tests](https://github.com/statego2/KingMaker/actions/runs/37694129354) PASS.
+- **Remaining approval:** GitHub main branch ruleset not changed by connector; [issue #10](https://github.com/statego2/KingMaker/issues/10) captures required owner-only manual activation and blocked-merge verification. Task remains `review` pending that evidence.
+- **Next dependency-ready P0:** KM-011 scene renderer/controller separation; KM-007/KM-010 await KM-005 human visual acceptance.
