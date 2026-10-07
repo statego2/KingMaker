@@ -1,0 +1,35 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {fresh,scene,commit} from "../src/engine.js";
+import {createSceneViews} from "../src/scene-renderer.js";
+const icon=()=>"";
+const views=x=>createSceneViews({...x,icon});
+globalThis.localStorage={getItem:()=>null,setItem:()=>{},removeItem:()=>{}};
+test("pure scene renderer: opening/choice/context and no simulation side effects",()=>{
+  const state=fresh(),prior=structuredClone(state);
+  const v=views({state});
+  const plain=v.renderScene();
+  assert.match(plain,/data-choice="a"/);
+  assert.match(plain,/data-choice="b"/);
+  assert.match(plain,/data-context/);
+  assert.doesNotMatch(plain,/data-commit/);
+  const ctx=v.renderContext();
+  assert.match(ctx,/data-close-context/);
+  assert.ok(ctx.includes("source-box"));
+  assert.deepEqual(state,prior);
+  const selected=scene(state).choices[1];
+  const selectedHtml=views({state,selected}).renderScene();
+  assert.match(selectedHtml,/data-commit/);
+  assert.deepEqual(state,prior,"Rendering a selected option cannot mutate state");
+});
+test("scene renderer displays decision consequence and finale with no controller calls",()=>{
+  const state=fresh(),option=scene(state).choices[1];
+  const committed=commit(state,option);
+  const html=views({state:committed,result:{...option,_scene:scene(state)},analysis:false}).renderScene();
+  assert.match(html,/data-next/);
+  assert.doesNotMatch(html,/STRATEGIC READ/);
+  const read=views({state:committed,result:{...option,_scene:scene(state)},analysis:true}).renderScene();
+  assert.match(read,/STRATEGIC READ/);
+  const finish=structuredClone(committed);finish.finished=true;finish.i=18;
+  assert.match(views({state:finish}).renderScene(),/ACT I COMPLETE/);
+});

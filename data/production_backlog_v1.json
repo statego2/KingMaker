@@ -380,7 +380,7 @@
       "stream": "engineering",
       "priority": "P0",
       "size": "L",
-      "status": "todo",
+      "status": "done",
       "depends_on": [
         "KM-009",
         "KM-004"
@@ -392,8 +392,14 @@
         "Existing commit/save/back/instruments flows survive refactor",
         "View is not allowed to mutate simulation silently"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/pull/11",
+        "https://github.com/statego2/KingMaker/actions/runs/37694535974",
+        "https://github.com/statego2/KingMaker/actions/runs/37694535952",
+        "tests/scene-renderer.test.mjs",
+        "tools/browser-interaction-smoke.mjs"
+      ],
+      "notes": "Pure scene/context/consequence/finale renderer extracted; Node tests show no state mutation; real Chromium click/commit/instruments/save/reload/reset smoke passed at 390x844 and five-viewport baseline 15/15; utility-only templates remain for separate cleanup, no save schema changes."
     },
     {
       "id": "KM-012",

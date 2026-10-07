@@ -1,6 +1,7 @@
 import {people} from "./content.js";
-import {load,reset,scene,progress,commit,readMsg,relationship,quality} from "./engine.js";
-import {meta,cleanTitle,sceneVisual} from "./redesign-scenes.js";
+import {load,reset,scene,commit,readMsg,relationship} from "./engine.js";
+import {meta} from "./redesign-scenes.js";
+import {createSceneViews} from "./scene-renderer.js";
 
 let state=load();
 let screen="scene";
@@ -34,13 +35,6 @@ function icon(name){
   return m[name]||m.info;
 }
 
-function hud(s){
-  return '<header class="scene-hud">'+
-    '<div class="brand"><span>K</span><strong>KINGMAKER</strong></div>'+
-    '<div class="chapter"><b>CH '+esc(s.chapter)+'</b><small>'+esc(s.chapterTitle)+'</small><i><em style="width:'+progress(state)+'%"></em></i></div>'+
-    '<button data-kit class="icon-btn" aria-label="Open instruments">'+icon("menu")+'</button>'+
-  '</header>';
-}
 
 function render(){
   const s=scene(state);
@@ -53,46 +47,11 @@ function render(){
   bind();
 }
 
-function renderScene(){
-  if(state.finished&&!result)return renderFinale();
-  if(result)return renderConsequence();
-  const s=scene(state),m=meta(s),body=bodyOf(s),facts=factsOf(s),choices=choicesOf(s);
-  return '<main class="game-screen">'+
-    hud(s)+
-    '<section class="world">'+
-      '<div class="world-light"></div>'+
-      '<div class="architecture"><i></i><i></i><i></i><i></i><i></i></div>'+
-      '<div class="world-title"><span>'+esc(m.place)+'</span><h1>'+esc(cleanTitle(s.title))+'</h1></div>'+
-      sceneVisual(s,body,facts)+
-      '<p class="world-line">'+esc(body[0]||"")+'</p>'+
-      '<button class="context-btn" data-context>'+icon("info")+'<span>Context</span></button>'+
-    '</section>'+
-    '<section class="decision-panel '+(choices.length>3?"crowded":"")+'">'+
-      '<div class="question"><span>'+esc(m.label)+'</span><h2>'+esc(s.question)+'</h2></div>'+
-      '<div class="choice-stack">'+choices.map(choice).join("")+'</div>'+
-      (selected?'<div class="commit-row"><button data-cancel class="secondary">Change</button><button data-commit class="primary">Commit '+icon("arrow")+'</button></div>':"")+
-    '</section>'+
-  '</main>';
-}
 
-function choice(x,i){
-  const active=selected?.id===x.id;
-  return '<button class="choice '+(active?"active":"")+'" data-choice="'+x.id+'">'+
-    '<span class="key">'+String.fromCharCode(65+i)+'</span>'+
-    '<span class="copy"><small>'+esc(x.verb||"Choose")+'</small><strong>'+esc(x.title)+'</strong><em>'+esc(x.sub)+'</em></span>'+
-    '<span class="go">'+(active?icon("check"):icon("arrow"))+'</span>'+
-  '</button>';
-}
 
-function renderContext(){
-  const s=scene(state),m=meta(s);
-  return '<div class="overlay" data-close-context><section class="sheet" onclick="event.stopPropagation()">'+
-    '<header><div><span>'+esc(m.label)+'</span><h2>'+esc(cleanTitle(s.title))+'</h2></div><button data-close-context class="icon-btn">'+icon("close")+'</button></header>'+
-    '<div class="context-copy">'+bodyOf(s).map(p=>'<p>'+esc(p)+'</p>').join("")+'</div>'+
-    '<div class="source-box">'+factsOf(s).map(e=>'<article><i class="'+esc(e.type||"neutral")+'"></i><div><small>'+esc(e.label)+'</small><strong>'+esc(e.value)+'</strong><em>'+esc(e.note)+'</em></div></article>').join("")+'</div>'+
-    '<button class="primary full" data-close-context>Back to decision</button>'+
-  '</section></div>';
-}
+
+function renderScene(){return createSceneViews({state,selected,result,analysis,icon}).renderScene()}
+function renderContext(){return createSceneViews({state,selected,result,analysis,icon}).renderContext()}
 
 function renderKit(){
   const unread=state.inbox.filter(x=>x.unread).length;
@@ -109,16 +68,6 @@ function renderKit(){
   '</section></div>';
 }
 
-function renderConsequence(){
-  const m=meta(result._scene);
-  return '<main class="consequence-screen">'+
-    '<section class="consequence-world"><div class="reaction"></div><span>'+esc(m.place)+'</span><h1>The world moved.</h1></section>'+
-    '<section class="consequence-card"><span>WHAT HAPPENED</span><h2>'+esc(result.result)+'</h2>'+
-      (analysis?'<div class="analysis"><small>STRATEGIC READ</small><p>'+esc(result.debrief)+'</p></div>':'<p>Η απόφαση μπήκε στο αρχείο. Κάποιες επιπτώσεις θα γίνουν ορατές αργότερα.</p>')+
-      '<div class="result-actions"><button data-analysis class="secondary">'+(analysis?"Hide read":"Inspect reasoning")+'</button><button data-next class="primary">Continue '+icon("arrow")+'</button></div>'+
-    '</section>'+
-  '</main>';
-}
 
 function utilityHeader(kicker,title,metaText=""){
   return '<header class="utility-head"><button data-back class="icon-btn">'+icon("back")+'</button><div><span>'+esc(kicker)+'</span><h1>'+esc(title)+'</h1></div><small>'+esc(metaText)+'</small></header>';
@@ -187,11 +136,6 @@ function renderArchive(){
     '</div></main>';
 }
 
-function renderFinale(){
-  const q=quality(state),govt={GOV_REFORM_ACCORD:"Reform Accord",GOV_RECONSTRUCTION:"Reconstruction Coalition",GOV_CIVIC_COMPACT:"Civic Compact"}[state.flags.GOVERNMENT_CONFIGURATION]||"Government formed";
-  return '<main class="finale"><section class="finale-world"><div class="sun"></div><div class="city"></div><span>ACT I COMPLETE</span><h1>Government at dawn.</h1><p>'+esc(govt)+'</p></section>'+
-    '<section class="finale-sheet"><blockquote>Power begins when other people start planning around your judgment.</blockquote><div class="stats"><article><small>Decision quality</small><strong>'+esc(q.label)+'</strong></article><article><small>Credibility</small><strong>'+state.player.credibility+'</strong></article><article><small>Commitments</small><strong>'+(state.promises||[]).length+'</strong></article></div><button class="primary full" data-reset>Play Act I again</button></section></main>';
-}
 
 function bind(){
   document.querySelectorAll("[data-choice]").forEach(b=>b.onclick=()=>{selected=choicesOf(scene(state)).find(x=>x.id===b.dataset.choice)||null;render()});

@@ -1,61 +1,32 @@
-# KINGMAKER — NEXT ACTION / CURRENT HANDOFF
-**Snapshot:** 2026-10-08. Refresh against latest `main` and open PRs on every new session.
+# KINGMAKER — NEXT ACTION / VERIFIED HANDOFF
+**Snapshot:** 2026-10-08. Before work, verify this file, open PRs, current main, dependencies and latest Actions results.
 
-## Current situation
-- Production planning documentation exists; execution backlog initially all `todo` until implementation/test proof is added.
-- Shipped baseline is **18 Act I scenes**, lightweight simulation v0.3, scene-first UI with procedural art.
-- We have **not** verified full gameplay with browser automation or actual device sessions in this planning phase.
-- **Do not jump straight to Act II** just because all Act I scene IDs exist. M2/M3/M4/M5 production-quality gates remain open.
-- The latest creative pivot is scene-first cinematic political strategy, not dense dashboard-first UI.
+## Shipped baseline
+- 18 Act I scenes in cinematic scene-first static app; engine saves use v0.3. 111-task production plan, not 111 shipped features.
+- Local Node check/preview; scene/content/save replay tests; versioned scene presentation contract; pure scene renderer separated from controller.
+- Latest verified branch CI: [PR #11](https://github.com/statego2/KingMaker/pull/11), [Node 16 tests](https://github.com/statego2/KingMaker/actions/runs/37694535974), [Chromium browser run](https://github.com/statego2/KingMaker/actions/runs/37694535952). 15 captures, zero automated geometry/page errors; actual browser flow for context, People, commit, debrief, Inbox, persistence and reset passed.
 
-## Current milestone
-**M0 / P00 — Foundation/testing (automated baseline available).**
+## Current dependency gates
+- **KM-005: review** — 15 Chromium snapshots captured, zero machine warnings; human must inspect [artifact](https://github.com/statego2/KingMaker/actions/runs/37692937460) and test actual iOS/legibility/critical touch interactions. Do not mark done solely from Chromium.
+- **KM-008: review** — checks/CODEOWNERS documented, but [owner issue #10](https://github.com/statego2/KingMaker/issues/10) requires actual main branch ruleset activation and verification. Do not mark done without evidence.
+- **KM-007** and **KM-010** are dependency-blocked by KM-005; do not bypass the validator or infer human signoff.
 
-## Immediate next task
-**KM-011 — Separate scene renderer from interaction/state orchestration** (P0; KM-009 and KM-004 now done). Keep its scope modular, test all existing scene/save/instrument flows.
+## Next dependency-ready implementation work
+- **KM-012 [P1]** — Create Lydria location and time-of-day visual bible (depends: KM-001)
+- **KM-089 [P1]** — Map 1,000 mechanisms to taxonomy with stable IDs (depends: KM-001)
 
-**Human gates:** KM-005 visual screenshots remain review; KM-008 branch protection remains review until [owner issue #10](https://github.com/statego2/KingMaker/issues/10) is verified. KM-007 and KM-010 remain dependency-blocked.
+Prefer **KM-089**, where taxonomy/unique ID work can produce a verifiable content-engine deliverable without waiting for creative approval. KM-012 is useful parallel visual-world bible work, but new art boards require owner signoff; keep status review until accepted.
 
-**In review:** KM-005 screenshot baseline [PR #6](https://github.com/statego2/KingMaker/pull/6), [15 screenshots](https://github.com/statego2/KingMaker/actions/runs/37692937460), 0 automated overflow warnings or page errors. **Completed:** KM-006 schema audit [PR #7](https://github.com/statego2/KingMaker/pull/7), KM-009 scene contract [PR #8](https://github.com/statego2/KingMaker/pull/8). **Dependency-ready after KM-006:** KM-008 and KM-009; additionally P1 KM-012 / KM-089.
+## Required protocol
+1. Read `AGENTS.md`, the actual source and current tests, `docs/PRODUCTION_PLAN.md`, `docs/AI_DELIVERY_PROTOCOL.md`, current backlog and open PRs.
+2. Claim one dependency-ready task on `task/KM-###-...`. If L/XL, split into bounded child deliverables.
+3. Implement code/data/docs; validate `npm run check`, `npm test`, `npm run validate:backlog` in GitHub Actions, and browser checks when UI changes.
+4. Update canonical task status, evidence, `docs/PROGRESS_LOG.md` and this NEXT_ACTION in the same PR. Require human creative/device approval where specified.
+5. Never claim the 36-chapter project or the Gold Chapter 1 complete without their explicit gates.
 
-Deliver for KM-005:
-1. Capture 320×568, 375×667, 390×844, 430×932 and desktop screenshots of first/longest/final scenes.
-2. Record clipped/obscured actions and visibility defects in a viewport ledger, with links to evidence.
-3. Mark browser/device distinctions honestly; no visual quality signoff inferred from CI.
-4. Run `npm run verify`, update backlog and the progress log with evidence.
-
-After KM-005 review, continue KM-007 (baseline UX playtest) and KM-008 (CI/ownership convention), then KM-009 (scene contract) as dependency-gated.
-
-**KM-001 audit artifact:** [`docs/IMPLEMENTATION_INVENTORY.md`](IMPLEMENTATION_INVENTORY.md), [PR #4](https://github.com/statego2/KingMaker/pull/4), backlog integrity [CI run](https://github.com/statego2/KingMaker/actions/runs/37692280622). No browser/device playtest included.
-
-**Recent verified M0 delivery:** [PR #5](https://github.com/statego2/KingMaker/pull/5), [CI](https://github.com/statego2/KingMaker/actions/runs/37692611628): `npm run check` passed, Node test runner **9/9**, backlog integrity passed. Bug fixed: malformed Civic Compact choice in `C02_S03`.
-
-## Ready-to-start rule
-Find `todo` tasks with all `depends_on` in `done`, select priority P0 then phase progression; do not auto-select parallel cosmetic tasks over gold-loop blockers. If current task already has an open PR, review/finish it rather than duplicate.
-
-## Known initial tech and product gaps (claims to verify in M0)
-1. Resolved hypothesis: current README and visual-pivot document correctly reference `app-redesign.js`; historical app files remain in-tree.
-2. Engine state and versioned schema differ substantially.
-3. `src/app-redesign.js` is still a tightly coupled DOM controller; modularity needs work.
-4. Current scenes use procedural visual mockups; no finalized portrait/location pipeline.
-5. Investigation/negotiation gameplay is partial or absent; most scenes offer direct A/B/C outcomes.
-6. Initial Node smoke/save test suite and CI are now present; browser, device and complete replay coverage are not yet evidenced.
-7. Existing scene assets and content require font, small-screen, localization, source and callback audit.
-
-## Human decision checkpoints
-- **M1:** visual sample approval.
-- **M2:** Gold Chapter 1 feel and art approval.
-- **M3:** first session earns commitment to expand.
-- **M5:** Act I release-worthiness.
-- **M7/M8/M10:** meaning/tone/fairness/endings.
-- **MR:** release candidate approval.
-
-If approvals are unavailable, prepare the artifact and explicitly mark `review` or `blocked`; never pretend signoff exists.
-
-## Useful links
-- Playable build: https://statego2.github.io/KingMaker/
-- Repository: https://github.com/statego2/KingMaker
-- Plan: `docs/PRODUCTION_PLAN.md`
-- Tasks: `data/production_backlog_v1.json`
-- Readable register: `docs/TASK_REGISTER.md`
-- Agent instructions: `AGENTS.md`
+## Important work already landed
+- KM-001: [entrypoint audit PR #4](https://github.com/statego2/KingMaker/pull/4)
+- KM-002–004: [Node preview and regression suite PR #5](https://github.com/statego2/KingMaker/pull/5), malformed C02_S03 option fixed
+- KM-006: [v0.3–v1 state delta PR #7](https://github.com/statego2/KingMaker/pull/7), migration not active
+- KM-009: [scene presentation adapter PR #8](https://github.com/statego2/KingMaker/pull/8)
+- KM-011: [scene/controller boundary PR #11](https://github.com/statego2/KingMaker/pull/11)

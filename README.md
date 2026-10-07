@@ -23,6 +23,7 @@ An AI must read current code and backlog, implement one cohesive task, verify it
 | [State-schema audit](docs/STATE_SCHEMA_AUDIT.md) | v0.3 runtime ↔ proposed v1 migration gaps and preservation policy |
 | [Scene presentation contract](docs/SCENE_PRESENTATION_CONTRACT.md) | Typed v1 scene modes, art/source references and safe fallback rules |
 | [CI/release policy](docs/CI_AND_RELEASE_POLICY.md) | All-PR checks, CODEOWNERS and manual protected-main rules |
+| [Scene renderer boundary](docs/SCENE_RENDERER_BOUNDARY.md) | Pure presentation layer, controller actions and real browser smoke tests |
 | [AI delivery protocol](docs/AI_DELIVERY_PROTOCOL.md) | Branches, PRs, tests and truthful status handoff |
 | [Campaign matrix](docs/CAMPAIGN_PRODUCTION_MATRIX.md) | 36-chapter production map |
 | [Quality/testing strategy](docs/QUALITY_AND_TEST_STRATEGY.md) | UX, simulation, accessibility, playtest and release gates |

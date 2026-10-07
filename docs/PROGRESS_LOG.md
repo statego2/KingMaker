@@ -47,3 +47,10 @@ Entries document **verified project activity**, separate from the aspirational b
 - **Actual final branch CI:** [backlog](https://github.com/statego2/KingMaker/actions/runs/37694129392) PASS and [game-tests](https://github.com/statego2/KingMaker/actions/runs/37694129354) PASS.
 - **Remaining approval:** GitHub main branch ruleset not changed by connector; [issue #10](https://github.com/statego2/KingMaker/issues/10) captures required owner-only manual activation and blocked-merge verification. Task remains `review` pending that evidence.
 - **Next dependency-ready P0:** KM-011 scene renderer/controller separation; KM-007/KM-010 await KM-005 human visual acceptance.
+
+## 2026-10-08 — KM-011 scene renderer/controller separation
+- **Implementation:** [PR #11](https://github.com/statego2/KingMaker/pull/11) extracts pure world/choice, context, consequence and finale views into `src/scene-renderer.js`, leaving click orchestration/DOM/save in `src/app-redesign.js`. Added renderer immutability tests and real browser flow smoke.
+- **Verified Node CI:** `npm run check` PASS, `npm test` **16 passed / 0 failed**, `npm run validate:backlog` PASS ([run](https://github.com/statego2/KingMaker/actions/runs/37694535974)).
+- **Verified Chromium CI:** [visual run](https://github.com/statego2/KingMaker/actions/runs/37694535952) PASS: 15 screenshots, 0 automated warnings, 0 page errors. Browser-click smoke PASS for Context, People, select/commit, consequence, debrief, Continue, persisted reload, Inbox and Reset.
+- **Limitations:** utility-only HTML remains in controller, no full accessibility/iOS/art approval is implied. No persisted state schema changes. KM-005 human visual signoff remains `review`.
+- **Next:** no other P0 todo task is dependency-ready until manual gates; proceed to independent ready P1 KM-089 taxonomy or KM-012 visual bible (requires human art approval).
