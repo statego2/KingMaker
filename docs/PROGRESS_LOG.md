@@ -29,3 +29,15 @@ Entries document **verified project activity**, separate from the aspirational b
 - **Actual CI:** `npm run check` — PASS; `npm test` — **11/11 passed**; `npm run validate:backlog` — PASS ([run](https://github.com/statego2/KingMaker/actions/runs/37693129288)).
 - **Risks mapped:** corrupt-save fallback, forward-version overwrite, 14 vs 25 actor seed drift, callback ID collisions, event-log/inbox preservation and timeline semantics.
 - **Boundary:** No v1 migration or canonical schema mutation performed; migration decision belongs to KM-036 after earlier gold gates.
+
+## 2026-10-08 — KM-005 Chromium visual baseline, awaiting human acceptance
+- **Implementation:** [PR #6](https://github.com/statego2/KingMaker/pull/6), headless Playwright Chromium on five viewports × three selected Act I states; full-page PNGs and machine-readable viewport geometry uploaded as a [GitHub Actions artifact](https://github.com/statego2/KingMaker/actions/runs/37692937460).
+- **Actual run:** [CI #37692937460](https://github.com/statego2/KingMaker/actions/runs/37692937460) passed; **15 screenshots, 0 automated geometry warnings, 0 page errors**. Chapter 6 scene 2 was longest by text under initial state.
+- **Unverified:** PNGs need human visual/legibility inspection; true iPhone Safari/safe-area/device touch and accessibility acceptance are not claimed. Existing static + Node CI also passed.
+- **Status:** `review`, not `done`. Consequently KM-007 remains dependency-blocked. KM-008 / KM-009 are dependency-ready.
+
+## 2026-10-08 — KM-009 versioned scene presentation contract
+- **Code:** [PR #8](https://github.com/statego2/KingMaker/pull/8): `src/scene-contract.js` v1 pure adapter, active metadata resolver wired to it, fallback diagnostics for unknown mode/actor, declared source IDs and optional art/pressure references.
+- **Verification:** original/current scene catalog of 18 maps identically, unknown modes fail softly, legacy evidence is not silently treated as independently sourced. [GitHub Actions game-tests run](https://github.com/statego2/KingMaker/actions/runs/37693589420) PASS; full follow-up CI on the final integrated commit required.
+- **Runtime/save risk:** no state/save key change; missing real art/source provenance remains explicitly unimplemented. Human browser validation is not inferred from Node tests.
+- **Next:** KM-008 M0 CI delivery convention; KM-011 scene renderer/controller boundary. KM-010 remains blocked by KM-005 review.

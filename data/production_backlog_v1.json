@@ -228,7 +228,7 @@
       "stream": "ux",
       "priority": "P0",
       "size": "M",
-      "status": "todo",
+      "status": "review",
       "depends_on": [
         "KM-001",
         "KM-002"
@@ -240,8 +240,13 @@
         "First/longest/final scenes have captured layouts",
         "All clipped actions, illegible facts and overlap have issues"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/pull/6",
+        "https://github.com/statego2/KingMaker/actions/runs/37692937460",
+        "https://github.com/statego2/KingMaker/actions/runs/37692937460/artifacts/11513913462",
+        "docs/VISUAL_BASELINE.md"
+      ],
+      "notes": "Chromium captured 15 screenshots across five emulated widths with 0 geometry warnings and 0 page errors. Automated visual baseline complete; human PNG inspection and actual-device interaction not verified, so acceptance criteria are not fully signed off."
     },
     {
       "id": "KM-006",
@@ -320,7 +325,7 @@
       "stream": "engineering",
       "priority": "P0",
       "size": "M",
-      "status": "todo",
+      "status": "done",
       "depends_on": [
         "KM-001",
         "KM-006"
@@ -332,8 +337,13 @@
         "18 current scenes can resolve through contract and fallbacks",
         "Unknown mode/actor fails gracefully and validates"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/pull/8",
+        "https://github.com/statego2/KingMaker/actions/runs/37693589420",
+        "tests/scene-contract.test.mjs",
+        "docs/SCENE_PRESENTATION_CONTRACT.md"
+      ],
+      "notes": "v1 adapter resolves all 18 scenes, unknown modes/actors fail softly, source and art refs remain explicit; runtime visual metadata wired; Node regression tests passed. Browser/device visual acceptance remains downstream."
     },
     {
       "id": "KM-010",

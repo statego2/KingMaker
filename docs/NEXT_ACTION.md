@@ -12,9 +12,11 @@
 **M0 / P00 — Foundation/testing (automated baseline available).**
 
 ## Immediate next task
-**KM-005 — Baseline visual snapshots at phone and desktop widths** (P0, M; dependencies KM-001 and KM-002 now satisfied).
+**KM-008 — CI, branch protections and issue delivery convention** (P0; dependencies KM-002/003/004 done). KM-005 stays in review until human screenshot/device assessment.
 
-**In concurrent review:** KM-005 screenshot baseline [PR #6](https://github.com/statego2/KingMaker/pull/6). **Completed:** KM-006 schema audit [PR #7](https://github.com/statego2/KingMaker/pull/7). **Dependency-ready after KM-006:** KM-008 and KM-009; additionally P1 KM-012 / KM-089.
+**Next scene architecture task:** KM-011 (renderer/controller separation) is unlocked by KM-009 and KM-004. KM-010 still waits for KM-005 acceptance.
+
+**In review:** KM-005 screenshot baseline [PR #6](https://github.com/statego2/KingMaker/pull/6), [15 screenshots](https://github.com/statego2/KingMaker/actions/runs/37692937460), 0 automated overflow warnings or page errors. **Completed:** KM-006 schema audit [PR #7](https://github.com/statego2/KingMaker/pull/7), KM-009 scene contract [PR #8](https://github.com/statego2/KingMaker/pull/8). **Dependency-ready after KM-006:** KM-008 and KM-009; additionally P1 KM-012 / KM-089.
 
 Deliver for KM-005:
 1. Capture 320×568, 375×667, 390×844, 430×932 and desktop screenshots of first/longest/final scenes.
