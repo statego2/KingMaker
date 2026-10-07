@@ -59,3 +59,10 @@ The 1,000-question corpus is a curriculum and scenario laboratory. Strategic mec
 **Game Systems Specification**
 
 The next milestone turns the campaign architecture into executable mechanics and data contracts for a browser-based mobile implementation.
+
+
+## Playable build
+
+The first playable vertical slice is now in the repository root as a self-contained `index.html`.
+
+Current scope: **Chapters 1–3 / 9 scenes** with persistent state, delayed callbacks, relationship updates, Inbox, People and Situation views.
