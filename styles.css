@@ -151,7 +151,7 @@ svg{display:block;width:100%;height:100%}
 .scene-label span{font-size:8px;letter-spacing:.20em;color:#d4bc88;font-weight:800}
 .scene-label small{font-size:8px;color:#7690aa}
 .scene-copy{
-  position:absolute;z-index:8;left:14px;top:46px;bottom:12px;width:59%;
+  position:absolute;z-index:8;left:14px;top:42px;bottom:10px;width:61%;
   display:flex;flex-direction:column;justify-content:center
 }
 .scene-copy h1{
@@ -161,9 +161,12 @@ svg{display:block;width:100%;height:100%}
 .scene-copy p{margin:0}
 .scene-lead{font-size:12px;line-height:1.38;color:#eef2f6;font-weight:600}
 .scene-summary{
-  margin-top:6px!important;font-size:10px!important;line-height:1.42!important;
+  margin-top:6px!important;
+  font-size:9.4px!important;
+  line-height:1.34!important;
   color:#b0bdca!important;
-  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden
+  display:block;
+  overflow:visible
 }
 
 .fact-row{
@@ -179,8 +182,26 @@ svg{display:block;width:100%;height:100%}
 .fact.good .fact-icon{color:var(--green)}
 .fact div{min-width:0}
 .fact small{display:block;font-size:6.7px;letter-spacing:.07em;text-transform:uppercase;color:#7f96af;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fact strong{display:block;font-family:Georgia,serif;font-size:14px;line-height:1.04;margin-top:2px;color:#f4f3ef;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fact em{display:block;font-style:normal;font-size:6.8px;line-height:1.25;color:#71889f;margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.fact strong{
+  display:block;
+  font-family:Georgia,serif;
+  font-size:12.5px;
+  line-height:1.03;
+  margin-top:2px;
+  color:#f4f3ef;
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip
+}
+.fact em{
+  display:block;
+  font-style:normal;
+  font-size:6.7px;
+  line-height:1.22;
+  color:#71889f;
+  margin-top:3px;
+  overflow:visible
+}
 
 .decision-panel{
   min-height:0;border-top:1px solid rgba(240,198,111,.18);
@@ -396,7 +417,7 @@ svg{display:block;width:100%;height:100%}
   .play-view{padding:7px 9px 6px;gap:6px}
   .fact{min-height:55px;padding:6px}
   .scene-copy h1{font-size:20px}
-  .scene-summary{-webkit-line-clamp:2}
+  .scene-summary{font-size:8.8px!important;line-height:1.28!important}
   .choice-card{padding:5px 7px}
   .choice-main em{font-size:7px}
   .utility-view,.power-view{padding:7px 9px;gap:6px}
