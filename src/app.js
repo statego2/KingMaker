@@ -22,7 +22,7 @@ const pct=n=>Math.max(0,Math.min(100,n));
 
 function sceneType(s){
   if(!s) return "legacy";
-  const id=s.id||"";
+  const id=s.id||"",ch=s.chapter||"";
   if(id==="C01_S01") return "briefing";
   if(id==="C01_S02") return "assembly";
   if(id==="C01_S03") return "presidency";
@@ -32,8 +32,14 @@ function sceneType(s){
   if(id==="C03_S01") return "file";
   if(id==="C03_S02") return "chain";
   if(id==="C03_S03") return "podium";
+  if(ch==="04") return id.endsWith("S03")?"assembly":"presidency";
+  if(ch==="05") return id.endsWith("S02")?"rumor":"coalition";
+  if(ch==="06") return id.endsWith("S03")?"presidency":"briefing";
   return "briefing";
 }
+
+function sceneEvidence(s){return s?(typeof s.evidence==="function"?s.evidence(state):s.evidence)||[]:[]}
+function sceneChoices(s){return s?(typeof s.choices==="function"?s.choices(state):s.choices)||[]:[]}
 
 function sceneCaption(s){
   const map={
@@ -126,12 +132,13 @@ function briefing(){
   if(last) return consequence(last);
 
   const s=scene(state),body=typeof s.body==="function"?s.body(state):s.body;
+  const evidence=sceneEvidence(s),choices=sceneChoices(s);
   return '<div class="play-screen">'+sceneArt(s)+
     '<section class="story-sheet">'+
       '<div class="story-kicker"><span>ACT I · THE OUTSIDER</span><em>'+esc(s.kicker)+'</em></div>'+
       '<h1>'+esc(s.title)+'</h1>'+
       '<div class="story-body">'+body.map((p,i)=>'<p class="'+(i===0?'lead':'')+'">'+esc(p)+'</p>').join("")+'</div>'+
-      '<div class="intel-strip">'+s.evidence.map((e,i)=>'<article class="intel '+esc(e.type)+'">'+
+      '<div class="intel-strip">'+evidence.map((e,i)=>'<article class="intel '+esc(e.type)+'">'+
         '<div class="intel-index">'+String(i+1).padStart(2,"0")+'</div>'+
         '<div><span>'+esc(e.label)+'</span><strong>'+esc(e.value)+'</strong><small>'+esc(e.note)+'</small></div>'+
       '</article>').join("")+'</div>'+
@@ -139,8 +146,8 @@ function briefing(){
         '<div class="decision-label">YOUR MOVE</div>'+
         '<h2>'+esc(s.question)+'</h2>'+
         (!selected?
-          '<div class="choice-stack">'+s.choices.map((x,i)=>choiceCard(x,i,false)).join("")+'</div>':
-          '<div class="choice-stack">'+choiceCard(selected,s.choices.indexOf(selected),true)+'</div>'+
+          '<div class="choice-stack">'+choices.map((x,i)=>choiceCard(x,i,false)).join("")+'</div>':
+          '<div class="choice-stack">'+choiceCard(selected,choices.findIndex(x=>x.id===selected.id),true)+'</div>'+
           '<div class="commit-row"><button class="secondary" data-cancel>Change choice</button><button class="primary" data-commit>Make the call <span>→</span></button></div>'
         )+
       '</div>'+
@@ -157,7 +164,7 @@ function choiceCard(x,i,on){
 }
 
 function consequence(opt){
-  const s=scene(state);
+  const s=opt._scene||scene(state);
   return '<div class="play-screen result-screen">'+sceneArt(s)+
     '<section class="result-sheet">'+
       '<span class="result-eyebrow">CONSEQUENCE</span>'+
@@ -243,7 +250,7 @@ function bind(){
   });
 
   document.querySelectorAll("[data-choice]").forEach(b=>b.onclick=()=>{
-    selected=scene(state).choices.find(x=>x.id===b.dataset.choice);
+    selected=sceneChoices(scene(state)).find(x=>x.id===b.dataset.choice);
     render();
     requestAnimationFrame(()=>document.querySelector(".decision-zone")?.scrollIntoView({behavior:"smooth",block:"center"}));
   });
@@ -251,11 +258,12 @@ function bind(){
   document.querySelector("[data-cancel]")?.addEventListener("click",()=>{selected=null;render()});
 
   document.querySelector("[data-commit]")?.addEventListener("click",()=>{
+    const current=scene(state);
     const opt=selected;
     state=commit(state,opt);
     selected=null;
     analysis=false;
-    last=opt;
+    last={...opt,_scene:current};
     render();
     window.scrollTo({top:0,behavior:"smooth"});
   });
