@@ -26,12 +26,13 @@ async function measure(page){
     const overlap=(a,b)=>!!(a&&b&&a.left<b.right&&b.left<a.right&&a.top<b.bottom&&b.top<a.bottom);
     const title=rect(document.querySelector(".world-title h1"));
     const paper=rect(document.querySelector(".visual-briefing .paper-card"));
+    const context=rect(document.querySelector(".visual-briefing .context-btn"));
     const clipped=[...document.querySelectorAll("[data-choice]")].flatMap((el,i)=>{
       const a=rect(el),copy=el.querySelector(".copy"),b=rect(copy);
       return b.top<a.top+2||b.bottom>a.bottom-2||copy.scrollWidth>copy.clientWidth+2?[i]:[];
     });
     const commit=rect(document.querySelector("[data-commit]"));
-    return {titlePaperOverlap:overlap(title,paper),clipped,
+    return {titlePaperOverlap:overlap(title,paper),contextPaperOverlap:overlap(context,paper),clipped,
       horizontalOverflow:document.documentElement.scrollWidth>innerWidth+2,
       commitBelow:!!(commit&&commit.bottom>innerHeight+1)};
   });
@@ -45,6 +46,7 @@ try{
     await page.goto(base,{waitUntil:"networkidle"});
     const first=await measure(page);
     assert.equal(first.titlePaperOverlap,false,width+"px: title intersects dossier");
+    assert.equal(first.contextPaperOverlap,false,width+"px: context control obscures dossier");
     assert.equal(first.horizontalOverflow,false,width+"px: horizontal overflow");
     if(width===320){
       await page.evaluate(()=>{document.body.style.zoom="1.25";});
@@ -54,6 +56,10 @@ try{
       await page.screenshot({path:"artifacts/visual-baseline/320x568-zoom125-first.png",fullPage:true,animations:"disabled"});
     }
     await moveTo(page,index);
+    if(height<=760){
+      const cue=await page.locator(".decision-panel.crowded .question>span").evaluate(el=>getComputedStyle(el,"::after").content);
+      assert.match(cue,/SCROLL FOR MORE/,width+"px: long option list needs a visible scroll cue");
+    }
     const choices=page.locator("[data-choice]");
     for(let i=0;i<await choices.count();i++){
       await choices.nth(i).scrollIntoViewIfNeeded();
