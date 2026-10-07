@@ -6,6 +6,11 @@
 - Local Node check/preview; scene/content/save replay tests; versioned scene presentation contract; pure scene renderer separated from controller.
 - Latest verified branch CI: [PR #11](https://github.com/statego2/KingMaker/pull/11), [Node 16 tests](https://github.com/statego2/KingMaker/actions/runs/37694535974), [Chromium browser run](https://github.com/statego2/KingMaker/actions/runs/37694535952). 15 captures, zero automated geometry/page errors; actual browser flow for context, People, commit, debrief, Inbox, persistence and reset passed.
 
+## Active P0 review blocker — issue #12
+- **KM-005 / [issue #12](https://github.com/statego2/KingMaker/issues/12):** A responsive title/dossier safe-zone fix, content-sized short-screen choice cards and selected-option visibility change are committed on [task branch](https://github.com/statego2/KingMaker/tree/task/KM-005-mobile-safe-zones-issue-12) ([code commit](https://github.com/statego2/KingMaker/commit/1edf3d8807e00960f9c4483726bc07312c2c56d0)).
+- **Next:** open a [comparison PR](https://github.com/statego2/KingMaker/compare/main...task/KM-005-mobile-safe-zones-issue-12?expand=1), verify all Actions (game-tests, validate-backlog, Chromium capture/mobile regression), inspect 320px screenshots and test real iOS Safari/system text sizing. The connector refused PR creation in this session; no PR, CI success, device acceptance or main merge is claimed.
+- Keep KM-005 at **review** until human/device approval. This is not a new dependency-ready P0 task.
+
 ## Current dependency gates
 - **KM-005: review** — 15 Chromium snapshots captured, zero machine warnings; human must inspect [artifact](https://github.com/statego2/KingMaker/actions/runs/37692937460) and test actual iOS/legibility/critical touch interactions. Do not mark done solely from Chromium.
 - **KM-008: review** — checks/CODEOWNERS documented, but [owner issue #10](https://github.com/statego2/KingMaker/issues/10) requires actual main branch ruleset activation and verification. Do not mark done without evidence.

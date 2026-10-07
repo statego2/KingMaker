@@ -244,9 +244,11 @@
         "https://github.com/statego2/KingMaker/pull/6",
         "https://github.com/statego2/KingMaker/actions/runs/37692937460",
         "https://github.com/statego2/KingMaker/actions/runs/37692937460/artifacts/11513913462",
-        "docs/VISUAL_BASELINE.md"
+        "docs/VISUAL_BASELINE.md",
+        "https://github.com/statego2/KingMaker/issues/12",
+        "https://github.com/statego2/KingMaker/commit/1edf3d8807e00960f9c4483726bc07312c2c56d0"
       ],
-      "notes": "Chromium captured 15 screenshots across five emulated widths with 0 geometry warnings and 0 page errors. Automated visual baseline complete; human PNG inspection and actual-device interaction not verified, so acceptance criteria are not fully signed off."
+      "notes": "Chromium baseline captured 15 images, but human found 320px briefing/choice issues (#12). A bounded responsive CSS + browser-regression fix is committed on task/KM-005-mobile-safe-zones-issue-12; branch CI and human/real-device verification remain pending. KM-005 must stay review."
     },
     {
       "id": "KM-006",
