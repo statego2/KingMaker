@@ -1,3 +1,5 @@
+import {act1bScenes} from "./act1b.js";
+
 
 export const people={
 lea_marin:{name:"Lea Marin",initials:"LM",role:"Senior data analyst · SCS",note:"Ακριβής, γρήγορη, δύσπιστη απέναντι στη βεβαιότητα."},
@@ -9,13 +11,17 @@ niko_arven:{name:"Niko Arven",initials:"NA",role:"Independent MP · Sera",note:"
 silas_koren:{name:"Silas Koren",initials:"SK",role:"Strategist · Stability Union",note:"Παρατηρεί patterns πριν επιχειρήσει exploit."},
 nadia_serrin:{name:"Nadia Serrin",initials:"NS",role:"Investigative journalist · Civic Wire",note:"Κάθε source έχει motive· κάθε motive χρειάζεται δεύτερο έλεγχο."},
 selma_aric:{name:"Selma Aric",initials:"SA",role:"Integrity Commissioner",note:"Evidence that survives court and time."},
-anton_beran:{name:"Anton Beran",initials:"AB",role:"Caretaker Prime Minister",note:"Institutional memory με Harbor baggage."}
+anton_beran:{name:"Anton Beran",initials:"AB",role:"Caretaker Prime Minister",note:"Institutional memory με Harbor baggage."},
+adrian_kessar:{name:"Adrian Kessar",initials:"AK",role:"Leader · Renewal Alliance",note:"Reform urgency, competence and a temptation toward centralization."},
+mira_solen:{name:"Mira Solen",initials:"MS",role:"Leader · Civic Labour",note:"Growth is acceptable only if workers do not carry the transition alone."},
+viktor_sarin:{name:"Viktor Sarin",initials:"VS",role:"Leader · Stability Union",note:"Continuity, administrative depth and the burden of the old system."},
+liora_venn:{name:"Liora Venn",initials:"LV",role:"Leader · Free Cities List",note:"Transparency, pluralism and suspicion of concentrated power."}
 };
 
 const c=(id,chapter,chapterTitle,title,kicker,body,evidence,question,choices,actors=[])=>({id,chapter,chapterTitle,title,kicker,body,evidence,question,choices,actors});
 const o=(id,verb,title,sub,quality,result,debrief,effects={})=>({id,verb,title,sub,quality,result,debrief,effects});
 
-export const scenes=[
+const baseScenes=[
 c("C01_S01","01","DAY ZERO","07:12 — The Briefing Room","RESTRICTED · COALITION COUNT",
 ["Η Lydria ξύπνησε χωρίς κυβέρνηση.","Το Renewal whip γράφει «122 committed». Η Lea έχει επιβεβαιώσει προσωπικά μόνο 119· άλλοι τρεις είναι probable.","Η Presidency ζητά αριθμό σε δεκαπέντε λεπτά."],
 [{type:"uncertain",label:"PARTY WHIP",value:"122 committed",note:"Strong incentive to show momentum"},{type:"confirmed",label:"LEA / DIRECT CHECK",value:"119 confirmed + 3 probable",note:"Independent confirmations"},{type:"uncertain",label:"CLOCK",value:"15 minutes",note:"Presidential briefing window"}],
@@ -71,9 +77,9 @@ c("C02_S03","02","THE 121ST VOTE","Day 4 — Three Viable Paths","COALITION ARCH
 [{type:"confirmed",label:"REFORM ACCORD",value:"Renewal + Civic Labour + independents",note:"Reform/labour bridge · fragile math"},{type:"confirmed",label:"RECONSTRUCTION",value:"Renewal + Stability + independents",note:"Capacity · legitimacy cost"},{type:"confirmed",label:"CIVIC COMPACT",value:"Labour + Stability + Free Cities",note:"Oversight · more veto points"}],
 "Ποια route stress-testάρεις πρώτη;",
 [
-o("a","Stress-test","Reform Accord","Δοκιμάζεις distribution + one-vote fragility.",.83,"Η Mira ζητά confidential distribution table.","Η επιλογή route δεν είναι moral endorsement· είναι allocation analytical capacity.",{flags:{GOV_PATH:"reform_accord"}}),
-o("b","Stress-test","Reconstruction Coalition","Δοκιμάζεις continuity χωρίς capture.",.80,"Ο Viktor ανοίγει quiet channel. Το όνομα Silas Koren εμφανίζεται στο calendar.","Administrative memory είναι asset και liability μαζί.",{flags:{GOV_PATH:"reconstruction"},rel:{silas_koren:{familiarity:2}}}),
-o("c","Stress-test","Civic Compact","Δοκιμάζεις broad oversight coalition.","Περισσότερα veto points, αλλά real outside option.",.77,"Η Liora ζητά rules πριν ministries.","Outside option αλλάζει bargaining power ακόμη και αν δεν γίνει τελικό government.",{flags:{GOV_PATH:"civic_compact"}})
+o("a","Stress-test","Reform Accord","Δοκιμάζεις distribution + one-vote fragility.",.83,"Η Mira ζητά confidential distribution table.","Η επιλογή route δεν είναι moral endorsement· είναι allocation analytical capacity.",{flags:{GOV_PATH:"reform_accord"},routes:{reform_accord:7}}),
+o("b","Stress-test","Reconstruction Coalition","Δοκιμάζεις continuity χωρίς capture.",.80,"Ο Viktor ανοίγει quiet channel. Το όνομα Silas Koren εμφανίζεται στο calendar.","Administrative memory είναι asset και liability μαζί.",{flags:{GOV_PATH:"reconstruction"},routes:{reconstruction:7},rel:{silas_koren:{familiarity:2}}}),
+o("c","Stress-test","Civic Compact","Δοκιμάζεις broad oversight coalition.","Περισσότερα veto points, αλλά real outside option.",.77,"Η Liora ζητά rules πριν ministries.","Outside option αλλάζει bargaining power ακόμη και αν δεν γίνει τελικό government.",{flags:{GOV_PATH:"civic_compact"},routes:{civic_compact:7}})
 ],["mara_eltan","silas_koren"]),
 
 c("C03_S01","03","THE FILE","Day 6 — “A Page Your People Say Does Not Exist”","HARBOR CONTRACTS",
@@ -109,6 +115,8 @@ o("b","Defend","«Δεν υπάρχει confirmed evidence of wrongdoing.»","Te
 o("c","Release","Δημοσιεύεις όλο το page.","Maximum transparency πριν provenance work.",.37,"Η Selma: «Τώρα αποδεικνύουμε chain of custody μπροστά σε όλη τη χώρα.»","Transparency χωρίς sequencing μπορεί να μειώσει, όχι να αυξήσει, information quality.",{world:{public_trust:1,information_pressure:4},rel:{selma_aric:{trust:-5}},flags:{FINAL_LINE:"full_release"}})
 ],["mara_eltan","elena_varin","nadia_serrin","selma_aric"])
 ];
+
+export const scenes=[...baseScenes,...act1bScenes];
 
 export const inboxSeed=[
 {id:"m1",from:"Dr. Mara Eltan",subject:"07:30 briefing",body:"Bring me a count I can defend, not a count somebody wants to be true.",unread:true},
