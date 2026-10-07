@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="KINGMAKER logo direction concept">
+  <rect width="1200" height="360" fill="#0B0E13"/>
+  <g fill="none" stroke="#B4935B" stroke-width="7">
+    <path d="M118 250V112h92v138"/>
+    <path d="M118 112l46-46 46 46"/>
+    <path d="M164 66v-28"/>
+    <path d="M142 38h44"/>
+  </g>
+  <text x="260" y="190" fill="#E7E1D6" font-family="Georgia, serif" font-size="94" letter-spacing="8">KINGMAKER</text>
+  <line x1="264" y1="224" x2="1068" y2="224" stroke="#B4935B" stroke-width="2"/>
+  <text x="264" y="270" fill="#98A2AF" font-family="Arial, sans-serif" font-size="25" letter-spacing="9">THE GAME OF JUDGMENT</text>
+</svg>
