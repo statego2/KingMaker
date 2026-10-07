@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0f17" />
+  <meta name="description" content="KINGMAKER — strategic narrative RPG vertical slice" />
+  <title>KINGMAKER — Vertical Slice</title>
+  <style>
+
+:root {
+  --bg: #070a10;
+  --panel: #0d121c;
+  --panel-2: #111827;
+  --panel-3: #151d2b;
+  --text: #eef2f7;
+  --muted: #8e9bad;
+  --faint: #566274;
+  --line: rgba(255,255,255,.08);
+  --line-strong: rgba(255,255,255,.14);
+  --gold: #d5b15d;
+  --gold-2: #f0d38a;
+  --blue: #80a7d6;
+  --good: #88b89d;
+  --warn: #d6ad68;
+  --danger: #d58b8b;
+  --shadow: 0 18px 60px rgba(0,0,0,.38);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--text); }
+body {
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(74,96,132,.22), transparent 34rem),
+    linear-gradient(180deg, #0a0e16 0%, #070a10 52%, #05070b 100%);
+}
+button, input { font: inherit; }
+
+.app-shell {
+  width: min(100%, 520px);
+  min-height: 100dvh;
+  margin: 0 auto;
+  border-left: 1px solid rgba(255,255,255,.04);
+  border-right: 1px solid rgba(255,255,255,.04);
+  position: relative;
+  padding-bottom: calc(86px + var(--safe-bottom));
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  padding: calc(12px + var(--safe-top)) 16px 10px;
+  background: linear-gradient(180deg, rgba(7,10,16,.97), rgba(7,10,16,.84) 75%, rgba(7,10,16,0));
+  backdrop-filter: blur(18px);
+}
+
+.brand-row { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.brand {
+  letter-spacing: .18em;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--gold-2);
+}
+.day {
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: rgba(255,255,255,.025);
+}
+.progress {
+  margin-top: 10px;
+  height: 3px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255,255,255,.07);
+}
+.progress > span {
+  display:block;
+  height:100%;
+  background: linear-gradient(90deg, #806a37, var(--gold-2));
+  transition: width .35s ease;
+}
+
+main { padding: 8px 14px 24px; }
+.screen-title {
+  margin: 8px 2px 15px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--muted);
+}
+
+.hero-card, .card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012)),
+    var(--panel);
+  box-shadow: var(--shadow);
+}
+.hero-card { padding: 20px; overflow:hidden; position:relative; }
+.hero-card::after {
+  content:"";
+  position:absolute;
+  width:180px; height:180px;
+  border-radius:50%;
+  right:-90px; top:-95px;
+  background: radial-gradient(circle, rgba(213,177,93,.14), transparent 68%);
+  pointer-events:none;
+}
+.kicker {
+  color: var(--gold-2);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: 10px;
+  font-weight: 800;
+}
+.hero-card h1 {
+  margin: 8px 0 10px;
+  font-size: 27px;
+  line-height: 1.08;
+  letter-spacing: -.025em;
+}
+.lede {
+  margin: 0;
+  color: #c5cfdb;
+  line-height: 1.55;
+  font-size: 15px;
+}
+.scene-body {
+  margin-top: 18px;
+  display: grid;
+  gap: 11px;
+  color: #d8e0e9;
+  font-size: 15px;
+  line-height: 1.62;
+}
+.scene-body p { margin: 0; }
+
+.meta-row {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin: 14px 0 0;
+}
+.pill {
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:6px 9px;
+  font-size:11px;
+  color:var(--muted);
+  background:rgba(255,255,255,.022);
+}
+.pill.gold { color:var(--gold-2); border-color:rgba(213,177,93,.22); }
+
+.evidence-grid { display:grid; gap:9px; margin-top:16px; }
+.evidence {
+  border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  background:rgba(255,255,255,.022);
+  padding:12px 13px;
+}
+.evidence-head {
+  display:flex; justify-content:space-between; gap:10px; align-items:flex-start;
+  font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.09em;
+}
+.evidence strong {
+  display:block;
+  margin-top:7px;
+  font-size:14px;
+  line-height:1.45;
+  color:#e3e9f0;
+}
+.source-dot {
+  width:7px; height:7px; border-radius:50%;
+  background:var(--gold);
+  box-shadow: 0 0 0 4px rgba(213,177,93,.08);
+  flex:0 0 auto;
+  margin-top:3px;
+}
+
+.decision-block {
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 15px;
+}
+.question {
+  margin:0 0 12px;
+  color:#f1f4f8;
+  font-size:15px;
+  font-weight:700;
+  line-height:1.45;
+}
+.option-list { display:grid; gap:9px; }
+.option {
+  width:100%;
+  text-align:left;
+  color:#e6ebf2;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.014));
+  padding:13px 14px;
+  cursor:pointer;
+  transition: transform .14s ease, border-color .14s ease, background .14s ease;
+}
+.option:active { transform: scale(.99); }
+.option:hover { border-color:rgba(213,177,93,.28); background:rgba(213,177,93,.05); }
+.option-title { font-size:14px; line-height:1.4; font-weight:700; }
+.option-sub { color:var(--muted); font-size:12px; line-height:1.35; margin-top:4px; }
+
+.result {
+  margin-top:14px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:rgba(128,167,214,.05);
+  padding:14px;
+}
+.result h3 { margin:0 0 7px; font-size:13px; color:#d9e5f3; }
+.result p { margin:0; color:#b8c5d4; font-size:13px; line-height:1.5; }
+.result-actions { display:flex; gap:8px; margin-top:12px; }
+.primary, .secondary {
+  border-radius:11px;
+  padding:10px 12px;
+  cursor:pointer;
+  border:1px solid var(--line);
+  font-weight:750;
+}
+.primary { background:var(--gold); color:#151109; border-color:transparent; }
+.secondary { background:transparent; color:#d7dfe9; }
+.analysis-box {
+  margin-top:10px;
+  padding:11px 12px;
+  border-left:2px solid var(--gold);
+  background:rgba(213,177,93,.045);
+  color:#bfc9d5;
+  font-size:12px;
+  line-height:1.52;
+}
+
+.section { margin-top:14px; }
+.section h2 { font-size:13px; margin:0 0 10px; color:#dfe6ef; }
+.card { padding:14px; box-shadow:none; }
+.list { display:grid; gap:9px; }
+.row {
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:12px 13px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.018);
+}
+.row-main { min-width:0; }
+.row-title { font-size:14px; font-weight:750; }
+.row-sub { font-size:12px; color:var(--muted); margin-top:3px; line-height:1.35; }
+.badge {
+  flex:0 0 auto;
+  font-size:10px; text-transform:uppercase; letter-spacing:.08em;
+  border:1px solid var(--line); border-radius:999px; padding:6px 8px; color:var(--muted);
+}
+.badge.unread { color:var(--gold-2); border-color:rgba(213,177,93,.3); }
+
+.person {
+  display:grid;
+  grid-template-columns: 42px 1fr auto;
+  gap:11px;
+  align-items:center;
+}
+.avatar {
+  width:42px; height:42px; border-radius:13px;
+  display:grid; place-items:center;
+  border:1px solid var(--line);
+  background:linear-gradient(135deg, rgba(128,167,214,.12), rgba(213,177,93,.08));
+  color:#dfe7f1; font-size:13px; font-weight:800;
+}
+.relation { font-size:11px; color:var(--blue); }
+
+.track { margin-top:12px; }
+.track:first-child { margin-top:0; }
+.track-head { display:flex; justify-content:space-between; gap:10px; font-size:12px; }
+.track-head span:first-child { color:#d9e0e9; }
+.track-head span:last-child { color:var(--muted); }
+.track-bar { height:5px; background:rgba(255,255,255,.055); border-radius:10px; margin-top:7px; overflow:hidden; }
+.track-bar > span { display:block; height:100%; background:linear-gradient(90deg, #53677f, #91a7c0); }
+
+.clock {
+  padding:13px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.018);
+}
+.clock-top { display:flex; justify-content:space-between; gap:12px; }
+.clock-title { font-size:13px; font-weight:750; }
+.clock-value { color:var(--gold-2); font-size:12px; }
+.clock-sub { margin-top:5px; color:var(--muted); font-size:12px; }
+
+.bottom-nav {
+  position:fixed;
+  z-index:40;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(100%, 520px);
+  padding:8px 10px calc(8px + var(--safe-bottom));
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:5px;
+  background:rgba(8,11,17,.94);
+  border-top:1px solid var(--line);
+  backdrop-filter:blur(22px);
+}
+.nav-btn {
+  min-height:52px;
+  border:0;
+  border-radius:13px;
+  color:#707d8d;
+  background:transparent;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  font-size:10px;
+  cursor:pointer;
+}
+.nav-btn.active { color:var(--gold-2); background:rgba(213,177,93,.055); }
+.nav-icon { font-size:17px; line-height:1; }
+
+.notice {
+  margin-bottom:11px;
+  padding:10px 12px;
+  border:1px solid rgba(213,177,93,.19);
+  background:rgba(213,177,93,.055);
+  border-radius:12px;
+  color:#d5c69f;
+  font-size:12px;
+  line-height:1.45;
+}
+.muted { color:var(--muted); }
+
+.summary-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+.stat-card { border:1px solid var(--line); border-radius:14px; padding:13px; background:rgba(255,255,255,.018); }
+.stat-value { font-size:21px; font-weight:850; color:#e9edf2; }
+.stat-label { margin-top:4px; font-size:10px; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); }
+
+hr.soft { border:0; border-top:1px solid var(--line); margin:16px 0; }
+
+@media (min-width: 700px) {
+  body { padding: 24px 0; }
+  .app-shell {
+    min-height: calc(100dvh - 48px);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:26px;
+    overflow:hidden;
+    box-shadow:0 30px 90px rgba(0,0,0,.45);
+  }
+  .bottom-nav { bottom:24px; border:1px solid var(--line); border-radius:0 0 26px 26px; }
+}
+
+</style>
+</head>
+<body>
+  <div id="app" class="app-shell" aria-live="polite"></div>
+  <script>
+
+const people = {
+  lea_marin: {
+    name: "Lea Marin",
+    initials: "LM",
+    role: "Senior data analyst — SCS",
+    description: "Γρήγορη, ακριβής και αλλεργική στη ψεύτικη βεβαιότητα."
+  },
+  mara_eltan: {
+    name: "Dr. Mara Eltan",
+    initials: "ME",
+    role: "Director — SCS",
+    description: "Η προϊσταμένη σου. Θέλει το κράτος να σκέφτεται χωρίς να γίνει shadow government."
+  },
+  elena_varin: {
+    name: "Elena Varin",
+    initials: "EV",
+    role: "President of Lydria",
+    description: "Θεσμική, προσεκτική και επικίνδυνα καλή στο να ξεχωρίζει fact από performance."
+  },
+  ivo_marek: {
+    name: "Ivo Marek",
+    initials: "IM",
+    role: "Chief of Staff — Presidency",
+    description: "Δεν έχει ψήφο. Ελέγχει όμως ποιος παίρνει δεκαπέντε λεπτά με την Πρόεδρο."
+  },
+  nela_orr: {
+    name: "Nela Orr",
+    initials: "NO",
+    role: "Senior Clerk — Assembly",
+    description: "Τριάντα χρόνια procedural memory. Σχεδόν κανείς εκτός Βουλής δεν ξέρει το όνομά της."
+  },
+  niko_arven: {
+    name: "Niko Arven",
+    initials: "NA",
+    role: "Independent MP — Sera Islands",
+    description: "Swing vote, αλλά μισεί να τον αντιμετωπίζουν σαν αριθμό."
+  },
+  silas_koren: {
+    name: "Silas Koren",
+    initials: "SK",
+    role: "Strategist — Stability Union",
+    description: "Δεν σε ξέρει ακόμη καλά. Αυτό μπορεί να αλλάξει."
+  },
+  nadia_serrin: {
+    name: "Nadia Serrin",
+    initials: "NS",
+    role: "Investigative journalist — Civic Wire",
+    description: "Πιστεύει ότι κάθε source έχει motive και κάθε motive χρειάζεται δεύτερο έλεγχο."
+  },
+  selma_aric: {
+    name: "Selma Aric",
+    initials: "SA",
+    role: "Chief Commissioner — Integrity Commission",
+    description: "Δεν θέλει το σωστό αφήγημα. Θέλει αποδεικτικό αρχείο που θα αντέξει δέκα χρόνια."
+  },
+  anton_beran: {
+    name: "Anton Beran",
+    initials: "AB",
+    role: "Caretaker Prime Minister",
+    description: "Κουβαλά institutional memory και το βάρος του Harbor scandal."
+  }
+};
+
+const scenes = [
+  {
+    id: "C01_S01_COUNT",
+    chapter: "01",
+    chapterTitle: "DAY ZERO",
+    title: "07:12 — The Briefing Room",
+    kicker: "Act I · The Outsider",
+    body: [
+      "Η Lydria ξύπνησε χωρίς κυβέρνηση.",
+      "Στο τραπέζι έχεις τρεις coalition maps. Το party whip της Renewal γράφει «122 committed». Η Lea έχει επιβεβαιώσει προσωπικά μόνο 119· άλλοι τρεις είναι probable, αλλά κανείς δεν έχει δεσμευτεί καθαρά.",
+      "Η Presidency ζητά αριθμό σε δεκαπέντε λεπτά. Τα futures ανοίγουν σε λιγότερο από δύο ώρες."
+    ],
+    evidence: [
+      { label: "Party whip", value: "122 committed", note: "Υψηλό incentive να δείξει momentum" },
+      { label: "Lea verification", value: "119 confirmed + 3 probable", note: "Direct confirmations only" },
+      { label: "Clock", value: "15 minutes", note: "Presidency briefing window" }
+    ],
+    question: "Τι αριθμό στέλνεις;",
+    choices: [
+      {
+        id: "count_122",
+        title: "«122 committed.»",
+        sub: "Δίνεις το ισχυρότερο πολιτικό signal και αποδέχεσαι τον whip ως source.",
+        quality: 0.36,
+        debrief: "Το 122 μπορεί να γίνει momentum, αλλά μετατρέπεις τρεις μη επιβεβαιωμένες πιθανότητες σε fact. Αν ένας αλλάξει ή απλώς αρνηθεί ότι δεσμεύτηκε, το λάθος γίνεται δικό σου.",
+        result: "Το brief φεύγει γρήγορα και ακούγεται καθαρό. Η Lea δεν λέει τίποτα για μερικά δευτερόλεπτα.",
+        effects: {
+          player: { credibility: -1 },
+          relationships: { lea_marin: { trust: -3, respect: -2 }, mara_eltan: { trust: -1 } },
+          flags: { OPENING_COUNT_STYLE: "overstated" },
+          schedule: [{
+            after: 7,
+            message: {
+              from: "Civic Wire alert",
+              subject: "One of the '122' denies making any commitment",
+              body: "Screenshot του πρωινού αριθμού κυκλοφορεί σε δύο political chats. Η Nadia ζητά ποια ήταν η πηγή.",
+              kind: "callback"
+            },
+            effects: {
+              player: { credibility: -3 },
+              world: { information_quality: -2 },
+              relationships: { nadia_serrin: { respect: -2 }, mara_eltan: { trust: -2 } }
+            }
+          }]
+        }
+      },
+      {
+        id: "count_calibrated",
+        title: "«119 confirmed. 3 probable.»",
+        sub: "Διαχωρίζεις το verified από το plausible αντί να παράγεις ένα ψεύτικο single number.",
+        quality: 0.94,
+        debrief: "Δεν προβλέπεις ποιος τελικά θα ψηφίσει. Αναφέρεις τι μπορείς να αποδείξεις τώρα και ποιο κομμάτι παραμένει probabilistic.",
+        result: "Η Lea διορθώνει μία λεπτομέρεια στο footnote και πατά send. Η Mara απαντά μόνο: «Αυτό μπορώ να υπερασπιστώ.»",
+        effects: {
+          player: { credibility: 2 },
+          world: { information_quality: 1 },
+          relationships: { lea_marin: { trust: 2, respect: 3 }, mara_eltan: { trust: 2, respect: 1 } },
+          flags: { OPENING_COUNT_STYLE: "calibrated" },
+          schedule: [{
+            after: 7,
+            message: {
+              from: "Nadia Serrin",
+              subject: "Your morning brief",
+              body: "«Είδα το wording. 119 confirmed, 3 probable. Αυτό είναι ασυνήθιστα συγκεκριμένο για το Velis. Θέλω να σε ρωτήσω κάτι για το Harbor file.»",
+              kind: "callback"
+            },
+            effects: {
+              player: { credibility: 1 },
+              relationships: { nadia_serrin: { respect: 3 } }
+            }
+          }]
+        }
+      },
+      {
+        id: "count_wait",
+        title: "«Δεν δίνω αριθμό μέχρι να απαντήσουν και οι τρεις.»",
+        sub: "Μηδενίζεις το epistemic risk, αλλά καταναλώνεις το παράθυρο απόφασης.",
+        quality: 0.57,
+        debrief: "Η άρνηση false precision είναι σωστή· όμως uncertainty δεν σημαίνει ότι δεν μπορείς να δώσεις calibrated estimate. Το delay έχει πραγματικό κόστος.",
+        result: "Η Presidency λαμβάνει μόνο σημείωση «verification pending». Ο Ivo απαντά: «Τότε θα αποφασίσουμε χωρίς εσάς για την ώρα.»",
+        effects: {
+          player: { attention: -1 },
+          world: { government_pressure: 2 },
+          relationships: { ivo_marek: { respect: -2 }, mara_eltan: { respect: -1 } },
+          flags: { OPENING_COUNT_STYLE: "withheld" }
+        }
+      }
+    ]
+  },
+  {
+    id: "C01_S02_NELA",
+    chapter: "01",
+    chapterTitle: "DAY ZERO",
+    title: "09:05 — The Clerk Nobody Called",
+    kicker: "Procedure is power",
+    body: [
+      "Όλοι δουλεύουν με μία υπόθεση: αν δεν υπάρξει coalition agreement μέχρι απόψε, η confidence διαδικασία κλειδώνει για την Τρίτη.",
+      "Η Nela Orr στέλνει στη Mara ένα σύντομο note. Μία filing clause επιτρέπει στην Προεδρία να μεταφέρει το κρίσιμο procedural window ως την Παρασκευή.",
+      "Δεν σου βρήκε ψήφους. Σου έδωσε χρόνο."
+    ],
+    evidence: [
+      { label: "Consensus assumption", value: "Tuesday", note: "Repeated by parties and media" },
+      { label: "Rules Office", value: "Friday is lawful", note: "If filing is made before 14:00" },
+      { label: "Trade-off", value: "3 extra days", note: "More negotiation, more market uncertainty" }
+    ],
+    question: "Τι κάνεις με την πληροφορία;",
+    choices: [
+      {
+        id: "nela_preserve_option",
+        title: "Ενημερώνεις Presidency και Mara, αλλά δεν το κάνεις ακόμη public.",
+        sub: "Διατηρείς την option value χωρίς να μετατρέψεις αμέσως τον χρόνο σε πολιτικό όπλο.",
+        quality: 0.91,
+        debrief: "Η procedural option έχει αξία επειδή υπάρχει. Δεν χρειάζεται να χρησιμοποιηθεί, ούτε να γίνει public πριν ξέρεις αν βοηθά τη διαπραγμάτευση.",
+        result: "Ο Ivo ζητά το ακριβές citation. Η Nela το στέλνει σε τρεις γραμμές.",
+        effects: {
+          player: { credibility: 1 },
+          relationships: { nela_orr: { respect: 3 }, ivo_marek: { trust: 1, respect: 2 } },
+          flags: { FRIDAY_OPTION_KNOWN: true, FRIDAY_OPTION_PUBLIC: false }
+        }
+      },
+      {
+        id: "nela_force_tuesday",
+        title: "Δεν αλλάζεις το Tuesday assumption.",
+        sub: "Η τεχνητή πίεση μπορεί να αναγκάσει τα κόμματα να κλείσουν deal.",
+        quality: 0.42,
+        debrief: "Η scarcity του χρόνου μπορεί να παράγει συμφωνία, αλλά κρύβεις μία πραγματική procedural option από τον decision maker που πρέπει να επιλέξει.",
+        result: "Η ομάδα συνεχίζει σαν να μην υπάρχει η Παρασκευή. Η Nela σημειώνει ήσυχα ότι το memo της δεν μπήκε στο brief.",
+        effects: {
+          world: { information_quality: -2, government_pressure: 2 },
+          relationships: { nela_orr: { trust: -3, respect: -1 }, mara_eltan: { trust: -2 } },
+          flags: { FRIDAY_OPTION_SUPPRESSED: true }
+        }
+      },
+      {
+        id: "nela_leak",
+        title: "Δίνεις το procedural note σε reporter.",
+        sub: "Αν το κοινό ξέρει ότι υπάρχει χρόνος, τα κόμματα δεν μπορούν να χρησιμοποιούν ψεύτικη urgency.",
+        quality: 0.33,
+        debrief: "Η πληροφορία είναι αληθινή, αλλά το leak αλλάζει τη διαπραγματευτική δυναμική πριν η Presidency αποφασίσει αν χρειάζεται την option.",
+        result: "Μέσα σε είκοσι λεπτά εμφανίζεται push alert: «Η χώρα έχει ως την Παρασκευή». Τα party war rooms αλλάζουν tempo.",
+        effects: {
+          world: { public_trust: 1, government_pressure: 3 },
+          relationships: { ivo_marek: { trust: -4 }, nela_orr: { trust: -2 }, nadia_serrin: { affection: 1 } },
+          flags: { FRIDAY_OPTION_PUBLIC: true }
+        }
+      }
+    ]
+  },
+  {
+    id: "C01_S03_IVO",
+    chapter: "01",
+    chapterTitle: "DAY ZERO",
+    title: "10:40 — One Page",
+    kicker: "Access has a gatekeeper",
+    body: [
+      "Ο Ivo Marek σου επιστρέφει το οκτασέλιδο draft.",
+      "«Η Πρόεδρος έχει δώδεκα λεπτά. Δεν θέλει ιστορία της ημέρας. Θέλει να ξέρει τι είναι fact, τι πιστεύουμε και τι πρέπει να αποφασίσει.»",
+      "Στο δωμάτιο κανείς δεν σου ζητά να είσαι εντυπωσιακός. Σου ζητούν να επιλέξεις τι αξίζει να φτάσει στην κορυφή."
+    ],
+    evidence: [
+      { label: "Decision bandwidth", value: "12 min", note: "President + two advisers" },
+      { label: "Open questions", value: "5", note: "Only 2 change today's coalition decision" }
+    ],
+    question: "Πώς ξαναγράφεις το brief;",
+    choices: [
+      {
+        id: "brief_structure",
+        title: "Facts → uncertainties → viable options → decision needed.",
+        sub: "Κόβεις background που δεν αλλάζει τη σημερινή επιλογή.",
+        quality: 0.96,
+        debrief: "Το information compression είναι power. Η καλή σύνοψη δεν εξαφανίζει uncertainty ούτε πνίγει τον decision maker σε context.",
+        result: "Ο Ivo διαβάζει την πρώτη σελίδα, βγάζει το στυλό από το χέρι και λέει: «Αυτό μπαίνει.»",
+        effects: {
+          player: { credibility: 2 },
+          relationships: { ivo_marek: { trust: 3, respect: 4 }, elena_varin: { respect: 2 } },
+          flags: { PRESIDENT_BRIEF_STYLE: "decision_structured" }
+        }
+      },
+      {
+        id: "brief_recommendation",
+        title: "Μία καθαρή recommendation και μόνο τα facts που τη στηρίζουν.",
+        sub: "Δίνεις καθαρότητα και momentum.",
+        quality: 0.48,
+        debrief: "Η recommendation είναι χρήσιμη, αλλά αν το evidence filtering ακολουθεί το συμπέρασμα, ο analyst μετατρέπεται σε hidden advocate.",
+        result: "Το brief γίνεται καθαρότερο — και πιο μονόπλευρο. Η Mara ζητά να δει το appendix πριν φύγει.",
+        effects: {
+          relationships: { ivo_marek: { respect: 1 }, mara_eltan: { trust: -2 } },
+          flags: { PRESIDENT_BRIEF_STYLE: "advocacy" }
+        }
+      },
+      {
+        id: "brief_full_context",
+        title: "Κρατάς όλο το context. Η Πρόεδρος πρέπει να έχει την πλήρη εικόνα.",
+        sub: "Αποφεύγεις να γίνεις gatekeeper της πληροφορίας.",
+        quality: 0.39,
+        debrief: "Η πληρότητα μπορεί να γίνει failure mode όταν ο περιοριστικός πόρος είναι attention. Το να μη διαλέγεις τι έχει σημασία είναι επίσης επιλογή.",
+        result: "Ο Ivo κλείνει τον φάκελο. «Θα το συμπτύξω εγώ.»",
+        effects: {
+          player: { credibility: -1 },
+          relationships: { ivo_marek: { respect: -3 } },
+          flags: { PRESIDENT_BRIEF_STYLE: "overloaded" }
+        }
+      }
+    ]
+  },
+  {
+    id: "C02_S01_NIKO",
+    chapter: "02",
+    chapterTitle: "THE 121ST VOTE",
+    title: "Day 2 — Niko Arven",
+    kicker: "The vote is a person",
+    body: [
+      "Τρία κόμματα έχουν ήδη μιλήσει στον Niko Arven.",
+      "Το ένα του πρόσφερε committee chair. Το δεύτερο regional funding. Το τρίτο του είπε ότι η χώρα δεν θα ξεχάσει ποιος μπλόκαρε κυβέρνηση.",
+      "Όταν κάθεσαι απέναντί του, δεν ρωτά τι του προσφέρεις.",
+      "«Όλοι μου λένε τι είναι καλό για τη χώρα. Ποιος πληρώνει όταν κάνετε λάθος;»"
+    ],
+    evidence: [
+      { label: "Sera Islands", value: "High energy cost", note: "Grid + ferry dependence" },
+      { label: "Niko", value: "Pivotal, not captive", note: "Local legitimacy matters more than title" }
+    ],
+    question: "Πώς ανοίγεις τη συζήτηση;",
+    choices: [
+      {
+        id: "niko_ask",
+        title: "«Ποιο ρίσκο για τα νησιά δεν έχει καταλάβει κανείς εδώ μέσα;»",
+        sub: "Προσπαθείς να μάθεις objective πριν προσφέρεις αντάλλαγμα.",
+        quality: 0.94,
+        debrief: "Το leverage του Niko δεν σημαίνει ότι το utility του είναι απλώς 'πάρε κάτι'. Η ερώτηση αποκαλύπτει το πραγματικό constraint.",
+        result: "Ο Niko σταματά να παίζει με το κουτάλι του. «Το grid. Αν το Aster πάρει όλα τα capital projects, τα νησιά θα ξαναπληρώσουν το ρεύμα δύο φορές.»",
+        effects: {
+          relationships: { niko_arven: { trust: 3, respect: 4, affection: 1 } },
+          flags: { NIKO_CORE_INTEREST_KNOWN: true },
+          schedule: [{
+            after: 4,
+            message: {
+              from: "Niko Arven",
+              subject: "Not a promise. A number.",
+              body: "«Αν υπάρξει δεσμευμένη review για island grid πριν κλειδώσει το capital budget, μπορώ να κρατήσω δύο independents στο δωμάτιο. Δεν σου είπα πώς θα ψηφίσουν.»",
+              kind: "relationship"
+            },
+            effects: { relationships: { niko_arven: { trust: 1 } } }
+          }]
+        }
+      },
+      {
+        id: "niko_offer",
+        title: "Του προσφέρεις committee chair και island funding.",
+        sub: "Μετατρέπεις τη pivotal θέση του σε συγκεκριμένο package.",
+        quality: 0.55,
+        debrief: "Η συναλλαγή μπορεί να δουλέψει, αλλά προσφέρεις πριν μάθεις ποιο πρόβλημα προσπαθεί να λύσει. Αυξάνεις και την πιθανότητα να σε δει ως ακόμη έναν buyer.",
+        result: "«Ωραία πακέτα», λέει. «Κανείς δεν με ρώτησε αν αυτά είναι τα προβλήματα.»",
+        effects: {
+          player: { politicalCapital: -1 },
+          relationships: { niko_arven: { respect: -1, dependency: 2 } },
+          flags: { NIKO_TRANSACTIONAL_APPROACH: true }
+        }
+      },
+      {
+        id: "niko_pressure",
+        title: "Του λες ότι μια αποτυχία κυβέρνησης θα χρεωθεί δημόσια στους independents.",
+        sub: "Χρησιμοποιείς reputational pressure.",
+        quality: 0.28,
+        debrief: "Η πίεση μπορεί να αλλάξει μία ψήφο, αλλά δημιουργεί grievance σε actor που παραμένει pivotal και μετά τη σημερινή vote.",
+        result: "Ο Niko χαμογελά χωρίς χιούμορ. «Τότε ίσως χρειάζεστε καλύτερο αφήγημα.»",
+        effects: {
+          relationships: { niko_arven: { trust: -5, grievance: 6, respect: -2 } },
+          world: { coalition_pressure: 2 },
+          flags: { NIKO_PRESSURED: true },
+          schedule: [{
+            after: 4,
+            message: {
+              from: "Vela Politics",
+              subject: "Independents complain of pressure from government negotiators",
+              body: "Δεν αναφέρεται το όνομά σου. Ο Niko επίσης δεν το διαψεύδει.",
+              kind: "media"
+            },
+            effects: { player: { eliteReputation: -1 }, relationships: { niko_arven: { grievance: 2 } } }
+          }]
+        }
+      }
+    ]
+  },
+  {
+    id: "C02_S02_PROBE",
+    chapter: "02",
+    chapterTitle: "THE 121ST VOTE",
+    title: "Day 3 — Two Messages, One Rumor",
+    kicker: "Someone is watching the reaction",
+    body: [
+      "Μέσα σε οκτώ λεπτά λαμβάνεις δύο μηνύματα.",
+      "Ένας Renewal aide λέει ότι ο Niko έχει ήδη κλείσει με Stability. Ένας media producer λέει ότι «όλοι στο Assembly» ακούνε το ίδιο.",
+      "Η Lea βρίσκει ότι ο producer πήρε την πληροφορία από τον ίδιο parliamentary chat όπου βρίσκεται ο aide."
+    ],
+    evidence: [
+      { label: "Source A", value: "Renewal aide", note: "Direct political incentive" },
+      { label: "Source B", value: "Media producer", note: "Looks independent" },
+      { label: "Provenance", value: "Shared chat chain", note: "Correlated, not true corroboration" }
+    ],
+    question: "Τι κάνεις;",
+    choices: [
+      {
+        id: "probe_verify",
+        title: "Δεν αντιμετωπίζεις τα δύο messages ως corroboration. Ψάχνεις ανεξάρτητο route.",
+        sub: "Nela, Niko ή άλλο channel που δεν περνά από το ίδιο information chain.",
+        quality: 0.97,
+        debrief: "Δύο mouths δεν είναι δύο sources όταν η provenance είναι κοινή. Αυτό είναι η πρώτη στιγμή όπου ο Silas μπορεί να μάθει ότι ελέγχεις source independence.",
+        result: "Η δεύτερη διαδρομή δεν επιβεβαιώνει secret deal. Το rumor παραμένει plausible αλλά unproven.",
+        effects: {
+          world: { information_quality: 2 },
+          relationships: { lea_marin: { respect: 2 } },
+          flags: { SILAS_OBS_VERIFICATION: true, NIKO_DEAL_UNVERIFIED: true },
+          silas: { verification_depth: 0.22 }
+        }
+      },
+      {
+        id: "probe_confront",
+        title: "Παίρνεις αμέσως τον Niko και ζητάς να σου πει αν έκλεισε με Stability.",
+        sub: "Πηγαίνεις κατευθείαν στο subject της φήμης.",
+        quality: 0.64,
+        debrief: "Το direct ask μπορεί να παράγει information, αλλά επίσης αποκαλύπτει πόσο γρήγορα ένα rumor σε αναγκάζει να κινηθείς.",
+        result: "Ο Niko απαντά: «Αν είχα συμφωνία, γιατί θα σου το έλεγα επειδή κάποιος έγραψε κάτι σε chat;»",
+        effects: {
+          relationships: { niko_arven: { trust: -1 } },
+          flags: { SILAS_OBS_RESPONSE_SPEED: true },
+          silas: { response_speed: 0.25 }
+        }
+      },
+      {
+        id: "probe_use_rumor",
+        title: "Μεταφέρεις τη φήμη σε Renewal leadership για να αυξήσεις urgency.",
+        sub: "Ακόμη κι αν δεν είναι verified, μπορεί να έχει bargaining value.",
+        quality: 0.24,
+        debrief: "Χρησιμοποιείς unverified information ως causal instrument. Αν αποδειχθεί λάθος, έχεις χειροτερέψει τόσο το information environment όσο και τη δική σου credibility.",
+        result: "Το war room αντιδρά. Μέσα σε μία ώρα ο rumor κυκλοφορεί σε τρία ακόμη channels.",
+        effects: {
+          world: { information_quality: -4, coalition_pressure: 3 },
+          player: { credibility: -2 },
+          flags: { RUMOR_AMPLIFIED: true, SILAS_OBS_RUMOR_USE: true },
+          silas: { disclosure_style: 0.2 }
+        }
+      }
+    ]
+  },
+  {
+    id: "C02_S03_PATH",
+    chapter: "02",
+    chapterTitle: "THE 121ST VOTE",
+    title: "Day 4 — Three Viable Paths",
+    kicker: "Coalition architecture",
+    body: [
+      "Μετά από τέσσερις ημέρες, τρεις routes παραμένουν ανοιχτές.",
+      "Καμία δεν είναι 'η καλή κυβέρνηση'. Κάθε μία λύνει διαφορετικό constraint και δημιουργεί διαφορετικό μελλοντικό dependency.",
+      "Η Mara ζητά όχι prediction αλλά recommendation για το ποια διαπραγμάτευση αξίζει το μεγαλύτερο SCS attention τις επόμενες 24 ώρες."
+    ],
+    evidence: [
+      { label: "Reform Accord", value: "Renewal + Civic Labour + independents", note: "Strong reform/labor bridge · fragile math" },
+      { label: "Reconstruction", value: "Renewal + Stability + independents", note: "Administrative depth · scandal legitimacy cost" },
+      { label: "Civic Compact", value: "Civic Labour + Stability + Free Cities + independent", note: "Broad oversight · ideological breadth" }
+    ],
+    question: "Πού βάζεις την κύρια analytical effort;",
+    choices: [
+      {
+        id: "path_reform",
+        title: "Reform Accord",
+        sub: "Επικεντρώνεσαι στο αν Labour + Renewal μπορούν να γράψουν πραγματικό coalition contract.",
+        quality: 0.81,
+        debrief: "Ισχυρή route, αλλά όχι επειδή είναι ιδεολογικά καθαρή. Η ερώτηση είναι αν οι distributional commitments και η one-vote geometry μπορούν να γίνουν durable.",
+        result: "Η Mara εγκρίνει δύο analysts για coalition stress-test. Η Mira ζητά confidential distribution table.",
+        effects: { flags: { PRIORITY_GOV_PATH: "reform_accord" }, relationships: { mira_solen: { familiarity: 2 }, adrian_kessar: { familiarity: 2 } } }
+      },
+      {
+        id: "path_reconstruction",
+        title: "Reconstruction Coalition",
+        sub: "Εξετάζεις αν το old administrative network μπορεί να μπει σε reform government χωρίς να ξαναδημιουργήσει capture.",
+        quality: 0.78,
+        debrief: "Το administrative capacity είναι πραγματικό asset. Το legitimacy cost επίσης. Η route αξίζει αν governance terms μπορούν να διαχωρίσουν continuity από impunity.",
+        result: "Ο Viktor δέχεται quiet exploratory channel. Το όνομα του Silas εμφανίζεται για πρώτη φορά σε δικό σου calendar invite.",
+        effects: { flags: { PRIORITY_GOV_PATH: "reconstruction" }, relationships: { viktor_sarin: { familiarity: 2 }, silas_koren: { familiarity: 2 } } }
+      },
+      {
+        id: "path_civic",
+        title: "Civic Compact",
+        sub: "Δοκιμάζεις αν τρεις μικρότερες/μεσαίες δυνάμεις μπορούν να κυβερνήσουν χωρίς Renewal.",
+        quality: 0.74,
+        debrief: "Η route έχει institutional logic και real math, αλλά περισσότερα internal veto points. Αξίζει ως outside option και πιθανή κυβέρνηση, όχι ως threat theater.",
+        result: "Η Liora ζητά πρώτα rules, μετά ministries. Η Mira καταλαβαίνει ότι έχει εναλλακτική.",
+        effects: { flags: { PRIORITY_GOV_PATH: "civic_compact" }, relationships: { liora_venn: { familiarity: 2 }, mira_solen: { familiarity: 1 } } }
+      }
+    ]
+  },
+  {
+    id: "C03_S01_NADIA",
+    chapter: "03",
+    chapterTitle: "THE FILE",
+    title: "Day 6 — “A Page Your People Say Does Not Exist”",
+    kicker: "Harbor Contracts",
+    body: [
+      "Το μήνυμα από τη Nadia Serrin έρχεται στις 18:43.",
+      "Σου στέλνει crop από procurement memo. Τα contract numbers ταιριάζουν με το archive. Το meeting log που αναφέρει επίσης υπάρχει. Μία χειρόγραφη annotation όμως δεν υπάρχει σε κανένα SCS copy.",
+      "Η annotation είναι το πιο explosive μέρος: «DC wants clause narrow enough.»"
+    ],
+    evidence: [
+      { label: "Contract numbers", value: "Match archive", note: "High authenticity" },
+      { label: "Meeting log", value: "Meeting happened", note: "Context incomplete" },
+      { label: "Handwritten annotation", value: "Unverified", note: "Could be original, later note, or alteration" }
+    ],
+    question: "Ποια είναι η ακριβέστερη διάγνωση τώρα;",
+    choices: [
+      {
+        id: "file_mixed",
+        title: "Το document είναι κυρίως authentic· το πιο ενοχοποιητικό στοιχείο παραμένει unverified.",
+        sub: "Ξεχωρίζεις authenticity του page από authenticity/meaning της annotation.",
+        quality: 0.97,
+        debrief: "Ένα αληθινό document μπορεί να περιέχει αμφίβολο annotation. Και ακόμη authentic annotation δεν αποδεικνύει μόνο του ποιος είναι το 'DC' ή τι εννοούσε.",
+        result: "Η Lea κάνει zoom στο ink edge. «Αυτό είναι αρκετό για να ερευνήσουμε. Όχι για να πούμε ιστορία.»",
+        effects: {
+          world: { information_quality: 2 },
+          relationships: { lea_marin: { respect: 2 }, nadia_serrin: { respect: 2 } },
+          flags: { HARBOR_FILE_DIAGNOSIS: "mixed" }
+        }
+      },
+      {
+        id: "file_fake",
+        title: "Αφού η annotation δεν υπάρχει στο archive, αντιμετωπίζεις όλο το page ως fake.",
+        sub: "Αποφεύγεις να νομιμοποιήσεις manipulated evidence.",
+        quality: 0.26,
+        debrief: "Τα contract numbers και meeting log έχουν independent support. Ένα αμφίβολο layer δεν εξαφανίζει τα υπόλοιπα.",
+        result: "Η Lea απαντά: «Αυτό δεν ακολουθεί από τα δεδομένα που έχουμε.»",
+        effects: {
+          world: { information_quality: -2 },
+          relationships: { lea_marin: { trust: -2, respect: -3 } },
+          flags: { HARBOR_FILE_DIAGNOSIS: "dismissed" }
+        }
+      },
+      {
+        id: "file_proves",
+        title: "Το page αποδεικνύει ότι ο Damir Cael ζήτησε tailored clause.",
+        sub: "Το context και τα initials ταιριάζουν αρκετά για working conclusion.",
+        quality: 0.31,
+        debrief: "Το inference μπορεί να αποδειχθεί σωστό, αλλά αυτή τη στιγμή συνδυάζει unverified annotation + ambiguous initials + motive attribution σε conclusion.",
+        result: "Η Mara σηκώνει το βλέμμα: «Μου λες τι ξέρουμε ή τι φοβάσαι ότι σημαίνει;»",
+        effects: {
+          player: { credibility: -1 },
+          relationships: { mara_eltan: { trust: -2 }, selma_aric: { respect: -1 } },
+          flags: { HARBOR_FILE_DIAGNOSIS: "overclaim" }
+        }
+      }
+    ]
+  },
+  {
+    id: "C03_S02_PROCESS",
+    chapter: "03",
+    chapterTitle: "THE FILE",
+    title: "Day 6 — Who Gets the Page First?",
+    kicker: "Truth runs on channels",
+    body: [
+      "Η Nadia θέλει answer απόψε. Η Integrity Commission έχει ongoing investigation. Ο Anton Beran πιθανόν γνωρίζει γιατί έγινε το meeting. Η Mara μπορεί να ανοίξει archive access, αλλά κάθε extra recipient αυξάνει leak surface.",
+      "Δεν αποφασίζεις ακόμη τι είναι αληθινό. Αποφασίζεις ποια διαδικασία θα παράγει καλύτερη αλήθεια."
+    ],
+    evidence: [
+      { label: "Nadia", value: "Publication clock", note: "Hours" },
+      { label: "Selma", value: "Investigative authority", note: "Can protect chain of custody" },
+      { label: "Anton", value: "Context source", note: "Also has reputational incentive" }
+    ],
+    question: "Ποια ακολουθία επιλέγεις;",
+    choices: [
+      {
+        id: "process_selma",
+        title: "Mara → Selma under secure channel → context check → calibrated reply to Nadia.",
+        sub: "Προστατεύεις investigation και δεν αφήνεις το publication clock να ορίσει το truth standard.",
+        quality: 0.94,
+        debrief: "Η σειρά διατηρεί chain of custody και προσπαθεί να αποκτήσει context χωρίς να υπόσχεται silence για αληθινά findings.",
+        result: "Η Selma απαντά σε έντεκα λεπτά: «Στείλε το original crop. Μην σχολιάσεις handwriting publicly ακόμη.»",
+        effects: {
+          relationships: { selma_aric: { trust: 4, respect: 3 }, nadia_serrin: { trust: 1 }, mara_eltan: { trust: 2 } },
+          flags: { HARBOR_PROCESS: "protected_investigation" }
+        }
+      },
+      {
+        id: "process_nadia",
+        title: "Επιβεβαιώνεις στη Nadia ό,τι ταιριάζει στο archive και της λες ότι η annotation είναι unverified.",
+        sub: "Δίνεις public-interest information χωρίς να κάνεις claim για το handwriting.",
+        quality: 0.76,
+        debrief: "Είναι defensible, αλλά μπορεί να επισπεύσει publication πριν η Commission ασφαλίσει evidence. Η ποιότητα εξαρτάται από urgency και leak risk.",
+        result: "Η Nadia απαντά: «Fair. Θα γράψω exactly that.»",
+        effects: {
+          relationships: { nadia_serrin: { trust: 4, respect: 2 }, selma_aric: { trust: -1 } },
+          world: { public_trust: 1 },
+          flags: { HARBOR_PROCESS: "journalistic_first" }
+        }
+      },
+      {
+        id: "process_anton",
+        title: "Παίρνεις πρώτα τον Anton και του ζητάς explanation πριν ενημερώσεις την Commission.",
+        sub: "Ίσως μπορεί να λύσει το ambiguity σε ένα τηλεφώνημα.",
+        quality: 0.48,
+        debrief: "Το context είναι χρήσιμο, αλλά επικοινωνώντας πρώτα με actor που μπορεί να εμπλέκεται δημιουργείς evidence/coordination risk.",
+        result: "Ο Anton σιωπά. «Αυτό το meeting έγινε. Το note δεν το έχω ξαναδεί.»",
+        effects: {
+          relationships: { anton_beran: { familiarity: 3 }, selma_aric: { trust: -2 } },
+          flags: { HARBOR_PROCESS: "subject_first" }
+        }
+      }
+    ]
+  },
+  {
+    id: "C03_S03_MARA",
+    chapter: "03",
+    chapterTitle: "THE FILE",
+    title: "Day 7 — The Line You Can Defend",
+    kicker: "Vertical slice finale",
+    body: (state) => {
+      const count = state.flags.OPENING_COUNT_STYLE;
+      const file = state.flags.HARBOR_FILE_DIAGNOSIS;
+      const lead = count === "calibrated"
+        ? "Η Mara ακουμπά δίπλα στο Harbor page το πρωινό σου brief: «Την πρώτη μέρα ξεχώρισες confirmed από probable.»"
+        : count === "overstated"
+        ? "Η Mara ακουμπά δίπλα στο Harbor page το πρωινό σου brief: «Την πρώτη μέρα αφήσαμε probability να γίνει fact. Δεν θα το ξανακάνουμε εδώ.»"
+        : "Η Mara ακουμπά δίπλα στο Harbor page το πρωινό σου brief: «Δεν μπορούμε να περιμένουμε certainty για πάντα. Αλλά μπορούμε να ονομάζουμε σωστά την uncertainty.»";
+      const second = file === "mixed"
+        ? "Τώρα το ίδιο πρόβλημα επιστρέφει με πολύ μεγαλύτερο κόστος."
+        : "Απόψε έχεις λιγότερη βεβαιότητα απ' όση θα ήθελαν τα κόμματα και τα media.";
+      return [
+        lead,
+        second,
+        "Η Πρόεδρος χρειάζεται public line πριν το μεσημέρι. Η Nadia πιθανότατα δημοσιεύει. Η Selma δεν έχει ακόμη ολοκληρώσει forensic work."
+      ];
+    },
+    evidence: [
+      { label: "Known", value: "Real meeting + real contract references", note: "Confirmed" },
+      { label: "Unknown", value: "Handwriting provenance / intent", note: "Investigation active" },
+      { label: "Public clock", value: "Hours", note: "Story likely publishes today" }
+    ],
+    question: "Τι γραμμή εισηγείσαι;",
+    choices: [
+      {
+        id: "line_calibrated",
+        title: "«Μέρος του υλικού είναι αυθεντικό. Το επίμαχο annotation ερευνάται. Δεν θα προκαταλάβουμε την έρευνα.»",
+        sub: "Αναγνωρίζεις ό,τι ξέρεις, κρατάς ανοιχτό ό,τι δεν ξέρεις.",
+        quality: 0.96,
+        debrief: "Η γραμμή αποφεύγει τόσο το denial όσο και την πρόωρη καταδίκη. Κρατά investigation, credibility και public accountability στο ίδιο frame.",
+        result: "Η Mara κλείνει τον φάκελο. «Αυτό μπορεί να είναι άβολο και αύριο και την επόμενη εβδομάδα. Άρα πιθανόν είναι αρκετά ακριβές.»",
+        effects: {
+          player: { credibility: 3, eliteReputation: 1 },
+          world: { information_quality: 2, public_trust: 1 },
+          relationships: { mara_eltan: { trust: 3, respect: 3 }, elena_varin: { trust: 2, respect: 2 }, nadia_serrin: { respect: 2 }, selma_aric: { trust: 2 } },
+          flags: { VERTICAL_SLICE_FINAL_LINE: "calibrated" }
+        }
+      },
+      {
+        id: "line_deny",
+        title: "«Δεν υπάρχει επιβεβαιωμένο evidence of wrongdoing.»",
+        sub: "Technically defensible, αλλά αφήνει το κοινό να ακούσει κάτι πολύ ευρύτερο.",
+        quality: 0.43,
+        debrief: "Το statement μπορεί να είναι κυριολεκτικά true και παρ' όλα αυτά misleading ως likely interpretation. Αν βγουν αληθινά στοιχεία αύριο, credibility cost αυξάνεται.",
+        result: "Η Mara δεν διαφωνεί με τις λέξεις. «Και τι πιστεύεις ότι θα ακούσει ο κόσμος;»",
+        effects: {
+          player: { credibility: -1 },
+          world: { public_trust: -1 },
+          relationships: { nadia_serrin: { trust: -3 }, mara_eltan: { respect: -1 } },
+          flags: { VERTICAL_SLICE_FINAL_LINE: "defensive" }
+        }
+      },
+      {
+        id: "line_full_release",
