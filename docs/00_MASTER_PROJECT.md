@@ -806,3 +806,34 @@ Artifacts:
 ## Next phase
 
 **Vertical Slice — Chapters 1–3 + Engine Skeleton**
+
+---
+
+# 23. Vertical Slice v0.1 — PLAYABLE
+
+The first playable implementation is complete.
+
+## Scope
+
+- Chapters 1–3
+- 9 core scenes
+- mobile-first portrait UI
+- Briefing / Inbox / People / Situation / More
+- localStorage save/load
+- source/provenance reasoning
+- relationship updates
+- delayed callbacks
+- Silas observation seed
+- optional post-decision analysis
+- decision quality separated from immediate outcome framing
+
+## Deployment
+
+The repository root contains a self-contained `index.html` plus `.nojekyll`.
+
+The next implementation phase is:
+- Chapters 4–6
+- richer People / Power Map
+- explicit promise ledger UI
+- scene-data extraction from bundled prototype into modular files
+- full Act I government-formation resolution
