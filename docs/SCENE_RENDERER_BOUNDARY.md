@@ -7,3 +7,5 @@ The renderer accepts `{state,selected,result,analysis,icon}` and returns `render
 Node tests assert no state mutation from scene/choice/context rendering, no precommit Commit action, opt-in debrief, consequence, finale. Existing game tests and Chromium visual baseline provide regression evidence. No save-format migration.
 
 **Remaining architecture risk:** utility screens (Inbox, People, Power, Archive) and instrument overlays still have HTML assembled in the controller. Extract those into pure instrument views in a subsequent bounded follow-up before considering the entire KM-011 design hardening complete. Owner may mark task review if that extraction is required by acceptance.
+
+The `tools/browser-interaction-smoke.mjs` step runs in the visual baseline GitHub Actions job after Chromium installation. It clicks opening context, kit/People, commits a choice, opens debrief, advances, reloads persisted state, reads Inbox and resets. It is an emulated 390×844 Chromium interaction check; manual iOS/browser acceptance remains separate.

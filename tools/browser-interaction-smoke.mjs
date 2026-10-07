@@ -1,0 +1,51 @@
+#!/usr/bin/env node
+// KM-011 browser regression: actual DOM → events → engine/save/restore at 390x844.
+import assert from "node:assert/strict";
+import {chromium} from "playwright";
+const browser=await chromium.launch({headless:true});
+const base=process.env.KM_PREVIEW_URL||"http://127.0.0.1:4173/";
+let pageErrors=0;
+try{
+  const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:"reduce"});
+  const page=await context.newPage();
+  page.on("pageerror",e=>{pageErrors++;console.error("PAGE ERROR",e.message);});
+  await page.goto(base,{waitUntil:"networkidle"});
+  assert.equal(await page.locator(".game-screen").count(),1);
+  await page.locator("button[data-context]").click();
+  assert.equal(await page.locator(".sheet").count(),1);
+  await page.locator("button[data-close-context]").first().click();
+  assert.equal(await page.locator(".sheet").count(),0);
+  await page.locator("button[data-kit]").click();
+  await page.locator('button[data-screen="people"]').click();
+  assert.equal(await page.locator(".utility").count(),1);
+  await page.locator("button[data-back]").click();
+  assert.equal(await page.locator(".game-screen").count(),1);
+  await page.locator("[data-choice]").first().click();
+  assert.equal(await page.locator("button[data-commit]").count(),1);
+  await page.locator("button[data-commit]").click();
+  assert.equal(await page.locator(".consequence-screen").count(),1);
+  await page.locator("button[data-analysis]").click();
+  assert.equal(await page.locator(".analysis").count(),1);
+  await page.locator("button[data-next]").click();
+  assert.equal(await page.locator(".game-screen").count(),1);
+  let index=await page.evaluate(()=>JSON.parse(localStorage.getItem("kingmaker_statecraft_v03")).i);
+  assert.equal(index,1,"Commit did not persist");
+  await page.reload({waitUntil:"networkidle"});
+  assert.equal(await page.locator(".game-screen").count(),1);
+  index=await page.evaluate(()=>JSON.parse(localStorage.getItem("kingmaker_statecraft_v03")).i);
+  assert.equal(index,1,"Reload lost progress");
+  await page.locator("button[data-kit]").click();
+  await page.locator('button[data-screen="inbox"]').click();
+  assert.ok(await page.locator("[data-msg]").count()>=1);
+  await page.locator("[data-msg]").first().click();
+  await page.locator("button[data-back]").click();
+  await page.locator("button[data-kit]").click();
+  await page.locator('button[data-screen="archive"]').click();
+  page.once("dialog",d=>d.accept());
+  await page.locator("button[data-reset]").click();
+  const after=await page.evaluate(()=>JSON.parse(localStorage.getItem("kingmaker_statecraft_v03")).i);
+  assert.equal(after,0,"Reset did not clear progress");
+  assert.equal(pageErrors,0,"Browser page errors");
+  await context.close();
+  console.log("BROWSER INTERACTION SMOKE PASSED: context, instruments, choice, commit, consequence, debrief, continue, storage, inbox, reset");
+}finally{await browser.close();}
