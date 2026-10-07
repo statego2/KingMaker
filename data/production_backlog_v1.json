@@ -325,7 +325,7 @@
       "stream": "engineering",
       "priority": "P0",
       "size": "M",
-      "status": "todo",
+      "status": "done",
       "depends_on": [
         "KM-001",
         "KM-006"
@@ -337,8 +337,13 @@
         "18 current scenes can resolve through contract and fallbacks",
         "Unknown mode/actor fails gracefully and validates"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/pull/8",
+        "https://github.com/statego2/KingMaker/actions/runs/37693589420",
+        "tests/scene-contract.test.mjs",
+        "docs/SCENE_PRESENTATION_CONTRACT.md"
+      ],
+      "notes": "v1 adapter resolves all 18 scenes, unknown modes/actors fail softly, source and art refs remain explicit; runtime visual metadata wired; Node regression tests passed. Browser/device visual acceptance remains downstream."
     },
     {
       "id": "KM-010",
