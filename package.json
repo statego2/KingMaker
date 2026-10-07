@@ -1,0 +1,15 @@
+{
+  "name": "kingmaker",
+  "version": "0.3.1",
+  "private": true,
+  "type": "module",
+  "description": "KINGMAKER no-dependency static game and test harness",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "node tools/serve.mjs",
+    "check": "node tools/check-project.mjs",
+    "test": "node --test",
+    "validate:backlog": "node tools/validate-production-backlog.mjs",
+    "verify": "npm run check && npm test && npm run validate:backlog"
+  }
+}
