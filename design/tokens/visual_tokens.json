@@ -1,0 +1,41 @@
+{
+  "_note": "Reference-only design tokens. Not wired to runtime.",
+  "colors": {
+    "obsidian": "#0B0E13",
+    "graphite": "#141A22",
+    "slate": "#202833",
+    "fog": "#98A2AF",
+    "paper": "#E7E1D6",
+    "bone": "#F3EEE4",
+    "brass": "#B4935B",
+    "signalTeal": "#4F8D89",
+    "crisisAmber": "#C8953D",
+    "oxideRed": "#8E4B46",
+    "indigo": "#5F678F",
+    "ashGreen": "#6F806E"
+  },
+  "radius": {
+    "document": 2,
+    "surface": 10,
+    "interactive": 12,
+    "modal": 14
+  },
+  "motionMs": {
+    "micro": 150,
+    "state": 280,
+    "analytical": 380,
+    "chapter": 850
+  },
+  "textureIntensity": {
+    "paperGrain": 0.04,
+    "mapFiber": 0.03,
+    "glassBloom": 0.025
+  },
+  "principles": [
+    "color communicates state, not reward",
+    "maximum three visual depth planes",
+    "information provenance is visible",
+    "UI complexity is earned through access",
+    "numbers support structure rather than replace it"
+  ]
+}

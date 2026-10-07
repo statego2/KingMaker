@@ -66,3 +66,14 @@ The next milestone turns the campaign architecture into executable mechanics and
 The first playable vertical slice is now in the repository root as a self-contained `index.html`.
 
 Current scope: **Chapters 1–3 / 9 scenes** with persistent state, delayed callbacks, relationship updates, Inbox, People and Situation views.
+
+
+## Visual direction integrated
+
+The separate high-level design preproduction is now part of the canonical repository under `/design`.
+
+The playable build has been updated to use the **Statecraft Noir** visual language:
+institutional materiality + editorial typography + provenance-first strategic interfaces.
+
+### Live build
+GitHub Pages serves the repository root.

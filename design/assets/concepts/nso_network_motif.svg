@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="National Strategy Office network motif">
+  <rect width="800" height="800" fill="#0B0E13"/>
+  <g fill="none" stroke="#5F678F" stroke-width="2" opacity="0.7">
+    <circle cx="400" cy="400" r="250"/>
+    <circle cx="400" cy="400" r="170"/>
+    <circle cx="400" cy="400" r="90"/>
+    <path d="M400 150L555 263L496 546L245 537L246 262Z"/>
+    <path d="M400 230L505 366L440 490L302 443L312 310Z"/>
+  </g>
+  <g fill="#E7E1D6">
+    <circle cx="400" cy="150" r="12"/>
+    <circle cx="555" cy="263" r="12"/>
+    <circle cx="496" cy="546" r="12"/>
+    <circle cx="245" cy="537" r="12"/>
+    <circle cx="246" cy="262" r="12"/>
+    <circle cx="400" cy="400" r="18"/>
+  </g>
+  <circle cx="400" cy="400" r="290" fill="none" stroke="#B4935B" stroke-width="5"/>
+</svg>

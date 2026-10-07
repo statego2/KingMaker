@@ -837,3 +837,31 @@ The next implementation phase is:
 - explicit promise ledger UI
 - scene-data extraction from bundled prototype into modular files
 - full Act I government-formation resolution
+
+
+---
+
+# 24. High-Level Visual Design Integration — DONE
+
+The separate design-preproduction work has been integrated into the canonical project.
+
+## Canonical visual direction
+- **Statecraft Noir**
+- institutional material + strategic system material
+- Obsidian / Graphite / Slate / Paper / Brass core palette
+- provenance visible in the interface
+- UI complexity grows with player access
+- serious political-thriller tone; no casino/cyberpunk treatment
+
+## Runtime integration
+The playable vertical slice now uses:
+- editorial serif + analytical sans hierarchy
+- document-like decision surfaces
+- confirmed vs uncertain evidence styling
+- deliberate commit interaction
+- Dossiers
+- Act-I partial Network view
+- Archive of committed decisions
+- Statecraft Noir tokens
+
+The original design branch remains historical reference; the canonical source is now main:/design.
