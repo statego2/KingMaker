@@ -1,0 +1,40 @@
+name: KM-005 browser visual baseline
+on:
+  pull_request:
+    paths:
+      - "tools/capture-visual-baseline.mjs"
+      - "src/**"
+      - "styles-redesign.css"
+      - "index.html"
+      - ".github/workflows/visual-baseline.yml"
+  workflow_dispatch:
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated Playwright
+        run: npm install --no-save --no-package-lock --no-audit --no-fund playwright@1.56.1
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Start preview
+        run: |
+          npm run dev > /tmp/kingmaker-preview.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ > /dev/null && exit 0; sleep 1; done
+          cat /tmp/kingmaker-preview.log
+          exit 1
+      - name: Capture responsive baseline
+        run: node tools/capture-visual-baseline.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kingmaker-KM-005-visual-baseline
+          path: artifacts/visual-baseline/
+          retention-days: 30
+          if-no-files-found: warn
