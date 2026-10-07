@@ -18,6 +18,7 @@ An AI must read current code and backlog, implement one cohesive task, verify it
 | [Machine-readable backlog](data/production_backlog_v1.json) | **111 numbered tasks**, dependencies, statuses, deliverables and acceptance criteria |
 | [Task register](docs/TASK_REGISTER.md) | Human-readable WBS and detailed acceptance |
 | [Current next action](docs/NEXT_ACTION.md) | Where the next AI starts |
+| [Executable implementation inventory](docs/IMPLEMENTATION_INVENTORY.md) | Active import graph, 18 scene IDs, shipped-vs-scaffold audit |
 | [AI delivery protocol](docs/AI_DELIVERY_PROTOCOL.md) | Branches, PRs, tests and truthful status handoff |
 | [Campaign matrix](docs/CAMPAIGN_PRODUCTION_MATRIX.md) | 36-chapter production map |
 | [Quality/testing strategy](docs/QUALITY_AND_TEST_STRATEGY.md) | UX, simulation, accessibility, playtest and release gates |
