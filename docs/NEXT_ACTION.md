@@ -11,6 +11,23 @@
 - **KM-008: review** — checks/CODEOWNERS documented, but [owner issue #10](https://github.com/statego2/KingMaker/issues/10) requires actual main branch ruleset activation and verification. Do not mark done without evidence.
 - **KM-007** and **KM-010** are dependency-blocked by KM-005; do not bypass the validator or infer human signoff.
 
+## Active KM-089 bounded taxonomy implementation
+- [Task branch](https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1): canonical 10 domains / 60 competency IDs, 15 tensions and Q001–Q1000 tier slots; Node tests and a taxonomy validator added. **Parent status: in_progress, not done.**
+- Original 1,000 individual question records are absent from this repository. Do not infer per-question competency/source coverage from the master document's completion claim. Next slice requires original corpus and provenance.
+- **Verified task-branch CI:** [game-tests #37705840526](https://github.com/statego2/KingMaker/actions/runs/37705840526) PASS (`npm run check`, `npm test` **19/19**, `npm run validate:backlog`, `npm run validate:taxonomy`); [backlog #37705840519](https://github.com/statego2/KingMaker/actions/runs/37705840519) PASS. [Code commit ce45339](https://github.com/statego2/KingMaker/commit/ce45339fd1d567ef35a763af6633b68b1aa89eab). PR creation was refused by connector; [open comparison](https://github.com/statego2/KingMaker/compare/main...task/KM-089-taxonomy-index-slice-1?expand=1). Not merged.
+- P0 [KM-005 issue #12](https://github.com/statego2/KingMaker/issues/12) remains human/device review; [P0 fix branch](https://github.com/statego2/KingMaker/tree/task/KM-005-mobile-safe-zones-issue-12) has passing branch Actions but PR creation is blocked. KM-008 still awaits [owner ruleset issue #10](https://github.com/statego2/KingMaker/issues/10).
+
+### KM-089 slice 2 — provenance-gated corpus intake
+- Added an empty original-question intake manifest, canonical ID/tier/competency/tension validation, item-level provenance checks, coverage audit and synthetic-only Node tests. **0 actual records imported, 0 reviewed; KM-089 remains in_progress.**
+- Run `npm run check`, `npm test`, `npm run validate:backlog`, `npm run validate:taxonomy`, and `npm run validate:mappings`; verify final-commit Actions before claiming CI success.
+- [Task branch](https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1) and [compare](https://github.com/statego2/KingMaker/compare/main...task/KM-089-taxonomy-index-slice-1). The original question corpus is the next content blocker; no UI or save-schema changes.
+
+### KM-089 delivery: source-safe foundation available for review
+- [PR #13](https://github.com/statego2/KingMaker/pull/13) contains canonical taxonomy, original-question intake, provenance validation, `src/knowledge-coverage.js`, new synthetic coverage tests and a JSON CLI (`node tools/report-knowledge-coverage.mjs` or `npm run report:coverage`).
+- **Verified head CI:** [game-tests 37776026971](https://github.com/statego2/KingMaker/actions/runs/37776026971) passed: `npm run check`, `npm test` (**27/27**), `npm run validate:backlog`, `npm run validate:taxonomy`, `npm run validate:mappings` and JSON coverage report assertion; [backlog 37776026791](https://github.com/statego2/KingMaker/actions/runs/37776026791) passed.
+- **KM-089 remains in_progress:** original individual question corpus is absent; coverage stays **0/1,000**. The code is a foundation, not completed substantive mapping.
+- **Next dependency-ready separate work:** KM-012 art bible has an existing unmerged branch and requires human visual approval. KM-005 (#12) and KM-008 (#10) stay in review.
+
 ## Next dependency-ready implementation work
 - **KM-012 [P1]** — Create Lydria location and time-of-day visual bible (depends: KM-001)
 - **KM-089 [P1]** — Map 1,000 mechanisms to taxonomy with stable IDs (depends: KM-001)
@@ -30,3 +47,8 @@ Prefer **KM-089**, where taxonomy/unique ID work can produce a verifiable conten
 - KM-006: [v0.3–v1 state delta PR #7](https://github.com/statego2/KingMaker/pull/7), migration not active
 - KM-009: [scene presentation adapter PR #8](https://github.com/statego2/KingMaker/pull/8)
 - KM-011: [scene/controller boundary PR #11](https://github.com/statego2/KingMaker/pull/11)
+
+### Final CI verification — KM-089 slice 2
+- [Node workflow 37716425812](https://github.com/statego2/KingMaker/actions/runs/37716425812): check PASS; npm test 24/24 PASS; backlog, taxonomy and mapping validators PASS.
+- [Backlog workflow 37716425836](https://github.com/statego2/KingMaker/actions/runs/37716425836): PASS.
+- Tested commit: https://github.com/statego2/KingMaker/commit/1aa6bc97cef8cdd3601cea0e96a6def8553f2fb3

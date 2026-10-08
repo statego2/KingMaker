@@ -54,3 +54,27 @@ Entries document **verified project activity**, separate from the aspirational b
 - **Verified Chromium CI:** [visual run](https://github.com/statego2/KingMaker/actions/runs/37694535952) PASS: 15 screenshots, 0 automated warnings, 0 page errors. Browser-click smoke PASS for Context, People, select/commit, consequence, debrief, Continue, persisted reload, Inbox and Reset.
 - **Limitations:** utility-only HTML remains in controller, no full accessibility/iOS/art approval is implied. No persisted state schema changes. KM-005 human visual signoff remains `review`.
 - **Next:** no other P0 todo task is dependency-ready until manual gates; proceed to independent ready P1 KM-089 taxonomy or KM-012 visual bible (requires human art approval).
+
+## 2026-10-08 — KM-089 bounded slice 1: canonical taxonomy foundation
+- **Branch:** https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1
+- **Code/data:** 10 canonical domains and 60 stable competency IDs, 15 master tensions, Q001–Q1000 deterministic tier slots, validator and Node tests. Source: `docs/00_MASTER_PROJECT.md` sections 3, 4 and 18. No runtime scene or save schema changes.
+- **Evidence boundary:** original 1,000 item-level question records are not tracked in the repository; mapping coverage is explicitly **0 verified question mappings**. The master project's corpus-completion statement is not treated as per-item source evidence.
+- **Verified branch CI:** [game-tests #37705840526](https://github.com/statego2/KingMaker/actions/runs/37705840526) PASS (`npm run check`, `npm test` 19 passed / 0 failed, `npm run validate:backlog`, `npm run validate:taxonomy`); [backlog #37705840519](https://github.com/statego2/KingMaker/actions/runs/37705840519) PASS. [Commit ce45339](https://github.com/statego2/KingMaker/commit/ce45339fd1d567ef35a763af6633b68b1aa89eab). No UI changed; no Chromium tests claimed. PR creation was refused by the connector; [comparison](https://github.com/statego2/KingMaker/compare/main...task/KM-089-taxonomy-index-slice-1?expand=1). Main unchanged.
+- **Status:** KM-089 in_progress, not done. Next: import verified original corpus and map bounded question batches with source anchors; review coverage and ambiguity.
+
+## 2026-10-08 — KM-089 bounded slice 2: provenance-gated question intake
+- **Branch:** https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1 (unmerged).
+- **Code/data:** empty original-question intake manifest, canonical ID/tier/competency/tension validator, per-item provenance requirements, coverage audit by tier/domain, CLI and synthetic-only Node tests.
+- **Evidence boundary:** 0 actual original question records imported and 0 reviewed. No question mapping, human review, UI, canon or save-schema changes claimed. KM-089 stays `in_progress`.
+- **CI:** final-commit GitHub Actions verification pending; do not infer PASS from previous commits.
+- **P0 blockers:** [KM-005 issue #12](https://github.com/statego2/KingMaker/issues/12) needs real-device/human visual approval; [KM-008 issue #10](https://github.com/statego2/KingMaker/issues/10) needs owner GitHub ruleset verification.
+
+### Verified follow-up — KM-089 slice 2 CI
+- Commit: https://github.com/statego2/KingMaker/commit/1aa6bc97cef8cdd3601cea0e96a6def8553f2fb3
+- [Node CI 37716425812](https://github.com/statego2/KingMaker/actions/runs/37716425812) PASS: `npm run check`, `npm test` (24 passed, 0 failed), `npm run validate:backlog`, `npm run validate:taxonomy`, `npm run validate:mappings`.
+- [Backlog CI 37716425836](https://github.com/statego2/KingMaker/actions/runs/37716425836) PASS. Browser testing not needed: no UI change. Main remains unchanged; PR creation blocked by connector.
+
+## 2026-10-08 — KM-089 coverage follow-up, source-safe implementation delivered for review
+- **PR:** [#13](https://github.com/statego2/KingMaker/pull/13) integrates taxonomy/domain index, strict question intake/author source ledger, no fabricated question mappings, reviewed-vs-pending competency coverage and JSON report CLI. The local patch's three synthetic regression tests and CLI were uploaded successfully after GitHub write access recovered.
+- **Actual verified CI:** [game-tests 37776026971](https://github.com/statego2/KingMaker/actions/runs/37776026971) PASS — `npm run check`, `npm test` (**27 passed, 0 failed**), `npm run validate:backlog`, `npm run validate:taxonomy`, `npm run validate:mappings`, and direct JSON coverage report assertion; [backlog 37776026791](https://github.com/statego2/KingMaker/actions/runs/37776026791) PASS. An earlier JSON npm-wrapper failure was repaired; final CI passed.
+- **Production boundary:** no game UI, engine state, save schema, original question content or art changed. 0/1000 original questions imported; human review remains entirely outstanding, so **KM-089 remains in_progress**. Human iOS signoff (KM-005) and GitHub main ruleset (KM-008) remain outstanding.

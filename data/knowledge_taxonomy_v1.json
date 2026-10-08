@@ -1,0 +1,872 @@
+{
+  "schema_version": "1.0",
+  "id": "KM-KNOWLEDGE-TAXONOMY-V1",
+  "source_of_truth": "docs/00_MASTER_PROJECT.md",
+  "source_revision": "canonical sections 3, 4, 18",
+  "mapping_scope": "verified framework taxonomy and deterministic question ID ranges; individual question-to-competency mappings not asserted",
+  "question_corpus": {
+    "expected_count": 1000,
+    "repository_status": "not_present_as_individual_question_records",
+    "mapped_question_count": 0,
+    "source_provenance_status": "requires_original_question_records",
+    "note": "The master project declares 1000 questions complete but the repository does not contain the 1000 item-level question texts/metadata. No competency/source links for Q001–Q1000 are inferred."
+  },
+  "domains": [
+    {
+      "id": "PE",
+      "name": "Perception & Epistemics",
+      "competencies": [
+        {
+          "id": "PE1",
+          "name": "Reality vs Appearance",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PE1",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PE2",
+          "name": "Source Evaluation",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PE2",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PE3",
+          "name": "Motive Detection",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PE3",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PE4",
+          "name": "Signal Extraction",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PE4",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PE5",
+          "name": "Perspective Switching",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PE5",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PE6",
+          "name": "Uncertainty Calibration",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PE6",
+            "provenance": "canonical_framework_definition"
+          }
+        }
+      ]
+    },
+    {
+      "id": "SC",
+      "name": "Self-Command",
+      "competencies": [
+        {
+          "id": "SC1",
+          "name": "Emotional Regulation",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "SC1",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "SC2",
+          "name": "Impulse Control",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "SC2",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "SC3",
+          "name": "Ego Regulation",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "SC3",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "SC4",
+          "name": "Self-Knowledge",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "SC4",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "SC5",
+          "name": "Resilience",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "SC5",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "SC6",
+          "name": "Internal Standards",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "SC6",
+            "provenance": "canonical_framework_definition"
+          }
+        }
+      ]
+    },
+    {
+      "id": "JD",
+      "name": "Judgment & Decision",
+      "competencies": [
+        {
+          "id": "JD1",
+          "name": "Problem Framing",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "JD1",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "JD2",
+          "name": "Option Generation",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "JD2",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "JD3",
+          "name": "Trade-off Analysis",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "JD3",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "JD4",
+          "name": "Risk–Reward Judgment",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "JD4",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "JD5",
+          "name": "Second-Order Thinking",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "JD5",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "JD6",
+          "name": "Reconsideration",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "JD6",
+            "provenance": "canonical_framework_definition"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TE",
+      "name": "Timing & Execution",
+      "competencies": [
+        {
+          "id": "TE1",
+          "name": "Timing",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "TE1",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "TE2",
+          "name": "Decisiveness",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "TE2",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "TE3",
+          "name": "Preparation",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "TE3",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "TE4",
+          "name": "Resource Allocation",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "TE4",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "TE5",
+          "name": "Reserves & Optionality",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "TE5",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "TE6",
+          "name": "Exit & Termination",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "TE6",
+            "provenance": "canonical_framework_definition"
+          }
+        }
+      ]
+    },
+    {
+      "id": "PI",
+      "name": "People & Incentives",
+      "competencies": [
+        {
+          "id": "PI1",
+          "name": "Incentive Mapping",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PI1",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PI2",
+          "name": "Character Reading",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PI2",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PI3",
+          "name": "Trust Calibration",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PI3",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PI4",
+          "name": "Dependency Analysis",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PI4",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PI5",
+          "name": "Relationship Differentiation",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PI5",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PI6",
+          "name": "Boundary Management",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PI6",
+            "provenance": "canonical_framework_definition"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CI",
+      "name": "Communication & Influence",
+      "competencies": [
+        {
+          "id": "CI1",
+          "name": "Audience Adaptation",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "CI1",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "CI2",
+          "name": "Message Framing",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "CI2",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "CI3",
+          "name": "Persuasion by Incentive",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "CI3",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "CI4",
+          "name": "Strategic Disclosure",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "CI4",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "CI5",
+          "name": "Listening & Elicitation",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "CI5",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "CI6",
+          "name": "Voluntary Alignment",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "CI6",
+            "provenance": "canonical_framework_definition"
+          }
+        }
+      ]
+    },
+    {
+      "id": "PN",
+      "name": "Power & Networks",
+      "competencies": [
+        {
+          "id": "PN1",
+          "name": "Formal vs Informal Power",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PN1",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PN2",
+          "name": "Network Mapping",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PN2",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PN3",
+          "name": "Leverage",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PN3",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PN4",
+          "name": "Agenda Control",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PN4",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PN5",
+          "name": "Coalition Building",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PN5",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "PN6",
+          "name": "Hierarchy Navigation",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "PN6",
+            "provenance": "canonical_framework_definition"
+          }
+        }
+      ]
+    },
+    {
+      "id": "RP",
+      "name": "Reputation & Positioning",
+      "competencies": [
+        {
+          "id": "RP1",
+          "name": "Reputation Capital",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "RP1",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "RP2",
+          "name": "Credibility",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "RP2",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "RP3",
+          "name": "Visibility Management",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "RP3",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "RP4",
+          "name": "Scarcity & Mystique",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "RP4",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "RP5",
+          "name": "Expectation Management",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "RP5",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "RP6",
+          "name": "Positioning & Identity",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "RP6",
+            "provenance": "canonical_framework_definition"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CA",
+      "name": "Conflict & Adversarial Strategy",
+      "competencies": [
+        {
+          "id": "CA1",
+          "name": "Opponent Modeling",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "CA1",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "CA2",
+          "name": "Initiative",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "CA2",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "CA3",
+          "name": "Escalation Control",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "CA3",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "CA4",
+          "name": "Tactical Retreat",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "CA4",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "CA5",
+          "name": "Conflict Resolution",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "CA5",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "CA6",
+          "name": "Counterstrategy",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "CA6",
+            "provenance": "canonical_framework_definition"
+          }
+        }
+      ]
+    },
+    {
+      "id": "DG",
+      "name": "Development & Grand Strategy",
+      "competencies": [
+        {
+          "id": "DG1",
+          "name": "Strength Development",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "DG1",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "DG2",
+          "name": "Learning from Excellence",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "DG2",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "DG3",
+          "name": "Depth & Expertise",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "DG3",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "DG4",
+          "name": "Adaptability",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "DG4",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "DG5",
+          "name": "Long-Term Positioning",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "DG5",
+            "provenance": "canonical_framework_definition"
+          }
+        },
+        {
+          "id": "DG6",
+          "name": "Integrity & Legacy",
+          "source": {
+            "path": "docs/00_MASTER_PROJECT.md",
+            "section": "3. Strategic Mastery Model v1",
+            "anchor": "DG6",
+            "provenance": "canonical_framework_definition"
+          }
+        }
+      ]
+    }
+  ],
+  "master_tensions": [
+    {
+      "id": "MT01",
+      "name": "Speed ↔ Deliberation",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT02",
+      "name": "Boldness ↔ Caution",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT03",
+      "name": "Persistence ↔ Exit",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT04",
+      "name": "Transparency ↔ Secrecy",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT05",
+      "name": "Consistency ↔ Adaptability",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT06",
+      "name": "Visibility ↔ Scarcity",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT07",
+      "name": "Confidence ↔ Doubt",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT08",
+      "name": "Independence ↔ Commitment",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT09",
+      "name": "Concentration ↔ Redundancy",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT10",
+      "name": "Kindness ↔ Deterrence",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT11",
+      "name": "Authenticity ↔ Adaptation",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT12",
+      "name": "Principle ↔ Pragmatism",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT13",
+      "name": "Victory ↔ Restraint",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT14",
+      "name": "Predictability ↔ Trust",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    },
+    {
+      "id": "MT15",
+      "name": "Power ↔ Legitimacy",
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "4. Fifteen Master Tensions"
+      }
+    }
+  ],
+  "question_tiers": [
+    {
+      "id": "recognition",
+      "start": 1,
+      "end": 100,
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "18. 1000-Question Corpus Completion"
+      }
+    },
+    {
+      "id": "diagnosis",
+      "start": 101,
+      "end": 270,
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "18. 1000-Question Corpus Completion"
+      }
+    },
+    {
+      "id": "application",
+      "start": 271,
+      "end": 470,
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "18. 1000-Question Corpus Completion"
+      }
+    },
+    {
+      "id": "trade_off",
+      "start": 471,
+      "end": 670,
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "18. 1000-Question Corpus Completion"
+      }
+    },
+    {
+      "id": "adversarial",
+      "start": 671,
+      "end": 820,
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "18. 1000-Question Corpus Completion"
+      }
+    },
+    {
+      "id": "integrated",
+      "start": 821,
+      "end": 940,
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "18. 1000-Question Corpus Completion"
+      }
+    },
+    {
+      "id": "adversarial_chains",
+      "start": 941,
+      "end": 980,
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "18. 1000-Question Corpus Completion"
+      }
+    },
+    {
+      "id": "capstone",
+      "start": 981,
+      "end": 1000,
+      "source": {
+        "path": "docs/00_MASTER_PROJECT.md",
+        "section": "18. 1000-Question Corpus Completion"
+      }
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 name: KINGMAKER runtime and regression tests
 on:
   push:
-    branches: [main]
+    branches: [main, 'task/KM-089-*']
   pull_request:
 jobs:
   game-tests:
@@ -19,3 +19,11 @@ jobs:
         run: npm test
       - name: Production dependency graph and statuses
         run: npm run validate:backlog
+      - name: Validate canonical knowledge taxonomy
+        run: npm run validate:taxonomy
+      - name: Validate original question intake
+        run: npm run validate:mappings
+      - name: Verify machine-readable coverage report
+        run: |
+          node tools/report-knowledge-coverage.mjs > /tmp/kingmaker-coverage.json
+          node -e "const r=require('/tmp/kingmaker-coverage.json');if(!r.valid||r.expected_questions!==1000||r.imported_questions!==0||r.competencies_with_reviewed_primary!==0)process.exit(1);console.log('Coverage 0 of 1000 original records; 0 reviewed competencies')"

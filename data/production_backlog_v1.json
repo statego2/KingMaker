@@ -2120,7 +2120,7 @@
       "stream": "curriculum",
       "priority": "P1",
       "size": "L",
-      "status": "todo",
+      "status": "in_progress",
       "depends_on": [
         "KM-001"
       ],
@@ -2131,8 +2131,28 @@
         "10 domains / 60 competencies trace to source corpus",
         "No invented pedagogical coverage for unimplemented scenarios"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1",
+        "data/knowledge_taxonomy_v1.json",
+        "tests/knowledge-taxonomy.test.mjs",
+        "docs/KNOWLEDGE_TAXONOMY_MAPPING.md",
+        "https://github.com/statego2/KingMaker/commit/ce45339fd1d567ef35a763af6633b68b1aa89eab",
+        "https://github.com/statego2/KingMaker/actions/runs/37705840526",
+        "https://github.com/statego2/KingMaker/actions/runs/37705840519",
+        "data/question_mappings_v1.json",
+        "src/question-mapping.js",
+        "tests/question-mapping.test.mjs",
+        "tools/validate-question-mappings.mjs",
+        "https://github.com/statego2/KingMaker/commit/1aa6bc97cef8cdd3601cea0e96a6def8553f2fb3",
+        "https://github.com/statego2/KingMaker/actions/runs/37716425812",
+        "https://github.com/statego2/KingMaker/actions/runs/37716425836",
+        "https://github.com/statego2/KingMaker/pull/13",
+        "https://github.com/statego2/KingMaker/actions/runs/37776026971",
+        "https://github.com/statego2/KingMaker/actions/runs/37776026791",
+        "tests/knowledge-coverage.test.mjs",
+        "tools/report-knowledge-coverage.mjs"
+      ],
+      "notes": "Bounded KM-089 work committed in PR #13: 10 domains/60 competencies, 15 tensions, Q001–Q1000 stable slots; synthetic-only question mapping and coverage tests (27/27 Node); valid 0-item machine coverage report and taxonomy/mapping/backlog validation all passed in Actions 37776026971 and 37776026791. No original question records imported or reviewed; no human signoff of mappings. Parent remains in_progress until original 1,000 item-level source records and substantive provenance review become available."
     },
     {
       "id": "KM-090",
