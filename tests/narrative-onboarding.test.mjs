@@ -89,6 +89,7 @@ test("actors show their jobs next to their names without multiple duplicated lab
   assert.equal(roleLabel("lea_marin"),"Λέα (συνάδελφος αναλύτρια)");
   assert.equal(annotateNames("Η Λέα μίλησε στη Μάρα."),"Η Λέα (συνάδελφος αναλύτρια) μίλησε στη Μάρα (προϊσταμένη σου).");
   assert.equal(annotateNames("Λέα (συνάδελφος αναλύτρια) είπε γεια."),"Λέα (συνάδελφος αναλύτρια) είπε γεια.");
+  assert.equal(annotateNames("Lea Marin called Mara Eltan."),"Λέα (συνάδελφος αναλύτρια) called Μάρα (προϊσταμένη σου).");
   const {createSceneViews}=await import("../src/scene-renderer.js");
   const html=createSceneViews({state:fresh(),icon:()=>""}).renderScene();
   assert.match(html,/Λέα \(συνάδελφος αναλύτρια\)/);
@@ -108,6 +109,8 @@ test("investigation opens two actionable leads without forcing extra steps",asyn
     const after=commit(fresh(),enriched);
     assert.equal(after.flags.OPENING_LEAD,lead);
     assert.equal(after.flags.OPENING_COUNT,"calibrated");
+    if(lead==="callback")assert.ok(after.rel.niko_arven.familiarity>first.rel.niko_arven.familiarity);
+    if(lead==="audit")assert.ok(after.world.information_quality>first.world.information_quality+0);
     assert.equal(after.history[0].scene,"C01_S01");
     assert.ok(getOpeningLead(lead).discovery.length>50);
     const preview=createSceneViews({state:first,icon:()=>"",openingLead:lead}).renderScene();
