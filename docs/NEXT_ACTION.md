@@ -11,6 +11,12 @@
 - **KM-008: review** — checks/CODEOWNERS documented, but [owner issue #10](https://github.com/statego2/KingMaker/issues/10) requires actual main branch ruleset activation and verification. Do not mark done without evidence.
 - **KM-007** and **KM-010** are dependency-blocked by KM-005; do not bypass the validator or infer human signoff.
 
+## Active KM-089 bounded taxonomy implementation
+- [Task branch](https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1): canonical 10 domains / 60 competency IDs, 15 tensions and Q001–Q1000 tier slots; Node tests and a taxonomy validator added. **Parent status: in_progress, not done.**
+- Original 1,000 individual question records are absent from this repository. Do not infer per-question competency/source coverage from the master document's completion claim. Next slice requires original corpus and provenance.
+- GitHub Actions and PR evidence must be confirmed before claiming tests passed or changing status to review.
+- P0 [KM-005 issue #12](https://github.com/statego2/KingMaker/issues/12) remains human/device review; [P0 fix branch](https://github.com/statego2/KingMaker/tree/task/KM-005-mobile-safe-zones-issue-12) has passing branch Actions but PR creation is blocked. KM-008 still awaits [owner ruleset issue #10](https://github.com/statego2/KingMaker/issues/10).
+
 ## Next dependency-ready implementation work
 - **KM-012 [P1]** — Create Lydria location and time-of-day visual bible (depends: KM-001)
 - **KM-089 [P1]** — Map 1,000 mechanisms to taxonomy with stable IDs (depends: KM-001)

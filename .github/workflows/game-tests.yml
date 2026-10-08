@@ -1,7 +1,7 @@
 name: KINGMAKER runtime and regression tests
 on:
   push:
-    branches: [main]
+    branches: [main, 'task/KM-089-*']
   pull_request:
 jobs:
   game-tests:
@@ -19,3 +19,5 @@ jobs:
         run: npm test
       - name: Production dependency graph and statuses
         run: npm run validate:backlog
+      - name: Validate canonical knowledge taxonomy
+        run: npm run validate:taxonomy

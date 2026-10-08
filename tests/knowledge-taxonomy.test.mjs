@@ -10,7 +10,7 @@ const master=readFileSync(resolve(root,"docs/00_MASTER_PROJECT.md"),"utf8");
 test("canonical framework: 10 domains, 60 IDs, 15 tensions, and explicit source anchors",()=>{
   assert.deepEqual(validateKnowledgeTaxonomy(taxonomy),[]);
   const section=master.split("# 3. Strategic Mastery Model v1")[1].split("# 4. Fifteen Master Tensions")[0];
-  const entries=[...section.matchAll(/^- \\*\\*([A-Z]{2}[1-6])\\*\\* (.+)$/gm)].map(([,id,name])=>[id,name]);
+  const entries=[...section.matchAll(/^- \*\*([A-Z]{2}[1-6])\*\* (.+)$/gm)].map(([,id,name])=>[id,name]);
   const actual=taxonomy.domains.flatMap(x=>x.competencies.map(c=>[c.id,c.name]));
   assert.equal(entries.length,60,"master section should define exactly 60 competencies");
   assert.deepEqual(actual,entries,"IDs and labels must match canonical master, not paraphrases");

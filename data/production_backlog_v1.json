@@ -2120,7 +2120,7 @@
       "stream": "curriculum",
       "priority": "P1",
       "size": "L",
-      "status": "todo",
+      "status": "in_progress",
       "depends_on": [
         "KM-001"
       ],
@@ -2131,8 +2131,13 @@
         "10 domains / 60 competencies trace to source corpus",
         "No invented pedagogical coverage for unimplemented scenarios"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1",
+        "data/knowledge_taxonomy_v1.json",
+        "tests/knowledge-taxonomy.test.mjs",
+        "docs/KNOWLEDGE_TAXONOMY_MAPPING.md"
+      ],
+      "notes": "Bounded L slice 1: canonical 10-domain/60-competency IDs, 15 tensions, Q001–Q1000 tier slots and provenance checks. No individual question records are stored in repo, so zero question-level mappings are asserted; original corpus acquisition and verified per-item mapping remain. Awaiting CI and PR review; parent NOT done."
     },
     {
       "id": "KM-090",

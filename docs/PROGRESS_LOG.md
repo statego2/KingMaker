@@ -54,3 +54,10 @@ Entries document **verified project activity**, separate from the aspirational b
 - **Verified Chromium CI:** [visual run](https://github.com/statego2/KingMaker/actions/runs/37694535952) PASS: 15 screenshots, 0 automated warnings, 0 page errors. Browser-click smoke PASS for Context, People, select/commit, consequence, debrief, Continue, persisted reload, Inbox and Reset.
 - **Limitations:** utility-only HTML remains in controller, no full accessibility/iOS/art approval is implied. No persisted state schema changes. KM-005 human visual signoff remains `review`.
 - **Next:** no other P0 todo task is dependency-ready until manual gates; proceed to independent ready P1 KM-089 taxonomy or KM-012 visual bible (requires human art approval).
+
+## 2026-10-08 — KM-089 bounded slice 1: canonical taxonomy foundation
+- **Branch:** https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1
+- **Code/data:** 10 canonical domains and 60 stable competency IDs, 15 master tensions, Q001–Q1000 deterministic tier slots, validator and Node tests. Source: `docs/00_MASTER_PROJECT.md` sections 3, 4 and 18. No runtime scene or save schema changes.
+- **Evidence boundary:** original 1,000 item-level question records are not tracked in the repository; mapping coverage is explicitly **0 verified question mappings**. The master project's corpus-completion statement is not treated as per-item source evidence.
+- **Tests:** GitHub Actions triggered on branch push; results must be checked before claiming PASS. No Chromium run needed because no UI changed.
+- **Status:** KM-089 in_progress, not done. Next: import verified original corpus and map bounded question batches with source anchors; review coverage and ambiguity.
