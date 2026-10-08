@@ -176,38 +176,82 @@ o("c","Δοκίμασε","Έναν συμβιβασμό με περισσότε�
 "Το ότι πολλοί συμφωνούν με τον σκοπό δεν σημαίνει ότι έχουν τον ίδιο τρόπο για να τον πετύχουν.",{flags:{GOV_PATH:"civic_compact"},routes:{civic_compact:7}})
 ],["mara_eltan","adrian_kessar","mira_solen"]),
 
-c("C03_S01","03","THE FILE","Day 6 — “A Page Your People Say Does Not Exist”","HARBOR CONTRACTS",
-["Η Nadia στέλνει crop από procurement memo.","Contract numbers και meeting log ταιριάζουν με το archive.","Η explosive handwritten annotation — «DC wants clause narrow enough» — δεν υπάρχει σε κανένα SCS copy."],
-[{type:"confirmed",label:"CONTRACT REFERENCES",value:"Match archive",note:"High authenticity"},{type:"confirmed",label:"MEETING",value:"Occurred",note:"Context incomplete"},{type:"uncertain",label:"ANNOTATION",value:"Unverified",note:"Could be original, later note, or alteration"}],
-"Ποια είναι η ακριβέστερη διάγνωση;",
+c("C03_S01","03","Η ΣΕΛΙΔΑ","Το χειρόγραφο","Η ΣΕΛΙΔΑ ΠΟΥ ΔΕΝ ΥΠΗΡΧΕ",
 [
-o("a","Separate","Mostly authentic document; annotation unverified.","Χωρίζεις document authenticity από annotation meaning.",.98,"Η Lea: «Αρκετό για να ερευνήσουμε. Όχι για να πούμε ιστορία.»","True document + uncertain layer μπορεί να παράγει false total picture.",{world:{information_quality:2},rel:{lea_marin:{respect:2},nadia_serrin:{respect:2}},flags:{HARBOR_DIAGNOSIS:"mixed"}}),
-o("b","Dismiss","Όλο το page είναι fake.","Ένα unverified layer μολύνει τα πάντα.",.25,"Η Lea: «Αυτό δεν ακολουθεί από τα δεδομένα.»","Αμφίβολο στοιχείο δεν εξαφανίζει τα independently verified parts.",{world:{information_quality:-2},rel:{lea_marin:{trust:-2,respect:-3}},flags:{HARBOR_DIAGNOSIS:"dismissed"}}),
-o("c","Conclude","Αποδεικνύει ότι ο Damir ζήτησε tailored clause.","Συνδέεις initials + context + annotation.",.30,"Η Mara: «Μου λες τι ξέρουμε ή τι φοβάσαι ότι σημαίνει;»","Plausible inference δεν είναι yet established fact.",{player:{credibility:-1},rel:{mara_eltan:{trust:-2}},flags:{HARBOR_DIAGNOSIS:"overclaim"}})
+"«Έχω κάτι που ίσως ρίξει τη μισή χώρα», σου λέει η Νάντια, μια δημοσιογράφος που δεν γνωρίζεις προσωπικά. Στέλνει φωτογραφία από ένα παλιό συμβόλαιο του λιμανιού. Οι ημερομηνίες και οι υπογραφές ταιριάζουν με τα αρχεία. Στο περιθώριο όμως υπάρχει μια φράση που δεν έχει κανείς στη δική σας υπηρεσία.",
+"Με μπλε μελάνι, δύο αρχικά και λίγες λέξεις: «DC wants clause narrow enough». Η Νάντια ρωτά αν τα αρχικά ανήκουν σε έναν ισχυρό επιχειρηματία. «Αν ισχύει, δεν θα είναι μια απλή παρατυπία. Θα είναι το ίδιο το σύστημα που γράφει τους κανόνες για τον εαυτό του».",
+"Η Λέα πλησιάζει την οθόνη. «Η συνάντηση έγινε. Το χαρτί μάλλον είναι αληθινό. Αλλά δεν ξέρουμε ποιος έγραψε αυτή τη φράση — ούτε πότε»."
+],
+[
+{type:"confirmed",label:"ΤΟ ΣΥΜΒΟΛΑΙΟ",value:"Ταιριάζει με το αρχείο",note:"Οι αριθμοί και οι ημερομηνίες επιβεβαιώθηκαν"},
+{type:"confirmed",label:"Η ΣΥΝΑΝΤΗΣΗ",value:"Πραγματοποιήθηκε",note:"Δεν γνωρίζουμε τι ειπώθηκε"},
+{type:"uncertain",label:"Η ΧΕΙΡΟΓΡΑΦΗ ΦΡΑΣΗ",value:"«DC wants clause narrow enough»",note:"Ο συντάκτης, η στιγμή και η ερμηνεία δεν έχουν επιβεβαιωθεί"}
+],
+"Τι απαντάς στη Νάντια;",
+[
+o("a","Ξεχώρισε","«Το συμβόλαιο φαίνεται αληθινό. Η φράση δεν έχει ελεγχθεί».","Δεν αποκλείεις το σκάνδαλο, ούτε παρουσιάζεις έναν ύποπτο υπαινιγμό ως απόδειξη.",.98,
+"«Τότε θέλω το πρωτότυπο», απαντά η Νάντια. Η Λέα σε κοιτάζει με ανακούφιση. «Έχουμε λόγο να ψάξουμε. Όχι ακόμη λόγο να καταδικάσουμε».",
+"Ένα γνήσιο έγγραφο δεν κάνει αυτομάτως γνήσια κάθε προσθήκη πάνω του. Οι διαφορετικές προτάσεις χρειάζονται ξεχωριστές αποδείξεις.",{world:{information_quality:2},rel:{lea_marin:{respect:2},nadia_serrin:{respect:2}},flags:{HARBOR_DIAGNOSIS:"mixed"}}),
+o("b","Αμφισβήτησε","«Αν η φράση είναι ύποπτη, ίσως είναι πλαστό όλο το χαρτί».","Προστατεύεις τους εμπλεκόμενους από βιαστικές κατηγορίες, αλλά μπορεί να πετάξεις και αληθινά στοιχεία.",.25,
+"Η Νάντια αφήνει λίγα δευτερόλεπτα σιωπής. «Γιατί να είναι πλαστές και οι ημερομηνίες που ταιριάζουν;» Η Λέα δείχνει το αρχείο. Δεν έχεις απάντηση.",
+"Η αβεβαιότητα ενός στοιχείου δεν ακυρώνει όσα έχουν επιβεβαιωθεί ανεξάρτητα.",{world:{information_quality:-2},rel:{lea_marin:{trust:-2,respect:-3}},flags:{HARBOR_DIAGNOSIS:"dismissed"}}),
+o("c","Πάρε θέση","«Τα αρχικά μάλλον δείχνουν τον επιχειρηματία πίσω από το έργο».","Αν η υπόθεση είναι σωστή, μπορείς να αποτρέψεις νέα συγκάλυψη. Αν όχι, θα έχεις διαδώσει μια κατηγορία χωρίς απόδειξη.",.30,
+"Η Μάρα διαβάζει το μήνυμά σου και σε καλεί. «Μου λες τι ξέρουμε ή ποια ιστορία φοβάσαι ότι είναι αλήθεια;» Η Νάντια κρατά τη φράση, αλλά ζητά επαλήθευση.",
+"Μια εύλογη εικασία είναι αφορμή για έρευνα. Δεν είναι ακόμη συμπέρασμα που μπορείς να υπερασπιστείς δημόσια.",{player:{credibility:-1},rel:{mara_eltan:{trust:-2}},flags:{HARBOR_DIAGNOSIS:"overclaim"}})
 ],["nadia_serrin","lea_marin","mara_eltan"]),
 
-c("C03_S02","03","THE FILE","Day 6 — Who Gets the Page First?","CHAIN OF CUSTODY",
-["Η Nadia θέλει answer απόψε. Η Integrity Commission έχει ongoing investigation.","Ο Anton μπορεί να δώσει context, αλλά έχει reputational incentive.","Κάθε extra recipient αυξάνει leak surface."],
-[{type:"uncertain",label:"NADIA",value:"Publication clock",note:"Hours"},{type:"confirmed",label:"SELMA",value:"Investigative authority",note:"Can protect evidence"},{type:"uncertain",label:"ANTON",value:"Context source",note:"Also self-interested"}],
-"Ποια sequence διαλέγεις;",
+c("C03_S02","03","Η ΣΕΛΙΔΑ","Ποιος θα το μάθει πρώτος;","ΜΙΑ ΣΥΝΑΝΤΗΣΗ ΠΡΙΝ ΤΗ ΔΗΜΟΣΙΕΥΣΗ",
 [
-o("a","Sequence","Mara → Selma → context → calibrated reply.","Προστατεύεις investigation χωρίς να υπόσχεσαι silence.",.95,"Η Selma: «Στείλε original crop. Μην σχολιάσεις handwriting ακόμη.»","Η διαδικασία μπορεί να παράγει καλύτερη αλήθεια από το fastest public reaction.",{rel:{selma_aric:{trust:4,respect:3},mara_eltan:{trust:2}},flags:{HARBOR_PROCESS:"protected"}}),
-o("b","Disclose","Επιβεβαιώνεις στη Nadia ό,τι ταιριάζει.","Public interest first, με caveat για annotation.",.77,"Η Nadia: «Fair. Θα γράψω exactly that.»","Defensible, αλλά αυξάνει publication pressure πριν ασφαλιστεί evidence.",{rel:{nadia_serrin:{trust:4,respect:2},selma_aric:{trust:-1}},flags:{HARBOR_PROCESS:"journalistic"}}),
-o("c","Context","Παίρνεις πρώτα τον Anton.","Ίσως λύσει ambiguity σε ένα call.",.47,"Ο Anton: «Το meeting έγινε. Το note δεν το έχω ξαναδεί.»","Subject-first contact μπορεί να βελτιώσει context και να δημιουργήσει coordination risk.",{rel:{anton_beran:{familiarity:3},selma_aric:{trust:-2}},flags:{HARBOR_PROCESS:"subject_first"}})
-],["nadia_serrin","selma_aric","anton_beran"]),
-
-c("C03_S03","03","THE FILE","Day 7 — The Line You Can Defend","PUBLIC LINE",
-(state)=>[
-state.flags.OPENING_COUNT==="calibrated"?"Η Mara ακουμπά δίπλα στο Harbor page το πρώτο σου brief: «Την πρώτη μέρα ξεχώρισες confirmed από probable.»":state.flags.OPENING_COUNT==="overstated"?"Η Mara ακουμπά το πρώτο brief δίπλα στο page: «Την πρώτη μέρα αφήσαμε probability να γίνει fact. Δεν θα το ξανακάνουμε εδώ.»":"Η Mara: «Δεν μπορούμε να περιμένουμε certainty για πάντα. Μπορούμε όμως να ονομάζουμε σωστά την uncertainty.»",
-"Η Nadia πιθανότατα δημοσιεύει σήμερα. Η Selma δεν έχει ολοκληρώσει forensic work.","Η Πρόεδρος χρειάζεται μία public line πριν το μεσημέρι."
+"Η Νάντια σκοπεύει να δημοσιεύσει απόψε. Η Σέλμα, η επικεφαλής της ανεξάρτητης έρευνας, σου ζητά να μην κυκλοφορήσει άκριτα η φωτογραφία. «Αν το πρωτότυπο χαθεί μέσα σε πέντε αντιγραφές, τι θα αποδείξουμε αργότερα;»",
+"Ο πρώην πρωθυπουργός μπορεί να σου εξηγήσει γιατί έγινε εκείνη η συνάντηση. Έχει όμως και κάθε λόγο να προλάβει ό,τι ετοιμάζεται να γραφτεί.",
+"Σκέφτεσαι πως μπορεί να έχουν όλοι ένα μέρος δίκιο: η δημοσιογράφος θέλει να ενημερώσει τον κόσμο, η ερευνήτρια θέλει αποδείξεις και ο πολιτικός θέλει να προστατεύσει το όνομά του."
 ],
-[{type:"confirmed",label:"KNOWN",value:"Real meeting + contract references",note:"Confirmed"},{type:"uncertain",label:"UNKNOWN",value:"Handwriting provenance / intent",note:"Active investigation"},{type:"uncertain",label:"PUBLIC CLOCK",value:"Hours",note:"Story likely publishes"}],
-"Τι εισηγείσαι;",
 [
-o("a","Calibrate","«Μέρος του υλικού είναι αυθεντικό. Το annotation ερευνάται.»","Δεν προκαταλαμβάνεις την έρευνα.",.97,"Η Mara: «Αυτό μπορεί να παραμείνει ακριβές και αύριο. Χρησιμοποίησέ το.»","Truthfulness είναι relation between words και likely interpretation — όχι legalistic escape.",{player:{credibility:3},world:{information_quality:2,public_trust:1},rel:{mara_eltan:{trust:3,respect:3},elena_varin:{trust:2,respect:2},selma_aric:{trust:2}},flags:{FINAL_LINE:"calibrated"}}),
-o("b","Defend","«Δεν υπάρχει confirmed evidence of wrongdoing.»","Technically true, wider implication.",.44,"Η Mara: «Και τι πιστεύεις ότι θα ακούσει ο κόσμος;»","Technically true μπορεί να είναι strategically misleading.",{player:{credibility:-1},world:{public_trust:-1},rel:{nadia_serrin:{trust:-3}},flags:{FINAL_LINE:"defensive"}}),
-o("c","Release","Δημοσιεύεις όλο το page.","Maximum transparency πριν provenance work.",.37,"Η Selma: «Τώρα αποδεικνύουμε chain of custody μπροστά σε όλη τη χώρα.»","Transparency χωρίς sequencing μπορεί να μειώσει, όχι να αυξήσει, information quality.",{world:{public_trust:1,information_pressure:4},rel:{selma_aric:{trust:-5}},flags:{FINAL_LINE:"full_release"}})
+{type:"uncertain",label:"ΔΗΜΟΣΙΕΥΣΗ",value:"Απόψε",note:"Η Νάντια δεν έχει υποσχεθεί να περιμένει"},
+{type:"confirmed",label:"ΑΝΕΞΑΡΤΗΤΗ ΕΡΕΥΝΑ",value:"Η Σέλμα μπορεί να ασφαλίσει το υλικό",note:"Διαθέτει νόμιμη διαδικασία φύλαξης αποδεικτικών στοιχείων"},
+{type:"uncertain",label:"Ο ΠΡΩΗΝ ΠΡΩΘΥΠΟΥΡΓΟΣ",value:"Ίσως γνωρίζει τη συνάντηση",note:"Θα μπορούσε να ενημερώσει τους εμπλεκόμενους"}
+],
+"Ποιον πλησιάζεις πρώτα;",
+[
+o("a","Προστάτευσε το στοιχείο","Μιλάς στη Μάρα και παραδίδεις το υλικό στη Σέλμα.","Θέλεις πρώτα να μπορεί η έρευνα να αποδείξει όσα σήμερα απλώς υποπτεύεσαι.",.95,
+"Η Σέλμα απαντά: «Στείλε την αρχική εικόνα. Μη σχολιάσεις τη γραφή ακόμη». Η Νάντια επιμένει να ξέρει πότε θα έχει απάντηση.",
+"Η σωστή σειρά ενεργειών μπορεί να προστατεύσει την αλήθεια ακόμη και όταν δεν βολεύει τον άμεσο πολιτικό χειρισμό.",{rel:{selma_aric:{trust:4,respect:3},mara_eltan:{trust:2}},flags:{HARBOR_PROCESS:"protected"}}),
+o("b","Μίλα στον Τύπο","Επιβεβαιώνεις στη Νάντια μόνο τις ημερομηνίες που έλεγξες.","Αυξάνεις τη δημόσια λογοδοσία πριν ολοκληρωθεί η έρευνα, με σαφή διάκριση για τη χειρόγραφη φράση.",.77,
+"«Θα γράψω ακριβώς αυτά που είπες», απαντά. Η Σέλμα όμως μαθαίνει ότι μέρος του υλικού έγινε δημόσιο πριν το παραλάβει.",
+"Η δημόσια ενημέρωση μπορεί να είναι σωστή και χρήσιμη, αλλά να αφήσει λιγότερο χώρο στην ανεξάρτητη διερεύνηση.",{rel:{nadia_serrin:{trust:4,respect:2},selma_aric:{trust:-1}},flags:{HARBOR_PROCESS:"journalistic"}}),
+o("c","Ζήτησε εξηγήσεις","Καλείς τον πρώην πρωθυπουργό πριν μιλήσεις σε άλλον.","Θα αποκτήσεις πιθανώς ιστορικό πλαίσιο. Μπορεί επίσης να προειδοποιήσεις πρόσωπα που διερευνώνται.",.47,
+"«Η συνάντηση έγινε», σου λέει. «Τη φράση δεν την έχω ξαναδεί». Στη φωνή του ακούς περισσότερο φόβο παρά θυμό. Η Σέλμα ρωτά γιατί τον ενημέρωσες πρώτα.",
+"Η απευθείας επαφή με τον εμπλεκόμενο μπορεί να φωτίσει γεγονότα, αλλά και να του επιτρέψει να συντονίσει την αντίδρασή του.",{rel:{anton_beran:{familiarity:3},selma_aric:{trust:-2}},flags:{HARBOR_PROCESS:"subject_first"}})
+],["selma_aric","nadia_serrin","anton_beran"]),
+
+c("C03_S03","03","Η ΣΕΛΙΔΑ","Η φράση που θα μείνει","Η ΕΙΔΗΣΗ ΣΕ ΛΙΓΑ ΛΕΠΤΑ",
+(state)=>[
+state.flags.OPENING_COUNT==="calibrated"
+?"Η Μάρα ακουμπά δίπλα στο έγγραφο την πρώτη σου αναφορά. «Θυμάσαι πώς ξεχώρισες τις βέβαιες ψήφους από τις πιθανές; Θέλω την ίδια προσοχή εδώ»."
+:state.flags.OPENING_COUNT==="overstated"
+?"Η Μάρα ακουμπά δίπλα στο έγγραφο την πρώτη σου αναφορά. «Μία φορά μετατρέψαμε την πιθανότητα σε γεγονός. Δεν θα χρησιμοποιήσουμε τον ίδιο τρόπο και για μια κατηγορία»."
+:"Η Μάρα σου δείχνει το ρολόι. «Δεν μπορούμε να περιμένουμε να τα μάθουμε όλα. Πρέπει όμως να λέμε καθαρά τι δεν ξέρουμε».",
+"Η Νάντια ετοιμάζει δημοσίευμα. Η Σέλμα δεν έχει ολοκληρώσει τον έλεγχο της γραφής. Η Πρόεδρος χρειάζεται μία δημόσια πρόταση πριν ξεκινήσουν οι τηλεοπτικές εκπομπές.",
+"Η φράση σου μπορεί να γίνει τίτλος σε ολόκληρη τη χώρα. Και μπορεί να βρεθεί απέναντί σου χρόνια αργότερα."
+],
+[
+{type:"confirmed",label:"ΤΙ ΞΕΡΟΥΜΕ",value:"Η συνάντηση έγινε, οι αριθμοί ταιριάζουν",note:"Ανεξάρτητα επιβεβαιωμένα"},
+{type:"uncertain",label:"ΤΙ ΔΕΝ ΞΕΡΟΥΜΕ",value:"Ποιος έγραψε τη φράση και γιατί",note:"Η εξέταση δεν έχει ολοκληρωθεί"},
+{type:"uncertain",label:"ΔΗΜΟΣΙΕΥΣΗ",value:"Ώρες",note:"Η Νάντια προχωρά σύντομα"}
+],
+"Ποια δημόσια φράση προτείνεις;",
+[
+o("a","Μίλα με ακρίβεια","«Το έγγραφο ελέγχεται. Ορισμένα στοιχεία είναι γνήσια· η σημείωση δεν έχει επιβεβαιωθεί».","Δεν λες περισσότερα από όσα ξέρεις ούτε αποκρύπτεις ότι υπάρχει έρευνα.",.97,
+"Η Μάρα κυκλώνει την πρόταση. «Αυτή θα μπορούμε να την πούμε και αύριο». Λίγη ώρα μετά, τα κανάλια αναφέρουν ακριβώς τη διάκριση.",
+"Η αξιοπιστία χτίζεται όταν οι λέξεις δεν δημιουργούν μεγαλύτερη βεβαιότητα από όση έχεις πραγματικά.",{player:{credibility:3},world:{information_quality:2,public_trust:1},rel:{mara_eltan:{trust:3,respect:3},elena_varin:{trust:2,respect:2},selma_aric:{trust:2}},flags:{FINAL_LINE:"calibrated"}}),
+o("b","Προστάτευσε την κυβέρνηση","«Δεν υπάρχουν επιβεβαιωμένες αποδείξεις παρανομίας».","Κρατάς την πολιτική ένταση χαμηλότερη, αλλά το κοινό ίσως ακούσει πως δεν υπάρχει τίποτε να ερευνηθεί.",.44,
+"Η Μάρα αφήνει την πρόταση πάνω στο τραπέζι. «Είναι τεχνικά ακριβές. Θα καταλάβουν όμως ότι το θέμα τελείωσε;» Η Νάντια ζητά περισσότερα.",
+"Μια φράση μπορεί να είναι κυριολεκτικά αληθινή και ταυτόχρονα να προκαλεί παραπλανητική εντύπωση.",{player:{credibility:-1},world:{public_trust:-1},rel:{nadia_serrin:{trust:-3}},flags:{FINAL_LINE:"defensive"}}),
+o("c","Βγάλε τα όλα","Δίνεις ολόκληρη τη φωτογραφία στη δημοσιότητα.","Προτιμάς να κρίνει ο κόσμος το υλικό, γνωρίζοντας πως η έρευνα δεν έχει τελειώσει.",.37,
+"Η φωτογραφία ταξιδεύει από οθόνη σε οθόνη. Η Σέλμα τηλεφωνεί: «Τώρα προσπαθούμε να σώσουμε τα ίχνη της αρχικής σελίδας μπροστά σε όλη τη χώρα».",
+"Η διαφάνεια δεν είναι απλώς το πόσα αποκαλύπτεις, αλλά και αν οι πληροφορίες μπορούν ακόμη να ελεγχθούν αξιόπιστα.",{world:{public_trust:1,information_pressure:4},rel:{selma_aric:{trust:-5}},flags:{FINAL_LINE:"full_release"}})
 ],["mara_eltan","elena_varin","nadia_serrin","selma_aric"])
+
 ];
 
 export const scenes=[...baseScenes,...act1bScenes];
