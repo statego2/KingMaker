@@ -46,4 +46,5 @@ test("chronology, person labels and goal ownership are enforced", () => {
   assert.throws(() => applyTurn(start(), { id: "t1", date: "2028-04-30", playerText: "Περιμένω", scene: "Περνά η ώρα.", outcome: { result: "pending" } }), /reverse/);
   assert.throws(() => applyTurn(start(), { id: "t1", date: "2028-05-01", playerText: "Προσλαμβάνω", scene: "Μιλάω.", outcome: { result: "pending" }, people: [{ id: "p1", name: "Λέα" }] }), /role/);
   assert.throws(() => applyTurn(start(), { id: "t1", date: "2028-05-01", playerText: "Σχεδιάζω", scene: "Σκέφτομαι.", outcome: { result: "pending" }, plans: [{ id: "p1", goalId: "unknown", title: "Βήμα", status: "active" }] }), /no goal/);
+  assert.throws(() => applyTurn(start(), { id: "t1", date: "2028-05-01", playerText: "Θέλω να κερδίσω", scene: "Το δήλωσες.", outcome: { result: "pending" }, goals: [{ id: "win", title: "Νίκη", status: "succeeded" }] }), /intention alone/);
 });
