@@ -1,0 +1,771 @@
+{
+  "schema_version": "proposal-1.0",
+  "status": "proposed-not-authorized",
+  "as_of": "2026-10-08",
+  "project": "KINGMAKER-LIFE-SIM-EXPERIMENT",
+  "not_canonical": true,
+  "warning": "Do not use in place of data/production_backlog_v1.json until owner approves the ADR.",
+  "source_plan": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md",
+  "source_charter": "docs/proposals/2026-10-08_LIFE_SIM_PROJECT_CHARTER.md",
+  "phase_names": {
+    "L0": "Chat first proof",
+    "L1": "Deterministic state",
+    "L2": "World resistance",
+    "L3": "Memorable life stories",
+    "L4": "Browser vertical slice",
+    "L5": "Evidence and decision"
+  },
+  "tasks": [
+    {
+      "id": "LSM-001",
+      "phase": "L0",
+      "priority": "P0",
+      "title": "Charter creative review",
+      "status": "proposed",
+      "depends_on": [],
+      "estimated_effort_hours": {
+        "min": 1,
+        "max": 2
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l0"
+    },
+    {
+      "id": "LSM-002",
+      "phase": "L0",
+      "priority": "P0",
+      "title": "Baseline/code/PR inventory",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-001"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 3
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l0"
+    },
+    {
+      "id": "LSM-003",
+      "phase": "L0",
+      "priority": "P0",
+      "title": "Chat-run and continuity contract",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-001"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 3
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l0"
+    },
+    {
+      "id": "LSM-004",
+      "phase": "L0",
+      "priority": "P1",
+      "title": "Name/role onboarding rules",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-003"
+      ],
+      "estimated_effort_hours": {
+        "min": 1,
+        "max": 2
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l0"
+    },
+    {
+      "id": "LSM-005",
+      "phase": "L0",
+      "priority": "P0",
+      "title": "Wealth and financing chat playtest",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-003"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 5
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l0"
+    },
+    {
+      "id": "LSM-006",
+      "phase": "L0",
+      "priority": "P0",
+      "title": "Non-wealth aspiration playtest",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-003"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 4
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l0"
+    },
+    {
+      "id": "LSM-007",
+      "phase": "L0",
+      "priority": "P0",
+      "title": "Power plus failure/recovery playtest",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-005",
+        "LSM-006"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 4
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l0"
+    },
+    {
+      "id": "LSM-008",
+      "phase": "L0",
+      "priority": "P0",
+      "title": "Playtest synthesis and G0 decision",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-005",
+        "LSM-006",
+        "LSM-007"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 3
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l0"
+    },
+    {
+      "id": "LSM-009",
+      "phase": "L1",
+      "priority": "P0",
+      "title": "Versioned minimum world-state schema",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-008"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 5
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l1"
+    },
+    {
+      "id": "LSM-010",
+      "phase": "L1",
+      "priority": "P0",
+      "title": "Event sourcing and provenance ledger",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-009"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 4
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l1"
+    },
+    {
+      "id": "LSM-011",
+      "phase": "L1",
+      "priority": "P0",
+      "title": "Freeform intent and action contracts",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-009"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 5
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l1"
+    },
+    {
+      "id": "LSM-012",
+      "phase": "L1",
+      "priority": "P0",
+      "title": "Atomic command validation and apply",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-010",
+        "LSM-011"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 6
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l1"
+    },
+    {
+      "id": "LSM-013",
+      "phase": "L1",
+      "priority": "P0",
+      "title": "Seeded reducer/replay and saves",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-010",
+        "LSM-012"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 6
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l1"
+    },
+    {
+      "id": "LSM-014",
+      "phase": "L1",
+      "priority": "P0",
+      "title": "Cash debt ownership asset accounting",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-009",
+        "LSM-013"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 4
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l1"
+    },
+    {
+      "id": "LSM-015",
+      "phase": "L1",
+      "priority": "P1",
+      "title": "Knowledge belief and player projection",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-009",
+        "LSM-011"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 5
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l1"
+    },
+    {
+      "id": "LSM-016",
+      "phase": "L1",
+      "priority": "P0",
+      "title": "Integrity fixtures and G1 tests",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-013",
+        "LSM-014",
+        "LSM-015"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 4
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l1"
+    },
+    {
+      "id": "LSM-017",
+      "phase": "L2",
+      "priority": "P0",
+      "title": "Feasibility and refusal engine",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-016"
+      ],
+      "estimated_effort_hours": {
+        "min": 4,
+        "max": 7
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l2"
+    },
+    {
+      "id": "LSM-018",
+      "phase": "L2",
+      "priority": "P0",
+      "title": "Autonomous NPC agendas and memory",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-015",
+        "LSM-017"
+      ],
+      "estimated_effort_hours": {
+        "min": 4,
+        "max": 8
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l2"
+    },
+    {
+      "id": "LSM-019",
+      "phase": "L2",
+      "priority": "P0",
+      "title": "NPC adaptive counterplay",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-017",
+        "LSM-018"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 6
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l2"
+    },
+    {
+      "id": "LSM-020",
+      "phase": "L2",
+      "priority": "P0",
+      "title": "Life-domain resolution contracts",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-017"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 6
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l2"
+    },
+    {
+      "id": "LSM-021",
+      "phase": "L2",
+      "priority": "P0",
+      "title": "World ticks commitments and callbacks",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-018",
+        "LSM-019",
+        "LSM-020"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 5
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l2"
+    },
+    {
+      "id": "LSM-022",
+      "phase": "L2",
+      "priority": "P0",
+      "title": "Dynamic time and fast-forward engine",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-020",
+        "LSM-021"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 5
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l2"
+    },
+    {
+      "id": "LSM-023",
+      "phase": "L2",
+      "priority": "P0",
+      "title": "Bounded delegation and expert abstraction",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-017",
+        "LSM-021",
+        "LSM-022"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 6
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l2"
+    },
+    {
+      "id": "LSM-024",
+      "phase": "L2",
+      "priority": "P1",
+      "title": "Event salience and quiet periods",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-018",
+        "LSM-021"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 4
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l2"
+    },
+    {
+      "id": "LSM-025",
+      "phase": "L2",
+      "priority": "P0",
+      "title": "Resistance/fairness calibration",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-017",
+        "LSM-018",
+        "LSM-019",
+        "LSM-020",
+        "LSM-021",
+        "LSM-022",
+        "LSM-023",
+        "LSM-024"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 6
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l2"
+    },
+    {
+      "id": "LSM-026",
+      "phase": "L2",
+      "priority": "P0",
+      "title": "Golden life simulations and G2 tests",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-017",
+        "LSM-018",
+        "LSM-019",
+        "LSM-020",
+        "LSM-021",
+        "LSM-022",
+        "LSM-023",
+        "LSM-024",
+        "LSM-025"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 5
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l2"
+    },
+    {
+      "id": "LSM-027",
+      "phase": "L3",
+      "priority": "P0",
+      "title": "Truthful narrative projection",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-026"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 6
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l3"
+    },
+    {
+      "id": "LSM-028",
+      "phase": "L3",
+      "priority": "P0",
+      "title": "Simple Greek actor-role narration",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-027"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 4
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l3"
+    },
+    {
+      "id": "LSM-029",
+      "phase": "L3",
+      "priority": "P0",
+      "title": "Dream composer and inbox contract",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-027"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 4
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l3"
+    },
+    {
+      "id": "LSM-030",
+      "phase": "L3",
+      "priority": "P0",
+      "title": "Mortality and grounded epilogue",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-022",
+        "LSM-027"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 6
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l3"
+    },
+    {
+      "id": "LSM-031",
+      "phase": "L3",
+      "priority": "P1",
+      "title": "Dramatic pacing without crisis quota",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-024",
+        "LSM-027"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 5
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l3"
+    },
+    {
+      "id": "LSM-032",
+      "phase": "L3",
+      "priority": "P0",
+      "title": "Four-route longitudinal playtests",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-027",
+        "LSM-028",
+        "LSM-029",
+        "LSM-030",
+        "LSM-031"
+      ],
+      "estimated_effort_hours": {
+        "min": 4,
+        "max": 7
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l3"
+    },
+    {
+      "id": "LSM-033",
+      "phase": "L3",
+      "priority": "P0",
+      "title": "Creator G3 review",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-032"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 4
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l3"
+    },
+    {
+      "id": "LSM-034",
+      "phase": "L4",
+      "priority": "P0",
+      "title": "Isolated browser integration boundary",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-033"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 4
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l4"
+    },
+    {
+      "id": "LSM-035",
+      "phase": "L4",
+      "priority": "P0",
+      "title": "Responsive minimal Life UI",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-034"
+      ],
+      "estimated_effort_hours": {
+        "min": 4,
+        "max": 8
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l4"
+    },
+    {
+      "id": "LSM-036",
+      "phase": "L4",
+      "priority": "P0",
+      "title": "Command to world to narrative integration",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-034",
+        "LSM-035"
+      ],
+      "estimated_effort_hours": {
+        "min": 4,
+        "max": 7
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l4"
+    },
+    {
+      "id": "LSM-037",
+      "phase": "L4",
+      "priority": "P0",
+      "title": "Life save/load namespace compatibility",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-036"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 6
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l4"
+    },
+    {
+      "id": "LSM-038",
+      "phase": "L4",
+      "priority": "P1",
+      "title": "Optional people/wealth/institution inspect",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-035",
+        "LSM-036",
+        "LSM-037"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 5
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l4"
+    },
+    {
+      "id": "LSM-039",
+      "phase": "L4",
+      "priority": "P0",
+      "title": "Mobile accessibility review",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-035",
+        "LSM-036",
+        "LSM-037",
+        "LSM-038"
+      ],
+      "estimated_effort_hours": {
+        "min": 4,
+        "max": 7
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l4"
+    },
+    {
+      "id": "LSM-040",
+      "phase": "L4",
+      "priority": "P0",
+      "title": "Browser E2E and regression",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-037",
+        "LSM-038",
+        "LSM-039"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 5
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l4"
+    },
+    {
+      "id": "LSM-041",
+      "phase": "L4",
+      "priority": "P0",
+      "title": "15-30 minute creator gold-slice gate",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-039",
+        "LSM-040"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 4
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l4"
+    },
+    {
+      "id": "LSM-042",
+      "phase": "L5",
+      "priority": "P0",
+      "title": "Blind pilot research plan",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-041"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 5
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l5"
+    },
+    {
+      "id": "LSM-043",
+      "phase": "L5",
+      "priority": "P0",
+      "title": "Observe 3-5 pilot players",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-042"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 5
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l5"
+    },
+    {
+      "id": "LSM-044",
+      "phase": "L5",
+      "priority": "P0",
+      "title": "Fix top friction issues",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-043"
+      ],
+      "estimated_effort_hours": {
+        "min": 3,
+        "max": 6
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l5"
+    },
+    {
+      "id": "LSM-045",
+      "phase": "L5",
+      "priority": "P1",
+      "title": "Outcome/economy/disaster balance review",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-044"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 3
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l5"
+    },
+    {
+      "id": "LSM-046",
+      "phase": "L5",
+      "priority": "P0",
+      "title": "G5 pivot go-iterate-stop decision",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-044",
+        "LSM-045"
+      ],
+      "estimated_effort_hours": {
+        "min": 2,
+        "max": 4
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l5"
+    },
+    {
+      "id": "LSM-047",
+      "phase": "L5",
+      "priority": "P0",
+      "title": "Canonical backlog handoff only if approved",
+      "status": "proposed",
+      "depends_on": [
+        "LSM-046"
+      ],
+      "estimated_effort_hours": {
+        "min": 1,
+        "max": 2
+      },
+      "acceptance_reference": "docs/proposals/2026-10-08_LIFE_SIM_PRODUCTION_PLAN.md#l5"
+    }
+  ]
+}
