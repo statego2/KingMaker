@@ -8,7 +8,7 @@
 
 ## Pending responsive P0 issue #12 integration
 - Existing tested layout fix ported onto latest main in `task/KM-005-mobile-safe-zones-integrated-20261008`: briefing art/title safe zones at 320–430px, scrollable long choice cards and explicit scrolling indicator, selected-choice visibility, responsive Chromium regression for 4 phone widths.
-- Main-site stylesheet/module cache-bust version changes to `scene-first-v7` after merging; **no owner iPhone/Safari acceptance inferred**. CI for integrated branch must pass before merge. KM-005 remains `review` until human device approval; KM-007/KM-010 dependencies do not unlock.
+- Main-site stylesheet/module cache-bust version changes to `scene-first-v7` after merging; **no owner iPhone/Safari acceptance inferred**. CI for [PR #14](https://github.com/statego2/KingMaker/pull/14) passed: [Node 27/27](https://github.com/statego2/KingMaker/actions/runs/37776473919), [backlog](https://github.com/statego2/KingMaker/actions/runs/37776473871) and [Chromium/mobile](https://github.com/statego2/KingMaker/actions/runs/37776473933) (15 PNG, 4 mobile widths; no warnings). Merge still requires confirmation on final commit. KM-005 remains `review` until human device approval; KM-007/KM-010 dependencies do not unlock.
 - KM-008 still requires GitHub ruleset configured by owner ([issue #10](https://github.com/statego2/KingMaker/issues/10)).
 
 ## Current dependency gates

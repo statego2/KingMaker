@@ -247,9 +247,13 @@
         "docs/VISUAL_BASELINE.md",
         "https://github.com/statego2/KingMaker/issues/12",
         "https://github.com/statego2/KingMaker/actions/runs/37701826371",
-        "tools/mobile-layout-regression.mjs"
+        "tools/mobile-layout-regression.mjs",
+        "https://github.com/statego2/KingMaker/pull/14",
+        "https://github.com/statego2/KingMaker/actions/runs/37776473919",
+        "https://github.com/statego2/KingMaker/actions/runs/37776473871",
+        "https://github.com/statego2/KingMaker/actions/runs/37776473933"
       ],
-      "notes": "P0 issue #12 targeted layout fix moved to integration branch task/KM-005-mobile-safe-zones-integrated-20261008 after prior Chromium/mobile layout CI successes. New PR/CI pending; actual owner/device iOS Safari verification and visual/accessibility signoff remain outstanding. Not done."
+      "notes": "Issue #12 code fix delivered in PR #14: independent briefing title/art safe zones and long-choice scrolling, with Chromium 15 captures/0 automated warnings, 4 phone-width layout and commit regressions PASS, Node 27/27 and backlog/taxonomy/question validators PASS at integrated head. Real iOS Safari, text-size/voice/touch and owner creative approval remain outstanding. KM-005 stays review; dependent tasks KM-007/KM-010 remain gated."
     },
     {
       "id": "KM-006",
