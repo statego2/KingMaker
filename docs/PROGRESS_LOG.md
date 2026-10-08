@@ -61,3 +61,10 @@ Entries document **verified project activity**, separate from the aspirational b
 - **Evidence boundary:** original 1,000 item-level question records are not tracked in the repository; mapping coverage is explicitly **0 verified question mappings**. The master project's corpus-completion statement is not treated as per-item source evidence.
 - **Verified branch CI:** [game-tests #37705840526](https://github.com/statego2/KingMaker/actions/runs/37705840526) PASS (`npm run check`, `npm test` 19 passed / 0 failed, `npm run validate:backlog`, `npm run validate:taxonomy`); [backlog #37705840519](https://github.com/statego2/KingMaker/actions/runs/37705840519) PASS. [Commit ce45339](https://github.com/statego2/KingMaker/commit/ce45339fd1d567ef35a763af6633b68b1aa89eab). No UI changed; no Chromium tests claimed. PR creation was refused by the connector; [comparison](https://github.com/statego2/KingMaker/compare/main...task/KM-089-taxonomy-index-slice-1?expand=1). Main unchanged.
 - **Status:** KM-089 in_progress, not done. Next: import verified original corpus and map bounded question batches with source anchors; review coverage and ambiguity.
+
+## 2026-10-08 — KM-089 bounded slice 2: provenance-gated question intake
+- **Branch:** https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1 (unmerged).
+- **Code/data:** empty original-question intake manifest, canonical ID/tier/competency/tension validator, per-item provenance requirements, coverage audit by tier/domain, CLI and synthetic-only Node tests.
+- **Evidence boundary:** 0 actual original question records imported and 0 reviewed. No question mapping, human review, UI, canon or save-schema changes claimed. KM-089 stays `in_progress`.
+- **CI:** final-commit GitHub Actions verification pending; do not infer PASS from previous commits.
+- **P0 blockers:** [KM-005 issue #12](https://github.com/statego2/KingMaker/issues/12) needs real-device/human visual approval; [KM-008 issue #10](https://github.com/statego2/KingMaker/issues/10) needs owner GitHub ruleset verification.

@@ -17,6 +17,11 @@
 - **Verified task-branch CI:** [game-tests #37705840526](https://github.com/statego2/KingMaker/actions/runs/37705840526) PASS (`npm run check`, `npm test` **19/19**, `npm run validate:backlog`, `npm run validate:taxonomy`); [backlog #37705840519](https://github.com/statego2/KingMaker/actions/runs/37705840519) PASS. [Code commit ce45339](https://github.com/statego2/KingMaker/commit/ce45339fd1d567ef35a763af6633b68b1aa89eab). PR creation was refused by connector; [open comparison](https://github.com/statego2/KingMaker/compare/main...task/KM-089-taxonomy-index-slice-1?expand=1). Not merged.
 - P0 [KM-005 issue #12](https://github.com/statego2/KingMaker/issues/12) remains human/device review; [P0 fix branch](https://github.com/statego2/KingMaker/tree/task/KM-005-mobile-safe-zones-issue-12) has passing branch Actions but PR creation is blocked. KM-008 still awaits [owner ruleset issue #10](https://github.com/statego2/KingMaker/issues/10).
 
+### KM-089 slice 2 — provenance-gated corpus intake
+- Added an empty original-question intake manifest, canonical ID/tier/competency/tension validation, item-level provenance checks, coverage audit and synthetic-only Node tests. **0 actual records imported, 0 reviewed; KM-089 remains in_progress.**
+- Run `npm run check`, `npm test`, `npm run validate:backlog`, `npm run validate:taxonomy`, and `npm run validate:mappings`; verify final-commit Actions before claiming CI success.
+- [Task branch](https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1) and [compare](https://github.com/statego2/KingMaker/compare/main...task/KM-089-taxonomy-index-slice-1). The original question corpus is the next content blocker; no UI or save-schema changes.
+
 ## Next dependency-ready implementation work
 - **KM-012 [P1]** — Create Lydria location and time-of-day visual bible (depends: KM-001)
 - **KM-089 [P1]** — Map 1,000 mechanisms to taxonomy with stable IDs (depends: KM-001)

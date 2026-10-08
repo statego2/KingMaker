@@ -12,7 +12,8 @@
     "check": "node tools/check-project.mjs",
     "test": "node --test",
     "validate:backlog": "node tools/validate-production-backlog.mjs",
-    "verify": "npm run check && npm test && npm run validate:backlog && npm run validate:taxonomy",
-    "validate:taxonomy": "node tools/validate-knowledge-taxonomy.mjs"
+    "verify": "npm run check && npm test && npm run validate:backlog && npm run validate:taxonomy && npm run validate:mappings",
+    "validate:taxonomy": "node tools/validate-knowledge-taxonomy.mjs",
+    "validate:mappings": "node tools/validate-question-mappings.mjs"
   }
 }

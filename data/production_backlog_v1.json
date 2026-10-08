@@ -2138,9 +2138,13 @@
         "docs/KNOWLEDGE_TAXONOMY_MAPPING.md",
         "https://github.com/statego2/KingMaker/commit/ce45339fd1d567ef35a763af6633b68b1aa89eab",
         "https://github.com/statego2/KingMaker/actions/runs/37705840526",
-        "https://github.com/statego2/KingMaker/actions/runs/37705840519"
+        "https://github.com/statego2/KingMaker/actions/runs/37705840519",
+        "data/question_mappings_v1.json",
+        "src/question-mapping.js",
+        "tests/question-mapping.test.mjs",
+        "tools/validate-question-mappings.mjs"
       ],
-      "notes": "Bounded L slice 1 committed on task branch: 10-domain/60-competency canonical IDs, 15 tensions, Q001–Q1000 tier slots and provenance validation. GitHub Actions game-tests PASS (npm run check; npm test 19/19; npm run validate:backlog; npm run validate:taxonomy), backlog workflow PASS. No original individual question records in repository, so zero per-question competency/source mappings claimed; import and review remain. PR creation blocked by connector; parent stays in_progress and unmerged."
+      "notes": "Bounded L slice 1 committed on task branch: 10-domain/60-competency canonical IDs, 15 tensions, Q001–Q1000 tier slots and provenance validation. GitHub Actions game-tests PASS (npm run check; npm test 19/19; npm run validate:backlog; npm run validate:taxonomy), backlog workflow PASS. No original individual question records in repository, so zero per-question competency/source mappings claimed; import and review remain. PR creation blocked by connector; parent stays in_progress and unmerged. Slice 2: provenance-gated original-question intake and coverage audit with synthetic-only tests; 0 actual records imported, 0 reviewed. Await final CI, source corpus and human mapping review; main unchanged."
     },
     {
       "id": "KM-090",
