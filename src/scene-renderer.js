@@ -23,6 +23,7 @@ function renderScene(){
   if(state.finished&&!result)return renderFinale();
   if(result)return renderConsequence();
   const s=scene(state),m=meta(s),body=bodyOf(s),facts=factsOf(s),choices=choicesOf(s);
+  const teaser=(typeof s.teaser==="function"?s.teaser(state):s.teaser)||body[0]||"";
   return '<main class="game-screen">'+
     hud(s)+
     '<section class="world">'+
@@ -30,7 +31,7 @@ function renderScene(){
       '<div class="architecture"><i></i><i></i><i></i><i></i><i></i></div>'+
       '<div class="world-title"><span>'+esc(m.place)+'</span><h1>'+esc(cleanTitle(s.title))+'</h1></div>'+
       sceneVisual(s,body,facts)+
-      '<p class="world-line">'+esc(body[0]||"")+'</p>'+
+      '<p class="world-line">'+esc(teaser)+'</p>'+
       '<button class="context-btn" data-context>'+icon("info")+'<span>Στοιχεία</span></button>'+
     '</section>'+
     '<section class="decision-panel '+(choices.length>3?"crowded":"")+'">'+
