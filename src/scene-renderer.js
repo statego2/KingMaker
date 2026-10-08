@@ -6,6 +6,7 @@
 import {scene,progress} from "./engine.js";
 import {meta,cleanTitle,sceneVisual} from "./redesign-scenes.js";
 import {annotateNames} from "./character-roles.js";
+import {getOpeningLead,openingLeads} from "./opening-investigation.js";
 
 export function createSceneViews({state,selected=null,result=null,analysis=false,icon,openingLead=null}){
   const esc=x=>String(x??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
@@ -25,7 +26,7 @@ function renderScene(){
   if(state.finished&&!result)return renderFinale();
   if(result)return renderConsequence();
   const s=scene(state),m=meta(s),body=bodyOf(s),facts=factsOf(s),choices=choicesOf(s);
-  const teaser=(typeof s.teaser==="function"?s.teaser(state):s.teaser)||body[0]||"";
+  const teaser=(s.id==="C01_S01"&&getOpeningLead(openingLead)?.teaser)||(typeof s.teaser==="function"?s.teaser(state):s.teaser)||body[0]||"";
   return '<main class="game-screen">'+
     hud(s)+
     '<section class="world">'+
@@ -34,6 +35,7 @@ function renderScene(){
       '<div class="world-title"><span>'+esc(m.place)+'</span><h1>'+esc(cleanTitle(s.title))+'</h1></div>'+
       sceneVisual(s,body,facts)+
       '<p class="world-line">'+named(teaser)+'</p>'+
+      (s.id==="C01_S01"?'<button class="inquiry-btn" data-inquiry-open>'+icon("info")+'<span>'+(openingLead?"Τι ανακάλυψα":"Κάνε μια κίνηση")+'</span></button>':"")+
       '<button class="context-btn" data-context>'+icon("info")+'<span>Στοιχεία</span></button>'+
     '</section>'+
     '<section class="decision-panel '+(choices.length>3?"crowded":"")+'">'+
@@ -51,6 +53,17 @@ function choice(x,i){
     '<span class="copy"><small>'+esc(x.verb||"Επιλογή")+'</small><strong>'+named(x.title)+'</strong><em>'+named(x.sub)+'</em></span>'+
     '<span class="go">'+(active?icon("check"):icon("arrow"))+'</span>'+
   '</button>';
+}
+
+function renderInquiry(){
+  const lead=getOpeningLead(openingLead);
+  const buttons=Object.entries(openingLeads).map(([id,l])=>
+    '<button class="inquiry-choice" data-lead="'+esc(id)+'"><strong>'+named(l.label)+'</strong><span>'+named(l.reason)+'</span></button>'
+  ).join("");
+  return '<div class="overlay" data-close-inquiry><section class="sheet inquiry-sheet" onclick="event.stopPropagation()">'+
+    '<header><div><span>15 ΛΕΠΤΑ ΠΡΙΝ ΤΗΝ ΕΝΗΜΕΡΩΣΗ</span><h2>'+(lead?'Τώρα ξέρεις κάτι παραπάνω':'Έχεις χρόνο για μία κίνηση')+'</h2></div><button data-close-inquiry class="icon-btn">'+icon("close")+'</button></header>'+
+    (lead?'<p class="inquiry-discovery">'+named(lead.discovery)+'</p>':'<p>Μπορείς να ενημερώσεις αμέσως την Πρόεδρο. Ή να αναζητήσεις ένα στοιχείο πρώτα. Δεν προλαβαίνεις και τα δύο.</p><div class="inquiry-options">'+buttons+'</div>')+
+    '<button class="primary full" data-close-inquiry>Επιστροφή στην απόφαση</button></section></div>';
 }
 
 function renderContext(){
@@ -80,5 +93,5 @@ function renderFinale(){
     '<section class="finale-sheet"><blockquote>Κανείς δεν ξέρει ακόμη αν θα αντέξει. Ξέρεις μόνο πως όσα υποσχέθηκες θα σε ακολουθήσουν.</blockquote><div class="stats"><article><small>Δεσμεύσεις</small><strong>'+(state.promises||[]).length+'</strong></article><article><small>Η επόμενη πράξη</small><strong>Διακυβέρνηση</strong></article></div><button class="primary full" data-reset>Παίξε ξανά</button></section></main>';
 }
 
-  return {renderScene,renderContext};
+  return {renderScene,renderContext,renderInquiry};
 }
