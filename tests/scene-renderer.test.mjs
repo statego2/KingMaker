@@ -27,9 +27,9 @@ test("scene renderer displays decision consequence and finale with no controller
   const committed=commit(state,option);
   const html=views({state:committed,result:{...option,_scene:scene(state)},analysis:false}).renderScene();
   assert.match(html,/data-next/);
-  assert.doesNotMatch(html,/STRATEGIC READ/);
+  assert.doesNotMatch(html,/ΠΙΣΩ ΑΠΟ ΤΗΝ ΑΠΟΦΑΣΗ/);
   const read=views({state:committed,result:{...option,_scene:scene(state)},analysis:true}).renderScene();
-  assert.match(read,/STRATEGIC READ/);
+  assert.match(read,/ΠΙΣΩ ΑΠΟ ΤΗΝ ΑΠΟΦΑΣΗ/);
   const finish=structuredClone(committed);finish.finished=true;finish.i=18;
-  assert.match(views({state:finish}).renderScene(),/ACT I COMPLETE/);
+  assert.match(views({state:finish}).renderScene(),/ΤΕΛΟΣ ΠΡΩΤΗΣ ΠΡΑΞΗΣ/);
 });
