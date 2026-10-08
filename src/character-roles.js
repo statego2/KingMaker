@@ -36,13 +36,13 @@ const latinNames={
   "Anton Beran":"anton_beran","Anton":"anton_beran",
   "Silas Koren":"silas_koren","Silas":"silas_koren"
 };
-const escapeRegExp=s=>s.replace(/[.*+?^\${}()|[\\]\\\\]/g,"\\\\$&");
+const escapeRegExp=s=>s.replace(/[-/\\^$*+?.()|[\]{}]/g,"\\$&");
 const byText=new Map([
   ...Object.values(roles).map(p=>[p.first,p]),
   ...Object.entries(latinNames).map(([alias,id])=>[alias,roles[id]])
 ]);
 const names=[...byText.keys()].sort((a,b)=>b.length-a.length);
-const matcher=new RegExp("(?<![\\\\p{L}])("+names.map(escapeRegExp).join("|")+")(?![\\\\p{L}])","gu");
+const matcher=new RegExp("(?<![\\p{L}])("+names.map(escapeRegExp).join("|")+")(?![\\p{L}])","gu");
 export function roleLabel(id){
   const person=roles[id];
   return person?person.first+" ("+person.hint+")":"";
@@ -52,7 +52,7 @@ export function annotateNames(value){
   return String(value??"").replace(matcher,(found,_capture,pos,whole)=>{
     const person=byText.get(found);
     const next=whole.slice(pos+found.length);
-    if(/^\\s*\\([^)]{2,75}\\)/u.test(next)||seen.has(person.first))return found;
+    if(/^\s*\([^)]{2,75}\)/u.test(next)||seen.has(person.first))return found;
     seen.add(person.first);
     return person.first+" ("+person.hint+")";
   });
