@@ -1,8 +1,10 @@
 import {people} from "./content.js";
 import {knownPeople} from "./reveal-map.js";
+import {roleLabel,annotateNames,roles} from "./character-roles.js";
 import {load,reset,scene,commit,readMsg,relationship} from "./engine.js";
 import {meta} from "./redesign-scenes.js";
 import {createSceneViews} from "./scene-renderer.js";
+import {withOpeningLead,getOpeningLead} from "./opening-investigation.js";
 
 let state=load();
 let screen="scene";
@@ -11,6 +13,8 @@ let result=null;
 let analysis=false;
 let contextOpen=false;
 let kitOpen=false;
+let inquiryOpen=false;
+let openingLead=null;
 
 const root=document.querySelector("#app");
 const esc=x=>String(x??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
@@ -44,6 +48,7 @@ function render(){
     (screen==="scene"?renderScene():renderUtility())+
     (contextOpen?renderContext():"")+
     (kitOpen?renderKit():"")+
+    (inquiryOpen?renderInquiry():"")+
   '</div>';
   bind();
 }
@@ -51,8 +56,9 @@ function render(){
 
 
 
-function renderScene(){return createSceneViews({state,selected,result,analysis,icon}).renderScene()}
-function renderContext(){return createSceneViews({state,selected,result,analysis,icon}).renderContext()}
+function renderScene(){return createSceneViews({state,selected,result,analysis,icon,openingLead}).renderScene()}
+function renderContext(){return createSceneViews({state,selected,result,analysis,icon,openingLead}).renderContext()}
+function renderInquiry(){return createSceneViews({state,selected,result,analysis,icon,openingLead}).renderInquiry()}
 
 function renderKit(){
   const unread=state.inbox.filter(x=>x.unread).length;
@@ -79,6 +85,14 @@ function renderUtility(){
   if(screen==="people")return renderPeople();
   if(screen==="power")return renderPower();
   return renderArchive();
+}
+
+function knownSender(from){
+  const raw=String(from||"");
+  for(const person of Object.values(roles)){
+    if(raw.startsWith(person.first)||raw.toLowerCase().startsWith(person.first.toLowerCase()))return person.first+" ("+person.hint+")";
+  }
+  return annotateNames(raw);
 }
 
 function renderInbox(){
@@ -108,7 +122,7 @@ function edge([x1,y1,x2,y2]){
 }
 function node([id,x,y]){
   const p=id==="player"?{initials:"YOU",name:"You"}:people[id]||{initials:"?",name:id};
-  return '<div class="node '+(id==="player"?"you":"")+'" style="left:'+x+'%;top:'+y+'%"><span>'+esc(p.initials)+'</span><b>'+esc(p.name)+'</b></div>';
+  return '<div class="node '+(id==="player"?"you":"")+'" style="left:'+x+'%;top:'+y+'%"><span>'+esc(p.initials)+'</span><b>'+esc(roleLabel(id)||p.name)+'</b></div>';
 }
 function route(name,v){
   v=clamp(v);
@@ -145,9 +159,12 @@ function renderArchive(){
 function bind(){
   document.querySelectorAll("[data-choice]").forEach(b=>b.onclick=()=>{selected=choicesOf(scene(state)).find(x=>x.id===b.dataset.choice)||null;render();document.querySelector(".choice.active")?.scrollIntoView({block:"nearest",inline:"nearest"});});
   document.querySelector("[data-cancel]")?.addEventListener("click",()=>{selected=null;render()});
-  document.querySelector("[data-commit]")?.addEventListener("click",()=>{if(!selected)return;const current=scene(state);const opt=selected;state=commit(state,opt);selected=null;analysis=false;result={...opt,_scene:current};render()});
+  document.querySelector("[data-commit]")?.addEventListener("click",()=>{if(!selected)return;const current=scene(state);const opt=current?.id==="C01_S01"?withOpeningLead(selected,openingLead):selected;state=commit(state,opt);selected=null;analysis=false;openingLead=null;inquiryOpen=false;result={...opt,_scene:current};render()});
   document.querySelector("[data-analysis]")?.addEventListener("click",()=>{analysis=!analysis;render()});
-  document.querySelector("[data-next]")?.addEventListener("click",()=>{result=null;analysis=false;render()});
+  document.querySelector("[data-next]")?.addEventListener("click",()=>{result=null;analysis=false;openingLead=null;render()});
+  document.querySelector("[data-inquiry-open]")?.addEventListener("click",()=>{inquiryOpen=true;render()});
+  document.querySelectorAll("[data-close-inquiry]").forEach(b=>b.onclick=()=>{inquiryOpen=false;render()});
+  document.querySelectorAll("[data-lead]").forEach(b=>b.onclick=()=>{if(getOpeningLead(b.dataset.lead)&&!openingLead){openingLead=b.dataset.lead;inquiryOpen=false;render()}});
   document.querySelector("[data-context]")?.addEventListener("click",()=>{contextOpen=true;render()});
   document.querySelectorAll("[data-close-context]").forEach(b=>b.onclick=()=>{contextOpen=false;render()});
   document.querySelector("[data-kit]")?.addEventListener("click",()=>{kitOpen=true;render()});
@@ -155,6 +172,6 @@ function bind(){
   document.querySelectorAll("[data-screen]").forEach(b=>b.onclick=()=>{screen=b.dataset.screen;kitOpen=false;selected=null;render()});
   document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>{screen="scene";render()});
   document.querySelectorAll("[data-msg]").forEach(b=>b.onclick=()=>{state=readMsg(state,b.dataset.msg);render()});
-  document.querySelectorAll("[data-reset]").forEach(b=>b.onclick=()=>{if(confirm("Reset this run?")){state=reset();screen="scene";selected=null;result=null;analysis=false;contextOpen=false;kitOpen=false;render()}});
+  document.querySelectorAll("[data-reset]").forEach(b=>b.onclick=()=>{if(confirm("Reset this run?")){state=reset();screen="scene";selected=null;result=null;analysis=false;contextOpen=false;kitOpen=false;inquiryOpen=false;openingLead=null;render()}});
 }
 render();

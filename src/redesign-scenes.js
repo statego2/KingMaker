@@ -1,5 +1,6 @@
 import {resolveScenePresentation} from "./scene-contract.js";
 import {people} from "./content.js";
+import {roleLabel,annotateNames} from "./character-roles.js";
 
 export const presentation={
   C01_S01:["phone","ΒΕΛΙΣ · ΠΡΩΙ, 07:12","ΑΓΝΩΣΤΟ ΜΗΝΥΜΑ"],

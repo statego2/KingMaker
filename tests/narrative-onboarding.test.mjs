@@ -77,8 +77,43 @@ test("on-stage opening story and responsive renderer show compact text, not full
   const {createSceneViews}=await import("../src/scene-renderer.js");
   const s=fresh();
   const html=createSceneViews({state:s,icon:()=>""}).renderScene();
-  assert.ok(html.includes("Με έχουν μετρήσει χωρίς να με ρωτήσουν"));
-  assert.ok(!html.includes("Η κυβέρνηση έπεσε. Οι εκλογές"));
+  assert.ok(html.includes("Αν με ανακοινώσουν, θα τους διαψεύσω"));
+  assert.ok(!html.includes("Έξω από το παράθυρο ξημερώνει"));
   const full=createSceneViews({state:s,icon:()=>""}).renderContext();
-  assert.ok(full.includes("Η κυβέρνηση έπεσε. Οι εκλογές"));
+  assert.ok(full.includes("Έξω από το παράθυρο ξημερώνει"));
+});
+
+
+test("actors show their jobs next to their names without multiple duplicated labels",async()=>{
+  const {annotateNames,roleLabel}=await import("../src/character-roles.js");
+  assert.equal(roleLabel("lea_marin"),"Λέα (συνάδελφος αναλύτρια)");
+  assert.equal(annotateNames("Η Λέα μίλησε στη Μάρα."),"Η Λέα (συνάδελφος αναλύτρια) μίλησε στη Μάρα (προϊσταμένη σου).");
+  assert.equal(annotateNames("Λέα (συνάδελφος αναλύτρια) είπε γεια."),"Λέα (συνάδελφος αναλύτρια) είπε γεια.");
+  assert.equal(annotateNames("Lea Marin called Mara Eltan."),"Λέα (συνάδελφος αναλύτρια) called Μάρα (προϊσταμένη σου).");
+  const {createSceneViews}=await import("../src/scene-renderer.js");
+  const html=createSceneViews({state:fresh(),icon:()=>""}).renderScene();
+  assert.match(html,/Λέα \(συνάδελφος αναλύτρια\)/);
+});
+
+test("investigation opens two actionable leads without forcing extra steps",async()=>{
+  const {createSceneViews}=await import("../src/scene-renderer.js");
+  const {getOpeningLead,withOpeningLead}=await import("../src/opening-investigation.js");
+  const scene0=scenes[0],first=fresh(),base=createSceneViews({state:first,icon:()=>""}).renderScene();
+  assert.match(base,/data-inquiry-open/);
+  assert.match(base,/data-choice="a"/,"player can decide without investigating");
+  const modal=createSceneViews({state:first,icon:()=>""}).renderInquiry();
+  assert.match(modal,/data-lead="callback"/);
+  assert.match(modal,/data-lead="audit"/);
+  for(const lead of ["callback","audit"]){
+    const enriched=withOpeningLead(choiceOf(scene0,first)[1],lead);
+    const after=commit(fresh(),enriched);
+    assert.equal(after.flags.OPENING_LEAD,lead);
+    assert.equal(after.flags.OPENING_COUNT,"calibrated");
+    if(lead==="callback")assert.ok(after.rel.niko_arven.familiarity>first.rel.niko_arven.familiarity);
+    if(lead==="audit")assert.ok(after.world.information_quality>first.world.information_quality+0);
+    assert.equal(after.history[0].scene,"C01_S01");
+    assert.ok(getOpeningLead(lead).discovery.length>50);
+    const preview=createSceneViews({state:first,icon:()=>"",openingLead:lead}).renderScene();
+    assert.match(preview,/Τι ανακάλυψα/);
+  }
 });
