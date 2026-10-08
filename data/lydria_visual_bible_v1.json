@@ -1,0 +1,310 @@
+{
+  "schema_version": "1.0",
+  "task_id": "KM-012",
+  "status": "proposal_requires_owner_art_review",
+  "authority": [
+    "docs/01_WORLD_BIBLE_V1.md",
+    "design/09_CINEMATIC_VISUAL_PIVOT.md",
+    "design/00_CREATIVE_DIRECTION.md"
+  ],
+  "notes": "Concept and production constraints only. Not approved art, not canonical architecture, not a runtime asset manifest.",
+  "composition": {
+    "priority": "scene > story > decision > optional instruments",
+    "mobile": "Protect title and choices from props at 320px; crop environmental art before shrinking copy; preserve touch/keyboard reachability.",
+    "source_rule": "Location appearance is art direction, not evidence of hidden plot truth."
+  },
+  "locations": [
+    {
+      "id": "VELIS",
+      "name": "Velis government district",
+      "kind": "geography",
+      "canon": "Capital, Presidency, Assembly, ministries, Central Bank and media",
+      "source": "docs/01_WORLD_BIBLE_V1.md §4.1",
+      "motifs": [
+        "Institutional silhouettes layered at different distances",
+        "Wet stone and reflective office glass",
+        "Public corridors with human scale and access thresholds"
+      ],
+      "palette": {
+        "shadow": "#14283E",
+        "mid": "#54728D",
+        "light": "#D9DFDF",
+        "accent": "#D4B478"
+      },
+      "shots": [
+        {
+          "time": "predawn",
+          "light": "Blue-hour window light, isolated warm occupied rooms",
+          "camera": "Street-level approach through rain toward one lit office",
+          "motion": "Fine rain and distant commuter headlights"
+        },
+        {
+          "time": "day",
+          "light": "Cloud-bright stone, restrained glass reflections",
+          "camera": "Human-height corridor depth toward a closed meeting door",
+          "motion": "Distant figures crossing the far plane"
+        },
+        {
+          "time": "night",
+          "light": "Scattered offices and media flashes against navy",
+          "camera": "Window looking across separated institutional buildings",
+          "motion": "Sparse traffic and reflected broadcast light"
+        }
+      ],
+      "scene_examples": [
+        "C01_S01",
+        "C02_S01",
+        "C06_S03"
+      ],
+      "risk": "Do not imply all institutions share one building."
+    },
+    {
+      "id": "PRESIDENCY",
+      "name": "Presidency interior",
+      "kind": "institution",
+      "canon": "Constitutional guardian and cross-faction convening point; not executive command center",
+      "source": "docs/01_WORLD_BIBLE_V1.md §6.2; design/09_CINEMATIC_VISUAL_PIVOT.md §4",
+      "motifs": [
+        "Pale stone thresholds and measured glass planes",
+        "Long table with intentional empty seats",
+        "One official seal or restrained ceremonial detail"
+      ],
+      "palette": {
+        "shadow": "#1D3049",
+        "mid": "#777C7C",
+        "light": "#E6DDCD",
+        "accent": "#C1A269"
+      },
+      "shots": [
+        {
+          "time": "morning",
+          "light": "Side-lit cream stone, cool shadows",
+          "camera": "Visitor eye-level through doorway, table beyond",
+          "motion": "Subtle curtain movement"
+        },
+        {
+          "time": "day",
+          "light": "Even diffused light on papers and empty chairs",
+          "camera": "Two-person composition across table, faces first",
+          "motion": "Quiet human gesture rather than UI glow"
+        },
+        {
+          "time": "evening",
+          "light": "Warm desk pool against dark glass",
+          "camera": "Over-shoulder brief toward one unsigned page",
+          "motion": "Soft outside city reflections"
+        }
+      ],
+      "scene_examples": [
+        "C01_S03",
+        "C04_S01",
+        "C04_S02"
+      ],
+      "risk": "Avoid royal throne or authoritarian symbolism; President has bounded constitutional powers."
+    },
+    {
+      "id": "ASSEMBLY",
+      "name": "Lydrian Assembly",
+      "kind": "institution",
+      "canon": "240-seat parliamentary chamber, confidence threshold 121",
+      "source": "docs/01_WORLD_BIBLE_V1.md §6.1; design/09_CINEMATIC_VISUAL_PIVOT.md §4",
+      "motifs": [
+        "Curving or tiered seat rhythm without a prescribed floorplan",
+        "Walnut-toned speaker surfaces",
+        "Human-scale committee corridors and procedural papers"
+      ],
+      "palette": {
+        "shadow": "#34252A",
+        "mid": "#805A50",
+        "light": "#E7CFAD",
+        "accent": "#B88D60"
+      },
+      "shots": [
+        {
+          "time": "morning",
+          "light": "Warm low-angle corridor light",
+          "camera": "From procedural desk toward chamber doors",
+          "motion": "Passing aides carrying folders"
+        },
+        {
+          "time": "session",
+          "light": "Even warm institutional light",
+          "camera": "Low angle across benches to speaker area",
+          "motion": "Quiet seat changes and paper handling"
+        },
+        {
+          "time": "late",
+          "light": "Pockets of amber amid empty benches",
+          "camera": "Wide empty chamber after the vote",
+          "motion": "Cleaning light or lone distant silhouette"
+        }
+      ],
+      "scene_examples": [
+        "C04_S03"
+      ],
+      "risk": "No invented party logos or exact architecture; seat count is canon, set dressing is proposal."
+    },
+    {
+      "id": "HARBOR_FILE",
+      "name": "Harbor Contracts evidence context",
+      "kind": "narrative_context",
+      "canon": "2031 mixed procurement scandal; evidence can be reviewed in Velis and must not imply a single conspiracy",
+      "source": "docs/01_WORLD_BIBLE_V1.md §5 (2031 Harbor Contracts); design/09_CINEMATIC_VISUAL_PIVOT.md §8",
+      "motifs": [
+        "Marked paper with visibly distinct confirmed versus alleged claims",
+        "Cold rain beyond an investigation-room window",
+        "Port-related technical plans treated as documents, not proof"
+      ],
+      "palette": {
+        "shadow": "#243747",
+        "mid": "#758996",
+        "light": "#EEE5D2",
+        "accent": "#9D4944"
+      },
+      "shots": [
+        {
+          "time": "morning",
+          "light": "Overcast window, cool ink and paper",
+          "camera": "Hands sorting conflicting procurement documents",
+          "motion": "Rain trails behind glass"
+        },
+        {
+          "time": "day",
+          "light": "Cold neutral reading pool on desk",
+          "camera": "Oblique page close-up with readable source labels",
+          "motion": "Slow shift of paper edge"
+        },
+        {
+          "time": "night",
+          "light": "Single desk lamp, dark surrounding room",
+          "camera": "Wider composition with two separate evidence piles",
+          "motion": "Light rain, no dramatic red warning strobe"
+        }
+      ],
+      "scene_examples": [
+        "C03_S01"
+      ],
+      "risk": "Harbor is a scandal/file context, not a newly invented city; red accent is not a guilt indicator."
+    },
+    {
+      "id": "SERA",
+      "name": "Sera Islands",
+      "kind": "geography",
+      "canon": "Maritime islands with ferries, fisheries, tourism, military presence and contested waters with Serrat",
+      "source": "docs/01_WORLD_BIBLE_V1.md §4.5; design/09_CINEMATIC_VISUAL_PIVOT.md §4",
+      "motifs": [
+        "Wind-worn ferry pier and working fishing craft",
+        "Open sea horizon with island silhouettes",
+        "Coast-guard or navigation screen as secondary prop"
+      ],
+      "palette": {
+        "shadow": "#24516B",
+        "mid": "#4A9DAF",
+        "light": "#D5E6D9",
+        "accent": "#D6A568"
+      },
+      "shots": [
+        {
+          "time": "dawn",
+          "light": "Warm horizon through cool sea haze",
+          "camera": "Ferry approach from deck height",
+          "motion": "Wind and distant wake"
+        },
+        {
+          "time": "day",
+          "light": "High bright sky, sea blue with natural amber",
+          "camera": "Working harbor seen beside human conversation",
+          "motion": "Flags and ropes moving in wind"
+        },
+        {
+          "time": "dusk",
+          "light": "Amber edge light across water",
+          "camera": "Coastline over-shoulder, screen secondary",
+          "motion": "Moving navigation lights"
+        }
+      ],
+      "scene_examples": [],
+      "risk": "Avoid making disputed waters look like a settled national border."
+    },
+    {
+      "id": "ASTER_GATE",
+      "name": "Aster Gate Corridor / Port Aster",
+      "kind": "infrastructure",
+      "canon": "Proposed corridor combining deep-water port, rail, energy, data and defense logistics; not all components already built",
+      "source": "docs/01_WORLD_BIBLE_V1.md §4.2 and §5 (2030 proposal)",
+      "motifs": [
+        "Container cranes and long dock perspective",
+        "Freight-rail alignment toward industrial hinterland",
+        "Distinct planning overlays for proposed energy/data infrastructure"
+      ],
+      "palette": {
+        "shadow": "#213644",
+        "mid": "#587986",
+        "light": "#CFD4CB",
+        "accent": "#E0A65A"
+      },
+      "shots": [
+        {
+          "time": "dawn",
+          "light": "Steel-blue harbor haze with amber safety lamps",
+          "camera": "Wide human-scale quay beneath cranes",
+          "motion": "Distant crane swing"
+        },
+        {
+          "time": "day",
+          "light": "Bright industrial sea light and deep shadows",
+          "camera": "Rail perspective converging on working port",
+          "motion": "Containers and work crews at realistic scale"
+        },
+        {
+          "time": "night",
+          "light": "Sparse amber work lights against dark water",
+          "camera": "Port silhouette with separate transparent planning overlay",
+          "motion": "Navigation lights and slow gantry movement"
+        }
+      ],
+      "scene_examples": [],
+      "risk": "Do not depict unbuilt corridor components as completed; label future plans explicitly."
+    },
+    {
+      "id": "DARAN",
+      "name": "Daran Industrial Belt",
+      "kind": "geography",
+      "canon": "Manufacturing heartland; automation pressure on employment, unions and technical workforce",
+      "source": "docs/01_WORLD_BIBLE_V1.md §4.3; design/09_CINEMATIC_VISUAL_PIVOT.md §4",
+      "motifs": [
+        "Heavy machinery with real material wear",
+        "Worker-scale factory aisles and protective equipment",
+        "Robotics cell alongside legacy production line"
+      ],
+      "palette": {
+        "shadow": "#303A3E",
+        "mid": "#776B60",
+        "light": "#D9C5A6",
+        "accent": "#D99043"
+      },
+      "shots": [
+        {
+          "time": "shift_start",
+          "light": "Cold exterior into warm industrial interiors",
+          "camera": "Workers entering through factory threshold",
+          "motion": "Steam, shift-change footsteps"
+        },
+        {
+          "time": "day",
+          "light": "Industrial amber near machinery, cool skylights",
+          "camera": "Eye-level human and robot cell in one shot",
+          "motion": "Conveyor motion with guarded machinery"
+        },
+        {
+          "time": "night_shift",
+          "light": "Localized work lights, subdued factory perimeter",
+          "camera": "Wide aisle showing fewer occupied stations",
+          "motion": "Slow overhead crane"
+        }
+      ],
+      "scene_examples": [],
+      "risk": "Do not portray workers as faceless obstacles or automation as uniformly good or bad."
+    }
+  ]
+}
