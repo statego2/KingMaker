@@ -22,6 +22,12 @@
 - Run `npm run check`, `npm test`, `npm run validate:backlog`, `npm run validate:taxonomy`, and `npm run validate:mappings`; verify final-commit Actions before claiming CI success.
 - [Task branch](https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1) and [compare](https://github.com/statego2/KingMaker/compare/main...task/KM-089-taxonomy-index-slice-1). The original question corpus is the next content blocker; no UI or save-schema changes.
 
+### KM-089 delivery: source-safe foundation available for review
+- [PR #13](https://github.com/statego2/KingMaker/pull/13) contains canonical taxonomy, original-question intake, provenance validation, `src/knowledge-coverage.js`, new synthetic coverage tests and a JSON CLI (`node tools/report-knowledge-coverage.mjs` or `npm run report:coverage`).
+- **Verified head CI:** [game-tests 37776026971](https://github.com/statego2/KingMaker/actions/runs/37776026971) passed: `npm run check`, `npm test` (**27/27**), `npm run validate:backlog`, `npm run validate:taxonomy`, `npm run validate:mappings` and JSON coverage report assertion; [backlog 37776026791](https://github.com/statego2/KingMaker/actions/runs/37776026791) passed.
+- **KM-089 remains in_progress:** original individual question corpus is absent; coverage stays **0/1,000**. The code is a foundation, not completed substantive mapping.
+- **Next dependency-ready separate work:** KM-012 art bible has an existing unmerged branch and requires human visual approval. KM-005 (#12) and KM-008 (#10) stay in review.
+
 ## Next dependency-ready implementation work
 - **KM-012 [P1]** — Create Lydria location and time-of-day visual bible (depends: KM-001)
 - **KM-089 [P1]** — Map 1,000 mechanisms to taxonomy with stable IDs (depends: KM-001)
