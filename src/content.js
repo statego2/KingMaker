@@ -101,35 +101,80 @@ o("c","Δείξε τα όλα","Δεν κόβεις τίποτα από τις �
 "Πληρότητα δεν σημαίνει κατ' ανάγκη σαφήνεια. Και το να αφήνεις την ιεράρχηση σε άλλον είναι μία μορφή παραχώρησης.",{player:{credibility:-1},rel:{ivo_marek:{respect:-3}},flags:{BRIEF_STYLE:"overloaded"}})
 ],["ivo_marek","elena_varin","mara_eltan","lea_marin"]),
 
-c("C02_S01","02","THE 121ST VOTE","Day 2 — Niko Arven","PRIVATE MEETING",
-["Τρία κόμματα έχουν ήδη προσφέρει στον Niko chair, funding ή reputational pressure.","Δεν σε ρωτά τι του προσφέρεις.","«Όλοι μου λένε τι είναι καλό για τη χώρα. Ποιος πληρώνει όταν κάνετε λάθος;»"],
-[{type:"confirmed",label:"SERA ISLANDS",value:"High energy cost",note:"Grid + ferry dependence"},{type:"uncertain",label:"NIKO",value:"Pivotal, not captive",note:"Local legitimacy matters"}],
-"Πώς ανοίγεις;",
+c("C02_S01","02","Η 121η ΨΗΦΟΣ","Η φωνή από το τηλέφωνο","ΣΥΝΑΝΤΗΣΗ · ΧΩΡΙΣ ΚΑΜΕΡΕΣ",
+(state)=>[
+"Η φωνή από το πρωινό μήνυμα έχει τώρα πρόσωπο. Ο Νίκο, βουλευτής από τα νησιά Σέρα, κάθεται απέναντί σου χωρίς να προσφέρει το χέρι του. «Με έβαλαν στην κυβέρνηση πριν αποφασίσω. Δεν σου φαίνεται παράξενο;»",
+state.flags.OPENING_COUNT==="overstated"
+?"«Και στο δικό σας σημείωμα ήμουν βέβαιος», λέει. «Θα χρειαστεί να μου εξηγήσεις γιατί»."
+:state.flags.OPENING_COUNT==="calibrated"
+?"«Είδα ότι δεν με παρουσίασες ως δεδομένο», λέει. «Αυτός είναι ο λόγος που δέχτηκα να συναντηθούμε»."
+:"«Δεν πήρες θέση το πρωί. Καλύτερα από το να μιλήσεις για μένα — αλλά τελικά θα χρειαστεί να αποφασίσεις τι πιστεύεις» λέει.",
+"Τρία κόμματα του έχουν προσφέρει αξιώματα. Εκείνος σου δείχνει φωτογραφία από ένα νησί με διακοπές ρεύματος. «Όλοι μιλούν για μια καινούργια χώρα. Ποιος θα πληρώσει αν αφήσουν τη δική μου πίσω;»"
+],
 [
-o("a","Elicit","«Ποιο ρίσκο για τα νησιά δεν κατάλαβε κανείς;»","Μαθαίνεις objective πριν προσφέρεις.",.95,"«Το grid. Αν το Aster πάρει όλο το capital, τα νησιά θα πληρώσουν ξανά.»","Leverage δεν σημαίνει ότι το utility είναι απλώς “δώσε μου κάτι”.",{rel:{niko_arven:{trust:3,respect:4}},flags:{NIKO_INTEREST:true},callback:{after:3,from:"Niko Arven",subject:"Not a promise. A number.",body:"«Review για island grid πριν κλειδώσει το budget και μπορώ να κρατήσω δύο independents στο δωμάτιο.»"}}),
-o("b","Trade","Committee chair + island funding.","Συγκεκριμένο package πριν diagnostic work.",.56,"«Ωραία πακέτα. Κανείς δεν ρώτησε αν αυτά είναι τα προβλήματα.»","Η offer-first λογική μπορεί να αγοράσει support και να χάσει understanding.",{player:{political_capital:-1},rel:{niko_arven:{respect:-1,dependency:2}},flags:{NIKO_TRANSACTIONAL:true}}),
-o("c","Pressure","Του λες ότι θα χρεωθεί δημόσια το deadlock.","Χρησιμοποιείς reputational leverage.",.27,"Ο Niko χαμογελά. «Τότε χρειάζεστε καλύτερο αφήγημα.»","Το grievance επιβιώνει πολύ περισσότερο από μία ψήφο.",{rel:{niko_arven:{trust:-5,grievance:6,respect:-2}},world:{coalition_pressure:2},flags:{NIKO_PRESSURED:true}})
+{type:"confirmed",label:"ΤΑ ΝΗΣΙΑ ΣΕΡΑ",value:"Ακριβό ρεύμα · αδύναμα δρομολόγια",note:"Ο Νίκο εκπροσωπεί ανθρώπους που θα ζήσουν με τη συμφωνία"},
+{type:"uncertain",label:"Η ΨΗΦΟΣ ΤΟΥ",value:"Δεν έχει δεσμευτεί",note:"Οι ανακοινώσεις των κομμάτων δεν ισοδυναμούν με προσωπική υπόσχεση"}
+],
+"Τι θα του πεις;",
+[
+o("a","Ρώτησε","«Τι θα χάσουν τα νησιά αν πετύχει το σχέδιό μας;»","Του ζητάς να σου εξηγήσει τον δικό του φόβο πριν μιλήσεις για ανταλλάγματα.",.95,
+"Ο Νίκο σκύβει μπροστά. «Το δίκτυο ρεύματος. Αν πάνε όλα τα χρήματα στο μεγάλο έργο, θα μας ξεχάσουν πάλι». Για πρώτη φορά η συζήτηση ξεφεύγει από την ψήφο.",
+"Ένας άνθρωπος που κρατά μια κρίσιμη ψήφο έχει και δικούς του σκοπούς. Αν τους γνωρίζεις, μπορείς να διαπραγματευτείς κάτι πιο σταθερό από μια χάρη.",{rel:{niko_arven:{trust:3,respect:4}},flags:{NIKO_INTEREST:true},callback:{after:3,from:"Niko Arven",subject:"Not a promise. A number.",body:"«Εξέταση του ηλεκτρικού δικτύου των νησιών πριν κλειδώσει ο προϋπολογισμός. Τότε μπορώ να φέρω άλλους δύο στο τραπέζι»."}}),
+o("b","Κάνε προσφορά","«Μπορούμε να σου δώσουμε ρόλο και χρήματα για τα νησιά».","Μια άμεση συμφωνία ίσως αποτρέψει νέες εκλογές, αν τα ανταλλάγματα αρκούν.",.56,
+"Ο Νίκο χαμογελά κουρασμένα. «Πολύ γρήγορα έφτασες στα δώρα. Δεν σε ρώτησα τι έφερες». Δεν κλείνει την πόρτα, αλλά περιμένει κάτι ουσιαστικότερο.",
+"Η γρήγορη συναλλαγή έχει αξία όταν ξέρεις τι αγοράζεις. Αν δεν γνωρίζεις τις ανάγκες του άλλου, η συμφωνία μπορεί να δημιουργήσει νέα εξάρτηση.",{player:{political_capital:-1},rel:{niko_arven:{respect:-1,dependency:2}},flags:{NIKO_TRANSACTIONAL:true}}),
+o("c","Πίεσε","«Αν μπλοκάρεις τη χώρα, θα το μάθουν όλοι».","Του θυμίζεις το κόστος που έχει η καθυστέρηση, ρισκάροντας να τον κάνεις αντίπαλο.",.27,
+"Ο Νίκο σηκώνεται. «Δεν σας χρωστάω την κυβέρνηση σας». Η συνάντηση τελειώνει νωρίτερα από το αναμενόμενο.",
+"Η πίεση μπορεί να αλλάξει μια ψηφοφορία. Η ταπείνωση όμως μένει στη μνήμη ακόμη και όταν η ψηφοφορία τελειώσει.",{rel:{niko_arven:{trust:-5,grievance:6,respect:-2}},world:{coalition_pressure:2},flags:{NIKO_PRESSURED:true}})
 ],["niko_arven"]),
 
-c("C02_S02","02","THE 121ST VOTE","Day 3 — Two Messages, One Rumor","SOURCE PROVENANCE",
-["Renewal aide: «Ο Niko έκλεισε με Stability».","Media producer: «Όλοι στο Assembly ακούνε το ίδιο».","Η Lea βρίσκει ότι και οι δύο πληροφορίες περνούν από το ίδιο parliamentary chat."],
-[{type:"uncertain",label:"SOURCE A",value:"Renewal aide",note:"Political incentive"},{type:"uncertain",label:"SOURCE B",value:"Media producer",note:"Looks independent"},{type:"confirmed",label:"PROVENANCE",value:"Shared chain",note:"Not independent corroboration"}],
-"Πώς αντιδράς;",
+c("C02_S02","02","Η 121η ΨΗΦΟΣ","Δύο μηνύματα, μία φήμη","ΤΟ ΙΔΙΟ ΨΕΜΑ ΜΕ ΔΥΟ ΦΩΝΕΣ",
 [
-o("a","Verify","Ψάχνεις ανεξάρτητο route.","Δύο mouths ≠ δύο sources.",.98,"Η δεύτερη διαδρομή δεν επιβεβαιώνει secret deal. Το rumor μένει plausible.","Source independence είναι χωριστή ερώτηση από source count.",{world:{information_quality:2},rel:{lea_marin:{respect:2}},flags:{SILAS_VERIFY:true},silas:"verification_depth"}),
-o("b","Confront","Παίρνεις αμέσως τον Niko.","Direct access, αλλά αποκαλύπτεις response threshold.",.65,"«Αν είχα συμφωνία, γιατί θα στο έλεγα επειδή κάποιος έγραψε κάτι σε chat;»","Το direct ask είναι data collection και ταυτόχρονα signal προς τους άλλους.",{rel:{niko_arven:{trust:-1}},flags:{SILAS_SPEED:true},silas:"response_speed"}),
-o("c","Amplify","Μεταφέρεις τη φήμη για να αυξήσεις urgency.","Χρησιμοποιείς unverified claim ως εργαλείο.",.22,"Σε μία ώρα το rumor έχει μπει σε τρία νέα channels.","Η πληροφορία δεν είναι μόνο κάτι που πιστεύεις· μπορεί να γίνει causal weapon.",{world:{information_quality:-4,coalition_pressure:3},player:{credibility:-2},flags:{RUMOR_AMPLIFIED:true},silas:"disclosure_style"})
-],["lea_marin","niko_arven","silas_koren"]),
+"Πριν φύγεις από τη Βουλή, η Λέα σου δείχνει δύο μηνύματα. Το πρώτο λέει ότι ο Νίκο έχει κλείσει συμφωνία με τους αντιπάλους σου. Το δεύτερο ισχυρίζεται ότι «όλοι το γνωρίζουν».",
+"«Κοίτα εδώ», λέει. Και οι δύο πληροφορίες προέρχονται τελικά από την ίδια ομαδική συνομιλία. Δεν είναι δύο μάρτυρες. Είναι μία φήμη που έκανε τον γύρο της πόλης.",
+"Αν η είδηση αληθεύει, αλλάζει τα πάντα. Αν δεν αληθεύει, μπορεί να καταστρέψεις μόνος σου την εμπιστοσύνη που μόλις προσπάθησες να χτίσεις."
+],
+[
+{type:"uncertain",label:"ΠΡΩΤΟ ΜΗΝΥΜΑ",value:"Ο Νίκο έχει συμφωνήσει",note:"Πολιτικός συνεργάτης με κίνητρο να πιέσει"},
+{type:"uncertain",label:"ΔΕΥΤΕΡΟ ΜΗΝΥΜΑ",value:"«Όλοι το ξέρουν»",note:"Έρχεται από άλλο άτομο, αλλά όχι ανεξάρτητη πηγή"},
+{type:"confirmed",label:"Η ΛΕΑ ΕΛΕΓΞΕ",value:"Κοινή αρχική συνομιλία",note:"Καμία ανεξάρτητη επιβεβαίωση"}
+],
+"Τι κάνεις με τη φήμη;",
+[
+o("a","Έλεγξε","Ψάχνεις κάποιον που γνωρίζει από πρώτο χέρι.","Χάνεις λίγο χρόνο, αλλά δεν αφήνεις μια φήμη να οδηγήσει τη διαπραγμάτευση.",.98,
+"Η νέα πηγή δεν επιβεβαιώνει μυστική συμφωνία. Η φήμη παραμένει πιθανή, όχι αποδεδειγμένη. Η Λέα χαμογελά: «Δύο τηλέφωνα δεν κάνουν δύο γεγονότα».",
+"Οι ανεξάρτητες πηγές μετρούν περισσότερο από τον αριθμό των ανθρώπων που επαναλαμβάνουν την ίδια ιστορία.",{world:{information_quality:2},rel:{lea_marin:{respect:2}},flags:{SILAS_VERIFY:true},silas:"verification_depth"}),
+o("b","Πάρε τηλέφωνο","Ρωτάς κατευθείαν τον Νίκο αν είναι αλήθεια.","Ίσως μάθεις γρήγορα την απάντηση. Θα δείξεις όμως πόσο εύκολα μια φήμη σε κάνει να αντιδράς.",.65,
+"«Αν είχα μυστική συμφωνία, θα σου το έλεγα επειδή το διάβασες σε μήνυμα;» απαντά. Η κλήση τελειώνει χωρίς επιβεβαίωση.",
+"Η ίδια ερώτηση μπορεί να σου δώσει πληροφορίες και ταυτόχρονα να αποκαλύψει τη δική σου ανησυχία.",{rel:{niko_arven:{trust:-1}},flags:{SILAS_SPEED:true},silas:"response_speed"}),
+o("c","Χρησιμοποίησέ τη","Μεταφέρεις τη φήμη ως πιθανή για να κινηθούν οι άλλοι.","Αυξάνεις την πίεση να παρθούν αποφάσεις πριν διαλυθεί η συμμαχία.",.22,
+"Μέσα σε μία ώρα η ιστορία κυκλοφορεί παντού. Κανείς δεν θυμάται πλέον ποιος είπε πρώτος «ίσως».",
+"Η αβέβαιη πληροφορία μπορεί να γίνει πολιτικό εργαλείο. Όταν αποκτήσει ζωή, δεν την ελέγχει απαραίτητα αυτός που την έσπρωξε.",{world:{information_quality:-4,coalition_pressure:3},player:{credibility:-2},flags:{RUMOR_AMPLIFIED:true},silas:"disclosure_style"})
+],["lea_marin","niko_arven"]),
 
-c("C02_S03","02","THE 121ST VOTE","Day 4 — Three Viable Paths","COALITION ARCHITECTURE",
-["Τρεις routes είναι πραγματικά βιώσιμες.","Καμία δεν είναι «η σωστή κυβέρνηση». Κάθε μία λύνει διαφορετικό constraint και δημιουργεί άλλη dependency.","Η Mara ζητά πού αξίζει να βάλει το SCS την επόμενη ημέρα analytical effort."],
-[{type:"confirmed",label:"REFORM ACCORD",value:"Renewal + Civic Labour + independents",note:"Reform/labour bridge · fragile math"},{type:"confirmed",label:"RECONSTRUCTION",value:"Renewal + Stability + independents",note:"Capacity · legitimacy cost"},{type:"confirmed",label:"CIVIC COMPACT",value:"Labour + Stability + Free Cities",note:"Oversight · more veto points"}],
-"Ποια route stress-testάρεις πρώτη;",
+c("C02_S03","02","Η 121η ΨΗΦΟΣ","Τρεις πόρτες","ΠΟΙΟΣ ΘΑ ΚΥΒΕΡΝΗΣΕΙ",
 [
-o("a","Stress-test","Reform Accord","Δοκιμάζεις distribution + one-vote fragility.",.83,"Η Mira ζητά confidential distribution table.","Η επιλογή route δεν είναι moral endorsement· είναι allocation analytical capacity.",{flags:{GOV_PATH:"reform_accord"},routes:{reform_accord:7}}),
-o("b","Stress-test","Reconstruction Coalition","Δοκιμάζεις continuity χωρίς capture.",.80,"Ο Viktor ανοίγει quiet channel. Το όνομα Silas Koren εμφανίζεται στο calendar.","Administrative memory είναι asset και liability μαζί.",{flags:{GOV_PATH:"reconstruction"},routes:{reconstruction:7},rel:{silas_koren:{familiarity:2}}}),
-o("c","Stress-test","Civic Compact","Δοκιμάζεις broad oversight coalition με περισσότερα veto points.",.77,"Η Liora ζητά rules πριν ministries.","Outside option αλλάζει bargaining power ακόμη και αν δεν γίνει τελικό government.",{flags:{GOV_PATH:"civic_compact"},routes:{civic_compact:7}})
-],["mara_eltan","silas_koren"]),
+"Το βράδυ η Μάρα απλώνει τρία μικρά χαρτιά στο τραπέζι. «Δεν έχεις να διαλέξεις ποιον συμπαθείς. Πρέπει να δούμε ποια συμφωνία μπορεί να σταθεί».",
+"Ο Άντριαν θέλει να αλλάξει τη χώρα γρήγορα. Η Μίρα θέλει εγγυήσεις ότι οι εργαζόμενοι δεν θα πληρώσουν το κόστος. Οι παλαιότεροι πολιτικοί γνωρίζουν πώς δουλεύει το κράτος, αλλά κουβαλούν το βάρος του σκανδάλου.",
+"Καθεμία από τις τρεις κυβερνήσεις θα μπορούσε να συγκεντρώσει 121 ψήφους. Καθεμία όμως θα χρωστά κάτι διαφορετικό την επόμενη μέρα."
+],
+[
+{type:"confirmed",label:"ΣΥΜΦΩΝΙΑ ΑΛΛΑΓΗΣ",value:"Μεταρρυθμίσεις + προστασία εργασίας",note:"Άντριαν, Μίρα και ανεξάρτητοι· οριακή πλειοψηφία"},
+{type:"confirmed",label:"ΚΥΒΕΡΝΗΣΗ ΣΥΝΕΧΕΙΑΣ",value:"Νέα ηγεσία + παλαιά εμπειρία",note:"Πιο σταθερή διοίκηση, κίνδυνος να καλυφθούν παλιές ευθύνες"},
+{type:"confirmed",label:"ΠΛΑΤΥΣ ΣΥΜΒΙΒΑΣΜΟΣ",value:"Εργασία + θεσμικοί έλεγχοι",note:"Περισσότερες ομάδες έχουν δικαίωμα αντίρρησης"}
+],
+"Ποια συμφωνία θέλεις να ελέγξεις πιο προσεκτικά;",
+[
+o("a","Δοκίμασε","Μια κυβέρνηση που συνδέει αλλαγή και εργασία.","Ίσως πετύχει πολλά, αρκεί η Μίρα να μη μείνει διακοσμητική σύμμαχος.",.83,
+"Η Μίρα ζητά γραπτή εγγύηση για τους ανθρώπους που θα χάσουν δουλειές από την αυτοματοποίηση.",
+"Το να εξετάζεις μια επιλογή δεν σημαίνει ότι δεσμεύτηκες να την υποστηρίξεις. Πρώτα δοκιμάζεις πού μπορεί να σπάσει.",{flags:{GOV_PATH:"reform_accord"},routes:{reform_accord:7}}),
+o("b","Δοκίμασε","Μια κυβέρνηση που ξέρει να λειτουργεί το κράτος.","Κερδίζει διοικητική εμπειρία, αλλά μπορεί να χάσει την εμπιστοσύνη όσων ήθελαν πραγματική αλλαγή.",.80,
+"Ένας παλιός πολιτικός ανοίγει δίαυλο. Στο ημερολόγιο εμφανίζεται μια συνάντηση με τον στρατηγιστή του.",
+"Η εμπειρία μπορεί να είναι πόρος και παγίδα μαζί. Η ερώτηση είναι πώς κρατάς το πρώτο χωρίς να κληρονομήσεις το δεύτερο.",{flags:{GOV_PATH:"reconstruction"},routes:{reconstruction:7},rel:{silas_koren:{familiarity:2}}}),
+o("c","Δοκίμασε","Έναν συμβιβασμό με περισσότερους ελέγχους.","Δίνει λόγο σε περισσότερες ομάδες και ίσως περισσότερη εμπιστοσύνη· μπορεί όμως να δυσκολεύεται να πάρει αποφάσεις.",.77,
+"Η πλευρά των ανεξάρτητων πόλεων ζητά εγγυήσεις ελέγχου πριν μοιραστούν υπουργεία.",
+"Το ότι πολλοί συμφωνούν με τον σκοπό δεν σημαίνει ότι έχουν τον ίδιο τρόπο για να τον πετύχουν.",{flags:{GOV_PATH:"civic_compact"},routes:{civic_compact:7}})
+],["mara_eltan","adrian_kessar","mira_solen"]),
 
 c("C03_S01","03","THE FILE","Day 6 — “A Page Your People Say Does Not Exist”","HARBOR CONTRACTS",
 ["Η Nadia στέλνει crop από procurement memo.","Contract numbers και meeting log ταιριάζουν με το archive.","Η explosive handwritten annotation — «DC wants clause narrow enough» — δεν υπάρχει σε κανένα SCS copy."],
@@ -168,6 +213,7 @@ o("c","Release","Δημοσιεύεις όλο το page.","Maximum transparency
 export const scenes=[...baseScenes,...act1bScenes];
 
 export const inboxSeed=[
-{id:"m1",from:"Dr. Mara Eltan",subject:"07:30 briefing",body:"Bring me a count I can defend, not a count somebody wants to be true.",unread:true},
-{id:"m2",from:"Ivo Marek",subject:"Coalition status",body:"One page. Confirmed facts first. Decision points at the end.",unread:true}
+{id:"m1",from:"Μάρα",subject:"07:30 · Η αναφορά",body:"Χρειάζομαι έναν αριθμό που μπορούμε να υπερασπιστούμε. Όχι έναν αριθμό που θα ήθελε κάποιο κόμμα να είναι αληθινός.",unread:true},
+{id:"m2",from:"Γραφείο Προεδρίας",subject:"Η σημερινή ενημέρωση",body:"Μία σελίδα. Τι γνωρίζουμε, τι αγνοούμε και ποια απόφαση πρέπει να παρθεί.",unread:true},
+{id:"m3",from:"Άγνωστος αριθμός",subject:"07:12 · Φωνητικό μήνυμα",body:"«Με έχουν μετρήσει στην κυβέρνηση. Δεν έχω υποσχεθεί την ψήφο μου σε κανέναν».",unread:true}
 ];
