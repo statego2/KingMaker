@@ -244,9 +244,12 @@
         "https://github.com/statego2/KingMaker/pull/6",
         "https://github.com/statego2/KingMaker/actions/runs/37692937460",
         "https://github.com/statego2/KingMaker/actions/runs/37692937460/artifacts/11513913462",
-        "docs/VISUAL_BASELINE.md"
+        "docs/VISUAL_BASELINE.md",
+        "https://github.com/statego2/KingMaker/issues/12",
+        "https://github.com/statego2/KingMaker/actions/runs/37701826371",
+        "tools/mobile-layout-regression.mjs"
       ],
-      "notes": "Chromium captured 15 screenshots across five emulated widths with 0 geometry warnings and 0 page errors. Automated visual baseline complete; human PNG inspection and actual-device interaction not verified, so acceptance criteria are not fully signed off."
+      "notes": "P0 issue #12 targeted layout fix moved to integration branch task/KM-005-mobile-safe-zones-integrated-20261008 after prior Chromium/mobile layout CI successes. New PR/CI pending; actual owner/device iOS Safari verification and visual/accessibility signoff remain outstanding. Not done."
     },
     {
       "id": "KM-006",
