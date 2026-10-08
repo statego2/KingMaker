@@ -68,3 +68,8 @@ Entries document **verified project activity**, separate from the aspirational b
 - **Evidence boundary:** 0 actual original question records imported and 0 reviewed. No question mapping, human review, UI, canon or save-schema changes claimed. KM-089 stays `in_progress`.
 - **CI:** final-commit GitHub Actions verification pending; do not infer PASS from previous commits.
 - **P0 blockers:** [KM-005 issue #12](https://github.com/statego2/KingMaker/issues/12) needs real-device/human visual approval; [KM-008 issue #10](https://github.com/statego2/KingMaker/issues/10) needs owner GitHub ruleset verification.
+
+### Verified follow-up — KM-089 slice 2 CI
+- Commit: https://github.com/statego2/KingMaker/commit/1aa6bc97cef8cdd3601cea0e96a6def8553f2fb3
+- [Node CI 37716425812](https://github.com/statego2/KingMaker/actions/runs/37716425812) PASS: `npm run check`, `npm test` (24 passed, 0 failed), `npm run validate:backlog`, `npm run validate:taxonomy`, `npm run validate:mappings`.
+- [Backlog CI 37716425836](https://github.com/statego2/KingMaker/actions/runs/37716425836) PASS. Browser testing not needed: no UI change. Main remains unchanged; PR creation blocked by connector.

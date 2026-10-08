@@ -41,3 +41,8 @@ Prefer **KM-089**, where taxonomy/unique ID work can produce a verifiable conten
 - KM-006: [v0.3–v1 state delta PR #7](https://github.com/statego2/KingMaker/pull/7), migration not active
 - KM-009: [scene presentation adapter PR #8](https://github.com/statego2/KingMaker/pull/8)
 - KM-011: [scene/controller boundary PR #11](https://github.com/statego2/KingMaker/pull/11)
+
+### Final CI verification — KM-089 slice 2
+- [Node workflow 37716425812](https://github.com/statego2/KingMaker/actions/runs/37716425812): check PASS; npm test 24/24 PASS; backlog, taxonomy and mapping validators PASS.
+- [Backlog workflow 37716425836](https://github.com/statego2/KingMaker/actions/runs/37716425836): PASS.
+- Tested commit: https://github.com/statego2/KingMaker/commit/1aa6bc97cef8cdd3601cea0e96a6def8553f2fb3

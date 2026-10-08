@@ -2142,9 +2142,12 @@
         "data/question_mappings_v1.json",
         "src/question-mapping.js",
         "tests/question-mapping.test.mjs",
-        "tools/validate-question-mappings.mjs"
+        "tools/validate-question-mappings.mjs",
+        "https://github.com/statego2/KingMaker/commit/1aa6bc97cef8cdd3601cea0e96a6def8553f2fb3",
+        "https://github.com/statego2/KingMaker/actions/runs/37716425812",
+        "https://github.com/statego2/KingMaker/actions/runs/37716425836"
       ],
-      "notes": "Bounded L slice 1 committed on task branch: 10-domain/60-competency canonical IDs, 15 tensions, Q001–Q1000 tier slots and provenance validation. GitHub Actions game-tests PASS (npm run check; npm test 19/19; npm run validate:backlog; npm run validate:taxonomy), backlog workflow PASS. No original individual question records in repository, so zero per-question competency/source mappings claimed; import and review remain. PR creation blocked by connector; parent stays in_progress and unmerged. Slice 2: provenance-gated original-question intake and coverage audit with synthetic-only tests; 0 actual records imported, 0 reviewed. Await final CI, source corpus and human mapping review; main unchanged."
+      "notes": "Bounded L slice 1 committed on task branch: 10-domain/60-competency canonical IDs, 15 tensions, Q001–Q1000 tier slots and provenance validation. GitHub Actions game-tests PASS (npm run check; npm test 19/19; npm run validate:backlog; npm run validate:taxonomy), backlog workflow PASS. No original individual question records in repository, so zero per-question competency/source mappings claimed; import and review remain. PR creation blocked by connector; parent stays in_progress and unmerged. Slice 2: provenance-gated original-question intake and coverage audit with synthetic-only tests; 0 actual records imported, 0 reviewed. Await final CI, source corpus and human mapping review; main unchanged. Final slice 2 CI PASS: 24/24 tests, check, backlog, taxonomy, mapping validators; GitHub Actions 37716425812 and 37716425836. No browser changes; still unmerged and awaiting source corpus."
     },
     {
       "id": "KM-090",
