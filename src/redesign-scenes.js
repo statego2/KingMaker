@@ -2,12 +2,12 @@ import {resolveScenePresentation} from "./scene-contract.js";
 import {people} from "./content.js";
 
 export const presentation={
-  C01_S01:["briefing","VELIS · GOVERNMENT DISTRICT","PRESIDENTIAL BRIEFING"],
-  C01_S02:["character","SCS · RULES DESK","PROCEDURAL WINDOW"],
-  C01_S03:["document","PRESIDENCY · 10:40","ONE-PAGE BRIEF"],
-  C02_S01:["character","VELIS · DAY 2","PRIVATE MEETING"],
-  C02_S02:["phone","SECURE CHANNEL · DAY 3","TWO MESSAGES"],
-  C02_S03:["map","COALITION ROOM · DAY 4","THREE PATHS"],
+  C01_S01:["phone","ΒΕΛΙΣ · ΠΡΩΙ, 07:12","ΑΓΝΩΣΤΟ ΜΗΝΥΜΑ"],
+  C01_S02:["character","ΒΟΥΛΗ · ΓΡΑΦΕΙΟ ΚΑΝΟΝΙΣΜΟΥ","ΤΟ ΠΕΡΙΘΩΡΙΟ"],
+  C01_S03:["document","ΠΡΟΕΔΡΙΑ · 10:40","ΜΙΑ ΣΕΛΙΔΑ"],
+  C02_S01:["character","ΒΕΛΙΣ · ΔΕΥΤΕΡΗ ΜΕΡΑ","Η ΣΥΝΑΝΤΗΣΗ"],
+  C02_S02:["phone","ΒΟΥΛΗ · ΤΡΙΤΗ ΜΕΡΑ","ΜΙΑ ΦΗΜΗ"],
+  C02_S03:["map","ΓΡΑΦΕΙΟ ΣΤΡΑΤΗΓΙΚΗΣ · ΤΕΤΑΡΤΗ ΜΕΡΑ","ΤΡΕΙΣ ΠΟΡΤΕΣ"],
   C03_S01:["document","HARBOR FILE · DAY 6","RESTRICTED PAGE"],
   C03_S02:["character","SCS · DAY 6","CHAIN OF CUSTODY"],
   C03_S03:["media","VELIS · DAY 7","PUBLIC LINE"],
@@ -33,6 +33,9 @@ function factRows(facts,max=3){
 
 export function sceneVisual(s,body,facts){
   const p=meta(s),a=actor(s);
+  // Opening cold open: the human mystery comes before a presidential document.
+  // Never reveal the anonymous caller's identity through the character art.
+  if(s.id==="C01_S01") return '<div class="phone-prop"><div class="phone-ring">☎</div><small>07:12 · ΦΩΝΗΤΙΚΟ ΜΗΝΥΜΑ</small><h3>Άγνωστος αριθμός</h3><p>«Με έχουν μετρήσει. Δεν έχω δώσει την ψήφο μου σε κανέναν».</p><div class="wave">'+Array(18).fill(0).map((_,i)=>'<i style="height:'+(8+(i%5)*5)+'px"></i>').join("")+'</div></div>';
   if(p.mode==="briefing") return '<div class="briefing-prop"><div class="paper-card"><header><b>OFFICE OF STRATEGIC COORDINATION</b><span>RESTRICTED</span></header><h3>Presidential briefing</h3>'+factRows(facts)+'<div class="stamp">15 MIN</div></div><div class="desk-shadow"></div></div>';
   if(p.mode==="document") return '<div class="document-prop"><div class="paper-card dossier"><header><b>'+esc(p.label)+'</b><span>CONFIDENTIAL</span></header><h3>'+esc(cleanTitle(s.title))+'</h3><p>'+esc(body[1]||body[0]||"")+'</p>'+factRows(facts,2)+'<div class="pen-line"></div></div></div>';
   if(p.mode==="character") return '<div class="character-prop"><div class="portrait-art"><span class="head"></span><span class="shoulders"></span><i></i></div><div class="character-card"><small>'+esc(a.role)+'</small><h3>'+esc(a.name)+'</h3><blockquote>'+esc(body[1]||body[0]||"")+'</blockquote></div></div>';
