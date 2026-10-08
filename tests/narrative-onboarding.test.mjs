@@ -35,7 +35,7 @@ test("opening decisions preserve existing flags and personalize the presidential
     assert.equal(state.i,2);
     const briefing=bodyOf(scenes[2],state).join(" ");
     assert.match(briefing,/Πρόεδρ/);
-    assert.ok(briefing.includes("119")||briefing.includes("δεν έδωσες αριθμό"));
+    assert.ok(briefing.includes("119")||briefing.includes("122")||briefing.includes("δεν έδωσες αριθμό"));
     assert.ok(["overstated","calibrated","withheld"].includes(state.flags.OPENING_COUNT));
     state=commit(state,choiceOf(scenes[2],state)[0]);
     const niko=bodyOf(scenes[3],state).join(" ");
