@@ -408,7 +408,7 @@
       "stream": "art",
       "priority": "P1",
       "size": "M",
-      "status": "todo",
+      "status": "review",
       "depends_on": [
         "KM-001"
       ],
@@ -419,8 +419,13 @@
         "Each place has 3 recognizable motifs and palette rules",
         "No contradiction with world/character canon"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "https://github.com/statego2/KingMaker/commit/c183d48a7cb1efc860f10fc88ceb01a2595206d4",
+        "docs/LYDRIA_VISUAL_BIBLE_V1.md",
+        "data/lydria_visual_bible_v1.json",
+        "tests/lydria-visual-bible.test.mjs"
+      ],
+      "notes": "Seven canon-anchored setting briefs and 21 time-of-day/shift shot concepts committed in branch task/KM-012-lydria-visual-bible-slice-1. Art boards, asset provenance, mobile visual comparison and explicit owner approval outstanding; do not mark done. Branch CI not yet confirmed."
     },
     {
       "id": "KM-013",

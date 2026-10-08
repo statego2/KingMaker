@@ -30,3 +30,10 @@ Prefer **KM-089**, where taxonomy/unique ID work can produce a verifiable conten
 - KM-006: [v0.3–v1 state delta PR #7](https://github.com/statego2/KingMaker/pull/7), migration not active
 - KM-009: [scene presentation adapter PR #8](https://github.com/statego2/KingMaker/pull/8)
 - KM-011: [scene/controller boundary PR #11](https://github.com/statego2/KingMaker/pull/11)
+
+## 2026-10-08 — KM-012 bounded location visual bible (new branch; art review pending)
+- [Visual bible proposal](https://github.com/statego2/KingMaker/blob/task/KM-012-lydria-visual-bible-slice-1/docs/LYDRIA_VISUAL_BIBLE_V1.md) and [machine-readable manifest](https://github.com/statego2/KingMaker/blob/task/KM-012-lydria-visual-bible-slice-1/data/lydria_visual_bible_v1.json) define 7 distinct setting identities, 3 motifs/palette rules each and 21 daypart/shift shots. [Contract test](https://github.com/statego2/KingMaker/blob/task/KM-012-lydria-visual-bible-slice-1/tests/lydria-visual-bible.test.mjs) guards basic shape. No runtime art or save schema changes.
+- **KM-012 stays review** pending real art reference boards, rights, 320px mock compositions and explicit owner approval. Do not mark done or unblock KM-013/KM-014 based on the draft.
+- KM-005 [issue #12](https://github.com/statego2/KingMaker/issues/12): existing [fix branch](https://github.com/statego2/KingMaker/tree/task/KM-005-mobile-safe-zones-issue-12) has successful [Chromium CI](https://github.com/statego2/KingMaker/actions/runs/37701826371), but needs real-device approval; PR creation was blocked by connector safety checks. No merge.
+- KM-089 [taxonomy branch](https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1) has [passing Node CI](https://github.com/statego2/KingMaker/actions/runs/37705986896) and [backlog CI](https://github.com/statego2/KingMaker/actions/runs/37705986903), but 1,000 source question records are not independently available in the repo; no claim of complete mapping.
+- KM-008 still requires [owner ruleset activation issue #10](https://github.com/statego2/KingMaker/issues/10).
