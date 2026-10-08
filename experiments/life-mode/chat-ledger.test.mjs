@@ -30,12 +30,12 @@ test("an extravagant ambition stays a goal; the visible plans survive turns", ()
 
 test("a costly success needs a cause and accounts for the money", () => {
   const event = {
-    id: "t1", date: "2028-05-02", playerText: "Αγοράζω εισιτήριο για Ιαπωνία",
+    id: "t1", date: "2028-05-02", playerText: "Αγοράζω εισιτήριο",
     scene: "Το εισιτήριο αγοράστηκε.", outcome: { result: "succeeded", cause: "Η αγορά επιβεβαιώθηκε." },
-    finance: { cashDelta: -612, cause: "Αεροπορικό εισιτήριο" }
+    finance: { cashDelta: -300, cause: "Αεροπορικό εισιτήριο" }
   };
   const after = applyTurn(start(), event);
-  assert.equal(after.cash, 238);
+  assert.equal(after.cash, 550);
   assert.throws(() => applyTurn(after, event), /Duplicate/);
   assert.throws(() => applyTurn(start(), { ...event, finance: { cashDelta: -900, cause: "Ακριβό εισιτήριο" } }), /Invalid cash/);
   assert.throws(() => applyTurn(start(), { ...event, finance: { cashDelta: -100 } }), /cause/);
