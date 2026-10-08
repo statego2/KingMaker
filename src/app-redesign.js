@@ -1,4 +1,5 @@
 import {people} from "./content.js";
+import {knownPeople} from "./reveal-map.js";
 import {load,reset,scene,commit,readMsg,relationship} from "./engine.js";
 import {meta} from "./redesign-scenes.js";
 import {createSceneViews} from "./scene-renderer.js";
@@ -96,9 +97,8 @@ function relLabel(r){
 }
 
 function renderPeople(){
-  const preferred=["elena_varin","mara_eltan","lea_marin","silas_koren","niko_arven"];
-  const ids=[...preferred,...Object.keys(state.rel).filter(id=>people[id]&&!preferred.includes(id))];
-  return '<main class="utility">'+utilityHeader("PEOPLE","Power has a face","PLAYER ASSESSMENT")+
+  const ids=knownPeople(state.i).filter(id=>people[id]);
+  return '<main class="utility">'+utilityHeader("PEOPLE","Πρόσωπα που γνώρισες",ids.length+" γνωστά")+
     '<div class="scroll-list people">'+ids.map((id,i)=>{const p=people[id],r=state.rel[id]||{};return '<article class="person"><div class="face f'+((i%5)+1)+'"><span>'+esc(p.initials)+'</span></div><div><small>'+esc(p.role)+'</small><strong>'+esc(p.name)+'</strong><em>'+esc(p.note)+'</em></div><b>'+esc(relLabel(r))+'</b></article>'}).join("")+'</div></main>';
 }
 
@@ -116,14 +116,19 @@ function route(name,v){
 }
 
 function renderPower(){
-  const later=state.i>=9;
-  const nodes=later
-    ?[["elena_varin",50,14],["adrian_kessar",21,37],["mira_solen",79,37],["player",50,57],["silas_koren",23,78],["niko_arven",77,78]]
-    :[["elena_varin",50,14],["lea_marin",21,37],["mara_eltan",79,37],["player",50,57],["niko_arven",23,78],["silas_koren",77,78]];
-  const edges=[[50,57,50,14],[50,57,21,37],[50,57,79,37],[50,57,23,78],[50,57,77,78]];
-  return '<main class="utility power">'+utilityHeader("POWER","Coalition map","ACCESS LENS")+
+  const known=new Set(knownPeople(state.i));
+  const priorities=state.i>=9
+    ? ["elena_varin","adrian_kessar","mira_solen","niko_arven","silas_koren"]
+    : ["mara_eltan","lea_marin","nela_orr","elena_varin","niko_arven"];
+  const others=priorities.filter(id=>known.has(id));
+  const positions=[[50,14],[21,37],[79,37],[23,78],[77,78]];
+  const nodes=[["player",50,57],...others.map((id,i)=>[id,...positions[i]])];
+  const edges=nodes.slice(1).map(([,x,y])=>[50,57,x,y]);
+  return '<main class="utility power">'+utilityHeader("POWER","Ποιους γνωρίζεις","ΔΙΚΤΥΟ ΕΠΑΦΩΝ")+
     '<div class="network">'+edges.map(edge).join("")+nodes.map(node).join("")+'</div>'+
-    '<div class="route-strip">'+route("Reform",state.routes?.reform_accord)+route("Reconstruction",state.routes?.reconstruction)+route("Civic",state.routes?.civic_compact)+'</div></main>';
+    (state.i>=5?'<div class="route-strip">'+route("Reform",state.routes?.reform_accord)+route("Reconstruction",state.routes?.reconstruction)+route("Civic",state.routes?.civic_compact)+'</div>':
+      '<p class="network-discovery">Το δίκτυό σου θα μεγαλώνει όσο γνωρίζεις τον κόσμο της Λυδρίας.</p>')+
+    '</main>';
 }
 
 function renderArchive(){
