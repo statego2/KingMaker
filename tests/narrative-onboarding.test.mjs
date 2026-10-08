@@ -62,3 +62,23 @@ test("Chapter 1 and 2 have speakable choices and remain separate from private sc
     assert.ok(scene.question.length>5);
   }
 });
+
+test("nine cinematic scene teasers stay concise and the full dialogue is preserved",()=>{
+  for(const current of scenes.slice(0,9)){
+    const s=fresh();
+    const teaser=typeof current.teaser==="function"?current.teaser(s):current.teaser;
+    assert.ok(teaser, current.id+" missing teaser");
+    assert.ok(teaser.length<=170, current.id+" teaser too long ("+teaser.length+")");
+    assert.ok(bodyOf(current,s).join(" ").length>teaser.length, current.id+" full story was lost");
+  }
+});
+
+test("on-stage opening story and responsive renderer show compact text, not full briefing",async()=>{
+  const {createSceneViews}=await import("../src/scene-renderer.js");
+  const s=fresh();
+  const html=createSceneViews({state:s,icon:()=>""}).renderScene();
+  assert.ok(html.includes("Με έχουν μετρήσει χωρίς να με ρωτήσουν"));
+  assert.ok(!html.includes("Η κυβέρνηση έπεσε. Οι εκλογές"));
+  const full=createSceneViews({state:s,icon:()=>""}).renderContext();
+  assert.ok(full.includes("Η κυβέρνηση έπεσε. Οι εκλογές"));
+});
