@@ -28,14 +28,14 @@ Schedule is **relative to explicit approval** (T0 = creator approves opening the
 
 | Phase / target window from T0 | Goal | Estimated active effort | Dependencies | Gate |
 |---|---|---:|---|---|
-| L0 / Week 1 | Research and chat-play proof | 10–20 h | charter review | G0 / loop worth developing |
-| L1 / Weeks 2–3 | Minimal domain model, goals, commands, ledgers | 20–35 h | L0 | G1 / state truth |
-| L2 / Weeks 3–5 | Independent world, actors, resistance, time | 30–55 h | L1 | G2 / fair simulation |
-| L3 / Weeks 5–6 | Narration, memory, legacy, 4 life paths | 20–40 h | L2 | G3 / memorable play |
-| L4 / Weeks 6–8 | Lightweight browser vertical slice | 25–45 h | L3 | G4 / mobile first-hour proof |
-| L5 / Weeks 8–9 | Balance, blind tests, pivot decision | 15–30 h | L4 | G5 / go-iterate-pivot-stop |
+| L0 / Week 1 | Research and chat-play proof | 15–26 h | charter review | G0 / loop worth developing |
+| L1 / Weeks 2–3 | Minimal domain model, goals, commands, ledgers | 20–39 h | L0 | G1 / state truth |
+| L2 / Weeks 3–5 | Independent world, actors, resistance, time | 30–58 h | L1 | G2 / fair simulation |
+| L3 / Weeks 5–6 | Narration, memory, legacy, 4 life paths | 18–36 h | L2 | G3 / memorable play |
+| L4 / Weeks 6–8 | Lightweight browser vertical slice | 25–46 h | L3 | G4 / mobile first-hour proof |
+| L5 / Weeks 8–9 | Balance, blind tests, pivot decision | 14–25 h | L4 | G5 / go-iterate-pivot-stop |
 
-**Totals:** 120–225 h indicative engineering/prototype effort, plus creative testing/rework. The calendar windows assume sufficiently frequent execution sessions and can slip. Do not represent them as unattended background work or firm due dates. If L0 fails, pause the rest before spending the estimates.
+**Totals:** 122–230 h indicative engineering/prototype effort, plus creative testing/rework. The calendar windows assume sufficiently frequent execution sessions and can slip. Do not represent them as unattended background work or firm due dates. If L0 fails, pause the rest before spending the estimates.
 
 **Critical path:** LSM-001 → 003 → 005 → 009 → 013 → 017 → 021 → 027 → 032 → 037 → 041.  
 **Parallel opportunities:** UI concept/Greek prose and test design can run beside state design; strategic-mechanism tagging can be explored after the early play loop proves fun; visual polish waits for UX proof.
