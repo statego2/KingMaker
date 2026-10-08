@@ -181,3 +181,22 @@ svg{display:block;width:100%;height:100%}
 @media(min-width:700px){
   body{background:radial-gradient(circle at 50% 0,#15283a,#02070c 55%);padding:18px 0}.km{height:calc(100dvh - 36px);border-radius:26px;border:1px solid rgba(255,255,255,.07);box-shadow:0 32px 100px rgba(0,0,0,.55)}
 }
+
+/* Narrative V2: short legible on-stage dialogue, not an overflowing case-study paragraph.
+   Full dialogue/evidence remains available in the accessible context sheet. */
+.visual-phone .world-line,
+.visual-character .world-line,
+.visual-document .world-line,
+.visual-media .world-line,
+.visual-map .world-line{
+  max-width:53%;bottom:43px;color:#e0e7ed;
+  font-size:clamp(10px,2.65vw,12px);line-height:1.44;
+  text-shadow:0 2px 9px #000,0 1px 2px #000;
+}
+@media(max-width:430px){
+  .visual-phone .world-line,
+  .visual-character .world-line,
+  .visual-document .world-line,
+  .visual-media .world-line,
+  .visual-map .world-line{max-width:50%;bottom:45px;font-size:10px;line-height:1.43}
+}
