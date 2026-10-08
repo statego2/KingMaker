@@ -19,23 +19,41 @@ export const roles={
   anton_beran:{first:"Άντον",hint:"υπηρεσιακός πρωθυπουργός"},
   silas_koren:{first:"Σίλας",hint:"πολιτικός στρατηγιστής"}
 };
-const entries=Object.values(roles);
-const escapeRegExp=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
-const names=entries.map(e=>e.first).sort((a,b)=>b.length-a.length);
-const matcher=new RegExp("(?<![\\p{L}])("+names.map(escapeRegExp).join("|")+")(?![\\p{L}])","gu");
-const byFirst=new Map(entries.map(e=>[e.first,e.hint]));
+// Older authored chapters still contain Latin-script names. Show the same simple role.
+const latinNames={
+  "Lea Marin":"lea_marin","Lea":"lea_marin",
+  "Mara Eltan":"mara_eltan","Mara":"mara_eltan",
+  "Nela Orr":"nela_orr","Nela":"nela_orr",
+  "Ivo Marek":"ivo_marek","Ivo":"ivo_marek",
+  "Elena Varin":"elena_varin","Elena":"elena_varin",
+  "Niko Arven":"niko_arven","Niko":"niko_arven",
+  "Adrian Kessar":"adrian_kessar","Adrian":"adrian_kessar",
+  "Mira Solen":"mira_solen","Mira":"mira_solen",
+  "Viktor Sarin":"viktor_sarin","Viktor":"viktor_sarin",
+  "Liora Venn":"liora_venn","Liora":"liora_venn",
+  "Nadia Serrin":"nadia_serrin","Nadia":"nadia_serrin",
+  "Selma Aric":"selma_aric","Selma":"selma_aric",
+  "Anton Beran":"anton_beran","Anton":"anton_beran",
+  "Silas Koren":"silas_koren","Silas":"silas_koren"
+};
+const escapeRegExp=s=>s.replace(/[.*+?^\${}()|[\\]\\\\]/g,"\\\\$&");
+const byText=new Map([
+  ...Object.values(roles).map(p=>[p.first,p]),
+  ...Object.entries(latinNames).map(([alias,id])=>[alias,roles[id]])
+]);
+const names=[...byText.keys()].sort((a,b)=>b.length-a.length);
+const matcher=new RegExp("(?<![\\\\p{L}])("+names.map(escapeRegExp).join("|")+")(?![\\\\p{L}])","gu");
 export function roleLabel(id){
   const person=roles[id];
   return person?person.first+" ("+person.hint+")":"";
 }
 export function annotateNames(value){
   const seen=new Set();
-  const input=String(value??"");
-  return input.replace(matcher,(found,_capture,pos,whole)=>{
-    // Text that already spells out an identity should not acquire duplicate labels.
+  return String(value??"").replace(matcher,(found,_capture,pos,whole)=>{
+    const person=byText.get(found);
     const next=whole.slice(pos+found.length);
-    if(/^\s*\([^)]{2,75}\)/u.test(next)||seen.has(found))return found;
-    seen.add(found);
-    return found+" ("+byFirst.get(found)+")";
+    if(/^\\s*\\([^)]{2,75}\\)/u.test(next)||seen.has(person.first))return found;
+    seen.add(person.first);
+    return person.first+" ("+person.hint+")";
   });
 }
