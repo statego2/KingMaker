@@ -14,7 +14,7 @@
 ## Active KM-089 bounded taxonomy implementation
 - [Task branch](https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1): canonical 10 domains / 60 competency IDs, 15 tensions and Q001–Q1000 tier slots; Node tests and a taxonomy validator added. **Parent status: in_progress, not done.**
 - Original 1,000 individual question records are absent from this repository. Do not infer per-question competency/source coverage from the master document's completion claim. Next slice requires original corpus and provenance.
-- GitHub Actions and PR evidence must be confirmed before claiming tests passed or changing status to review.
+- **Verified task-branch CI:** [game-tests #37705840526](https://github.com/statego2/KingMaker/actions/runs/37705840526) PASS (`npm run check`, `npm test` **19/19**, `npm run validate:backlog`, `npm run validate:taxonomy`); [backlog #37705840519](https://github.com/statego2/KingMaker/actions/runs/37705840519) PASS. [Code commit ce45339](https://github.com/statego2/KingMaker/commit/ce45339fd1d567ef35a763af6633b68b1aa89eab). PR creation was refused by connector; [open comparison](https://github.com/statego2/KingMaker/compare/main...task/KM-089-taxonomy-index-slice-1?expand=1). Not merged.
 - P0 [KM-005 issue #12](https://github.com/statego2/KingMaker/issues/12) remains human/device review; [P0 fix branch](https://github.com/statego2/KingMaker/tree/task/KM-005-mobile-safe-zones-issue-12) has passing branch Actions but PR creation is blocked. KM-008 still awaits [owner ruleset issue #10](https://github.com/statego2/KingMaker/issues/10).
 
 ## Next dependency-ready implementation work

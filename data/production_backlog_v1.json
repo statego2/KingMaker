@@ -2135,9 +2135,12 @@
         "https://github.com/statego2/KingMaker/tree/task/KM-089-taxonomy-index-slice-1",
         "data/knowledge_taxonomy_v1.json",
         "tests/knowledge-taxonomy.test.mjs",
-        "docs/KNOWLEDGE_TAXONOMY_MAPPING.md"
+        "docs/KNOWLEDGE_TAXONOMY_MAPPING.md",
+        "https://github.com/statego2/KingMaker/commit/ce45339fd1d567ef35a763af6633b68b1aa89eab",
+        "https://github.com/statego2/KingMaker/actions/runs/37705840526",
+        "https://github.com/statego2/KingMaker/actions/runs/37705840519"
       ],
-      "notes": "Bounded L slice 1: canonical 10-domain/60-competency IDs, 15 tensions, Q001–Q1000 tier slots and provenance checks. No individual question records are stored in repo, so zero question-level mappings are asserted; original corpus acquisition and verified per-item mapping remain. Awaiting CI and PR review; parent NOT done."
+      "notes": "Bounded L slice 1 committed on task branch: 10-domain/60-competency canonical IDs, 15 tensions, Q001–Q1000 tier slots and provenance validation. GitHub Actions game-tests PASS (npm run check; npm test 19/19; npm run validate:backlog; npm run validate:taxonomy), backlog workflow PASS. No original individual question records in repository, so zero per-question competency/source mappings claimed; import and review remain. PR creation blocked by connector; parent stays in_progress and unmerged."
     },
     {
       "id": "KM-090",
