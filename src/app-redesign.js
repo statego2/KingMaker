@@ -138,7 +138,7 @@ function renderArchive(){
 
 
 function bind(){
-  document.querySelectorAll("[data-choice]").forEach(b=>b.onclick=()=>{selected=choicesOf(scene(state)).find(x=>x.id===b.dataset.choice)||null;render()});
+  document.querySelectorAll("[data-choice]").forEach(b=>b.onclick=()=>{selected=choicesOf(scene(state)).find(x=>x.id===b.dataset.choice)||null;render();document.querySelector(".choice.active")?.scrollIntoView({block:"nearest",inline:"nearest"});});
   document.querySelector("[data-cancel]")?.addEventListener("click",()=>{selected=null;render()});
   document.querySelector("[data-commit]")?.addEventListener("click",()=>{if(!selected)return;const current=scene(state);const opt=selected;state=commit(state,opt);selected=null;analysis=false;result={...opt,_scene:current};render()});
   document.querySelector("[data-analysis]")?.addEventListener("click",()=>{analysis=!analysis;render()});

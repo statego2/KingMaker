@@ -6,6 +6,11 @@
 - Local Node check/preview; scene/content/save replay tests; versioned scene presentation contract; pure scene renderer separated from controller.
 - Latest verified branch CI: [PR #11](https://github.com/statego2/KingMaker/pull/11), [Node 16 tests](https://github.com/statego2/KingMaker/actions/runs/37694535974), [Chromium browser run](https://github.com/statego2/KingMaker/actions/runs/37694535952). 15 captures, zero automated geometry/page errors; actual browser flow for context, People, commit, debrief, Inbox, persistence and reset passed.
 
+## Pending responsive P0 issue #12 integration
+- Existing tested layout fix ported onto latest main in `task/KM-005-mobile-safe-zones-integrated-20261008`: briefing art/title safe zones at 320–430px, scrollable long choice cards and explicit scrolling indicator, selected-choice visibility, responsive Chromium regression for 4 phone widths.
+- Main-site stylesheet/module cache-bust version changes to `scene-first-v7` after merging; **no owner iPhone/Safari acceptance inferred**. CI for [PR #14](https://github.com/statego2/KingMaker/pull/14) passed: [Node 27/27](https://github.com/statego2/KingMaker/actions/runs/37776473919), [backlog](https://github.com/statego2/KingMaker/actions/runs/37776473871) and [Chromium/mobile](https://github.com/statego2/KingMaker/actions/runs/37776473933) (15 PNG, 4 mobile widths; no warnings). Merge still requires confirmation on final commit. KM-005 remains `review` until human device approval; KM-007/KM-010 dependencies do not unlock.
+- KM-008 still requires GitHub ruleset configured by owner ([issue #10](https://github.com/statego2/KingMaker/issues/10)).
+
 ## Current dependency gates
 - **KM-005: review** — 15 Chromium snapshots captured, zero machine warnings; human must inspect [artifact](https://github.com/statego2/KingMaker/actions/runs/37692937460) and test actual iOS/legibility/critical touch interactions. Do not mark done solely from Chromium.
 - **KM-008: review** — checks/CODEOWNERS documented, but [owner issue #10](https://github.com/statego2/KingMaker/issues/10) requires actual main branch ruleset activation and verification. Do not mark done without evidence.
