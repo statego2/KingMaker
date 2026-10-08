@@ -33,6 +33,12 @@
 - **KM-089 remains in_progress:** original individual question corpus is absent; coverage stays **0/1,000**. The code is a foundation, not completed substantive mapping.
 - **Next dependency-ready separate work:** KM-012 art bible has an existing unmerged branch and requires human visual approval. KM-005 (#12) and KM-008 (#10) stay in review.
 
+## Parallel narrative track — PR #15 (not a completed KM task)
+- [Draft PR #15](https://github.com/statego2/KingMaker/pull/15) contains the V2 six-act / 36-chapter story treatment and rewrites **the nine live scenes in Chapters 1–3**, with gradual character reveals and a cinematic anonymous-caller opening. **Chapters 4–6 still use the earlier script; Acts II–VI remain unimplemented.**
+- Story is **proposed pending creative owner review**. Do not interpret this branch as proof of a finished Gold Chapter 1, the first 90 minutes, or a shipped 36-chapter campaign.
+- Preserve established save keys, scene IDs and effect flags on merge. Review final-head PR Actions, then blind-read the opening on iOS; human feedback is the quality gate.
+- This is a parallel owner-requested narrative workstream; the dependency-ready engineering tasks listed below remain unchanged.
+
 ## Next dependency-ready implementation work
 - **KM-012 [P1]** — Create Lydria location and time-of-day visual bible (depends: KM-001)
 - **KM-089 [P1]** — Map 1,000 mechanisms to taxonomy with stable IDs (depends: KM-001)

@@ -22,103 +22,261 @@ const c=(id,chapter,chapterTitle,title,kicker,body,evidence,question,choices,act
 const o=(id,verb,title,sub,quality,result,debrief,effects={})=>({id,verb,title,sub,quality,result,debrief,effects});
 
 const baseScenes=[
-c("C01_S01","01","DAY ZERO","07:12 — The Briefing Room","RESTRICTED · COALITION COUNT",
-["Η Lydria ξύπνησε χωρίς κυβέρνηση.","Το Renewal whip γράφει «122 committed». Η Lea έχει επιβεβαιώσει προσωπικά μόνο 119· άλλοι τρεις είναι probable.","Η Presidency ζητά αριθμό σε δεκαπέντε λεπτά."],
-[{type:"uncertain",label:"PARTY WHIP",value:"122 committed",note:"Strong incentive to show momentum"},{type:"confirmed",label:"LEA / DIRECT CHECK",value:"119 confirmed + 3 probable",note:"Independent confirmations"},{type:"uncertain",label:"CLOCK",value:"15 minutes",note:"Presidential briefing window"}],
-"Τι αριθμό στέλνεις;",
+c("C01_S01","01","Η ΑΡΧΗ","07:12 — Το μήνυμα","ΕΝΑ ΤΗΛΕΦΩΝΗΜΑ · ΔΕΚΑΠΕΝΤΕ ΛΕΠΤΑ",
 [
-o("a","Commit","122 committed.","Καθαρό signal, αλλά probability γίνεται fact.",.36,"Το brief φεύγει γρήγορα. Η Lea μένει σιωπηλή για λίγο.","Η πολιτική καθαρότητα αγοράστηκε με false precision.",{player:{credibility:-1},rel:{lea_marin:{trust:-3,respect:-2}},flags:{OPENING_COUNT:"overstated"},callback:{after:5,from:"Civic Wire",subject:"One of the '122' denies committing",body:"Η Nadia ζητά να μάθει ποιος θεωρήθηκε confirmed."}}),
-o("b","Calibrate","119 confirmed. 3 probable.","Ξεχωρίζεις evidence από estimate.",.96,"Η Mara απαντά: «Αυτό μπορώ να υπερασπιστώ.»","Decision quality κρίνεται από την πληροφορία που είχες, όχι από το τελικό vote.",{player:{credibility:2},world:{information_quality:1},rel:{lea_marin:{trust:2,respect:3},mara_eltan:{trust:2}},flags:{OPENING_COUNT:"calibrated"},callback:{after:5,from:"Nadia Serrin",subject:"Your morning brief",body:"«119 confirmed, 3 probable. Θέλω να σε ρωτήσω κάτι για το Harbor file.»"}}),
-o("c","Delay","Δεν δίνω αριθμό ακόμα.","Ελαχιστοποιείς epistemic risk, αλλά καις χρόνο.",.58,"Ο Ivo απαντά: «Τότε θα αποφασίσουμε χωρίς εσάς για την ώρα.»","Uncertainty δεν απαιτεί σιωπή· μπορεί να απαιτεί calibrated report.",{world:{government_pressure:2},rel:{ivo_marek:{respect:-2}},flags:{OPENING_COUNT:"withheld"}})
-],["lea_marin","mara_eltan","ivo_marek"]),
+"Το κινητό δονείται πάνω στο άδειο γραφείο. Μια άγνωστη φωνή: «Με έχουν μετρήσει στην κυβέρνηση. Δεν έχω υποσχεθεί την ψήφο μου σε κανέναν». Η Λέα σηκώνει το βλέμμα. «Λένε ότι έχουν 122. Εμείς έχουμε επιβεβαιώσει 119. Οι άλλοι τρεις δεν έχουν πει το ναι». Σε δεκαπέντε λεπτά η Πρόεδρος περιμένει την αναφορά σου.",
+"Η κυβέρνηση έπεσε. Οι εκλογές δεν έδωσαν καθαρό νικητή. Στο γραφείο υπάρχουν καφές, μια οθόνη και μια διαφορά τριών ανθρώπων ανάμεσα στο «μπορεί» και το «έγινε».",
+"Η Μάρα, η προϊσταμένη σου, έχει αφήσει μια σημείωση: «Γράψε μόνο αυτό που μπορείς να υπερασπιστείς. Αν υπάρχει αμφιβολία, ονόμασέ την»."
+],
+[
+{type:"uncertain",label:"ΔΗΜΟΣΙΑ ΔΗΛΩΣΗ",value:"122 ψήφοι εξασφαλισμένες",note:"Το κόμμα θέλει να δείξει ότι η κυβέρνηση είναι σχεδόν έτοιμη"},
+{type:"confirmed",label:"ΑΝΕΞΑΡΤΗΤΟΣ ΕΛΕΓΧΟΣ",value:"119 βέβαιες, 3 πιθανές",note:"Η Λέα έχει ελέγξει προσωπικά τις βέβαιες δεσμεύσεις"},
+{type:"uncertain",label:"Η ΠΡΟΘΕΣΜΙΑ",value:"15 λεπτά",note:"Η Προεδρία ζητά ενημέρωση, όχι τελική απόφαση"}
+],
+"Τι θα μάθει η Πρόεδρος από εσένα;",
+[
+o("a","Στείλε","Γράφεις «122 ψήφοι».","Δίνεις ένα καθαρό πολιτικό μήνυμα και βοηθάς τη διαπραγμάτευση να κινηθεί, αλλά οι τρεις δεν έχουν δεσμευτεί.",.36,
+"Το σημείωμα φεύγει. Η Λέα σε κοιτάζει: «Ελπίζω να μη μας ρωτήσουν ποιοι είναι οι τρεις». Για την ώρα η άλλη πλευρά δείχνει να πιστεύει ότι υπάρχει πλειοψηφία.",
+"Η βεβαιότητα μπορεί να κάνει μια διαπραγμάτευση να κινηθεί. Όταν όμως δεν στηρίζεται σε γεγονός, δίνει σε κάποιον άλλον το δικαίωμα να την καταρρίψει.",{player:{credibility:-1},rel:{lea_marin:{trust:-3,respect:-2}},flags:{OPENING_COUNT:"overstated"},callback:{after:5,from:"Civic Wire",subject:"One of the '122' denies committing",body:"Η Νάντια ζητά να μάθει ποιος από τους τρεις θεωρήθηκε βέβαιος."}}),
+o("b","Ξεχώρισε","Γράφεις «119 βέβαιες, 3 πιθανές».","Η Προεδρία θα έχει ακριβή εικόνα, αλλά η συμφωνία ίσως φανεί πιο μακρινή από όσο θέλουν οι διαπραγματευτές.",.96,
+"Η Λέα αφήνει επιτέλους τον καφέ της. Η Μάρα απαντά με δύο λέξεις: «Μπορώ να το στηρίξω». Δεν κέρδισες ψηφοφορία. Κέρδισες την πρώτη σου εμπιστοσύνη.",
+"Μπορείς να βοηθήσεις μια απόφαση χωρίς να κρύψεις την αβεβαιότητα. Το αποτέλεσμα της ψηφοφορίας θα κριθεί αργότερα· η ακρίβεια του σημειώματος κρίνεται τώρα.",{player:{credibility:2},world:{information_quality:1},rel:{lea_marin:{trust:2,respect:3},mara_eltan:{trust:2}},flags:{OPENING_COUNT:"calibrated"},callback:{after:5,from:"Nadia Serrin",subject:"Your morning brief",body:"«119 βέβαιες, 3 πιθανές. Θέλω να σε ρωτήσω για μία σελίδα από το λιμάνι.»"}}),
+o("c","Ζήτησε χρόνο","Δεν στέλνεις ακόμη αριθμό.","Δεν θέλεις η δική σου αναφορά να στηριχθεί σε κάτι αβέβαιο. Ίσως όμως η Πρόεδρος χρειάζεται όσα γνωρίζεις ήδη.",.58,
+"Η Μάρα σηκώνει το τηλέφωνο: «Καταλαβαίνω γιατί δίστασες. Αλλά τώρα θα πάρουν απόφαση χωρίς τα δικά μας στοιχεία». Η Λέα αρχίζει να ψάχνει ξανά τις τρεις κλήσεις.",
+"Η προσοχή είναι πολύτιμη. Και ο χρόνος επίσης. Μια καλή απόφαση μπορεί να χρειάζεται αναφορά που δηλώνει την αμφιβολία, όχι σιωπή.",{world:{government_pressure:2},rel:{ivo_marek:{respect:-2}},flags:{OPENING_COUNT:"withheld"}})
+],["lea_marin","mara_eltan"]),
 
-c("C01_S02","01","DAY ZERO","09:05 — The Clerk Nobody Called","PROCEDURAL NOTE",
-["Όλοι θεωρούν ότι το confidence window κλειδώνει για την Τρίτη.","Η Nela Orr βρίσκει filing clause που επιτρέπει νόμιμα να μεταφερθεί ως την Παρασκευή.","Δεν σου βρήκε ψήφους. Σου έδωσε χρόνο."],
-[{type:"uncertain",label:"CONSENSUS",value:"Tuesday",note:"Repeated by parties and media"},{type:"confirmed",label:"RULES OFFICE",value:"Friday is lawful",note:"If filing occurs before 14:00"}],
-"Τι κάνεις με την procedural option;",
+c("C01_S02","01","Η ΑΡΧΗ","09:05 — Το περιθώριο","ΕΝΑΣ ΜΙΚΡΟΣ ΚΑΝΟΝΑΣ · ΜΕΓΑΛΗ ΣΗΜΑΣΙΑ",
 [
-o("a","Preserve","Ενημερώνεις Presidency και Mara, όχι ακόμη public.","Κρατάς option value.",.92,"Ο Ivo ζητά το exact citation. Η Nela το στέλνει σε τρεις γραμμές.","Μια option αξίζει επειδή υπάρχει· δεν χρειάζεται να ενεργοποιηθεί ή να διαφημιστεί.",{player:{credibility:1},rel:{nela_orr:{respect:3},ivo_marek:{trust:1,respect:2}},flags:{FRIDAY_OPTION:true}}),
-o("b","Suppress","Κρατάς το Tuesday assumption.","Η artificial urgency μπορεί να κλείσει deal.",.39,"Η Nela σημειώνει ότι το memo της δεν μπήκε στο brief.","Κρύβεις πραγματική option από τον decision maker.",{world:{information_quality:-2,government_pressure:2},rel:{nela_orr:{trust:-3},mara_eltan:{trust:-2}},flags:{FRIDAY_SUPPRESSED:true}}),
-o("c","Expose","Δίνεις το note σε reporter.","Το κοινό μαθαίνει ότι υπάρχει χρόνος.",.34,"Push alert: «Η χώρα έχει ως την Παρασκευή». Τα war rooms αλλάζουν tempo.","Αληθινή πληροφορία μπορεί να αλλάξει το bargaining game πριν αποφασιστεί αν πρέπει.",{world:{public_trust:1,government_pressure:3},rel:{ivo_marek:{trust:-4}},flags:{FRIDAY_PUBLIC:true}})
-],["nela_orr","ivo_marek","mara_eltan"]),
+"«Δεν είναι η Τρίτη η τελευταία μέρα». Η Νέλα, υπάλληλος της Βουλής που όλοι προσπέρασαν, αφήνει μπροστά σου μια παλιά διάταξη. Αν γίνει η κατάθεση πριν από τις δύο, οι συζητήσεις μπορούν νόμιμα να συνεχιστούν ως την Παρασκευή.",
+"«Δεν σου βρήκα ψήφους», λέει, με ένα μικρό χαμόγελο. «Μόνο τρεις μέρες». Έξω, τα κανάλια συνεχίζουν να μετρούν αντίστροφα μέχρι την Τρίτη.",
+"Αυτός ο χρόνος μπορεί να βοηθήσει μια τίμια συμφωνία. Μπορεί όμως να επιτρέψει στα κόμματα να καθυστερήσουν ή να ξαναμοιράσουν τα χαρτιά."
+],
+[
+{type:"uncertain",label:"ΟΛΟΙ ΕΠΑΝΑΛΑΜΒΑΝΟΥΝ",value:"Τρίτη",note:"Η ημερομηνία κυκλοφορεί ως βεβαιότητα"},
+{type:"confirmed",label:"ΚΑΝΟΝΑΣ ΤΗΣ ΒΟΥΛΗΣ",value:"Μέχρι Παρασκευή",note:"Αν η κατάθεση γίνει σήμερα πριν από τις 14:00"}
+],
+"Σε ποιον δίνεις αυτές τις τρεις μέρες;",
+[
+o("a","Κράτησέ το ανοικτό","Ενημερώνεις αμέσως τη Μάρα και την Προεδρία.","Η πραγματική προθεσμία θα είναι διαθέσιμη στους υπευθύνους, πριν γίνει δημόσιο εργαλείο πίεσης.",.92,
+"Η Μάρα σηκώνει το κεφάλι: «Αυτή είναι η διαφορά ανάμεσα στην ευκαιρία και στην παγίδα». Η Νέλα χαμογελά. Η επιλογή για την Παρασκευή υπάρχει πλέον στο τραπέζι.",
+"Ο χρόνος είναι επιλογή. Δεν χρειάζεται να τον ξοδέψεις αμέσως για να έχει αξία.",{player:{credibility:1},rel:{nela_orr:{respect:3},ivo_marek:{trust:1,respect:2}},flags:{FRIDAY_OPTION:true}}),
+o("b","Μην ανοίξεις το θέμα","Αφήνεις την Τρίτη ως πολιτική προθεσμία.","Η αίσθηση του επείγοντος μπορεί να πιέσει τους αρχηγούς να συμφωνήσουν. Κρύβεις όμως μία νόμιμη εναλλακτική.",.39,
+"Η Νέλα μαζεύει ήσυχα τη διάταξη. «Τότε δεν ήταν λάθος που κανείς δεν την είδε. Ήταν επιλογή». Οι διαπραγματεύσεις συνεχίζονται με πίεση.",
+"Το να διατηρείς μια λανθασμένη πεποίθηση για να επιταχύνεις αποφάσεις επηρεάζει τη νομιμοποίησή τους.",{world:{information_quality:-2,government_pressure:2},rel:{nela_orr:{trust:-3},mara_eltan:{trust:-2}},flags:{FRIDAY_SUPPRESSED:true}}),
+o("c","Πες το δημόσια","Δίνεις τον κανόνα στον Τύπο.","Όλοι αξίζουν να ξέρουν την πραγματική προθεσμία. Οι διαπραγματευτές θα μάθουν μαζί με το κοινό ότι υπάρχει χρόνος.",.54,
+"Ένα τηλεοπτικό έκτακτο διακόπτει τη συζήτηση. Η αλήθεια έγινε δημόσια — και τα κόμματα αλλάζουν τις απαιτήσεις τους. Η Μάρα σε ρωτά ποιον ενημέρωσες πρώτα.",
+"Η διαφάνεια είναι πραγματική αξία. Η σειρά και η στιγμή μιας αποκάλυψης έχουν επίσης αποτελέσματα.",{world:{public_trust:1,government_pressure:3},rel:{ivo_marek:{trust:-4}},flags:{FRIDAY_PUBLIC:true}})
+],["nela_orr","mara_eltan"]),
 
-c("C01_S03","01","DAY ZERO","10:40 — One Page","PRESIDENTIAL BRIEF",
-["Ο Ivo επιστρέφει το οκτασέλιδο draft.","«Η Πρόεδρος έχει δώδεκα λεπτά. Θέλει fact, inference και απόφαση — όχι όλη την ημέρα.»","Το πρόβλημα είναι πλέον information architecture."],
-[{type:"confirmed",label:"BANDWIDTH",value:"12 minutes",note:"President + two advisers"},{type:"uncertain",label:"OPEN QUESTIONS",value:"5",note:"Only two change today's decision"}],
-"Πώς ξαναγράφεις το brief;",
+c("C01_S03","01","Η ΑΡΧΗ","10:40 — Η μία σελίδα","ΣΤΗΝ ΠΟΡΤΑ ΤΗΣ ΠΡΟΕΔΡΙΑΣ",
+(state)=>[
+"Ο Ίβο, ο άνθρωπος που ελέγχει ποιος φτάνει στο γραφείο της Προέδρου, σου επιστρέφει οκτώ σελίδες. «Δώδεκα λεπτά. Αυτά έχει. Πες μου τι δεν γίνεται να χάσει». Για πρώτη φορά η αναφορά δεν είναι απλώς ένα χαρτί.",
+state.flags.OPENING_COUNT==="calibrated"
+?"Η Μάρα θυμάται ότι ξεχώρισες τις 119 βέβαιες από τις τρεις πιθανές ψήφους. «Κράτα το ίδιο μέτρο και τώρα»."
+:state.flags.OPENING_COUNT==="overstated"
+?"Η Λέα επιμένει: «Αν γράψουμε ξανά 122 σαν να είναι υπόσχεση, θα ρισκάρουμε και το όνομα της Προέδρου». Το πρώτο σου σημείωμα βρίσκεται ήδη στο αρχείο."
+:"Η Μάρα σε κοιτάζει: «Πριν δεν έδωσες αριθμό. Τώρα η Πρόεδρος χρειάζεται μια απόφαση πάνω σε όσα πραγματικά γνωρίζουμε».",
+state.flags.FRIDAY_OPTION
+?"Στην άκρη του φακέλου βρίσκεται και το νόμιμο περιθώριο της Παρασκευής. Μπορεί να αλλάξει τη συζήτηση."
+:state.flags.FRIDAY_PUBLIC
+?"Η είδηση για την Παρασκευή είναι ήδη παντού. Οι πολιτικοί προσαρμόζουν τα αιτήματά τους."
+:"Η τηλεόραση συνεχίζει την αντίστροφη μέτρηση ως την Τρίτη."
+],
 [
-o("a","Structure","Facts → uncertainties → viable options → decision.","Κόβεις background που δεν αλλάζει την επιλογή.",.97,"Ο Ivo σταματά στο τέλος της πρώτης σελίδας. «Αυτό μπαίνει.»","Information compression είναι power όταν παραμένει auditable.",{player:{credibility:2},rel:{ivo_marek:{trust:3,respect:4},elena_varin:{respect:2}},flags:{BRIEF_STYLE:"structured"}}),
-o("b","Advocate","Μία recommendation + supporting facts.","Καθαρό, αλλά selective.",.49,"Η Mara ζητά να δει το appendix πριν φύγει.","Αν το evidence filtering ακολουθεί το conclusion, ο analyst γίνεται hidden advocate.",{rel:{mara_eltan:{trust:-2}},flags:{BRIEF_STYLE:"advocacy"}}),
-o("c","Include","Κρατάς όλο το context.","Η Πρόεδρος πρέπει να δει τα πάντα.",.41,"Ο Ivo κλείνει τον φάκελο. «Θα το συμπτύξω εγώ.»","Όταν attention είναι constraint, το να μη διαλέγεις hierarchy είναι επίσης επιλογή.",{player:{credibility:-1},rel:{ivo_marek:{respect:-3}},flags:{BRIEF_STYLE:"overloaded"}})
-],["ivo_marek","elena_varin","mara_eltan"]),
+{type:"confirmed",label:"Ο ΧΡΟΝΟΣ ΤΗΣ ΠΡΟΕΔΡΟΥ",value:"12 λεπτά",note:"Το υπόμνημα πρέπει να είναι κατανοητό με μία ανάγνωση"},
+{type:"uncertain",label:"ΤΟ ΚΡΙΣΙΜΟ",value:"Πόσες ψήφοι είναι πραγματικά βέβαιες;",note:"Μία μικρή απόκλιση μπορεί να αλλάξει το αποτέλεσμα"},
+{type:"uncertain",label:"ΤΟ ΠΕΡΙΘΩΡΙΟ",value:"Τρίτη ή Παρασκευή;",note:"Εξαρτάται από το τι έχει αποκαλυφθεί και κατατεθεί"}
+],
+"Τι βάζεις πρώτο στη σελίδα που θα διαβάσει;",
+[
+o("a","Δώσε καθαρή εικόνα","Τι ξέρουμε, τι δεν ξέρουμε, τι επιλογές έχει.","Η Πρόεδρος θα δει πρώτα τη διαφορά ανάμεσα στην αλήθεια και τις ελπίδες. Λιγότερες λεπτομέρειες, περισσότερη ουσία.",.97,
+"Ο Ίβο διαβάζει μία φορά. Σταματά, σηκώνει το βλέμμα και λέει: «Αυτό θα μπει». Η πόρτα ανοίγει. Η Λέα σου στέλνει: «Κάποιος από τους τρεις ζητά να μιλήσετε. Χωρίς τηλέφωνο».",
+"Όταν ο χρόνος του άλλου είναι λίγος, η προσεκτική επιλογή των κρίσιμων πληροφοριών είναι μορφή ευθύνης — όχι απόκρυψη.",{player:{credibility:2},rel:{ivo_marek:{trust:3,respect:4},elena_varin:{respect:2}},flags:{BRIEF_STYLE:"structured"}}),
+o("b","Πάρε θέση","Ξεκινάς από τη συμφωνία που θεωρείς πιθανότερη.","Δίνεις στην Πρόεδρο μια σαφή κατεύθυνση, αλλά εκείνη ίσως μη δει γιατί διαφωνούν άλλοι μαζί σου.",.60,
+"Ο Ίβο κρατά το χαρτί. Η Μάρα του δίνει ένα συμπληρωματικό σημείωμα με όσα δεν χώρεσαν. Το κινητό σου φωτίζει: «Θέλω να μιλήσουμε. Από κοντά».",
+"Η καθαρή εισήγηση μπορεί να βοηθήσει. Αν όμως επιλέγεις στοιχεία μόνο για να τη στηρίξεις, η απόφασή σου γίνεται δυσκολότερο να ελεγχθεί.",{rel:{mara_eltan:{trust:-2}},flags:{BRIEF_STYLE:"advocacy"}}),
+o("c","Δείξε τα όλα","Δεν κόβεις τίποτα από τις οκτώ σελίδες.","Η Πρόεδρος θα έχει κάθε λεπτομέρεια, αλλά ίσως χάσει το κρίσιμο μέσα στο πλήθος των στοιχείων.",.50,
+"Ο Ίβο βάζει τον φάκελο στο τραπέζι. «Θα τον συντομεύσω εγώ», λέει. Στην οθόνη σου εμφανίζεται: «Με μέτρησαν χωρίς εμένα. Θέλω να συναντηθούμε».",
+"Πληρότητα δεν σημαίνει κατ' ανάγκη σαφήνεια. Και το να αφήνεις την ιεράρχηση σε άλλον είναι μία μορφή παραχώρησης.",{player:{credibility:-1},rel:{ivo_marek:{respect:-3}},flags:{BRIEF_STYLE:"overloaded"}})
+],["ivo_marek","elena_varin","mara_eltan","lea_marin"]),
 
-c("C02_S01","02","THE 121ST VOTE","Day 2 — Niko Arven","PRIVATE MEETING",
-["Τρία κόμματα έχουν ήδη προσφέρει στον Niko chair, funding ή reputational pressure.","Δεν σε ρωτά τι του προσφέρεις.","«Όλοι μου λένε τι είναι καλό για τη χώρα. Ποιος πληρώνει όταν κάνετε λάθος;»"],
-[{type:"confirmed",label:"SERA ISLANDS",value:"High energy cost",note:"Grid + ferry dependence"},{type:"uncertain",label:"NIKO",value:"Pivotal, not captive",note:"Local legitimacy matters"}],
-"Πώς ανοίγεις;",
+c("C02_S01","02","Η 121η ΨΗΦΟΣ","Η φωνή από το τηλέφωνο","ΣΥΝΑΝΤΗΣΗ · ΧΩΡΙΣ ΚΑΜΕΡΕΣ",
+(state)=>[
+"Η φωνή από το πρωινό μήνυμα έχει τώρα πρόσωπο. Ο Νίκο, βουλευτής από τα νησιά Σέρα, κάθεται απέναντί σου χωρίς να προσφέρει το χέρι του. «Με έβαλαν στην κυβέρνηση πριν αποφασίσω. Δεν σου φαίνεται παράξενο;»",
+state.flags.OPENING_COUNT==="overstated"
+?"«Και στο δικό σας σημείωμα ήμουν βέβαιος», λέει. «Θα χρειαστεί να μου εξηγήσεις γιατί»."
+:state.flags.OPENING_COUNT==="calibrated"
+?"«Είδα ότι δεν με παρουσίασες ως δεδομένο», λέει. «Αυτός είναι ο λόγος που δέχτηκα να συναντηθούμε»."
+:"«Δεν πήρες θέση το πρωί. Καλύτερα από το να μιλήσεις για μένα — αλλά τελικά θα χρειαστεί να αποφασίσεις τι πιστεύεις» λέει.",
+"Τρία κόμματα του έχουν προσφέρει αξιώματα. Εκείνος σου δείχνει φωτογραφία από ένα νησί με διακοπές ρεύματος. «Όλοι μιλούν για μια καινούργια χώρα. Ποιος θα πληρώσει αν αφήσουν τη δική μου πίσω;»"
+],
 [
-o("a","Elicit","«Ποιο ρίσκο για τα νησιά δεν κατάλαβε κανείς;»","Μαθαίνεις objective πριν προσφέρεις.",.95,"«Το grid. Αν το Aster πάρει όλο το capital, τα νησιά θα πληρώσουν ξανά.»","Leverage δεν σημαίνει ότι το utility είναι απλώς “δώσε μου κάτι”.",{rel:{niko_arven:{trust:3,respect:4}},flags:{NIKO_INTEREST:true},callback:{after:3,from:"Niko Arven",subject:"Not a promise. A number.",body:"«Review για island grid πριν κλειδώσει το budget και μπορώ να κρατήσω δύο independents στο δωμάτιο.»"}}),
-o("b","Trade","Committee chair + island funding.","Συγκεκριμένο package πριν diagnostic work.",.56,"«Ωραία πακέτα. Κανείς δεν ρώτησε αν αυτά είναι τα προβλήματα.»","Η offer-first λογική μπορεί να αγοράσει support και να χάσει understanding.",{player:{political_capital:-1},rel:{niko_arven:{respect:-1,dependency:2}},flags:{NIKO_TRANSACTIONAL:true}}),
-o("c","Pressure","Του λες ότι θα χρεωθεί δημόσια το deadlock.","Χρησιμοποιείς reputational leverage.",.27,"Ο Niko χαμογελά. «Τότε χρειάζεστε καλύτερο αφήγημα.»","Το grievance επιβιώνει πολύ περισσότερο από μία ψήφο.",{rel:{niko_arven:{trust:-5,grievance:6,respect:-2}},world:{coalition_pressure:2},flags:{NIKO_PRESSURED:true}})
+{type:"confirmed",label:"ΤΑ ΝΗΣΙΑ ΣΕΡΑ",value:"Ακριβό ρεύμα · αδύναμα δρομολόγια",note:"Ο Νίκο εκπροσωπεί ανθρώπους που θα ζήσουν με τη συμφωνία"},
+{type:"uncertain",label:"Η ΨΗΦΟΣ ΤΟΥ",value:"Δεν έχει δεσμευτεί",note:"Οι ανακοινώσεις των κομμάτων δεν ισοδυναμούν με προσωπική υπόσχεση"}
+],
+"Τι θα του πεις;",
+[
+o("a","Ρώτησε","«Τι θα χάσουν τα νησιά αν πετύχει το σχέδιό μας;»","Του ζητάς να σου εξηγήσει τον δικό του φόβο πριν μιλήσεις για ανταλλάγματα.",.95,
+"Ο Νίκο σκύβει μπροστά. «Το δίκτυο ρεύματος. Αν πάνε όλα τα χρήματα στο μεγάλο έργο, θα μας ξεχάσουν πάλι». Για πρώτη φορά η συζήτηση ξεφεύγει από την ψήφο.",
+"Ένας άνθρωπος που κρατά μια κρίσιμη ψήφο έχει και δικούς του σκοπούς. Αν τους γνωρίζεις, μπορείς να διαπραγματευτείς κάτι πιο σταθερό από μια χάρη.",{rel:{niko_arven:{trust:3,respect:4}},flags:{NIKO_INTEREST:true},callback:{after:3,from:"Niko Arven",subject:"Not a promise. A number.",body:"«Εξέταση του ηλεκτρικού δικτύου των νησιών πριν κλειδώσει ο προϋπολογισμός. Τότε μπορώ να φέρω άλλους δύο στο τραπέζι»."}}),
+o("b","Κάνε προσφορά","«Μπορούμε να σου δώσουμε ρόλο και χρήματα για τα νησιά».","Μια άμεση συμφωνία ίσως αποτρέψει νέες εκλογές, αν τα ανταλλάγματα αρκούν.",.56,
+"Ο Νίκο χαμογελά κουρασμένα. «Πολύ γρήγορα έφτασες στα δώρα. Δεν σε ρώτησα τι έφερες». Δεν κλείνει την πόρτα, αλλά περιμένει κάτι ουσιαστικότερο.",
+"Η γρήγορη συναλλαγή έχει αξία όταν ξέρεις τι αγοράζεις. Αν δεν γνωρίζεις τις ανάγκες του άλλου, η συμφωνία μπορεί να δημιουργήσει νέα εξάρτηση.",{player:{political_capital:-1},rel:{niko_arven:{respect:-1,dependency:2}},flags:{NIKO_TRANSACTIONAL:true}}),
+o("c","Πίεσε","«Αν μπλοκάρεις τη χώρα, θα το μάθουν όλοι».","Του θυμίζεις το κόστος που έχει η καθυστέρηση, ρισκάροντας να τον κάνεις αντίπαλο.",.27,
+"Ο Νίκο σηκώνεται. «Δεν σας χρωστάω την κυβέρνηση σας». Η συνάντηση τελειώνει νωρίτερα από το αναμενόμενο.",
+"Η πίεση μπορεί να αλλάξει μια ψηφοφορία. Η ταπείνωση όμως μένει στη μνήμη ακόμη και όταν η ψηφοφορία τελειώσει.",{rel:{niko_arven:{trust:-5,grievance:6,respect:-2}},world:{coalition_pressure:2},flags:{NIKO_PRESSURED:true}})
 ],["niko_arven"]),
 
-c("C02_S02","02","THE 121ST VOTE","Day 3 — Two Messages, One Rumor","SOURCE PROVENANCE",
-["Renewal aide: «Ο Niko έκλεισε με Stability».","Media producer: «Όλοι στο Assembly ακούνε το ίδιο».","Η Lea βρίσκει ότι και οι δύο πληροφορίες περνούν από το ίδιο parliamentary chat."],
-[{type:"uncertain",label:"SOURCE A",value:"Renewal aide",note:"Political incentive"},{type:"uncertain",label:"SOURCE B",value:"Media producer",note:"Looks independent"},{type:"confirmed",label:"PROVENANCE",value:"Shared chain",note:"Not independent corroboration"}],
-"Πώς αντιδράς;",
+c("C02_S02","02","Η 121η ΨΗΦΟΣ","Δύο μηνύματα, μία φήμη","ΤΟ ΙΔΙΟ ΨΕΜΑ ΜΕ ΔΥΟ ΦΩΝΕΣ",
 [
-o("a","Verify","Ψάχνεις ανεξάρτητο route.","Δύο mouths ≠ δύο sources.",.98,"Η δεύτερη διαδρομή δεν επιβεβαιώνει secret deal. Το rumor μένει plausible.","Source independence είναι χωριστή ερώτηση από source count.",{world:{information_quality:2},rel:{lea_marin:{respect:2}},flags:{SILAS_VERIFY:true},silas:"verification_depth"}),
-o("b","Confront","Παίρνεις αμέσως τον Niko.","Direct access, αλλά αποκαλύπτεις response threshold.",.65,"«Αν είχα συμφωνία, γιατί θα στο έλεγα επειδή κάποιος έγραψε κάτι σε chat;»","Το direct ask είναι data collection και ταυτόχρονα signal προς τους άλλους.",{rel:{niko_arven:{trust:-1}},flags:{SILAS_SPEED:true},silas:"response_speed"}),
-o("c","Amplify","Μεταφέρεις τη φήμη για να αυξήσεις urgency.","Χρησιμοποιείς unverified claim ως εργαλείο.",.22,"Σε μία ώρα το rumor έχει μπει σε τρία νέα channels.","Η πληροφορία δεν είναι μόνο κάτι που πιστεύεις· μπορεί να γίνει causal weapon.",{world:{information_quality:-4,coalition_pressure:3},player:{credibility:-2},flags:{RUMOR_AMPLIFIED:true},silas:"disclosure_style"})
-],["lea_marin","niko_arven","silas_koren"]),
+"Πριν φύγεις από τη Βουλή, η Λέα σου δείχνει δύο μηνύματα. Το πρώτο λέει ότι ο Νίκο έχει κλείσει συμφωνία με τους αντιπάλους σου. Το δεύτερο ισχυρίζεται ότι «όλοι το γνωρίζουν».",
+"«Κοίτα εδώ», λέει. Και οι δύο πληροφορίες προέρχονται τελικά από την ίδια ομαδική συνομιλία. Δεν είναι δύο μάρτυρες. Είναι μία φήμη που έκανε τον γύρο της πόλης.",
+"Αν η είδηση αληθεύει, αλλάζει τα πάντα. Αν δεν αληθεύει, μπορεί να καταστρέψεις μόνος σου την εμπιστοσύνη που μόλις προσπάθησες να χτίσεις."
+],
+[
+{type:"uncertain",label:"ΠΡΩΤΟ ΜΗΝΥΜΑ",value:"Ο Νίκο έχει συμφωνήσει",note:"Πολιτικός συνεργάτης με κίνητρο να πιέσει"},
+{type:"uncertain",label:"ΔΕΥΤΕΡΟ ΜΗΝΥΜΑ",value:"«Όλοι το ξέρουν»",note:"Έρχεται από άλλο άτομο, αλλά όχι ανεξάρτητη πηγή"},
+{type:"confirmed",label:"Η ΛΕΑ ΕΛΕΓΞΕ",value:"Κοινή αρχική συνομιλία",note:"Καμία ανεξάρτητη επιβεβαίωση"}
+],
+"Τι κάνεις με τη φήμη;",
+[
+o("a","Έλεγξε","Ψάχνεις κάποιον που γνωρίζει από πρώτο χέρι.","Χάνεις λίγο χρόνο, αλλά δεν αφήνεις μια φήμη να οδηγήσει τη διαπραγμάτευση.",.98,
+"Η νέα πηγή δεν επιβεβαιώνει μυστική συμφωνία. Η φήμη παραμένει πιθανή, όχι αποδεδειγμένη. Η Λέα χαμογελά: «Δύο τηλέφωνα δεν κάνουν δύο γεγονότα».",
+"Οι ανεξάρτητες πηγές μετρούν περισσότερο από τον αριθμό των ανθρώπων που επαναλαμβάνουν την ίδια ιστορία.",{world:{information_quality:2},rel:{lea_marin:{respect:2}},flags:{SILAS_VERIFY:true},silas:"verification_depth"}),
+o("b","Πάρε τηλέφωνο","Ρωτάς κατευθείαν τον Νίκο αν είναι αλήθεια.","Ίσως μάθεις γρήγορα την απάντηση. Θα δείξεις όμως πόσο εύκολα μια φήμη σε κάνει να αντιδράς.",.65,
+"«Αν είχα μυστική συμφωνία, θα σου το έλεγα επειδή το διάβασες σε μήνυμα;» απαντά. Η κλήση τελειώνει χωρίς επιβεβαίωση.",
+"Η ίδια ερώτηση μπορεί να σου δώσει πληροφορίες και ταυτόχρονα να αποκαλύψει τη δική σου ανησυχία.",{rel:{niko_arven:{trust:-1}},flags:{SILAS_SPEED:true},silas:"response_speed"}),
+o("c","Χρησιμοποίησέ τη","Μεταφέρεις τη φήμη ως πιθανή για να κινηθούν οι άλλοι.","Αυξάνεις την πίεση να παρθούν αποφάσεις πριν διαλυθεί η συμμαχία.",.22,
+"Μέσα σε μία ώρα η ιστορία κυκλοφορεί παντού. Κανείς δεν θυμάται πλέον ποιος είπε πρώτος «ίσως».",
+"Η αβέβαιη πληροφορία μπορεί να γίνει πολιτικό εργαλείο. Όταν αποκτήσει ζωή, δεν την ελέγχει απαραίτητα αυτός που την έσπρωξε.",{world:{information_quality:-4,coalition_pressure:3},player:{credibility:-2},flags:{RUMOR_AMPLIFIED:true},silas:"disclosure_style"})
+],["lea_marin","niko_arven"]),
 
-c("C02_S03","02","THE 121ST VOTE","Day 4 — Three Viable Paths","COALITION ARCHITECTURE",
-["Τρεις routes είναι πραγματικά βιώσιμες.","Καμία δεν είναι «η σωστή κυβέρνηση». Κάθε μία λύνει διαφορετικό constraint και δημιουργεί άλλη dependency.","Η Mara ζητά πού αξίζει να βάλει το SCS την επόμενη ημέρα analytical effort."],
-[{type:"confirmed",label:"REFORM ACCORD",value:"Renewal + Civic Labour + independents",note:"Reform/labour bridge · fragile math"},{type:"confirmed",label:"RECONSTRUCTION",value:"Renewal + Stability + independents",note:"Capacity · legitimacy cost"},{type:"confirmed",label:"CIVIC COMPACT",value:"Labour + Stability + Free Cities",note:"Oversight · more veto points"}],
-"Ποια route stress-testάρεις πρώτη;",
+c("C02_S03","02","Η 121η ΨΗΦΟΣ","Τρεις πόρτες","ΠΟΙΟΣ ΘΑ ΚΥΒΕΡΝΗΣΕΙ",
 [
-o("a","Stress-test","Reform Accord","Δοκιμάζεις distribution + one-vote fragility.",.83,"Η Mira ζητά confidential distribution table.","Η επιλογή route δεν είναι moral endorsement· είναι allocation analytical capacity.",{flags:{GOV_PATH:"reform_accord"},routes:{reform_accord:7}}),
-o("b","Stress-test","Reconstruction Coalition","Δοκιμάζεις continuity χωρίς capture.",.80,"Ο Viktor ανοίγει quiet channel. Το όνομα Silas Koren εμφανίζεται στο calendar.","Administrative memory είναι asset και liability μαζί.",{flags:{GOV_PATH:"reconstruction"},routes:{reconstruction:7},rel:{silas_koren:{familiarity:2}}}),
-o("c","Stress-test","Civic Compact","Δοκιμάζεις broad oversight coalition με περισσότερα veto points.",.77,"Η Liora ζητά rules πριν ministries.","Outside option αλλάζει bargaining power ακόμη και αν δεν γίνει τελικό government.",{flags:{GOV_PATH:"civic_compact"},routes:{civic_compact:7}})
-],["mara_eltan","silas_koren"]),
+"Το βράδυ η Μάρα απλώνει τρία μικρά χαρτιά στο τραπέζι. «Δεν έχεις να διαλέξεις ποιον συμπαθείς. Πρέπει να δούμε ποια συμφωνία μπορεί να σταθεί».",
+"Ο Άντριαν θέλει να αλλάξει τη χώρα γρήγορα. Η Μίρα θέλει εγγυήσεις ότι οι εργαζόμενοι δεν θα πληρώσουν το κόστος. Οι παλαιότεροι πολιτικοί γνωρίζουν πώς δουλεύει το κράτος, αλλά κουβαλούν το βάρος του σκανδάλου.",
+"Καθεμία από τις τρεις κυβερνήσεις θα μπορούσε να συγκεντρώσει 121 ψήφους. Καθεμία όμως θα χρωστά κάτι διαφορετικό την επόμενη μέρα."
+],
+[
+{type:"confirmed",label:"ΣΥΜΦΩΝΙΑ ΑΛΛΑΓΗΣ",value:"Μεταρρυθμίσεις + προστασία εργασίας",note:"Άντριαν, Μίρα και ανεξάρτητοι· οριακή πλειοψηφία"},
+{type:"confirmed",label:"ΚΥΒΕΡΝΗΣΗ ΣΥΝΕΧΕΙΑΣ",value:"Νέα ηγεσία + παλαιά εμπειρία",note:"Πιο σταθερή διοίκηση, κίνδυνος να καλυφθούν παλιές ευθύνες"},
+{type:"confirmed",label:"ΠΛΑΤΥΣ ΣΥΜΒΙΒΑΣΜΟΣ",value:"Εργασία + θεσμικοί έλεγχοι",note:"Περισσότερες ομάδες έχουν δικαίωμα αντίρρησης"}
+],
+"Ποια συμφωνία θέλεις να ελέγξεις πιο προσεκτικά;",
+[
+o("a","Δοκίμασε","Μια κυβέρνηση που συνδέει αλλαγή και εργασία.","Ίσως πετύχει πολλά, αρκεί η Μίρα να μη μείνει διακοσμητική σύμμαχος.",.83,
+"Η Μίρα ζητά γραπτή εγγύηση για τους ανθρώπους που θα χάσουν δουλειές από την αυτοματοποίηση.",
+"Το να εξετάζεις μια επιλογή δεν σημαίνει ότι δεσμεύτηκες να την υποστηρίξεις. Πρώτα δοκιμάζεις πού μπορεί να σπάσει.",{flags:{GOV_PATH:"reform_accord"},routes:{reform_accord:7}}),
+o("b","Δοκίμασε","Μια κυβέρνηση που ξέρει να λειτουργεί το κράτος.","Κερδίζει διοικητική εμπειρία, αλλά μπορεί να χάσει την εμπιστοσύνη όσων ήθελαν πραγματική αλλαγή.",.80,
+"Ένας παλιός πολιτικός ανοίγει δίαυλο. Στο ημερολόγιο εμφανίζεται μια συνάντηση με τον στρατηγιστή του.",
+"Η εμπειρία μπορεί να είναι πόρος και παγίδα μαζί. Η ερώτηση είναι πώς κρατάς το πρώτο χωρίς να κληρονομήσεις το δεύτερο.",{flags:{GOV_PATH:"reconstruction"},routes:{reconstruction:7},rel:{silas_koren:{familiarity:2}}}),
+o("c","Δοκίμασε","Έναν συμβιβασμό με περισσότερους ελέγχους.","Δίνει λόγο σε περισσότερες ομάδες και ίσως περισσότερη εμπιστοσύνη· μπορεί όμως να δυσκολεύεται να πάρει αποφάσεις.",.77,
+"Η πλευρά των ανεξάρτητων πόλεων ζητά εγγυήσεις ελέγχου πριν μοιραστούν υπουργεία.",
+"Το ότι πολλοί συμφωνούν με τον σκοπό δεν σημαίνει ότι έχουν τον ίδιο τρόπο για να τον πετύχουν.",{flags:{GOV_PATH:"civic_compact"},routes:{civic_compact:7}})
+],["mara_eltan","adrian_kessar","mira_solen"]),
 
-c("C03_S01","03","THE FILE","Day 6 — “A Page Your People Say Does Not Exist”","HARBOR CONTRACTS",
-["Η Nadia στέλνει crop από procurement memo.","Contract numbers και meeting log ταιριάζουν με το archive.","Η explosive handwritten annotation — «DC wants clause narrow enough» — δεν υπάρχει σε κανένα SCS copy."],
-[{type:"confirmed",label:"CONTRACT REFERENCES",value:"Match archive",note:"High authenticity"},{type:"confirmed",label:"MEETING",value:"Occurred",note:"Context incomplete"},{type:"uncertain",label:"ANNOTATION",value:"Unverified",note:"Could be original, later note, or alteration"}],
-"Ποια είναι η ακριβέστερη διάγνωση;",
+c("C03_S01","03","Η ΣΕΛΙΔΑ","Το χειρόγραφο","Η ΣΕΛΙΔΑ ΠΟΥ ΔΕΝ ΥΠΗΡΧΕ",
 [
-o("a","Separate","Mostly authentic document; annotation unverified.","Χωρίζεις document authenticity από annotation meaning.",.98,"Η Lea: «Αρκετό για να ερευνήσουμε. Όχι για να πούμε ιστορία.»","True document + uncertain layer μπορεί να παράγει false total picture.",{world:{information_quality:2},rel:{lea_marin:{respect:2},nadia_serrin:{respect:2}},flags:{HARBOR_DIAGNOSIS:"mixed"}}),
-o("b","Dismiss","Όλο το page είναι fake.","Ένα unverified layer μολύνει τα πάντα.",.25,"Η Lea: «Αυτό δεν ακολουθεί από τα δεδομένα.»","Αμφίβολο στοιχείο δεν εξαφανίζει τα independently verified parts.",{world:{information_quality:-2},rel:{lea_marin:{trust:-2,respect:-3}},flags:{HARBOR_DIAGNOSIS:"dismissed"}}),
-o("c","Conclude","Αποδεικνύει ότι ο Damir ζήτησε tailored clause.","Συνδέεις initials + context + annotation.",.30,"Η Mara: «Μου λες τι ξέρουμε ή τι φοβάσαι ότι σημαίνει;»","Plausible inference δεν είναι yet established fact.",{player:{credibility:-1},rel:{mara_eltan:{trust:-2}},flags:{HARBOR_DIAGNOSIS:"overclaim"}})
+"«Έχω κάτι που ίσως ρίξει τη μισή χώρα», σου λέει η Νάντια, μια δημοσιογράφος που δεν γνωρίζεις προσωπικά. Στέλνει φωτογραφία από ένα παλιό συμβόλαιο του λιμανιού. Οι ημερομηνίες και οι υπογραφές ταιριάζουν με τα αρχεία. Στο περιθώριο όμως υπάρχει μια φράση που δεν έχει κανείς στη δική σας υπηρεσία.",
+"Με μπλε μελάνι, δύο αρχικά και λίγες λέξεις: «DC wants clause narrow enough». Η Νάντια ρωτά αν τα αρχικά ανήκουν σε έναν ισχυρό επιχειρηματία. «Αν ισχύει, δεν θα είναι μια απλή παρατυπία. Θα είναι το ίδιο το σύστημα που γράφει τους κανόνες για τον εαυτό του».",
+"Η Λέα πλησιάζει την οθόνη. «Η συνάντηση έγινε. Το χαρτί μάλλον είναι αληθινό. Αλλά δεν ξέρουμε ποιος έγραψε αυτή τη φράση — ούτε πότε»."
+],
+[
+{type:"confirmed",label:"ΤΟ ΣΥΜΒΟΛΑΙΟ",value:"Ταιριάζει με το αρχείο",note:"Οι αριθμοί και οι ημερομηνίες επιβεβαιώθηκαν"},
+{type:"confirmed",label:"Η ΣΥΝΑΝΤΗΣΗ",value:"Πραγματοποιήθηκε",note:"Δεν γνωρίζουμε τι ειπώθηκε"},
+{type:"uncertain",label:"Η ΧΕΙΡΟΓΡΑΦΗ ΦΡΑΣΗ",value:"«DC wants clause narrow enough»",note:"Ο συντάκτης, η στιγμή και η ερμηνεία δεν έχουν επιβεβαιωθεί"}
+],
+"Τι απαντάς στη Νάντια;",
+[
+o("a","Ξεχώρισε","«Το συμβόλαιο φαίνεται αληθινό. Η φράση δεν έχει ελεγχθεί».","Δεν αποκλείεις το σκάνδαλο, ούτε παρουσιάζεις έναν ύποπτο υπαινιγμό ως απόδειξη.",.98,
+"«Τότε θέλω το πρωτότυπο», απαντά η Νάντια. Η Λέα σε κοιτάζει με ανακούφιση. «Έχουμε λόγο να ψάξουμε. Όχι ακόμη λόγο να καταδικάσουμε».",
+"Ένα γνήσιο έγγραφο δεν κάνει αυτομάτως γνήσια κάθε προσθήκη πάνω του. Οι διαφορετικές προτάσεις χρειάζονται ξεχωριστές αποδείξεις.",{world:{information_quality:2},rel:{lea_marin:{respect:2},nadia_serrin:{respect:2}},flags:{HARBOR_DIAGNOSIS:"mixed"}}),
+o("b","Αμφισβήτησε","«Αν η φράση είναι ύποπτη, ίσως είναι πλαστό όλο το χαρτί».","Προστατεύεις τους εμπλεκόμενους από βιαστικές κατηγορίες, αλλά μπορεί να πετάξεις και αληθινά στοιχεία.",.25,
+"Η Νάντια αφήνει λίγα δευτερόλεπτα σιωπής. «Γιατί να είναι πλαστές και οι ημερομηνίες που ταιριάζουν;» Η Λέα δείχνει το αρχείο. Δεν έχεις απάντηση.",
+"Η αβεβαιότητα ενός στοιχείου δεν ακυρώνει όσα έχουν επιβεβαιωθεί ανεξάρτητα.",{world:{information_quality:-2},rel:{lea_marin:{trust:-2,respect:-3}},flags:{HARBOR_DIAGNOSIS:"dismissed"}}),
+o("c","Πάρε θέση","«Τα αρχικά μάλλον δείχνουν τον επιχειρηματία πίσω από το έργο».","Αν η υπόθεση είναι σωστή, μπορείς να αποτρέψεις νέα συγκάλυψη. Αν όχι, θα έχεις διαδώσει μια κατηγορία χωρίς απόδειξη.",.30,
+"Η Μάρα διαβάζει το μήνυμά σου και σε καλεί. «Μου λες τι ξέρουμε ή ποια ιστορία φοβάσαι ότι είναι αλήθεια;» Η Νάντια κρατά τη φράση, αλλά ζητά επαλήθευση.",
+"Μια εύλογη εικασία είναι αφορμή για έρευνα. Δεν είναι ακόμη συμπέρασμα που μπορείς να υπερασπιστείς δημόσια.",{player:{credibility:-1},rel:{mara_eltan:{trust:-2}},flags:{HARBOR_DIAGNOSIS:"overclaim"}})
 ],["nadia_serrin","lea_marin","mara_eltan"]),
 
-c("C03_S02","03","THE FILE","Day 6 — Who Gets the Page First?","CHAIN OF CUSTODY",
-["Η Nadia θέλει answer απόψε. Η Integrity Commission έχει ongoing investigation.","Ο Anton μπορεί να δώσει context, αλλά έχει reputational incentive.","Κάθε extra recipient αυξάνει leak surface."],
-[{type:"uncertain",label:"NADIA",value:"Publication clock",note:"Hours"},{type:"confirmed",label:"SELMA",value:"Investigative authority",note:"Can protect evidence"},{type:"uncertain",label:"ANTON",value:"Context source",note:"Also self-interested"}],
-"Ποια sequence διαλέγεις;",
+c("C03_S02","03","Η ΣΕΛΙΔΑ","Ποιος θα το μάθει πρώτος;","ΜΙΑ ΣΥΝΑΝΤΗΣΗ ΠΡΙΝ ΤΗ ΔΗΜΟΣΙΕΥΣΗ",
 [
-o("a","Sequence","Mara → Selma → context → calibrated reply.","Προστατεύεις investigation χωρίς να υπόσχεσαι silence.",.95,"Η Selma: «Στείλε original crop. Μην σχολιάσεις handwriting ακόμη.»","Η διαδικασία μπορεί να παράγει καλύτερη αλήθεια από το fastest public reaction.",{rel:{selma_aric:{trust:4,respect:3},mara_eltan:{trust:2}},flags:{HARBOR_PROCESS:"protected"}}),
-o("b","Disclose","Επιβεβαιώνεις στη Nadia ό,τι ταιριάζει.","Public interest first, με caveat για annotation.",.77,"Η Nadia: «Fair. Θα γράψω exactly that.»","Defensible, αλλά αυξάνει publication pressure πριν ασφαλιστεί evidence.",{rel:{nadia_serrin:{trust:4,respect:2},selma_aric:{trust:-1}},flags:{HARBOR_PROCESS:"journalistic"}}),
-o("c","Context","Παίρνεις πρώτα τον Anton.","Ίσως λύσει ambiguity σε ένα call.",.47,"Ο Anton: «Το meeting έγινε. Το note δεν το έχω ξαναδεί.»","Subject-first contact μπορεί να βελτιώσει context και να δημιουργήσει coordination risk.",{rel:{anton_beran:{familiarity:3},selma_aric:{trust:-2}},flags:{HARBOR_PROCESS:"subject_first"}})
-],["nadia_serrin","selma_aric","anton_beran"]),
-
-c("C03_S03","03","THE FILE","Day 7 — The Line You Can Defend","PUBLIC LINE",
-(state)=>[
-state.flags.OPENING_COUNT==="calibrated"?"Η Mara ακουμπά δίπλα στο Harbor page το πρώτο σου brief: «Την πρώτη μέρα ξεχώρισες confirmed από probable.»":state.flags.OPENING_COUNT==="overstated"?"Η Mara ακουμπά το πρώτο brief δίπλα στο page: «Την πρώτη μέρα αφήσαμε probability να γίνει fact. Δεν θα το ξανακάνουμε εδώ.»":"Η Mara: «Δεν μπορούμε να περιμένουμε certainty για πάντα. Μπορούμε όμως να ονομάζουμε σωστά την uncertainty.»",
-"Η Nadia πιθανότατα δημοσιεύει σήμερα. Η Selma δεν έχει ολοκληρώσει forensic work.","Η Πρόεδρος χρειάζεται μία public line πριν το μεσημέρι."
+"Η Νάντια σκοπεύει να δημοσιεύσει απόψε. Η Σέλμα, η επικεφαλής της ανεξάρτητης έρευνας, σου ζητά να μην κυκλοφορήσει άκριτα η φωτογραφία. «Αν το πρωτότυπο χαθεί μέσα σε πέντε αντιγραφές, τι θα αποδείξουμε αργότερα;»",
+"Ο πρώην πρωθυπουργός μπορεί να σου εξηγήσει γιατί έγινε εκείνη η συνάντηση. Έχει όμως και κάθε λόγο να προλάβει ό,τι ετοιμάζεται να γραφτεί.",
+"Σκέφτεσαι πως μπορεί να έχουν όλοι ένα μέρος δίκιο: η δημοσιογράφος θέλει να ενημερώσει τον κόσμο, η ερευνήτρια θέλει αποδείξεις και ο πολιτικός θέλει να προστατεύσει το όνομά του."
 ],
-[{type:"confirmed",label:"KNOWN",value:"Real meeting + contract references",note:"Confirmed"},{type:"uncertain",label:"UNKNOWN",value:"Handwriting provenance / intent",note:"Active investigation"},{type:"uncertain",label:"PUBLIC CLOCK",value:"Hours",note:"Story likely publishes"}],
-"Τι εισηγείσαι;",
 [
-o("a","Calibrate","«Μέρος του υλικού είναι αυθεντικό. Το annotation ερευνάται.»","Δεν προκαταλαμβάνεις την έρευνα.",.97,"Η Mara: «Αυτό μπορεί να παραμείνει ακριβές και αύριο. Χρησιμοποίησέ το.»","Truthfulness είναι relation between words και likely interpretation — όχι legalistic escape.",{player:{credibility:3},world:{information_quality:2,public_trust:1},rel:{mara_eltan:{trust:3,respect:3},elena_varin:{trust:2,respect:2},selma_aric:{trust:2}},flags:{FINAL_LINE:"calibrated"}}),
-o("b","Defend","«Δεν υπάρχει confirmed evidence of wrongdoing.»","Technically true, wider implication.",.44,"Η Mara: «Και τι πιστεύεις ότι θα ακούσει ο κόσμος;»","Technically true μπορεί να είναι strategically misleading.",{player:{credibility:-1},world:{public_trust:-1},rel:{nadia_serrin:{trust:-3}},flags:{FINAL_LINE:"defensive"}}),
-o("c","Release","Δημοσιεύεις όλο το page.","Maximum transparency πριν provenance work.",.37,"Η Selma: «Τώρα αποδεικνύουμε chain of custody μπροστά σε όλη τη χώρα.»","Transparency χωρίς sequencing μπορεί να μειώσει, όχι να αυξήσει, information quality.",{world:{public_trust:1,information_pressure:4},rel:{selma_aric:{trust:-5}},flags:{FINAL_LINE:"full_release"}})
+{type:"uncertain",label:"ΔΗΜΟΣΙΕΥΣΗ",value:"Απόψε",note:"Η Νάντια δεν έχει υποσχεθεί να περιμένει"},
+{type:"confirmed",label:"ΑΝΕΞΑΡΤΗΤΗ ΕΡΕΥΝΑ",value:"Η Σέλμα μπορεί να ασφαλίσει το υλικό",note:"Διαθέτει νόμιμη διαδικασία φύλαξης αποδεικτικών στοιχείων"},
+{type:"uncertain",label:"Ο ΠΡΩΗΝ ΠΡΩΘΥΠΟΥΡΓΟΣ",value:"Ίσως γνωρίζει τη συνάντηση",note:"Θα μπορούσε να ενημερώσει τους εμπλεκόμενους"}
+],
+"Ποιον πλησιάζεις πρώτα;",
+[
+o("a","Προστάτευσε το στοιχείο","Μιλάς στη Μάρα και παραδίδεις το υλικό στη Σέλμα.","Θέλεις πρώτα να μπορεί η έρευνα να αποδείξει όσα σήμερα απλώς υποπτεύεσαι.",.95,
+"Η Σέλμα απαντά: «Στείλε την αρχική εικόνα. Μη σχολιάσεις τη γραφή ακόμη». Η Νάντια επιμένει να ξέρει πότε θα έχει απάντηση.",
+"Η σωστή σειρά ενεργειών μπορεί να προστατεύσει την αλήθεια ακόμη και όταν δεν βολεύει τον άμεσο πολιτικό χειρισμό.",{rel:{selma_aric:{trust:4,respect:3},mara_eltan:{trust:2}},flags:{HARBOR_PROCESS:"protected"}}),
+o("b","Μίλα στον Τύπο","Επιβεβαιώνεις στη Νάντια μόνο τις ημερομηνίες που έλεγξες.","Αυξάνεις τη δημόσια λογοδοσία πριν ολοκληρωθεί η έρευνα, με σαφή διάκριση για τη χειρόγραφη φράση.",.77,
+"«Θα γράψω ακριβώς αυτά που είπες», απαντά. Η Σέλμα όμως μαθαίνει ότι μέρος του υλικού έγινε δημόσιο πριν το παραλάβει.",
+"Η δημόσια ενημέρωση μπορεί να είναι σωστή και χρήσιμη, αλλά να αφήσει λιγότερο χώρο στην ανεξάρτητη διερεύνηση.",{rel:{nadia_serrin:{trust:4,respect:2},selma_aric:{trust:-1}},flags:{HARBOR_PROCESS:"journalistic"}}),
+o("c","Ζήτησε εξηγήσεις","Καλείς τον πρώην πρωθυπουργό πριν μιλήσεις σε άλλον.","Θα αποκτήσεις πιθανώς ιστορικό πλαίσιο. Μπορεί επίσης να προειδοποιήσεις πρόσωπα που διερευνώνται.",.47,
+"«Η συνάντηση έγινε», σου λέει. «Τη φράση δεν την έχω ξαναδεί». Στη φωνή του ακούς περισσότερο φόβο παρά θυμό. Η Σέλμα ρωτά γιατί τον ενημέρωσες πρώτα.",
+"Η απευθείας επαφή με τον εμπλεκόμενο μπορεί να φωτίσει γεγονότα, αλλά και να του επιτρέψει να συντονίσει την αντίδρασή του.",{rel:{anton_beran:{familiarity:3},selma_aric:{trust:-2}},flags:{HARBOR_PROCESS:"subject_first"}})
+],["selma_aric","nadia_serrin","anton_beran"]),
+
+c("C03_S03","03","Η ΣΕΛΙΔΑ","Η φράση που θα μείνει","Η ΕΙΔΗΣΗ ΣΕ ΛΙΓΑ ΛΕΠΤΑ",
+(state)=>[
+state.flags.OPENING_COUNT==="calibrated"
+?"Η Μάρα ακουμπά δίπλα στο έγγραφο την πρώτη σου αναφορά. «Θυμάσαι πώς ξεχώρισες τις βέβαιες ψήφους από τις πιθανές; Θέλω την ίδια προσοχή εδώ»."
+:state.flags.OPENING_COUNT==="overstated"
+?"Η Μάρα ακουμπά δίπλα στο έγγραφο την πρώτη σου αναφορά. «Μία φορά μετατρέψαμε την πιθανότητα σε γεγονός. Δεν θα χρησιμοποιήσουμε τον ίδιο τρόπο και για μια κατηγορία»."
+:"Η Μάρα σου δείχνει το ρολόι. «Δεν μπορούμε να περιμένουμε να τα μάθουμε όλα. Πρέπει όμως να λέμε καθαρά τι δεν ξέρουμε».",
+"Η Νάντια ετοιμάζει δημοσίευμα. Η Σέλμα δεν έχει ολοκληρώσει τον έλεγχο της γραφής. Η Πρόεδρος χρειάζεται μία δημόσια πρόταση πριν ξεκινήσουν οι τηλεοπτικές εκπομπές.",
+"Η φράση σου μπορεί να γίνει τίτλος σε ολόκληρη τη χώρα. Και μπορεί να βρεθεί απέναντί σου χρόνια αργότερα."
+],
+[
+{type:"confirmed",label:"ΤΙ ΞΕΡΟΥΜΕ",value:"Η συνάντηση έγινε, οι αριθμοί ταιριάζουν",note:"Ανεξάρτητα επιβεβαιωμένα"},
+{type:"uncertain",label:"ΤΙ ΔΕΝ ΞΕΡΟΥΜΕ",value:"Ποιος έγραψε τη φράση και γιατί",note:"Η εξέταση δεν έχει ολοκληρωθεί"},
+{type:"uncertain",label:"ΔΗΜΟΣΙΕΥΣΗ",value:"Ώρες",note:"Η Νάντια προχωρά σύντομα"}
+],
+"Ποια δημόσια φράση προτείνεις;",
+[
+o("a","Μίλα με ακρίβεια","«Το έγγραφο ελέγχεται. Ορισμένα στοιχεία είναι γνήσια· η σημείωση δεν έχει επιβεβαιωθεί».","Δεν λες περισσότερα από όσα ξέρεις ούτε αποκρύπτεις ότι υπάρχει έρευνα.",.97,
+"Η Μάρα κυκλώνει την πρόταση. «Αυτή θα μπορούμε να την πούμε και αύριο». Λίγη ώρα μετά, τα κανάλια αναφέρουν ακριβώς τη διάκριση.",
+"Η αξιοπιστία χτίζεται όταν οι λέξεις δεν δημιουργούν μεγαλύτερη βεβαιότητα από όση έχεις πραγματικά.",{player:{credibility:3},world:{information_quality:2,public_trust:1},rel:{mara_eltan:{trust:3,respect:3},elena_varin:{trust:2,respect:2},selma_aric:{trust:2}},flags:{FINAL_LINE:"calibrated"}}),
+o("b","Προστάτευσε την κυβέρνηση","«Δεν υπάρχουν επιβεβαιωμένες αποδείξεις παρανομίας».","Κρατάς την πολιτική ένταση χαμηλότερη, αλλά το κοινό ίσως ακούσει πως δεν υπάρχει τίποτε να ερευνηθεί.",.44,
+"Η Μάρα αφήνει την πρόταση πάνω στο τραπέζι. «Είναι τεχνικά ακριβές. Θα καταλάβουν όμως ότι το θέμα τελείωσε;» Η Νάντια ζητά περισσότερα.",
+"Μια φράση μπορεί να είναι κυριολεκτικά αληθινή και ταυτόχρονα να προκαλεί παραπλανητική εντύπωση.",{player:{credibility:-1},world:{public_trust:-1},rel:{nadia_serrin:{trust:-3}},flags:{FINAL_LINE:"defensive"}}),
+o("c","Βγάλε τα όλα","Δίνεις ολόκληρη τη φωτογραφία στη δημοσιότητα.","Προτιμάς να κρίνει ο κόσμος το υλικό, γνωρίζοντας πως η έρευνα δεν έχει τελειώσει.",.37,
+"Η φωτογραφία ταξιδεύει από οθόνη σε οθόνη. Η Σέλμα τηλεφωνεί: «Τώρα προσπαθούμε να σώσουμε τα ίχνη της αρχικής σελίδας μπροστά σε όλη τη χώρα».",
+"Η διαφάνεια δεν είναι απλώς το πόσα αποκαλύπτεις, αλλά και αν οι πληροφορίες μπορούν ακόμη να ελεγχθούν αξιόπιστα.",{world:{public_trust:1,information_pressure:4},rel:{selma_aric:{trust:-5}},flags:{FINAL_LINE:"full_release"}})
 ],["mara_eltan","elena_varin","nadia_serrin","selma_aric"])
+
 ];
 
-export const scenes=[...baseScenes,...act1bScenes];
+// Phone-sized story hooks; the full, sourced dialogue remains in each scene's body/context.
+const cinematicTeasers={
+  C01_S01:"«Με έχουν μετρήσει χωρίς να με ρωτήσουν». Η Λέα έχει 119 βέβαιες ψήφους και 3 πιθανές. Άλλοι μιλούν ήδη για 122.",
+  C01_S02:"«Δεν είναι η Τρίτη η τελευταία μέρα». Η Νέλα ανακάλυψε έναν κανόνα που σας δίνει τρεις ακόμη μέρες.",
+  C01_S03:"Η Πρόεδρος έχει δώδεκα λεπτά. Ο Ίβο θέλει μία σελίδα που να ξεχωρίζει όσα γνωρίζετε από όσα ελπίζετε.",
+  C02_S01:(s)=>s.flags.OPENING_COUNT==="overstated"
+    ?"Ο Νίκο ήταν ο άγνωστος στο τηλέφωνο. «Με μέτρησες ως βέβαιο, αλλά δεν είχα συμφωνήσει». Τώρα θέλει εξηγήσεις."
+    :s.flags.OPENING_COUNT==="calibrated"
+    ?"Ο Νίκο ήταν ο άγνωστος στο τηλέφωνο. «Δεν με είπες δεδομένο. Γι' αυτό ήρθα». Θα σου δείξει τι φοβάται."
+    :"Ο Νίκο ήταν ο άγνωστος στο τηλέφωνο. «Δεν πήρες θέση για μένα. Θα ακούσεις τώρα γιατί δεν δίνω την ψήφο μου».",
+  C02_S02:"Δύο διαφορετικοί άνθρωποι μιλούν για μια μυστική συμφωνία του Νίκο. Η Λέα βρίσκει ότι άκουσαν την ίδια φήμη.",
+  C02_S03:"Τρεις πιθανές κυβερνήσεις. Τρεις διαφορετικές υποσχέσεις. Η Μάρα σε ρωτά ποια μπορεί πραγματικά να αντέξει.",
+  C03_S01:"Η Νάντια σου στέλνει έγγραφο από το λιμάνι. Τα στοιχεία ταιριάζουν, αλλά κανείς δεν ξέρει ποιος έγραψε τη φράση στο περιθώριο.",
+  C03_S02:"Η Νάντια δημοσιεύει απόψε. Η Σέλμα φοβάται ότι το μοναδικό στοιχείο θα χαθεί προτού μπορέσει να ελεγχθεί.",
+  C03_S03:"Η Πρόεδρος χρειάζεται μία δημόσια φράση. Η χώρα θα την ακούσει σε λίγα λεπτά — και μπορεί να τη θυμάται για χρόνια."
+};
+
+export const scenes=[...baseScenes,...act1bScenes].map(s=>(
+  Object.hasOwn(cinematicTeasers,s.id)?{...s,teaser:cinematicTeasers[s.id]}:s
+));
 
 export const inboxSeed=[
-{id:"m1",from:"Dr. Mara Eltan",subject:"07:30 briefing",body:"Bring me a count I can defend, not a count somebody wants to be true.",unread:true},
-{id:"m2",from:"Ivo Marek",subject:"Coalition status",body:"One page. Confirmed facts first. Decision points at the end.",unread:true}
+{id:"m1",from:"Μάρα",subject:"07:30 · Η αναφορά",body:"Χρειάζομαι έναν αριθμό που μπορούμε να υπερασπιστούμε. Όχι έναν αριθμό που θα ήθελε κάποιο κόμμα να είναι αληθινός.",unread:true},
+{id:"m2",from:"Γραφείο Προεδρίας",subject:"Η σημερινή ενημέρωση",body:"Μία σελίδα. Τι γνωρίζουμε, τι αγνοούμε και ποια απόφαση πρέπει να παρθεί.",unread:true},
+{id:"m3",from:"Άγνωστος αριθμός",subject:"07:12 · Φωνητικό μήνυμα",body:"«Με έχουν μετρήσει στην κυβέρνηση. Δεν έχω υποσχεθεί την ψήφο μου σε κανέναν».",unread:true}
 ];
