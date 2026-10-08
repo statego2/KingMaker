@@ -5,9 +5,11 @@
  */
 import {scene,progress} from "./engine.js";
 import {meta,cleanTitle,sceneVisual} from "./redesign-scenes.js";
+import {annotateNames} from "./character-roles.js";
 
-export function createSceneViews({state,selected=null,result=null,analysis=false,icon}){
+export function createSceneViews({state,selected=null,result=null,analysis=false,icon,openingLead=null}){
   const esc=x=>String(x??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
+  const named=x=>esc(annotateNames(x));
   const bodyOf=s=>s?(typeof s.body==="function"?s.body(state):s.body)||[]:[];
   const factsOf=s=>s?(typeof s.evidence==="function"?s.evidence(state):s.evidence)||[]:[];
   const choicesOf=s=>s?(typeof s.choices==="function"?s.choices(state):s.choices)||[]:[];
@@ -31,11 +33,11 @@ function renderScene(){
       '<div class="architecture"><i></i><i></i><i></i><i></i><i></i></div>'+
       '<div class="world-title"><span>'+esc(m.place)+'</span><h1>'+esc(cleanTitle(s.title))+'</h1></div>'+
       sceneVisual(s,body,facts)+
-      '<p class="world-line">'+esc(teaser)+'</p>'+
+      '<p class="world-line">'+named(teaser)+'</p>'+
       '<button class="context-btn" data-context>'+icon("info")+'<span>Στοιχεία</span></button>'+
     '</section>'+
     '<section class="decision-panel '+(choices.length>3?"crowded":"")+'">'+
-      '<div class="question"><span>'+esc(m.label)+'</span><h2>'+esc(s.question)+'</h2></div>'+
+      '<div class="question"><span>'+esc(m.label)+'</span><h2>'+named(s.question)+'</h2></div>'+
       '<div class="choice-stack">'+choices.map(choice).join("")+'</div>'+
       (selected?'<div class="commit-row"><button data-cancel class="secondary">Αλλαγή</button><button data-commit class="primary">Επιβεβαίωση '+icon("arrow")+'</button></div>':"")+
     '</section>'+
@@ -46,7 +48,7 @@ function choice(x,i){
   const active=selected?.id===x.id;
   return '<button class="choice '+(active?"active":"")+'" data-choice="'+x.id+'">'+
     '<span class="key">'+String.fromCharCode(65+i)+'</span>'+
-    '<span class="copy"><small>'+esc(x.verb||"Επιλογή")+'</small><strong>'+esc(x.title)+'</strong><em>'+esc(x.sub)+'</em></span>'+
+    '<span class="copy"><small>'+esc(x.verb||"Επιλογή")+'</small><strong>'+named(x.title)+'</strong><em>'+named(x.sub)+'</em></span>'+
     '<span class="go">'+(active?icon("check"):icon("arrow"))+'</span>'+
   '</button>';
 }
@@ -55,7 +57,7 @@ function renderContext(){
   const s=scene(state),m=meta(s);
   return '<div class="overlay" data-close-context><section class="sheet" onclick="event.stopPropagation()">'+
     '<header><div><span>'+esc(m.label)+'</span><h2>'+esc(cleanTitle(s.title))+'</h2></div><button data-close-context class="icon-btn">'+icon("close")+'</button></header>'+
-    '<div class="context-copy">'+bodyOf(s).map(p=>'<p>'+esc(p)+'</p>').join("")+'</div>'+
+    '<div class="context-copy">'+bodyOf(s).map(p=>'<p>'+named(p)+'</p>').join("")+'</div>'+
     '<div class="source-box">'+factsOf(s).map(e=>'<article><i class="'+esc(e.type||"neutral")+'"></i><div><small>'+esc(e.label)+'</small><strong>'+esc(e.value)+'</strong><em>'+esc(e.note)+'</em></div></article>').join("")+'</div>'+
     '<button class="primary full" data-close-context>Πίσω στην απόφαση</button>'+
   '</section></div>';
