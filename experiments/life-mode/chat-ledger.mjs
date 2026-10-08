@@ -52,7 +52,7 @@ export function applyTurn(previous, turn) {
   if (previous.turns.some(item => item.id === turn.id)) throw new Error("Duplicate turn ID");
   isoDate(turn.date);
   if (turn.date < previous.date) throw new Error("Time cannot reverse");
-  if (turn.outcome.result && !RESULTS.has(turn.outcome.result)) throw new Error("Invalid result");
+  if (!RESULTS.has(turn.outcome.result)) throw new Error("Invalid result");
   if (turn.outcome.result === "succeeded" && !turn.outcome.cause) {
     throw new Error("Success needs an explicit causal account");
   }
@@ -66,7 +66,12 @@ export function applyTurn(previous, turn) {
   amount(next.debt + debtDelta, "debt");
   next.cash += cashDelta;
   next.debt += debtDelta;
-  for (const goal of turn.goals ?? []) upsert(next.goals, goal, RESULTS, "goal");
+  for (const goal of turn.goals ?? []) {
+    if (goal.status === "succeeded" && turn.outcome.result !== "succeeded") {
+      throw new Error("A goal cannot succeed from an intention alone");
+    }
+    upsert(next.goals, goal, RESULTS, "goal");
+  }
   for (const plan of turn.plans ?? []) {
     if (!next.goals.some(goal => goal.id === plan.goalId)) throw new Error("Plan has no goal");
     upsert(next.plans, plan, PLAN_STATES, "plan");
