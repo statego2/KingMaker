@@ -1,5 +1,6 @@
 import {people} from "./content.js";
 import {knownPeople} from "./reveal-map.js";
+import {roleLabel,annotateNames,roles} from "./character-roles.js";
 import {load,reset,scene,commit,readMsg,relationship} from "./engine.js";
 import {meta} from "./redesign-scenes.js";
 import {createSceneViews} from "./scene-renderer.js";
@@ -81,6 +82,14 @@ function renderUtility(){
   return renderArchive();
 }
 
+function knownSender(from){
+  const raw=String(from||"");
+  for(const person of Object.values(roles)){
+    if(raw.startsWith(person.first)||raw.toLowerCase().startsWith(person.first.toLowerCase()))return person.first+" ("+person.hint+")";
+  }
+  return annotateNames(raw);
+}
+
 function renderInbox(){
   const unread=state.inbox.filter(x=>x.unread).length;
   return '<main class="utility">'+utilityHeader("INBOX","Incoming intelligence",unread+" unread")+
@@ -108,7 +117,7 @@ function edge([x1,y1,x2,y2]){
 }
 function node([id,x,y]){
   const p=id==="player"?{initials:"YOU",name:"You"}:people[id]||{initials:"?",name:id};
-  return '<div class="node '+(id==="player"?"you":"")+'" style="left:'+x+'%;top:'+y+'%"><span>'+esc(p.initials)+'</span><b>'+esc(p.name)+'</b></div>';
+  return '<div class="node '+(id==="player"?"you":"")+'" style="left:'+x+'%;top:'+y+'%"><span>'+esc(p.initials)+'</span><b>'+esc(roleLabel(id)||p.name)+'</b></div>';
 }
 function route(name,v){
   v=clamp(v);
