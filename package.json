@@ -14,6 +14,7 @@
     "validate:backlog": "node tools/validate-production-backlog.mjs",
     "verify": "npm run check && npm test && npm run validate:backlog && npm run validate:taxonomy && npm run validate:mappings",
     "validate:taxonomy": "node tools/validate-knowledge-taxonomy.mjs",
-    "validate:mappings": "node tools/validate-question-mappings.mjs"
+    "validate:mappings": "node tools/validate-question-mappings.mjs",
+    "report:coverage": "node tools/report-knowledge-coverage.mjs"
   }
 }
