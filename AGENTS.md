@@ -4,6 +4,9 @@
 ## The one-sentence objective
 Build a genuinely enjoyable **cinematic political strategy game** in which the player's observation, investigation, interpretation, negotiation and commitments change a persistent Lydrian political world. Do NOT turn it into a spreadsheet, lesson app, passive visual novel or government SaaS.
 
+## Chat-first creative playtesting (owner direction, 2026-10-08)
+When the owner asks to play or iterate on the story, use the conversation as KINGMAKER's provisional player-facing interface. Read [the chat-first workflow](docs/CHAT_FIRST_PLAYTEST_WORKFLOW.md) and the latest relevant [playtest record](docs/PLAYTESTS/2026-10-08-chat-001.md) before continuing. Keep player actions, discoveries and unresolved decisions consistent. Work on the underlying story, state, engine and tests in GitHub as specific decisions are accepted. Treat chat inventions as experiments until promoted; do not claim the browser build already implements them. This direction remains active until the owner changes it.
+
 ## Required startup sequence
 1. Pull/check **current** `main`; inspect any open PRs/branches before writing.
 2. Read `docs/NEXT_ACTION.md`, `docs/PRODUCTION_PLAN.md`, and `data/production_backlog_v1.json`.

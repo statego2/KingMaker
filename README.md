@@ -2,6 +2,10 @@
 
 **A mobile-first cinematic political strategy game about judgment, power and consequence.** The player explores a persistent fictional republic, investigates incomplete and conflicting information, understands human incentives, makes difficult decisions and lives with their consequences.
 
+## Current creative playtest mode
+
+KINGMAKER is being played and iterated **in conversation** with the owner. The AI presents scenes and tracks decisions there; agreed story, mechanics and state changes are developed in GitHub. See [the chat-first playtest workflow](docs/CHAT_FIRST_PLAYTEST_WORKFLOW.md) and [the current playtest record](docs/PLAYTESTS/2026-10-08-chat-001.md). The browser build below remains an implementation in progress and may differ from experimental chat branches.
+
 ## Continue production with an AI agent
 
 **Start here:** [AGENTS.md](AGENTS.md) → [NEXT_ACTION](docs/NEXT_ACTION.md) → [Master Production Plan](docs/PRODUCTION_PLAN.md).
