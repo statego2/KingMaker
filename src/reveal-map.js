@@ -8,8 +8,11 @@ const reveals=[
   [1,["nela_orr"]],
   [2,["ivo_marek","elena_varin"]],
   [3,["niko_arven"]],
-  [6,["nadia_serrin","selma_aric","anton_beran"]],
-  [9,["adrian_kessar","mira_solen","viktor_sarin","liora_venn"]],
+  [5,["adrian_kessar","mira_solen"]],
+  [6,["nadia_serrin"]],
+  [7,["selma_aric"]],
+  [8,["anton_beran"]],
+  [9,["viktor_sarin","liora_venn"]],
   [13,["silas_koren"]]
 ];
 export function knownPeople(sceneIndex=0){
