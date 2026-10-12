@@ -156,3 +156,23 @@ test("150 seeded chat sessions survive life start/arc/refusal/time/close without
   assert.deepEqual(loadSession(saveSession(s)),s);
  }
 });
+
+
+test("AI director fetches relevant strategic study from ambition without changing game goals or presenting it as execution",()=>{
+ let session=newGame(12);
+ session=issue(session,"g","life.action",{action:{kind:"dream",goalId:"power",
+  title:"Μακροχρόνια πολιτική στρατηγική",
+  playerText:"Θέλω να αποκτήσω μεγάλη πολιτική επιρροή, με συμμαχίες και κυβέρνηση."}});
+ const gm=sessionDirectorPacket(session);
+ const tips=gm.privateContext.optionalMaterialByPlayerIntent;
+ assert.equal(tips.identified,true);
+ assert.equal(tips.candidates[0].id,"CASE-03");
+ assert.equal(tips.candidates[0].executableScenario,"local-reform");
+ assert.equal(gm.publicView.goals[0].status,"pending");
+ assert.equal(gm.publicView.activeArc,null);
+ assert.equal(JSON.stringify(gm.publicView).includes("optionalMaterialByPlayerIntent"),false);
+ const love=sessionDirectorPacket(session,{intentText:"Θέλω να έχω μια βαθιά ερωτική σχέση"});
+ assert.equal(love.privateContext.optionalMaterialByPlayerIntent.candidates[0].id,"CASE-07");
+ assert.equal(love.publicView.goals[0].status,"pending");
+ assert.deepEqual(sessionPlayerView(session),gm.publicView);
+});
