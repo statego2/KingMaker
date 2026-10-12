@@ -20,6 +20,7 @@ export const BACKEND_LAYERS=Object.freeze([
  {id:"strategy",role:"NPC motives, consent, intel, negotiation and coalitions",entry:"experiments/life-mode/strategic-director.mjs",scope:"Bounded and deterministic, not full independent civilization"},
  {id:"saga",role:"Single life with episodic political/business strategy",entry:"experiments/life-mode/strategic-saga.mjs",scope:"Persisted life, returning actor memory and replay"},
  {id:"adapter",role:"Model commands to validated engine actions",entry:"experiments/life-mode/kingmaker-session.mjs",scope:"Structured model adapter, NO live LLM service"},
+ {id:"connector",role:"Stateless trusted host model tool interface",entry:"experiments/life-mode/stateless-connector.mjs",scope:"Private save + public result, not a deployed HTTP/API connector"},
  {id:"ui",role:"Narrator/player-safe projection",entry:"experiments/life-mode/kingmaker-session.mjs",scope:"ChatGPT displays prose, not another browser site"},
  {id:"qa",role:"Deterministic Node verification",entry:"experiments/life-mode/kingmaker-session.test.mjs",scope:"Node tests; not human fun approval"}
 ]);
