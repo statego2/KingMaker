@@ -352,3 +352,32 @@ test("calendar advances market events exactly once even across large leaps and s
   assert.equal(combined.filter(e => e.id === "economy-0").length, 1);
   assert.deepEqual(loadLife(saveLife(later)), later);
 });
+
+
+test("economy shock before venture settlement changes success odds in chronological order", () => {
+  const seed = Array.from({ length: 250 }, (_, i) => i)
+    .find(i => fresh(i).simulation.world.events.some(e => e.date === "2028-10-28" && e.kind === "cooling"));
+  assert.notEqual(seed, undefined);
+  const base = act(setup(seed), { id: "wait-100", kind: "wait", days: 100 });
+  const invested = act(base, { id: "venture-3", kind: "launch", planId: "venture", budget: 500 });
+  const settled = act(invested, { id: "wait-90", kind: "wait", days: 90 });
+  const venture = settled.simulation.projects[0];
+  assert.equal(venture.effectiveChance, venture.successChance - 0.10);
+  assert.equal(settled.simulation.world.economy, "cooling");
+  const publicItems = settled.simulation.publicEvents;
+  const worldIndex = publicItems.findIndex(e => e.id === "economy-0");
+  const settlementIndex = publicItems.findIndex(e => e.id === "settle-" + venture.id);
+  assert.ok(worldIndex !== -1 && worldIndex < settlementIndex);
+  assert.equal(settled.cash, 400 + venture.payout);
+});
+
+test("advancing study time cannot bury important external news", () => {
+  const seed = Array.from({ length: 100 }, (_, i) => i)
+    .find(i => fresh(i).simulation.world.events.some(e => e.date === "2028-10-28"));
+  const before = act(fresh(seed), { id: "w", kind: "wait", days: 170 });
+  const after = act(before, { id: "s", kind: "study", subject: "society" });
+  assert.equal(after.date, "2028-11-17");
+  assert.ok(after.turns.at(-1).scene.includes("τοπική αγορά"));
+  assert.ok(after.turns.at(-1).scene.includes("μελέτη"));
+  assert.equal(after.simulation.publicEvents.filter(e => e.parent === "world-seed").length, 1);
+});
