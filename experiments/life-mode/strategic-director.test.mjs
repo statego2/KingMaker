@@ -217,3 +217,40 @@ test("withdrawing after agreement preserves actual cost and labels open commitme
  assert.equal(left.commitments[0].status,"abandoned");
  assert.equal(left.result,"withdrawn");
 });
+
+
+test("distinct NPCs hold private uncertain beliefs; corroborated sources can update them without compelled agreement",()=>{
+ let s=start("local-reform",27);
+ const a=s.actors.find(x=>x.id==="eleni");
+ const b=s.actors.find(x=>x.id==="nikos");
+ assert.notEqual(a.belief.probability,b.belief.probability);
+ assert.equal(a.belief.confidence,0.1);
+ const prior=a.belief.probability;
+ s=take(s,"find1","investigate",{factId:"contract-cost"});
+ s=take(s,"find2","investigate",{factId:"contract-cost"});
+ assert.throws(()=>take(s,"forged","share",{actorId:"eleni",sourceId:"fabricated-report"}),/not discovered/);
+ const shared=take(s,"source1","share",{actorId:"eleni",sourceId:"audit"});
+ const eleni=shared.actors.find(x=>x.id==="eleni");
+ assert.ok(eleni.belief.probability>prior);
+ assert.ok(eleni.belief.confidence>0.1);
+ assert.equal(eleni.stance,"undecided");
+ assert.equal(shared.actors.find(x=>x.id==="nikos").belief.confidence,0.1);
+ const repeated=take(shared,"source2","share",{actorId:"eleni",sourceId:"audit"});
+ assert.equal(repeated.history.at(-1).outcome.result,"partial");
+ assert.equal(repeated.actors.find(x=>x.id==="eleni").belief.confidence,eleni.belief.confidence);
+ assert.equal(JSON.stringify(strategyPlayerView(shared)).includes('"probability"'),false);
+ assert.equal(typeof strategyDesignerAudit(shared).actorMotives[0].belief.probability,"number");
+});
+test("conflicting evidence can shift actor belief, but repeating a correlated source does not boost certainty",()=>{
+ let s=start("venture-alliance",27);
+ s=take(s,"source1","investigate",{factId:"supply-risk"});
+ const before=s.actors.find(a=>a.id==="irini").belief.probability;
+ s=take(s,"share1","share",{actorId:"irini",sourceId:"sales-talk"});
+ const afterFirst=s.actors.find(a=>a.id==="irini").belief.probability;
+ assert.ok(afterFirst>before);
+ s=take(s,"source2","investigate",{factId:"supply-risk"});
+ s=take(s,"share2","share",{actorId:"irini",sourceId:"invoice-audit"});
+ const afterSecond=s.actors.find(a=>a.id==="irini").belief.probability;
+ assert.ok(afterSecond<afterFirst);
+ assert.equal(s.actors.find(a=>a.id==="irini").stance,"undecided");
+});
