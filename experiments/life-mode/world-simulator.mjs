@@ -75,7 +75,8 @@ export function beginLife(config) {
     ...run,
     simulation: {
       ruleset: RULESET, seed, finished: false,
-      offers: [], projects: [], relationships: [], politicalContacts: [],
+      origin: { id: config.id, birthDate: config.birthDate, startedAt: config.startedAt, location: config.location, cash: run.cash, debt: run.debt, seed },
+      commands: [], offers: [], projects: [], relationships: [], politicalContacts: [],
       skills: { business: 0, society: 0 }, knowledge: { venture: false }, influence: 0,
       advisor: false, lastPitchAt: null, publicEvents: []
     }
@@ -437,6 +438,7 @@ export function act(previous, command) {
     goals: goalPatches, plans: planPatches, people: visiblePeople
   });
   sim.publicEvents.push({ id: "action-" + id, date, parent: id, text: scene });
+  sim.commands.push(structuredClone(command));
   next.simulation = sim;
   return next;
 }
@@ -468,4 +470,43 @@ export function playerView(run) {
     finished: sim.finished,
     footer: statusFooter(run)
   };
+}
+
+
+const SAVE_FORMAT = "kingmaker-life-experiment-v1";
+
+/** Saves only the original fictional setup and ordered structured commands.
+ * On load, results are reconstructed by the trusted deterministic resolver.
+ * Does not access browser localStorage or the separate political-campaign keys.
+ */
+export function saveLife(run) {
+  if (!run?.simulation || run.simulation.ruleset !== RULESET ||
+      !run.simulation.origin || !Array.isArray(run.simulation.commands)) {
+    throw new Error("Invalid Life Mode save state");
+  }
+  const copy = replayLife(beginLife(run.simulation.origin), run.simulation.commands);
+  if (JSON.stringify(copy) !== JSON.stringify(run)) {
+    throw new Error("Run was modified outside the authoritative resolver");
+  }
+  return JSON.stringify({
+    format: SAVE_FORMAT,
+    origin: structuredClone(run.simulation.origin),
+    commands: structuredClone(run.simulation.commands)
+  });
+}
+
+export function loadLife(text) {
+  if (typeof text !== "string" || text.length > 4_000_000) throw new Error("Invalid save payload");
+  let payload;
+  try {
+    payload = JSON.parse(text);
+  } catch {
+    throw new Error("Corrupt Life Mode save JSON");
+  }
+  if (payload?.format !== SAVE_FORMAT ||
+      !payload.origin || !Array.isArray(payload.commands) ||
+      payload.commands.length > 10_000) {
+    throw new Error("Unsupported Life Mode save format");
+  }
+  return replayLife(beginLife(payload.origin), payload.commands);
 }
