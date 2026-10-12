@@ -124,15 +124,35 @@ export function act(previous, command) {
   }
   function progress(to) {
     if (day(to) < day(date)) throw new Error("Time cannot reverse");
-    const pending = sim.projects
-      .filter(p => p.status === "running" && p.dueOn <= to)
-      .sort((a, b) => a.dueOn.localeCompare(b.dueOn) || a.id.localeCompare(b.id));
-    for (const p of pending) {
+    const pending = [
+      ...sim.projects.filter(p => p.status === "running" && p.dueOn <= to)
+        .map(p => ({ kind: "project", at: p.dueOn, ref: p })),
+      ...sim.world.events.filter(e => !e.processed && e.date <= to)
+        .map(e => ({ kind: "world", at: e.date, ref: e }))
+    ].sort((a, b) => a.at.localeCompare(b.at) ||
+      (a.kind === "world" ? -1 : 1));
+    for (const event of pending) {
+      if (event.kind === "world") {
+        const e = event.ref;
+        e.processed = true;
+        sim.world.economy = e.kind;
+        const headline = e.kind === "cooling"
+          ? "Η τοπική αγορά επιβραδύνεται. Οι επιχειρήσεις και οι τράπεζες γίνονται πιο επιφυλακτικές."
+          : "Η τοπική αγορά ενισχύεται. Ανοίγονται ευκαιρίες αλλά όχι εγγυημένες αποδόσεις.";
+        released.push(headline);
+        sim.publicEvents.push({ id: e.id, date: e.date, parent: "world-seed", text: headline });
+        continue;
+      }
+      const p = event.ref;
       p.status = "resolved";
-      const favorable = p.roll < p.successChance;
+      const shift = p.political ? 0
+        : sim.world.economy === "cooling" ? -0.10
+        : sim.world.economy === "growth" ? 0.10 : 0;
+      p.effectiveChance = Math.max(0.05, Math.min(0.90, p.successChance + shift));
+      const favorable = p.roll < p.effectiveChance;
       // Spend happened at launch. The payout can be zero: no forced bailout.
       const payout = p.political ? 0 : favorable ? Math.floor(p.budget * 1.55) :
-        (p.roll < p.successChance + 0.25 ? Math.floor(p.budget * 0.35) : 0);
+        (p.roll < p.effectiveChance + 0.25 ? Math.floor(p.budget * 0.35) : 0);
       p.payout = payout;
       p.outcome = p.political ? (favorable ? "supported" : "rejected")
         : (favorable ? "profitable" : (payout ? "partial" : "failed"));
@@ -471,7 +491,7 @@ export function playerView(run) {
     relationships: sim.relationships.map(({ actorId, trust, mutuallyInterested }) => ({ actorId, trust, mutuallyInterested })),
     politicalContacts: structuredClone(sim.politicalContacts),
     skills: structuredClone(sim.skills), knowledge: structuredClone(sim.knowledge),
-    influence: sim.influence,
+    influence: sim.influence, economy: sim.world.economy,
     lastEvent: run.turns.length ? structuredClone(run.turns.at(-1)) : null,
     finished: sim.finished,
     footer: statusFooter(run)
