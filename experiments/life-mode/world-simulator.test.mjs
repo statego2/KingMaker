@@ -193,9 +193,13 @@ test("repayment cancels matching debt and cash, with no debt magically cancelled
   const paid = act(debtRun, { id: "t1", kind: "repay", amount: 5_000 });
   assert.equal(paid.cash, 5_900);
   assert.equal(paid.debt, 5_000);
-  const denied = act(paid, { id: "t2", kind: "repay", amount: 6_000 });
-  assert.equal(denied.cash, paid.cash);
-  assert.equal(denied.debt, paid.debt);
+  const settled = act(paid, { id: "t2", kind: "repay", amount: 6_000 });
+  assert.equal(settled.cash, 900);
+  assert.equal(settled.debt, 0);
+  const lowCashFixture = { ...paid, cash: 200 };
+  const denied = act(lowCashFixture, { id: "t2", kind: "repay", amount: 5_000 });
+  assert.equal(denied.cash, lowCashFixture.cash);
+  assert.equal(denied.debt, lowCashFixture.debt);
 });
 
 test("30-day study and paid investigation alter opportunity, never reveal outcome", () => {
