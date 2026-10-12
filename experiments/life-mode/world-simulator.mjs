@@ -455,6 +455,10 @@ export function act(previous, command) {
       throw new Error("Unsupported action kind: " + kind);
   }
 
+  // World/venture callbacks remain visible even when the player was studying or working.
+  if (released.length && kind !== "wait") {
+    scene = released.join(" ") + " " + scene;
+  }
   const moneyCause = moneyCauses.length ? moneyCauses.join(" · ") : undefined;
   const next = applyTurn(previous, {
     id, date, playerText: typeof command.playerText === "string" && command.playerText.trim()
