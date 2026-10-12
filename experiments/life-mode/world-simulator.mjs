@@ -236,7 +236,7 @@ export function act(previous, command) {
       reveal(visiblePeople, "lender");
       const tooLarge = amount > 30_000;
       const score = 0.35 + (sim.advisor ? 0.15 : 0) + Math.min(previous.cash / 100_000, 0.15) - (amount > 15_000 ? 0.12 : 0)
-        + sim.skills.business * 0.02;
+        + sim.skills.business * 0.02 + (sim.world.economy === "cooling" ? -0.10 : sim.world.economy === "growth" ? 0.06 : 0);
       const overLeveraged = previous.debt > Math.max(25_000, previous.cash * 2);
       const approved = !tooLarge && !overLeveraged && chance(sim.seed, previous.turns.length + 1, "lender") < score;
       if (approved) {
