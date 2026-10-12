@@ -96,3 +96,8 @@ Pick the highest-value unverified connector gap rather than creating dozens more
 5. Run an actual human chat-first playtest and evaluate whether this is fun. Do not overclaim entertainment from algorithmic correctness.
 
 **One rule:** In the chat, the AI is the player's UI and literary narrator; in code, the reducer is the game. The AI should never silently become both rule writer and winner.
+
+
+## Additional connector portability slice
+
+Added \`stateless-connector.mjs\` for host-owned private replay state and one-shot deterministic commands. Its three operations \`initializeGame\`, \`executeGameTurn\`, \`inspectGame\` are exported via the stable \`backend/index.mjs\` API and tested with 100 different seeded games. This reduces friction for a future actual AI service integration, while deliberately not pretending to install a remote model connector or secure cloud backend. Consult the AI Chat Runtime Protocol for its code example.
