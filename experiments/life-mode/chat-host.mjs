@@ -11,6 +11,7 @@
 import {createInterface} from "node:readline";
 import {fileURLToPath} from "node:url";
 import {resolve} from "node:path";
+import {AI_TOOL_CONTRACT} from "./ai-tool-contract.mjs";
 import {createSession,applySession,sessionPlayerView,sessionDirectorPacket,
  saveSession,loadSession,sessionBootstrap} from "./kingmaker-session.mjs";
 
@@ -36,6 +37,7 @@ export function createLocalHost({transport=false,director=false}={}){
    allowed(request,["op","life","seed","save","command"]);
    const op=request.op;
    if(op==="catalog")return {ok:true,type:"catalog",catalog:sessionBootstrap()};
+   if(op==="contract")return {ok:true,type:"contract",contract:AI_TOOL_CONTRACT};
    if(op==="start"){
     if(request.command!==undefined||request.save!==undefined)throw Error("Start cannot include saved command");
     current=createSession({life:request.life??defaultLife(),seed:request.seed??1});
