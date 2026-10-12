@@ -19,6 +19,7 @@ export function sagaCommand(previous,command){
  if(previous?.version!==1||!previous.origin||!Array.isArray(previous.commands))throw Error("Unknown saga format");
  if(!command||typeof command!=="object"||Array.isArray(command)||!valid(command.id))throw Error("Invalid saga command");
  if(previous.commands.some(c=>c.id===command.id))throw Error("Duplicate saga command");
+ if(previous.life?.simulation?.finished)throw Error("Finished life cannot start or continue another episode");
  const s=copy(previous);
  switch(command.kind){
   case "begin":{
