@@ -52,3 +52,23 @@ test("end-to-end AI-as-UI narrative uses the same reducer state after ordinary a
  assert.deepEqual(backend.loadSession(backend.saveSession(session)),session);
  assert.ok(exportChatHandoff(session).includes("KINGMAKER — Playtest Continuity"));
 });
+
+
+test("every documented backend layer resolves to a real current repository file",async()=>{
+ const {existsSync}=await import("node:fs");
+ const {fileURLToPath}=await import("node:url");
+ const {resolve}=await import("node:path");
+ const root=fileURLToPath(new URL("../../",import.meta.url));
+ for(const layer of backend.BACKEND_LAYERS){
+  const absolute=resolve(root,layer.entry);
+  assert.ok(existsSync(absolute),layer.id+": missing "+layer.entry);
+ }
+ const required=[
+  "experiments/life-mode/START_HERE.md",
+  "experiments/life-mode/AI_CHAT_RUNTIME_PROTOCOL.md",
+  "experiments/life-mode/backend/README.md",
+  "experiments/life-mode/backend/index.mjs",
+  "experiments/life-mode/chat-host.mjs"
+ ];
+ for(const p of required)assert.ok(existsSync(resolve(root,p)),p);
+});
