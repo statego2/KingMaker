@@ -176,3 +176,15 @@ test("AI director fetches relevant strategic study from ambition without changin
  assert.equal(love.publicView.goals[0].status,"pending");
  assert.deepEqual(sessionPlayerView(session),gm.publicView);
 });
+
+
+test("closing a life is terminal even for starting a new strategic sandbox; ignored outer text is rejected",()=>{
+ let session=newGame();
+ session=issue(session,"finish","life.action",{action:{kind:"finish"}});
+ assert.equal(session.world.life.simulation.finished,true);
+ assert.throws(()=>applySession(session,{id:"later",route:"arc.begin",scenario:"civic-network"}),/Finished life/);
+ assert.throws(()=>applySession(session,{id:"next",route:"time.advance",days:5}),/Finished life/);
+ const fresh=newGame(101);
+ assert.throws(()=>applySession(fresh,{id:"a",route:"life.action",playerText:"ignored",action:{kind:"work",shifts:1}}),/Conflicting life/);
+ assert.throws(()=>applySession(fresh,{id:"a",route:"arc.begin",scenario:"local-reform",playerText:"ignored"}),/Conflicting arc/);
+});
