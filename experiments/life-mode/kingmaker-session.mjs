@@ -61,16 +61,16 @@ function normalizeProposal(s,proposal){
  const commandId=id(proposal.id);
  const route=text(proposal.route,"route",40);
  if(route==="life.action"){
-  if(proposal.scenario!==undefined||proposal.days!==undefined)throw Error("Conflicting life route");
+  if(proposal.scenario!==undefined||proposal.days!==undefined||proposal.playerText!==undefined)throw Error("Conflicting life route");
   return {id:commandId,kind:"life",action:normalizeLife(proposal.action)};
  }
  if(route==="arc.begin"){
-  if(proposal.action!==undefined||proposal.days!==undefined)throw Error("Conflicting arc start");
+  if(proposal.action!==undefined||proposal.days!==undefined||proposal.playerText!==undefined)throw Error("Conflicting arc start");
   return {id:commandId,kind:"begin",scenario:text(proposal.scenario,"scenario",50)};
  }
  if(route==="arc.move"){
   if(!s.active)throw Error("No active strategic arc");
-  if(proposal.days!==undefined||proposal.scenario!==undefined)throw Error("Conflicting arc move");
+  if(proposal.days!==undefined||proposal.scenario!==undefined||proposal.playerText!==undefined)throw Error("Conflicting arc move");
   const adapterView={version:1,life:s.life,strategy:s.active.strategy,
    actions:s.commands.filter(x=>x.kind==="move").map(x=>x.action)};
   const packet=createGameMasterPacket(adapterView);
@@ -78,7 +78,7 @@ function normalizeProposal(s,proposal){
   return {id:commandId,kind:"move",action:validateModelProposal(packet,{...proposal.action,id:commandId})};
  }
  if(route==="arc.close"){
-  if(proposal.action!==undefined||proposal.scenario!==undefined||proposal.days!==undefined)
+  if(proposal.action!==undefined||proposal.scenario!==undefined||proposal.days!==undefined||proposal.playerText!==undefined)
    throw Error("Conflicting arc close");
   return {id:commandId,kind:"close"};
  }
