@@ -188,3 +188,29 @@ test("closing a life is terminal even for starting a new strategic sandbox; igno
  assert.throws(()=>applySession(fresh,{id:"a",route:"life.action",playerText:"ignored",action:{kind:"work",shifts:1}}),/Conflicting life/);
  assert.throws(()=>applySession(fresh,{id:"a",route:"arc.begin",scenario:"local-reform",playerText:"ignored"}),/Conflicting arc/);
 });
+
+
+test("AI receives only actions legal for current scene, with observed actors/sources and not imagined options",()=>{
+ let s=newGame(57);
+ let contract=sessionDirectorPacket(s).commandContract;
+ assert.deepEqual(contract.availableRoutes,["life.action","arc.begin","time.advance"]);
+ assert.equal(contract.activeActors.length,0);
+ assert.ok(contract.lifeArguments.launch.includes("planId"));
+ s=issue(s,"opening","arc.begin",{scenario:"local-reform"});
+ contract=sessionDirectorPacket(s).commandContract;
+ assert.deepEqual(contract.availableRoutes,["arc.move"]);
+ assert.equal(contract.activeActors.length,4);
+ assert.equal(contract.availableEvidenceIds.length,0);
+ assert.equal(contract.activeFactId,"contract-cost");
+ s=issue(s,"source","arc.move",{action:{kind:"investigate",factId:"contract-cost"}});
+ contract=sessionDirectorPacket(s).commandContract;
+ assert.deepEqual(contract.availableEvidenceIds,["rumor"]);
+ s=issue(s,"withdraw","arc.move",{action:{kind:"withdraw"}});
+ contract=sessionDirectorPacket(s).commandContract;
+ assert.deepEqual(contract.availableRoutes,["arc.close"]);
+ s=issue(s,"close","arc.close");
+ contract=sessionDirectorPacket(s).commandContract;
+ assert.deepEqual(contract.availableRoutes,["life.action","arc.begin","time.advance"]);
+ s=issue(s,"end","life.action",{action:{kind:"finish"}});
+ assert.deepEqual(sessionDirectorPacket(s).commandContract.availableRoutes,[]);
+});
