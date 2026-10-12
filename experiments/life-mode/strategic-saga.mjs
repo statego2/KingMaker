@@ -81,6 +81,15 @@ export function sagaCommand(previous,command){
    s.active=null;
    break;
   }
+  case "life":{
+   // Explicit life actions use the canonical Life Mode resolver. Strategic arcs
+   // cannot be silently skipped or mutated by unrelated free-life commands.
+   if(s.active)throw Error("Close the active arc before an independent life action");
+   if(!command.action||typeof command.action!=="object"||Array.isArray(command.action))throw Error("Invalid life action");
+   const next={...copy(command.action),id:"saga-"+command.id};
+   s.life=act(s.life,next);
+   break;
+  }
   case "advance":{
    if(s.active)throw Error("Resolve the active arc before a free-form life leap");
    if(!Number.isSafeInteger(command.days)||command.days<=0||command.days>36525)throw Error("Invalid days");
