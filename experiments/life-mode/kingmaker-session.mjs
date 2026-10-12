@@ -13,6 +13,7 @@ import {createGameMasterPacket,validateModelProposal} from "./strategic-gm-adapt
 import {buildDirectorBrief} from "./strategy-intelligence.mjs";
 import {strategicCaseKnowledgePack} from "./strategy-knowledge-graph.mjs";
 import {listBackendContent} from "./backend-catalog.mjs";
+import {findStrategicMaterial} from "./knowledge-retrieval.mjs";
 
 export const CHAT_PROTOCOL_VERSION="kingmaker-chat-protocol-v1";
 const copy=x=>structuredClone(x);
@@ -127,11 +128,13 @@ export function sessionPlayerView(session){
   disclosure:"Only public state and events; no hidden seed, truth or NPC utility"
  };
 }
-export function sessionDirectorPacket(session){
+export function sessionDirectorPacket(session,{intentText=null}={}){
  checkSession(session);
  const s=session.world;
  const publicView=sessionPlayerView(session);
  const lastCommands=copy(s.commands.slice(-8));
+ const latestNaturalText=s.life.turns.at(-1)?.playerText??"";
+ const related=findStrategicMaterial(intentText===null?latestNaturalText:intentText,{limit:3});
  const active=s.active?.strategy??null;
  const caseId=active?PAIR[active.scenario]:null;
  const strategy=active?buildDirectorBrief(active):null;
@@ -142,6 +145,7 @@ export function sessionDirectorPacket(session){
   privateContext:{
    activeStrategy:strategy,
    relevantKnowledge:knowledge,
+   optionalMaterialByPlayerIntent:related,
    lastStructuredActions:lastCommands,
    // Economic/multi-year causes for independent world callbacks.
    pendingLifeProjects:copy(s.life.simulation.projects.filter(p=>p.status==="running").map(p=>({
