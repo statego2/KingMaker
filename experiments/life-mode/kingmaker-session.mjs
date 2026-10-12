@@ -11,6 +11,7 @@ import {beginSaga,sagaCommand,sagaPlayerView,saveSaga,loadSaga} from "./strategi
 import {playerView as lifeView} from "./world-simulator.mjs";
 import {createGameMasterPacket,validateModelProposal} from "./strategic-gm-adapter.mjs";
 import {buildDirectorBrief} from "./strategy-intelligence.mjs";
+import {SCENARIOS} from "./strategic-director.mjs";
 import {strategicCaseKnowledgePack} from "./strategy-knowledge-graph.mjs";
 import {listBackendContent} from "./backend-catalog.mjs";
 import {findStrategicMaterial} from "./knowledge-retrieval.mjs";
@@ -164,8 +165,7 @@ export function sessionDirectorPacket(session,{intentText=null}={}){
    lifeArguments:copy(LIFE_FIELDS),
    activeActors:active?.actors.map(a=>({id:a.id,name:a.name,role:a.role}))??[],
    availableEvidenceIds:active?.evidence.map(e=>e.id)??[],
-   activeFactId:active?active.scenario&&
-    (active.scenario==="local-reform"?"contract-cost":active.scenario==="venture-alliance"?"supply-risk":"facility-access"):null,
+   activeFactId:active?SCENARIOS[active.scenario].fact.id:null,
    lifeActionKinds:Object.keys(LIFE_FIELDS),
    activeScenario:active?.scenario??null,
    strategicCommandKinds:active?[
