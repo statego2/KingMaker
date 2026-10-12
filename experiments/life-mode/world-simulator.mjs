@@ -71,12 +71,18 @@ export function beginLife(config) {
   const seed = config.seed ?? 1;
   if (!Number.isSafeInteger(seed)) throw new Error("Seed must be an integer");
   const run = createRun(config);
+  const worldEvents = [180, 720].flatMap((offset, i) => {
+    const draw = chance(seed, "macro-" + i, "economy");
+    const kind = draw < 0.22 ? "cooling" : draw < 0.45 ? "growth" : null;
+    return kind ? [{ id: "economy-" + i, date: addDays(run.date, offset), kind, processed: false }] : [];
+  });
   return {
     ...run,
     simulation: {
       ruleset: RULESET, seed, finished: false,
       origin: { id: config.id, birthDate: config.birthDate, startedAt: config.startedAt, location: config.location, cash: run.cash, debt: run.debt, seed },
       commands: [], offers: [], projects: [], relationships: [], politicalContacts: [],
+      world: { economy: "steady", events: worldEvents },
       skills: { business: 0, society: 0 }, knowledge: { venture: false }, influence: 0,
       advisor: false, lastPitchAt: null, publicEvents: []
     }
