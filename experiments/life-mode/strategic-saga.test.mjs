@@ -91,3 +91,24 @@ test("50 different synthetic lifetimes stay independent through two strategic ar
   assert.deepEqual(loadSaga(saveSaga(s)),s);
  }
 });
+
+
+test("a source-informed NPC retains fading beliefs across separate years but never inherited votes",()=>{
+ let s=fresh(33);
+ s=apply(s,"begin1","begin",{scenario:"local-reform"});
+ s=apply(s,"research1","move",{action:{kind:"investigate",factId:"contract-cost"}});
+ s=apply(s,"research2","move",{action:{kind:"investigate",factId:"contract-cost"}});
+ s=apply(s,"share1","move",{action:{kind:"share",actorId:"eleni",sourceId:"audit"}});
+ const beliefBefore=s.active.strategy.actors.find(x=>x.id==="eleni").belief;
+ assert.ok(beliefBefore.confidence>0.1);
+ s=apply(s,"quit1","move",{action:{kind:"withdraw"}});
+ s=apply(s,"close1","close");
+ s=apply(s,"pass","advance",{days:730});
+ s=apply(s,"begin2","begin",{scenario:"local-reform"});
+ const actor=s.active.strategy.actors.find(x=>x.id==="eleni");
+ assert.ok(actor.belief.confidence>=0.1);
+ assert.ok(actor.belief.confidence<beliefBefore.confidence);
+ assert.equal(actor.belief.heardGroups.includes("audit"),true);
+ assert.equal(actor.stance,"undecided");
+ assert.deepEqual(loadSaga(saveSaga(s)),s);
+});
