@@ -315,3 +315,40 @@ test("short CLI fixture narrates 18 actual turns and preserves audit footer", as
   assert.match(stdout, /Ηλικία 18/);
   assert.match(stdout, /Τέλος/);
 });
+
+
+test("independent world events follow seed and date, not a wealth/power target", () => {
+  let witnessed = 0;
+  let quiet = 0;
+  for (let seed = 0; seed < 100; seed++) {
+    const noDream = act(fresh(seed), { id: "wait-all", kind: "wait", days: 180 });
+    const withDream = replayLife(fresh(seed), [
+      { ...dream, id: "new-aspiration" },
+      { id: "wait-all", kind: "wait", days: 180 }
+    ]);
+    const worldA = noDream.simulation.publicEvents.filter(e => e.parent === "world-seed");
+    const worldB = withDream.simulation.publicEvents.filter(e => e.parent === "world-seed");
+    assert.deepEqual(worldA, worldB);
+    assert.equal(playerView(noDream).economy, playerView(withDream).economy);
+    assert.equal(noDream.cash, withDream.cash);
+    if (worldA.length) witnessed++; else quiet++;
+  }
+  assert.ok(witnessed > 0, "some worlds should have independent market news");
+  assert.ok(quiet > 0, "some worlds should be quiet");
+});
+
+test("calendar advances market events exactly once even across large leaps and saves", () => {
+  const seed = Array.from({ length: 100 }, (_, i) => i)
+    .find(i => fresh(i).simulation.world.events.some(e => e.date === "2028-10-28"));
+  assert.notEqual(seed, undefined);
+  const original = fresh(seed);
+  assert.equal(playerView(original).economy, "steady");
+  assert.equal(JSON.stringify(playerView(original)).includes("world-seed"), false);
+  const reached = act(original, { id: "w1", kind: "wait", days: 365 });
+  const headlines = reached.simulation.publicEvents.filter(e => e.parent === "world-seed");
+  assert.ok(headlines.length > 0);
+  const later = act(reached, { id: "w2", kind: "wait", days: 365 });
+  const combined = later.simulation.publicEvents.filter(e => e.parent === "world-seed");
+  assert.equal(combined.filter(e => e.id === "economy-0").length, 1);
+  assert.deepEqual(loadLife(saveLife(later)), later);
+});
