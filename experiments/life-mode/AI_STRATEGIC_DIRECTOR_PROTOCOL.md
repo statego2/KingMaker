@@ -208,3 +208,22 @@ Run \`node --test experiments/life-mode/*.test.mjs\` and \`npm run verify\` on t
 - Does the scene stay entertaining without opening the technical design document?
 
 **Game director mantra:** Deep simulation inside, simple human story outside.
+
+
+## 12. Strategic Depth v1.1 — knowledge transfer, multi-arc memory and trustworthy AI packets
+
+The follow-on experimental slice adds distinct **private NPC beliefs** and the \`share\` command. A player can now privately present one **actually discovered** source to a specific person. Correlated sources do not multiply evidence indefinitely. The NPC updates an uncertain belief but is **not** forced to agree or support the player. The player's narration must not include the hidden numeric probabilities. Source-sharing is not equivalent to formal disclosure to all the world.
+
+\`strategic-saga.mjs\` extends a single fictional lifetime across sequential strategic arcs. Characters who return in the same role remember past trust and source knowledge, with modest confidence decay; they do not automatically bring earlier votes, wealth or contractual status to a different episode. The independent Life Mode calendar continues across arcs, including quiet years.
+
+\`strategic-gm-adapter.mjs\` is the preferred data boundary for model-led playtests. \`createGameMasterPacket()\` has:
+- \`public\`: safe status, player-known sources, role labels and Life Mode footer.
+- \`director_only\`: private agenda, outside options, hidden strategy annotations and archived causal context. **Never paste this into player-facing prose.**
+- \`schema\`: accepted model-generated command types, known actors and **known source IDs**.
+- \`narration\`: visible-output contract with unambiguous verdict and optional free-form follow-up.
+
+\`validateModelProposal()\` rejects claims of wealth, raw state mutation, invented actor IDs, fabricated evidence, unsupported actions and out-of-range deal terms. Then \`resolveGameMasterProposal()\` runs the real reducer to produce the actual verdict. The language model must **not** decide it already succeeded merely because it can write convincing dialogue.
+
+For deeper domain retrieval use \`strategicCaseKnowledgePack(caseId)\` from \`strategy-knowledge-graph.mjs\`. It combines selected story case, competencies, tradeoffs, counterparty countermoves and callbacks; it does not imply that the original 1,000-question corpus was recovered.
+
+**Outstanding work:** a reliable open-ended Greek intent interpreter, genuinely larger institutional worlds, actor-to-actor agendas, deeper formal assets/debt/ownership, and creator enjoyment testing. These features are not represented as shipped.
