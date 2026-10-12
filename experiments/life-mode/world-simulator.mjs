@@ -8,7 +8,8 @@ const DAY = 86_400_000;
 const CONTACTS = Object.freeze({
   lender: { name: "Μαρία", role: "υπεύθυνη χρηματοδότησης" },
   advisor: { name: "Αλέξης", role: "σύμβουλος επιχειρήσεων" },
-  friend: { name: "Ελένη", role: "φίλη" }
+  friend: { name: "Ελένη", role: "φίλη" },
+  organizer: { name: "Νίκος", role: "οργανωτής κοινότητας" }
 });
 
 function day(date) {
@@ -74,7 +75,8 @@ export function beginLife(config) {
     ...run,
     simulation: {
       ruleset: RULESET, seed, finished: false,
-      offers: [], projects: [], relationships: [],
+      offers: [], projects: [], relationships: [], politicalContacts: [],
+      skills: { business: 0, society: 0 }, knowledge: { venture: false }, influence: 0,
       advisor: false, lastPitchAt: null, publicEvents: []
     }
   };
@@ -133,6 +135,7 @@ export function act(previous, command) {
                   : "Το έργο " + p.id + " απέτυχε· το αρχικό κεφάλαιο χάθηκε.");
       released.push(msg);
       sim.publicEvents.push({ id: "settle-" + p.id, date: p.dueOn, parent: p.actionId, text: msg });
+      if (p.political && favorable) sim.influence = Math.min(10, sim.influence + 1);
     }
     date = to;
   }
@@ -201,8 +204,10 @@ export function act(previous, command) {
       sim.lastPitchAt = date;
       reveal(visiblePeople, "lender");
       const tooLarge = amount > 30_000;
-      const score = 0.35 + (sim.advisor ? 0.15 : 0) + Math.min(previous.cash / 100_000, 0.15) - (amount > 15_000 ? 0.12 : 0);
-      const approved = !tooLarge && chance(sim.seed, id, "lender") < score;
+      const score = 0.35 + (sim.advisor ? 0.15 : 0) + Math.min(previous.cash / 100_000, 0.15) - (amount > 15_000 ? 0.12 : 0)
+        + sim.skills.business * 0.02;
+      const overLeveraged = previous.debt > Math.max(25_000, previous.cash * 2);
+      const approved = !tooLarge && !overLeveraged && chance(sim.seed, previous.turns.length + 1, "lender") < score;
       if (approved) {
         const offerId = "offer-" + id;
         sim.offers.push({ id: offerId, amount, lender: "lender", expiresOn: addDays(date, 30), status: "open", planId: plan.id });
@@ -211,7 +216,7 @@ export function act(previous, command) {
         scene = "Η Μαρία (χρηματοδότηση) προσφέρει δάνειο €" + amount + " με ισόποσο χρέος. Μπορείς να το αποδεχτείς ή να το αφήσεις.";
       } else {
         result = "failed";
-        cause = tooLarge ? "Το ποσό υπερβαίνει την τρέχουσα πολιτική χρηματοδότησης." : "Η τράπεζα έκρινε τον κίνδυνο υπερβολικό.";
+        cause = tooLarge ? "Το ποσό υπερβαίνει την τρέχουσα πολιτική χρηματοδότησης." : overLeveraged ? "Οι υφιστάμενες οφειλές είναι ήδη υψηλές." : "Η τράπεζα έκρινε τον κίνδυνο υπερβολικό.";
         scene = "Η Μαρία (χρηματοδότηση) αρνήθηκε. Το σχέδιο παραμένει διαθέσιμο για αναθεώρηση.";
       }
       break;
@@ -230,6 +235,63 @@ export function act(previous, command) {
         cause = "Υπήρχε μη ληγμένη προσφορά και ο παίκτης αποδέχτηκε το χρέος.";
         scene = "Έλαβες €" + offer.amount + ". Η οφειλή αυξήθηκε ισόποσα.";
       }
+      break;
+    }
+    case "repay": {
+      const requested = positiveInt(command.amount, "repayment", 10_000_000);
+      const payment = Math.min(requested, previous.debt);
+      if (!payment) {
+        result = "failed";
+        cause = "Δεν υπάρχει ανεξόφλητο δάνειο.";
+        scene = "Δεν υπάρχει χρέος για εξόφληση.";
+      } else if (payment > previous.cash) {
+        result = "failed";
+        cause = "Τα διαθέσιμα δεν επαρκούν για την αποπληρωμή.";
+        scene = "Δεν έχεις τα χρήματα για αυτή την αποπληρωμή.";
+      } else {
+        money(-payment, -payment, "Αποπληρωμή κεφαλαίου δανείου");
+        result = "succeeded";
+        cause = "Οφειλή και μετρητά μειώθηκαν ισόποσα.";
+        scene = "Πλήρωσες €" + payment + " από το δάνειο.";
+      }
+      break;
+    }
+    case "study": {
+      if (!["business", "society"].includes(command.subject)) throw new Error("Unknown study subject");
+      pass(30);
+      const subject = command.subject;
+      if (sim.skills[subject] >= 5) {
+        result = "partial";
+        cause = "Επιπλέον μελέτη σε αυτό το επίπεδο έχει μειωμένη επίδραση.";
+        scene = "Συνέχισες τη μελέτη· δεν δημιουργήθηκε νέο επίτευγμα από μόνο του.";
+      } else {
+        sim.skills[subject]++;
+        result = "succeeded";
+        cause = "Συστηματική μελέτη επί 30 ημέρες, με κόστος χρόνου.";
+        scene = "Έναν μήνα αργότερα κατανοείς καλύτερα το θέμα που μελέτησες.";
+      }
+      break;
+    }
+    case "investigate": {
+      if (command.subject !== "venture") throw new Error("Unknown investigation");
+      if (sim.knowledge.venture) {
+        result = "partial";
+        cause = "Η αναζήτηση επαναλαμβάνει όσα είναι ήδη γνωστά.";
+        scene = "Οι βασικοί κίνδυνοι είναι ήδη καταγεγραμμένοι.";
+        break;
+      }
+      if (previous.cash < 100) {
+        result = "failed";
+        cause = "Η έρευνα απαιτεί €100 για υπηρεσίες/δεδομένα.";
+        scene = "Δεν καλύπτεται ακόμη το κόστος της έρευνας.";
+        break;
+      }
+      pass(14);
+      money(-100, 0, "Αγορά στοιχείων και ανεξάρτητη έρευνα αγοράς");
+      sim.knowledge.venture = true;
+      result = "succeeded";
+      cause = "Η εξέταση αποκάλυψε εύρος κινδύνου, όχι το μυστικό αποτέλεσμα του εγχειρήματος.";
+      scene = "Έχεις πλέον εικόνα των βασικών εμπορικών κινδύνων. Η πιθανότητα επιτυχίας βελτιώνεται, χωρίς εγγύηση.";
       break;
     }
     case "delegate": {
@@ -266,20 +328,67 @@ export function act(previous, command) {
         scene = "Δεν μπορείς να ξεκινήσεις με αυτά τα χρήματα. Μπορείς να εργαστείς, να μειώσεις το σχέδιο ή να αναζητήσεις χρηματοδότηση.";
         break;
       }
-      if (sim.projects.some(p => p.id === "project-" + plan.id && p.status === "running")) {
+      if (sim.projects.some(p => p.planId === plan.id && p.status === "running")) {
         throw new Error("Plan already has a running project");
       }
       money(-budget, 0, "Δεσμεύτηκε πραγματικό κεφάλαιο για νέο έργο");
       const p = {
-        id: "project-" + plan.id, actionId: id, planId: plan.id,
+        id: "project-" + id, actionId: id, planId: plan.id,
         budget, dueOn: addDays(date, 90), status: "running",
-        roll: chance(sim.seed, id, "venture"),
-        successChance: sim.advisor ? 0.60 : 0.42
+        roll: chance(sim.seed, previous.turns.length + 1, "venture"),
+        successChance: Math.min(0.85, (sim.advisor ? 0.60 : 0.42) +
+          (sim.knowledge.venture ? 0.08 : 0) + sim.skills.business * 0.03)
       };
       sim.projects.push(p);
       result = "partial";
       cause = "Η επένδυση εκκινεί το έργο, αλλά η απόδοση παραμένει αβέβαιη για 90 ημέρες.";
       scene = "Το έργο άρχισε με €" + budget + ". Το αποτέλεσμα δεν είναι γνωστό ακόμη.";
+      break;
+    }
+    case "network": {
+      reveal(visiblePeople, "organizer");
+      pass(14);
+      const accepted = chance(sim.seed, previous.turns.length + 1, "organizer") <
+        Math.min(0.90, 0.6 + sim.skills.society * 0.07);
+      const person = sim.politicalContacts.find(p => p.actorId === "organizer");
+      if (accepted) {
+        if (person) person.trust = Math.min(4, person.trust + 1);
+        else sim.politicalContacts.push({ actorId: "organizer", trust: 1 });
+        result = "succeeded";
+        cause = "Ο Νίκος (οργανωτής κοινότητας) αποφάσισε ότι η συνεργασία αξίζει τον χρόνο του.";
+        scene = "Ο Νίκος (οργανωτής κοινότητας) δέχτηκε να συνεργαστεί στην τοπική οργάνωση.";
+      } else {
+        result = "failed";
+        cause = "Ο Νίκος (οργανωτής κοινότητας) προτίμησε άλλες δεσμεύσεις.";
+        scene = "Ο Νίκος (οργανωτής κοινότητας) δεν δέχτηκε την πρόταση. Η κοινότητα συνεχίζει χωρίς εσένα.";
+      }
+      break;
+    }
+    case "organize": {
+      const plan = activePlan(previous, required(command.planId, "plan ID"));
+      const budget = positiveInt(command.budget, "community budget", 100_000);
+      const trust = sim.politicalContacts.find(p => p.actorId === "organizer")?.trust ?? 0;
+      if (budget > previous.cash) {
+        result = "failed";
+        cause = "Η διοργάνωση απαιτεί πραγματικά διαθέσιμα χρήματα.";
+        scene = "Η διοργάνωση δεν ξεκινά χωρίς τους πόρους.";
+        break;
+      }
+      if (sim.projects.some(p => p.planId === plan.id && p.status === "running")) {
+        throw new Error("Plan already has a running project");
+      }
+      money(-budget, 0, "Πραγματική δαπάνη δημόσιας διοργάνωσης");
+      const p = {
+        id: "project-" + id, actionId: id, planId: plan.id,
+        budget, dueOn: addDays(date, 60), status: "running",
+        roll: chance(sim.seed, previous.turns.length + 1, "organize"),
+        successChance: Math.min(0.80, 0.22 + trust * 0.13 + sim.skills.society * 0.06),
+        political: true
+      };
+      sim.projects.push(p);
+      result = "partial";
+      cause = "Τα χρήματα ξοδεύτηκαν σε πραγματική προσπάθεια· η ανταπόκριση των πολιτών παραμένει άγνωστη.";
+      scene = "Ξεκινά η διοργάνωση. Οι άλλοι συμμετέχουν μόνο αν το επιλέξουν.";
       break;
     }
     case "connect": {
@@ -297,7 +406,7 @@ export function act(previous, command) {
       reveal(visiblePeople, "friend");
       pass(2);
       const relation = sim.relationships.find(r => r.actorId === "friend");
-      const accepted = !!relation && relation.trust >= 2 && chance(sim.seed, id, "consent") < 0.65;
+      const accepted = !!relation && relation.trust >= 2 && chance(sim.seed, previous.turns.length + 1, "consent") < 0.65;
       if (accepted) relation.mutuallyInterested = true;
       result = accepted ? "succeeded" : "failed";
       cause = accepted ? "Η Ελένη (φίλη) εξέφρασε δική της αμοιβαία επιθυμία." : "Η Ελένη (φίλη) δεν συναίνεσε· το αίτημα δεν δεσμεύει άλλο πρόσωπο.";
@@ -348,6 +457,9 @@ export function playerView(run) {
     offers: sim.offers.filter(o => o.status === "open" && o.expiresOn >= run.date)
       .map(({ id, amount, expiresOn, planId }) => ({ id, amount, expiresOn, planId })),
     relationships: sim.relationships.map(({ actorId, trust, mutuallyInterested }) => ({ actorId, trust, mutuallyInterested })),
+    politicalContacts: structuredClone(sim.politicalContacts),
+    skills: structuredClone(sim.skills), knowledge: structuredClone(sim.knowledge),
+    influence: sim.influence,
     lastEvent: run.turns.length ? structuredClone(run.turns.at(-1)) : null,
     finished: sim.finished,
     footer: statusFooter(run)
