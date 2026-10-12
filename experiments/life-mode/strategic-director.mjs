@@ -6,7 +6,7 @@ const clip = (x,a,b) => Math.min(b,Math.max(a,x));
 const str = (x,label) => { if(typeof x!=="string" || !x.trim() || x.length>160)throw Error("Invalid "+label);return x.trim(); };
 const int = (x,a,b,label) => { if(!Number.isSafeInteger(x)||x<a||x>b)throw Error("Invalid "+label);return x; };
 function chance(seed,...p){let h=2166136261;for(const c of [seed,...p].join("|"))h=Math.imul(h^c.charCodeAt(0),16777619);return (h>>>0)/4294967296;}
-const TYPES=new Set(["listen","investigate","prepare","offer","coordinate","publish","commit","wait","withdraw"]);
+const TYPES=new Set(["listen","investigate","share","prepare","offer","coordinate","publish","commit","wait","withdraw"]);
 export const SCENARIOS=Object.freeze({
  "local-reform":{
    title:"Το συμβούλιο που δεν σε εμπιστεύεται",issue:"Μεταρρύθμιση δημοτικών υπηρεσιών",
@@ -70,7 +70,9 @@ export function beginStrategy({scenario="local-reform",seed=1}={}){
  const c=SCENARIOS[scenario];
  return {version:1,scenario,seed,turn:0,result:"ongoing",
   resources:{budget:c.budget,credibility:2,preparation:0,exposure:0},
-  actors:c.actors.map(a=>({...copy(a),memory:[],offers:0,consulted:false,rivalMoves:0})),
+  actors:c.actors.map(a=>({...copy(a),memory:[],offers:0,consulted:false,rivalMoves:0,
+   belief:{probability:Number((0.25+chance(seed,"belief",a.id)*0.5).toFixed(3)),
+    confidence:0.1,heardGroups:[]}})),
   evidence:[],disclosed:false,coordinated:false,pressure:1,
   events:[],hiddenEvents:[],history:[],commitments:[]};
 }
@@ -129,6 +131,24 @@ export function strategyTurn(previous,command){
    cause="Η πηγή καταγράφεται με προέλευση· η πραγματική αλήθεια παραμένει χωριστή.";
    break;
   }
+  case "share":{
+   const a=actor(s,str(command.actorId,"actorId"));
+   const source=s.evidence.find(e=>e.id===str(command.sourceId,"source ID"));
+   if(!source)throw Error("Cannot share a source the player has not discovered");
+   if(a.belief.heardGroups.includes(source.group)){
+    result="partial";detail=a.name+" ("+a.role+") είχε ήδη λάβει στοιχεία αυτής της αλυσίδας.";
+    cause="Η αναπαραγωγή κοινής πηγής δεν αποτελεί ανεξάρτητη απόδειξη.";break;
+   }
+   a.belief.heardGroups.push(source.group);
+   const influence=source.quality==="documented"?0.3:0.07;
+   const direction=source.claim?1:0;
+   a.belief.probability=Number((a.belief.probability*(1-influence)+direction*influence).toFixed(3));
+   a.belief.confidence=Number(clip(a.belief.confidence+(source.quality==="documented"?0.24:0.04),0,1).toFixed(3));
+   a.memory.push({turn:s.turn,type:"heard-source",sourceId:source.id,group:source.group});
+   result="succeeded";detail=a.name+" ("+a.role+") μελέτησε την πηγή «"+source.label+"». Δεν υποσχέθηκε υποστήριξη.";
+   cause="Το πρόσωπο ενημέρωσε τη δική του αβέβαιη πεποίθηση με βάση μια αποδιδόμενη πηγή.";
+   break;
+  }
   case "prepare":{
    if(s.resources.budget<1){result="failed";detail="Δεν υπάρχουν πόροι προετοιμασίας.";cause="Πραγματικός περιορισμός.";break;}
    if(s.resources.preparation>=3){result="partial";detail="Φθίνουσα οριακή απόδοση προετοιμασίας.";cause="Δεν υπάρχει αθροιστικό άπειρο bonus.";break;}
@@ -142,7 +162,7 @@ export function strategyTurn(previous,command){
    if(t.budget>s.resources.budget){result="failed";detail="Μη χρηματοδοτημένη προσφορά.";cause="Υποσχέσεις χωρίς πόρους δεν είναι συμβόλαια.";break;}
    if(a.stance==="supporting"){result="partial";detail="Υπάρχει ήδη δέσμευση.";cause="Απαγορεύεται διπλή αγορά στήριξης.";break;}
    const focused=t[a.priority];
-   const utility=focused*2+a.trust+Math.min(2,s.resources.preparation)+
+   const utility=focused*2+a.trust+(a.priority==="transparency"&&a.belief.confidence>=0.34?1:0)+Math.min(2,s.resources.preparation)+
       Math.min(2,t.budget)-a.outside-Math.floor(s.pressure/4)+(s.turn>=c.deadline-2?1:0);
    const accepted=utility>=a.threshold&&chance(s.seed,"accept",a.id,s.turn)>=.12;
    a.offers++;
@@ -238,6 +258,6 @@ export function strategyDesignerAudit(s){
  if(!s||s.version!==1)throw Error("Unknown state");
  return {seed:s.seed,truth:SCENARIOS[s.scenario].fact.truth,pressure:s.pressure,
   actorMotives:s.actors.map(a=>({id:a.id,priority:a.priority,threshold:a.threshold,outside:a.outside,
-   trust:a.trust,stance:a.stance,memory:copy(a.memory),rivalMoves:a.rivalMoves})),
+   trust:a.trust,stance:a.stance,memory:copy(a.memory),belief:copy(a.belief),rivalMoves:a.rivalMoves})),
   hiddenEvents:copy(s.hiddenEvents),commitments:copy(s.commitments)};
 }
