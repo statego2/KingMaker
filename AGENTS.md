@@ -7,6 +7,11 @@ Build a genuinely enjoyable **cinematic political strategy game** in which the p
 ## Chat-first creative playtesting (owner direction, 2026-10-08)
 When the owner asks to play or iterate on the story, use the conversation as KINGMAKER's provisional player-facing interface. Read [the chat-first workflow](docs/CHAT_FIRST_PLAYTEST_WORKFLOW.md) and the latest relevant [playtest record](docs/PLAYTESTS/2026-10-08-chat-001.md) before continuing. Keep player actions, discoveries and unresolved decisions consistent. Work on the underlying story, state, engine and tests in GitHub as specific decisions are accepted. Treat chat inventions as experiments until promoted; do not claim the browser build already implements them. This direction remains active until the owner changes it.
 
+
+## Experimental Life Mode / AI-as-UI backend (draft, not released)
+If the owner explicitly requests **Life Mode simulation, AI-chat interface integration or strategic life-world materials**, begin at [the experimental entrypoint](experiments/life-mode/START_HERE.md) and [backend architecture](experiments/life-mode/backend/README.md). The unified session API is [backend/index.mjs](experiments/life-mode/backend/index.mjs); read [AI-chat runtime protocol](experiments/life-mode/AI_CHAT_RUNTIME_PROTOCOL.md) before narrating any executed turn. This experimental work lives in stacked **draft PRs #18→#19→#20→#21**, not the current main/Pages game.
+**Critical:** Merely reading the repository from GitHub does not execute the Node resolver. A chat-only roleplay without live host access is a provisional narrated playtest, not an engine-executed game. Do not confuse the authored 12 strategic case seeds with three executable sandbox worlds, and do not silently replace the shipped political game or production backlog.
+
 ## Required startup sequence
 1. Pull/check **current** `main`; inspect any open PRs/branches before writing.
 2. Read `docs/NEXT_ACTION.md`, `docs/PRODUCTION_PLAN.md`, and `data/production_backlog_v1.json`.
