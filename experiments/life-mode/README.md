@@ -70,3 +70,17 @@ All costs and odds are **toy calibration values**, not empirical economic foreca
 Begin at 18 with €900 and a freely worded dream. Let the player ask for funding beyond present means and show an immediate feasible, grounded refusal. Allow a self-directed plan, a small delegated task, voluntary NPC disagreement, an investment and a ninety-day leap; keep a compact resource/goal/plan footer. Try a contrasting dream (study/connection/community) with similarly genuine responses. Record exactly where the player finds it fun or tedious; the code passing tests is not proof of either.
 
 Only promote the experiment into official production after comparing a real chat playtest to the existing campaign and explicitly approving the pivot.
+
+
+## Strategic-depth laboratory (stacked draft branch, October 12)
+
+A separate [strategic engine handoff](STRATEGY_ENGINE_HANDOFF.md) describes the next experimental slice and links its reproducible checks. This is not part of the published political browser build.
+
+- **GM contract:** [AI Strategic Director Protocol](AI_STRATEGIC_DIRECTOR_PROTOCOL.md) keeps the story free-form while the hidden state models motives, evidence, opposition, resources and time.
+- **Engines:** \`strategic-director.mjs\`, \`strategic-life-bridge.mjs\`, \`strategic-saga.mjs\`, \`strategic-gm-adapter.mjs\`.
+- **Strategic corpus:** \`strategy-mechanisms.mjs\` (36 new authored mechanisms), \`strategy-knowledge-graph.mjs\` (60 competency crosswalk), \`strategy-casebook.mjs\` (12 authored case seeds).
+- **Executable demonstrations:** \`node experiments/life-mode/strategy-demo.mjs\` and \`node experiments/life-mode/strategy-balance.mjs\`.
+- **Truth boundary:** 3 executable strategy scenarios and 12 non-executable case seeds. The 1,000 original question records are still absent, and no original item-level mapping is claimed.
+- **Human approval:** Still pending. Node testing does not establish fun, realism or iPhone playability.
+
+**Current order of stacked proposals:** PR #18 (Life Mode charter and ledger) → PR #19 (life world resolver) → PR #20 (strategic-depth experiment). Do not merge directly into public main or replace the old campaign without an explicit owner-reviewed decision.
