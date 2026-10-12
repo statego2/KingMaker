@@ -124,15 +124,19 @@ export function act(previous, command) {
       p.status = "resolved";
       const favorable = p.roll < p.successChance;
       // Spend happened at launch. The payout can be zero: no forced bailout.
-      const payout = favorable ? Math.floor(p.budget * 1.55) :
+      const payout = p.political ? 0 : favorable ? Math.floor(p.budget * 1.55) :
         (p.roll < p.successChance + 0.25 ? Math.floor(p.budget * 0.35) : 0);
       p.payout = payout;
-      p.outcome = favorable ? "profitable" : (payout ? "partial" : "failed");
+      p.outcome = p.political ? (favorable ? "supported" : "rejected")
+        : (favorable ? "profitable" : (payout ? "partial" : "failed"));
       if (payout) money(payout, 0, "Διακανονισμός έργου " + p.id);
-      const msg = favorable
-        ? "Το έργο " + p.id + " απέδωσε €" + payout + "."
-        : (payout ? "Το έργο " + p.id + " ανέκτησε μόνο €" + payout + "."
-                  : "Το έργο " + p.id + " απέτυχε· το αρχικό κεφάλαιο χάθηκε.");
+      const msg = p.political
+        ? (favorable ? "Η πρωτοβουλία " + p.id + " απέκτησε τοπική υποστήριξη."
+                     : "Η πρωτοβουλία " + p.id + " δεν συγκέντρωσε αρκετή υποστήριξη.")
+        : favorable
+          ? "Το έργο " + p.id + " απέδωσε €" + payout + "."
+          : (payout ? "Το έργο " + p.id + " ανέκτησε μόνο €" + payout + "."
+                    : "Το έργο " + p.id + " απέτυχε· το αρχικό κεφάλαιο χάθηκε.");
       released.push(msg);
       sim.publicEvents.push({ id: "settle-" + p.id, date: p.dueOn, parent: p.actionId, text: msg });
       if (p.political && favorable) sim.influence = Math.min(10, sim.influence + 1);
