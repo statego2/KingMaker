@@ -167,3 +167,53 @@ test("mass scenario integrity: 100 seeds across 3 worlds, no impossible support 
   }
  }
 });
+
+
+test("accepted coalition promise has a deadline and can lapse without narrator fiat",()=>{
+ let found=null;
+ for(let seed=0;seed<100;seed++){
+  const initial=start("local-reform",seed);
+  const signed=take(initial,"agreement","offer",{actorId:"eleni",terms:{transparency:3}});
+  if(signed.actors.find(a=>a.id==="eleni").stance==="supporting"){found=signed;break;}
+ }
+ assert.ok(found,"must be possible to agree");
+ assert.equal(found.commitments.length,1);
+ assert.equal(found.commitments[0].status,"pending");
+ assert.equal(found.commitments[0].dueTurn,5);
+ let s=found;
+ for(let i=2;i<=5;i++)s=take(s,"wait"+i,"wait");
+ assert.equal(s.commitments[0].status,"expired");
+ assert.equal(s.actors.find(a=>a.id==="eleni").stance,"undecided");
+ assert.ok(s.events.some(e=>e.type==="promise-lapse"));
+ assert.ok(s.actors.find(a=>a.id==="eleni").memory.some(m=>m.type==="missed-commitment"));
+});
+test("secured coalition activates actual earlier promises and does not erase commitments",()=>{
+ let won=null;
+ for(let seed=0;seed<250;seed++){
+  let s=start("local-reform",seed);
+  s=take(s,"a","offer",{actorId:"eleni",terms:{transparency:3}});
+  s=take(s,"b","offer",{actorId:"nikos",terms:{autonomy:3,budget:2}});
+  if(s.actors.filter(a=>a.stance==="supporting").length!==2)continue;
+  s=take(s,"c","coordinate");
+  s=take(s,"d","commit");
+  if(s.result==="secured"){won=s;break;}
+ }
+ assert.ok(won,"should be able to reach victory before promises expire");
+ assert.equal(won.commitments.length,2);
+ assert.ok(won.commitments.every(p=>p.status==="activated"));
+ assert.ok(strategyDesignerAudit(won).commitments.every(p=>p.status==="activated"));
+ assert.ok(won.history.at(-1).outcome.result==="succeeded");
+});
+test("withdrawing after agreement preserves actual cost and labels open commitments abandoned",()=>{
+ let s=null;
+ for(let seed=0;seed<100;seed++){
+  const x=take(start("local-reform",seed),"offer","offer",{actorId:"eleni",terms:{transparency:3,budget:1}});
+  if(x.commitments.length){s=x;break;}
+ }
+ assert.ok(s);
+ const spent=s.resources.budget;
+ const left=take(s,"exit","withdraw");
+ assert.equal(left.resources.budget,spent);
+ assert.equal(left.commitments[0].status,"abandoned");
+ assert.equal(left.result,"withdrawn");
+});
