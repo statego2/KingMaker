@@ -72,9 +72,23 @@ export function beginStrategy({scenario="local-reform",seed=1}={}){
   resources:{budget:c.budget,credibility:2,preparation:0,exposure:0},
   actors:c.actors.map(a=>({...copy(a),memory:[],offers:0,consulted:false,rivalMoves:0})),
   evidence:[],disclosed:false,coordinated:false,pressure:1,
-  events:[],hiddenEvents:[],history:[]};
+  events:[],hiddenEvents:[],history:[],commitments:[]};
 }
 function autonomy(s){
+ // Terms accepted by a third party are not indefinite: missed shared action
+ // changes their incentive to stay, without any new command from the player.
+ for(const promise of s.commitments){
+  if(promise.status!=="pending" || s.turn<promise.dueTurn)continue;
+  promise.status="expired";
+  const ally=actor(s,promise.actorId);
+  if(ally.stance==="supporting"){
+   ally.stance="undecided";
+   ally.trust=clip(ally.trust-1,-5,5);
+   ally.memory.push({turn:s.turn,type:"missed-commitment",acceptedTurn:promise.acceptedTurn});
+   s.events.push({turn:s.turn,type:"promise-lapse",
+    text:ally.name+" ("+ally.role+") αποσύρει την προσωρινή στήριξη μετά από αναβολές χωρίς υλοποίηση."});
+  }
+ }
  const rival=s.actors.find(a=>a.rival);
  if(s.turn>=3&&s.turn%3===0&&support(s)<SCENARIOS[s.scenario].target&&chance(s.seed,"rival",s.turn)<.72){
   s.pressure=clip(s.pressure+1,0,10);rival.rivalMoves++;
@@ -136,6 +150,7 @@ export function strategyTurn(previous,command){
     s.resources.budget-=t.budget;a.trust=clip(a.trust+1,-5,5);a.stance="supporting";
     a.memory.push({turn:s.turn,type:"agreement",terms:t});
     s.hiddenEvents.push({turn:s.turn,type:"obligation",actorId:a.id,terms:t});
+    s.commitments.push({actorId:a.id,terms:t,acceptedTurn:s.turn,dueTurn:s.turn+4,status:"pending"});
     result="succeeded";detail=a.name+" ("+a.role+") αποδέχτηκε δεσμευτικούς όρους.";
     cause="Όφελος, εμπιστοσύνη και εξωτερικές επιλογές κάλυψαν το προσωπικό κατώφλι.";
    }else{
@@ -176,7 +191,8 @@ export function strategyTurn(previous,command){
    const backing=support(s);
    if(backing>=c.target&&s.resources.credibility>=1&&s.resources.exposure<=6){
     s.result="secured";result="succeeded";
-    detail="Η συμμαχία επικυρώθηκε. Η πρωτοβουλία εγκρίθηκε.";
+    for(const p of s.commitments)if(p.status==="pending")p.status="activated";
+    detail="Η συμμαχία επικυρώθηκε. Η πρωτοβουλία εγκρίθηκε." ;
     cause="Επαρκείς πραγματικές δεσμεύσεις πριν από την προθεσμία.";
    }else{
     result="failed";detail="Δεν υπάρχει εφικτή συμμαχία: "+backing+"/"+c.target+".";
@@ -190,12 +206,13 @@ export function strategyTurn(previous,command){
   }
   case "withdraw":{
    s.result="withdrawn";result="succeeded";detail="Αποσύρεσαι χωρίς να διαγράψεις δεσμεύσεις.";
+   for(const p of s.commitments)if(p.status==="pending")p.status="abandoned";
    cause="Ο παίκτης επιλέγει έξοδο και διατηρεί ιστορικό.";break;
   }
  }
  if(s.result==="ongoing"){
   autonomy(s);
-  if(s.turn>=c.deadline){s.result="expired";s.events.push({turn:s.turn,type:"deadline",text:"Η προθεσμία έληξε χωρίς συμφωνία."});}
+  if(s.turn>=c.deadline){s.result="expired";for(const p of s.commitments)if(p.status==="pending")p.status="expired";s.events.push({turn:s.turn,type:"deadline",text:"Η προθεσμία έληξε χωρίς συμφωνία."});}
  }
  s.history.push({id,turn:s.turn,kind,outcome:{result,detail,cause},
   playerText:typeof command.playerText==="string"?command.playerText.slice(0,500):null,
@@ -222,5 +239,5 @@ export function strategyDesignerAudit(s){
  return {seed:s.seed,truth:SCENARIOS[s.scenario].fact.truth,pressure:s.pressure,
   actorMotives:s.actors.map(a=>({id:a.id,priority:a.priority,threshold:a.threshold,outside:a.outside,
    trust:a.trust,stance:a.stance,memory:copy(a.memory),rivalMoves:a.rivalMoves})),
-  hiddenEvents:copy(s.hiddenEvents)};
+  hiddenEvents:copy(s.hiddenEvents),commitments:copy(s.commitments)};
 }
