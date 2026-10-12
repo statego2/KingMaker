@@ -5,3 +5,5 @@ export {buildDirectorBrief,buildPlayerBrief} from "../strategy-intelligence.mjs"
 export {createSession,applySession,sessionPlayerView,sessionDirectorPacket}
  from "../kingmaker-session.mjs";
 export {renderPlayerTurn,exportChatHandoff} from "../chat-handoff.mjs";
+
+export {findStrategicMaterial} from "../knowledge-retrieval.mjs";
