@@ -137,6 +137,9 @@ export function sessionDirectorPacket(session,{intentText=null}={}){
  const latestNaturalText=s.life.turns.at(-1)?.playerText??"";
  const related=findStrategicMaterial(intentText===null?latestNaturalText:intentText,{limit:3});
  const active=s.active?.strategy??null;
+ const availableRoutes=s.life.simulation.finished?[]:
+  active?(active.result==="ongoing"?["arc.move"]:["arc.close"]):
+  ["life.action","arc.begin","time.advance"];
  const caseId=active?PAIR[active.scenario]:null;
  const strategy=active?buildDirectorBrief(active):null;
  const knowledge=caseId?strategicCaseKnowledgePack(caseId):null;
@@ -157,6 +160,12 @@ export function sessionDirectorPacket(session,{intentText=null}={}){
   commandContract:{
    modelTool:AI_TOOL_CONTRACT.tool,
    routes:["life.action","arc.begin","arc.move","arc.close","time.advance"],
+   availableRoutes,
+   lifeArguments:copy(LIFE_FIELDS),
+   activeActors:active?.actors.map(a=>({id:a.id,name:a.name,role:a.role}))??[],
+   availableEvidenceIds:active?.evidence.map(e=>e.id)??[],
+   activeFactId:active?active.scenario&&
+    (active.scenario==="local-reform"?"contract-cost":active.scenario==="venture-alliance"?"supply-risk":"facility-access"):null,
    lifeActionKinds:Object.keys(LIFE_FIELDS),
    activeScenario:active?.scenario??null,
    strategicCommandKinds:active?[
