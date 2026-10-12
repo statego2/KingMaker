@@ -39,3 +39,8 @@ Now wire:
 ## Owner truth status
 
 This is an experiment that keeps the political browser game intact. There are 3 executable sandbox scenarios and 12 additional authored case seeds, not an unlimited full-world strategic simulator. The original 1,000 question corpus remains unmapped; source-based content must not be invented. Unit tests are not human fun tests. PR #21 must not be merged as an official creative pivot without approval.
+
+
+## Machine interface shortcuts
+
+When a Node host is actually running, the API function schema is available via \`{"op":"contract"}\`, the content index via \`{"op":"catalog"}\`, and command delivery via \`{"op":"step","command":{...}}\`. For a model, \`sessionDirectorPacket\` retrieves a **small relevant strategy packet** based on the player's observed goal; that is hidden analysis material, not an instruction to force the matching story.
