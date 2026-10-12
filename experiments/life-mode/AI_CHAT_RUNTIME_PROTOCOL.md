@@ -166,3 +166,37 @@ The result describes a provider-neutral function named \`kingmaker_step\` and JS
 \`sessionDirectorPacket(session,{intentText:"..."})\` can retrieve a small, topic-relevant set of patterns from \`knowledge-retrieval.mjs\`; those are GM notes, not player-facing scores or newly executable worlds. For example, “δισεκατομμύριο / επιχειρήσεις” selects business patterns; “πολιτική / συνασπισμός” selects political patterns; “μελέτη βιβλίων” selects a study-life case. **Selection does not imply consent or success.**
 
 The contract is not an already installed ChatGPT plugin or registered remote API. To connect it to a live conversation, a trusted model runner must transport those function calls to the actual Node host.
+
+
+## Optional stateless trusted-host invocation (no resident process)
+
+A future external AI connector can call a **pure host-side function** instead of keeping a JSON-lines Node process running:
+
+~~~js
+import {initializeGame,executeGameTurn,inspectGame}
+  from "./backend/index.mjs";
+
+const started=initializeGame({life:{
+  id:"sample",birthDate:"2010-04-12",startedAt:"2028-05-01",
+  location:"Θεσσαλονίκη",cash:900
+},seed:17});
+
+// Keep this OFF the model's player-facing transcript:
+let privateSave=started.privateSave;
+
+// Only the command itself is model-proposed.
+const resolved=executeGameTurn({
+  privateSave,
+  command:{id:"t1",route:"life.action",action:{
+    kind:"dream",goalId:"business",title:"Να φτιάξω επιχείρηση"
+  }}
+});
+privateSave=resolved.privateSave; // update host storage, never narrate it
+console.log(resolved.player);    // only this is safe player data
+
+// When needed, privately inspect relevant GM knowledge:
+const internal=inspectGame({privateSave,includeDirector:true,
+ intentText:"Θέλω να βρω επενδυτές"});
+~~~
+
+This adapter supports a future remote plugin, local app or model runner while ensuring only the **trusted host** retains the replay save. No automatic ChatGPT connection, authentication, encryption, persistence database or remote endpoint is implemented here.
