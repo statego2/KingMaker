@@ -54,3 +54,19 @@ test("model pipeline remains deterministic and save/load survives multiple turns
  assert.equal(copy.life.turns.length,3);
  assert.throws(()=>resolveGameMasterProposal(s,{id:"talk3",kind:"wait"}),/Duplicate/);
 });
+
+
+test("AI cannot share evidence it has not actually found; verified sharing stays inside actor beliefs",()=>{
+ let s=start();
+ let packet=createGameMasterPacket(s);
+ assert.throws(()=>validateModelProposal(packet,{id:"share0",kind:"share",actorId:"eleni",sourceId:"audit"}),/unknown evidence/);
+ s=resolveGameMasterProposal(s,{id:"invest1",kind:"investigate",factId:"contract-cost"}).run;
+ s=resolveGameMasterProposal(s,{id:"invest2",kind:"investigate",factId:"contract-cost"}).run;
+ packet=createGameMasterPacket(s);
+ assert.equal(packet.schema.discoveredSourceIds.includes("audit"),true);
+ const result=resolveGameMasterProposal(s,{id:"share1",kind:"share",actorId:"eleni",sourceId:"audit"});
+ assert.equal(result.response.event.result,"succeeded");
+ assert.equal(result.run.strategy.actors.find(a=>a.id==="eleni").stance,"undecided");
+ assert.equal(JSON.stringify(result.response).includes("probability"),false);
+ assert.equal(result.run.life.cash,900);
+});
