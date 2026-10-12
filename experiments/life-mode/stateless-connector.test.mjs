@@ -31,7 +31,7 @@ test("invalid commands or corrupted saves never produce modified output or persi
  const bad={id:"attack",route:"life.action",action:{kind:"work",shifts:2,cash:1000000}};
  assert.throws(()=>executeGameTurn({privateSave:s.privateSave,command:bad}),/Unauthorized|Unexpected/);
  assert.equal(inspectGame({privateSave:s.privateSave}).player.cash,900);
- assert.throws(()=>executeGameTurn({privateSave:"{}"}),/Unsupported/);
+ assert.throws(()=>executeGameTurn({privateSave:JSON.stringify({format:"wrong-save-format"})}),/Unsupported/);
  assert.throws(()=>inspectGame({privateSave:"not-json"}),/Invalid|Corrupt/);
  const cmd={id:"t1",route:"life.action",action:{kind:"work",shifts:1}};
  const one=executeGameTurn({privateSave:s.privateSave,command:cmd});
