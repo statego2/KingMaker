@@ -35,6 +35,11 @@ export function sagaCommand(previous,command){
     if(past){
      a.trust=Math.max(-5,Math.min(5,past.trust));
      a.memory=[...copy(past.memory.slice(-3)),{turn:0,type:"remembered-past-episode",arc:past.episode}];
+     if(past.belief){
+      a.belief={...copy(past.belief),
+       probability:Number((0.5+(past.belief.probability-0.5)*0.75).toFixed(3)),
+       confidence:Number(Math.max(0.1,past.belief.confidence*0.75).toFixed(3))};
+     }
     }
    }
    s.active={index,scenario:chapter.scenario,startedAt:s.life.date,strategy:chapter};
@@ -70,7 +75,7 @@ export function sagaCommand(previous,command){
    });
    for(const actor of a.strategy.actors){
     s.actorMemory[a.scenario+":"+actor.id]={
-      trust:actor.trust,memory:copy(actor.memory),episode:a.index
+      trust:actor.trust,memory:copy(actor.memory),belief:copy(actor.belief),episode:a.index
     };
    }
    s.active=null;
