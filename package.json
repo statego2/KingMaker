@@ -15,6 +15,10 @@
     "verify": "npm run check && npm test && npm run validate:backlog && npm run validate:taxonomy && npm run validate:mappings",
     "validate:taxonomy": "node tools/validate-knowledge-taxonomy.mjs",
     "validate:mappings": "node tools/validate-question-mappings.mjs",
-    "report:coverage": "node tools/report-knowledge-coverage.mjs"
+    "report:coverage": "node tools/report-knowledge-coverage.mjs",
+    "chat:host": "node experiments/life-mode/chat-host.mjs",
+    "chat:demo": "node experiments/life-mode/strategy-demo.mjs",
+    "chat:catalog": "node --input-type=module -e \"import {listBackendContent} from './experiments/life-mode/backend/index.mjs'; console.log(JSON.stringify(listBackendContent(),null,2))\"",
+    "test:chat": "node --test experiments/life-mode/kingmaker-session.test.mjs experiments/life-mode/chat-host.test.mjs experiments/life-mode/chat-handoff.test.mjs experiments/life-mode/backend-entry.test.mjs"
   }
 }

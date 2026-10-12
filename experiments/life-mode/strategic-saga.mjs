@@ -19,6 +19,7 @@ export function sagaCommand(previous,command){
  if(previous?.version!==1||!previous.origin||!Array.isArray(previous.commands))throw Error("Unknown saga format");
  if(!command||typeof command!=="object"||Array.isArray(command)||!valid(command.id))throw Error("Invalid saga command");
  if(previous.commands.some(c=>c.id===command.id))throw Error("Duplicate saga command");
+ if(previous.life?.simulation?.finished)throw Error("Finished life cannot start or continue another episode");
  const s=copy(previous);
  switch(command.kind){
   case "begin":{
@@ -79,6 +80,15 @@ export function sagaCommand(previous,command){
     };
    }
    s.active=null;
+   break;
+  }
+  case "life":{
+   // Explicit life actions use the canonical Life Mode resolver. Strategic arcs
+   // cannot be silently skipped or mutated by unrelated free-life commands.
+   if(s.active)throw Error("Close the active arc before an independent life action");
+   if(!command.action||typeof command.action!=="object"||Array.isArray(command.action))throw Error("Invalid life action");
+   const next={...copy(command.action),id:"saga-"+command.id};
+   s.life=act(s.life,next);
    break;
   }
   case "advance":{
