@@ -174,3 +174,89 @@ test("100 seed probes uphold money invariants, finite outcomes and reproducibili
   assert.ok(outcomes.has("profitable"), "Some seeds should succeed");
   assert.ok(outcomes.has("failed"), "Some seeds should fail");
 });
+
+
+test("repayment cancels matching debt and cash, with no debt magically cancelled", () => {
+  const initial = setup(5);
+  const offer = replayLife(initial, [
+    { id: "t3", kind: "pitch", planId: "venture", amount: 30_001 }
+  ]);
+  assert.equal(offer.simulation.offers.length, 0);
+  assert.equal(offer.debt, 0);
+  const withoutDebt = act(offer, { id: "t4", kind: "repay", amount: 100 });
+  assert.equal(withoutDebt.turns.at(-1).outcome.result, "failed");
+  assert.equal(withoutDebt.cash, initial.cash);
+  // Constructed debt through original trusted ledger, not an invented simulator transfer.
+  const debtRun = fresh(5);
+  debtRun.cash = 10_900;
+  debtRun.debt = 10_000;
+  const paid = act(debtRun, { id: "t1", kind: "repay", amount: 5_000 });
+  assert.equal(paid.cash, 5_900);
+  assert.equal(paid.debt, 5_000);
+  const denied = act(paid, { id: "t2", kind: "repay", amount: 6_000 });
+  assert.equal(denied.cash, paid.cash);
+  assert.equal(denied.debt, paid.debt);
+});
+
+test("30-day study and paid investigation alter opportunity, never reveal outcome", () => {
+  const run = setup(6);
+  const learned = act(run, { id: "t3", kind: "study", subject: "business" });
+  assert.equal(learned.simulation.skills.business, 1);
+  assert.equal(learned.date, "2028-05-31");
+  assert.equal(learned.cash, run.cash);
+  const scouted = act(learned, { id: "t4", kind: "investigate", subject: "venture" });
+  assert.equal(scouted.cash, 800);
+  assert.equal(scouted.simulation.knowledge.venture, true);
+  const launch = act(scouted, { id: "t5", kind: "launch", planId: "venture", budget: 500 });
+  assert.ok(launch.simulation.projects[0].successChance > 0.42);
+  assert.equal(playerView(launch).projects[0].roll, undefined);
+  assert.equal(playerView(launch).projects[0].successChance, undefined);
+  assert.equal(playerView(launch).knowledge.venture, true);
+  assert.equal(scouted.simulation.projects.length, 0);
+});
+
+test("organizing must earn backing, costs money, and never returns fictional money", () => {
+  const run = setup(45);
+  let current = run;
+  for (let i = 0; i < 3; i++) {
+    current = act(current, { id: "net" + i, kind: "network" });
+  }
+  assert.ok(current.people.some(p => p.role === "οργανωτής κοινότητας"));
+  assert.equal(current.debt, 0);
+  const trust = current.simulation.politicalContacts[0]?.trust ?? 0;
+  assert.ok(trust >= 0 && trust <= 3);
+  const organized = act(current, { id: "t6", kind: "organize", planId: "venture", budget: 500 });
+  assert.equal(organized.cash, 400);
+  assert.equal(organized.simulation.projects[0].political, true);
+  const settled = act(organized, { id: "t7", kind: "wait", days: 60 });
+  assert.equal(settled.cash, 400);
+  assert.equal(settled.simulation.projects[0].payout, 0);
+  assert.ok(["rejected", "supported"].includes(settled.simulation.projects[0].outcome));
+  assert.equal(settled.simulation.influence, settled.simulation.projects[0].outcome === "supported" ? 1 : 0);
+  assert.ok(JSON.stringify(playerView(settled)).includes("οργανωτής"));
+  assert.equal(JSON.stringify(playerView(organized)).includes("successChance"), false);
+});
+
+test("distinct attempts use unique project IDs, and active-plan collisions are rejected", () => {
+  const run = setup(7);
+  const once = act(run, { id: "t3", kind: "launch", planId: "venture", budget: 200 });
+  assert.throws(() => act(once, { id: "t4", kind: "launch", planId: "venture", budget: 100 }), /running project/);
+  const settled = act(once, { id: "t5", kind: "wait", days: 90 });
+  const twice = act(settled, { id: "t6", kind: "launch", planId: "venture", budget: 100 });
+  assert.equal(twice.simulation.projects.length, 2);
+  assert.notEqual(twice.simulation.projects[0].id, twice.simulation.projects[1].id);
+});
+
+test("same seed different preparatory decisions produce different state and odds", () => {
+  const base = setup(17);
+  const naive = act(base, { id: "t3", kind: "launch", planId: "venture", budget: 500 });
+  const prepared = replayLife(base, [
+    { id: "research", kind: "investigate", subject: "venture" },
+    { id: "learn", kind: "study", subject: "business" },
+    { id: "t3", kind: "launch", planId: "venture", budget: 500 }
+  ]);
+  assert.ok(prepared.simulation.projects[0].successChance > naive.simulation.projects[0].successChance);
+  assert.equal(naive.cash, 400);
+  assert.equal(prepared.cash, 300);
+  assert.notEqual(prepared.date, naive.date);
+});
