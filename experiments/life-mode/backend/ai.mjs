@@ -7,3 +7,5 @@ export {createSession,applySession,sessionPlayerView,sessionDirectorPacket}
 export {renderPlayerTurn,exportChatHandoff} from "../chat-handoff.mjs";
 
 export {findStrategicMaterial} from "../knowledge-retrieval.mjs";
+
+export {AI_ACTION_SCHEMA,AI_TOOL_CONTRACT,verifyAiToolContract} from "../ai-tool-contract.mjs";
