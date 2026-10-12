@@ -151,3 +151,18 @@ To preserve continuity without a live host, \`exportChatHandoff(session)\` produ
 - Wrong kind, forged actor, invalid evidence, duplicate ID, fake cash or unsupported action → explicit rejection and **no canonical state mutation**.
 - Tests cannot certify that the narrative is entertaining; that requires real creator playtesting.
 - No automatic background work, AI web access, image renderer, official electoral sandbox, human-approved release, or iPhone deployment is implied.
+
+
+## Machine-discoverable function schema
+
+The host can request the AI tool contract *without* starting a game:
+
+~~~json
+{"op":"contract"}
+~~~
+
+The result describes a provider-neutral function named \`kingmaker_step\` and JSON Schema fields \`id, route, action, scenario, days\`. The AI's output goes into \`{"op":"step","command": ...}\` only after an active session exists. Schema shape checks are **not sufficient** on their own: \`applySession\` still validates the real actor roster, available knowledge, episode state, money and chronology.
+
+\`sessionDirectorPacket(session,{intentText:"..."})\` can retrieve a small, topic-relevant set of patterns from \`knowledge-retrieval.mjs\`; those are GM notes, not player-facing scores or newly executable worlds. For example, “δισεκατομμύριο / επιχειρήσεις” selects business patterns; “πολιτική / συνασπισμός” selects political patterns; “μελέτη βιβλίων” selects a study-life case. **Selection does not imply consent or success.**
+
+The contract is not an already installed ChatGPT plugin or registered remote API. To connect it to a live conversation, a trusted model runner must transport those function calls to the actual Node host.
