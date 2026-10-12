@@ -109,3 +109,10 @@ npm run chat:demo
 npm run test:chat
 npm run chat:host
 ~~~
+
+
+## Portable stateless host API
+
+\`../stateless-connector.mjs\` exposes \`initializeGame\`, \`executeGameTurn\` and \`inspectGame\` through \`backend/index.mjs\`. This is the cleanest contract for a future external AI integration: the trusted application stores \`privateSave\`, calls a validated action once, and passes **only** \`player\` to the chat UI. The optional internal director brief is separately retrieved. Replaying the previous save with the same command produces the same result; applying an already-used command to its new save fails as a duplicate.
+
+It is **not** a live ChatGPT connector. See the stateless example in [AI_CHAT_RUNTIME_PROTOCOL](../AI_CHAT_RUNTIME_PROTOCOL.md).
