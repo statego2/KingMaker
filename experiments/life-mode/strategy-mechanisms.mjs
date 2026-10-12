@@ -238,7 +238,7 @@ export function validateMechanisms(items=STRATEGIC_MECHANISMS){
   if(!CANON_DOMAINS.includes(p.domain))errors.push("unknown domain "+p.id);
   if(!MASTER_TENSIONS.includes(p.tension))errors.push("unknown tension "+p.id);
   for(const k of ["name","signal","lever","price","countermove","delayed"]){
-   if(typeof p[k]!=="string"||p[k].trim().length<20)errors.push("missing "+k+" "+p.id);
+   if(typeof p[k]!=="string"||p[k].trim().length<(k==="name"?4:20))errors.push("missing "+k+" "+p.id);
   }
  }
  return {valid:errors.length===0,count:items.length,domains:[...new Set(items.map(x=>x.domain))],errors};
