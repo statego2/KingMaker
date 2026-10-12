@@ -6,3 +6,5 @@ export {renderPlayerTurn,exportChatHandoff} from "../chat-handoff.mjs";
 export {listBackendContent,verifyBackendCatalog,BACKEND_LAYERS,BACKEND_CATALOG_VERSION} from "../backend-catalog.mjs";
 
 export {AI_ACTION_SCHEMA,AI_TOOL_CONTRACT,verifyAiToolContract} from "../ai-tool-contract.mjs";
+
+export {initializeGame,executeGameTurn,inspectGame} from "../stateless-connector.mjs";
