@@ -15,6 +15,7 @@ This code is on the dependent branch of proposed PR #18. It is not a creator-app
 \`\`\`sh
 node --test experiments/life-mode/chat-ledger.test.mjs experiments/life-mode/world-simulator.test.mjs
 node experiments/life-mode/play-scenario.mjs
+node experiments/life-mode/balance-audit.mjs
 npm run verify
 \`\`\`
 
@@ -38,7 +39,7 @@ The real player should type an open intention: e.g. “I want to start a €100,
 | launch | Commit available money to a venture | May lose principal; resolved after 90 days |
 | network / organize | Seek a voluntary organizer and attempt a supported community event | Autonomy; resources spent, no invented profit; support after 60 days |
 | connect / invite | Build a relationship and ask consent | Other party can refuse |
-| wait | Advance time | Quiet periods are allowed; due events settle once |
+| wait | Advance time | Quiet periods are allowed; due events settle once; independent economic news can arise without any player action |
 | finish | End this experimental life | All subsequent commands refused |
 
 All costs and odds are **toy calibration values**, not empirical economic forecasts. They are deliberately small and subject to balancing. Dates/identities are fictional. Business research and learning modestly improve odds; they never make success certain. Seeded outcomes are deterministic for a given event order and seed, so QA can reproduce them. Action IDs are idempotency keys, not player-controlled reroll buttons.
@@ -57,7 +58,7 @@ All costs and odds are **toy calibration values**, not empirical economic foreca
 ## Known prototype boundaries and deliberate omissions
 
 - **Not a freeform language engine**: no NLP parser, AI API or model-based judge included. Only the adapter contracts are implemented.
-- **Not a full macroeconomic model**: no interest accrual, taxes, asset pricing, company shares, property valuation, employment contracts or inflation yet. Loans in this prototype are principal-only.
+- **Not a full macroeconomic model**: a small seeded market-climate calendar exists, but no interest accrual, taxes, asset pricing, company shares, property valuation, employment contracts or inflation yet. Loans in this prototype are principal-only.
 - **Not a full political simulation**: grassroots backing is a demonstrator, not election mechanics, sovereign power or a worldwide geopolitical simulator.
 - **Not a personality model**: limited fixed NPCs; no NPC long-run agenda planner, mortality, children, rival families or 50-year epilogue.
 - **No game-condition victory shortcut**: aspirations persist and are only completed when future validated world events justify completion, not when a player writes “I win.”
