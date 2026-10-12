@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { beginLife, act, replayLife, playerView } from "./world-simulator.mjs";
+import { beginLife, act, replayLife, playerView, saveLife, loadLife } from "./world-simulator.mjs";
 
 const fresh = (seed = 17, cash = 900) => beginLife({
   id: "fixture-" + seed,
@@ -263,4 +263,55 @@ test("same seed different preparatory decisions produce different state and odds
   assert.equal(naive.cash, 400);
   assert.equal(prepared.cash, 300);
   assert.notEqual(prepared.date, naive.date);
+});
+
+
+test("save/load replays actions rather than trusting an edited cash snapshot", () => {
+  const run = replayLife(fresh(26), [
+    dream, plan,
+    { id: "t3", kind: "study", subject: "business" },
+    { id: "t4", kind: "investigate", subject: "venture" },
+    { id: "t5", kind: "launch", planId: "venture", budget: 200 },
+    { id: "t6", kind: "wait", days: 120 }
+  ]);
+  const serialized = saveLife(run);
+  assert.deepEqual(loadLife(serialized), run);
+  const snapshot = JSON.parse(serialized);
+  assert.equal(snapshot.format, "kingmaker-life-experiment-v1");
+  assert.equal(Object.hasOwn(snapshot, "cash"), false);
+  assert.equal(Object.hasOwn(snapshot, "politicalSaveKey"), false);
+  const tampered = structuredClone(run);
+  tampered.cash = 1_000_000_000;
+  assert.throws(() => saveLife(tampered), /modified outside/);
+  assert.throws(() => loadLife(serialized.slice(0, 5)), /Corrupt/);
+  assert.throws(() => loadLife(JSON.stringify({ ...snapshot, format: "v0-unsupported" })), /Unsupported/);
+  assert.throws(() => loadLife(JSON.stringify({ ...snapshot, commands: [...snapshot.commands, snapshot.commands[0]] })), /Duplicate/);
+});
+
+test("seeded actor autonomy admits both cooperation and refusal, not automatic obedience", () => {
+  const outcomes = new Set();
+  for (let i = 0; i < 100; i++) {
+    const run = act(fresh(i), { id: "intro", kind: "network" });
+    outcomes.add(run.turns.at(-1).outcome.result);
+    assert.equal(run.people.length, 1);
+    assert.equal(run.people[0].role, "οργανωτής κοινότητας");
+    assert.equal(run.cash, 900);
+  }
+  assert.ok(outcomes.has("succeeded"));
+  assert.ok(outcomes.has("failed"));
+});
+
+test("short CLI fixture narrates 18 actual turns and preserves audit footer", async () => {
+  const { execFileSync } = await import("node:child_process");
+  const { fileURLToPath } = await import("node:url");
+  const { dirname, join } = await import("node:path");
+  const dir = dirname(fileURLToPath(import.meta.url));
+  const stdout = execFileSync(process.execPath, [join(dir, "play-scenario.mjs")], {
+    encoding: "utf8", timeout: 10_000
+  });
+  assert.equal((stdout.match(/Αποτέλεσμα:/g) ?? []).length, 18);
+  assert.match(stdout, /Δεν μπορείς να ξεκινήσεις/);
+  assert.match(stdout, /ΜΟΝΟ ΕΠΑΛΗΘΕΥΜΕΝΗ ΚΑΤΑΣΤΑΣΗ/);
+  assert.match(stdout, /Ηλικία 18/);
+  assert.match(stdout, /Τέλος/);
 });
