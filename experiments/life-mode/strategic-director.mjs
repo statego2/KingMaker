@@ -215,7 +215,7 @@ export function strategyPlayerView(s){
   people:s.actors.map(a=>({id:a.id,name:a.name,role:a.role,stance:a.stance,consulted:a.consulted,
    relation:a.trust>=3?"θετική":a.trust<=-2?"επιφυλακτική":"αβέβαιη"})),
   investigation:{question:c.fact.question,grade:g.status,reports:copy(s.evidence)},
-  publicEvents:copy(s.events),lastTurn:s.history.length?copy(s.history.at(-1)):null};
+  publicEvents:copy(s.events),lastTurn:s.history.length?(()=>{const h=s.history.at(-1);return {id:h.id,turn:h.turn,kind:h.kind,playerText:h.playerText,cost:h.cost,supportDelta:h.supportDelta,events:copy(h.events),outcome:{result:h.outcome.result,detail:h.outcome.detail}};})():null};
 }
 export function strategyDesignerAudit(s){
  if(!s||s.version!==1)throw Error("Unknown state");
