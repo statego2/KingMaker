@@ -14,6 +14,7 @@ import {buildDirectorBrief} from "./strategy-intelligence.mjs";
 import {strategicCaseKnowledgePack} from "./strategy-knowledge-graph.mjs";
 import {listBackendContent} from "./backend-catalog.mjs";
 import {findStrategicMaterial} from "./knowledge-retrieval.mjs";
+import {AI_TOOL_CONTRACT} from "./ai-tool-contract.mjs";
 
 export const CHAT_PROTOCOL_VERSION="kingmaker-chat-protocol-v1";
 const copy=x=>structuredClone(x);
@@ -154,6 +155,7 @@ export function sessionDirectorPacket(session,{intentText=null}={}){
    canonStatus:"Experimental Life Mode; published political campaign remains separate"
   },
   commandContract:{
+   modelTool:AI_TOOL_CONTRACT.tool,
    routes:["life.action","arc.begin","arc.move","arc.close","time.advance"],
    lifeActionKinds:Object.keys(LIFE_FIELDS),
    activeScenario:active?.scenario??null,
@@ -204,7 +206,7 @@ export function loadSession(input){
 }
 export function sessionBootstrap(){
  const catalog=listBackendContent();
- return {protocol:CHAT_PROTOCOL_VERSION,
+ return {protocol:CHAT_PROTOCOL_VERSION,toolContract:AI_TOOL_CONTRACT,
   backend:{executableWorlds:catalog.executableScenarios,authoredStories:catalog.authoredCases,
    knowledge:catalog.strategyLibrary},
   note:"Offline Node adapter; another ChatGPT conversation needs the repository or a runtime bridge to execute it."};
