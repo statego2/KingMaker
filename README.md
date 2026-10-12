@@ -2,6 +2,10 @@
 
 **A mobile-first cinematic political strategy game about judgment, power and consequence.** The player explores a persistent fictional republic, investigates incomplete and conflicting information, understands human incentives, makes difficult decisions and lives with their consequences.
 
+
+## Experimental AI-chat Life Mode backend (separate from published campaign)
+The newer [Life Mode AI Playtest Start Here](experiments/life-mode/START_HERE.md) and [AI/backend architecture](experiments/life-mode/backend/README.md) organize all experimental strategy materials into **knowledge, world rules, persistent saga, AI command adapter and chat narration**. There is a single import façade at [backend/index.mjs](experiments/life-mode/backend/index.mjs) and an executable JSON-lines Node host at [chat-host.mjs](experiments/life-mode/chat-host.mjs). This is currently a stacked **draft experiment (#18→#19→#20→#21)**; it has not been merged, deployed or approved as a replacement for the political browser campaign. GitHub read access alone does not run the host.
+
 ## Current creative playtest mode
 
 KINGMAKER is being played and iterated **in conversation** with the owner. The AI presents scenes and tracks decisions there; agreed story, mechanics and state changes are developed in GitHub. See [the chat-first playtest workflow](docs/CHAT_FIRST_PLAYTEST_WORKFLOW.md) and [the current playtest record](docs/PLAYTESTS/2026-10-08-chat-001.md). The browser build below remains an implementation in progress and may differ from experimental chat branches.
